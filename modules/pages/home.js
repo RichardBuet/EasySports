@@ -8,10 +8,33 @@ export function renderHome() {
         ${createHeader()}
         ${createNavbar()}
 
-        <main class="container">
-            <h1>Bienvenido a EasySports</h1>
-            <p>La plataforma deportiva está en construcción.</p>
-        </main>
+<main class="container">
+
+    <h1>Bienvenido a EasySports</h1>
+
+    <div class="cards-grid">
+
+        ${createCard(
+            "World Cup",
+            "Fixture, grupos, posiciones y estadísticas.",
+            "pages/worldcup.html"
+        )}
+
+        ${createCard(
+            "Formula 1",
+            "Calendario, pilotos y clasificación.",
+            "pages/formula1.html"
+        )}
+
+        ${createCard(
+            "Noticias",
+            "Últimas novedades deportivas.",
+            "pages/news.html"
+        )}
+
+    </div>
+
+</main>
 
         ${createFooter()}
     `;
