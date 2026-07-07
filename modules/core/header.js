@@ -1,9 +1,7 @@
 export function createHeader() {
     return `
         <header class="header">
-            <div class="logo">
-                ⚽ EasySports
-            </div>
+            <h2>⚽ EasySports</h2>
         </header>
     `;
 }
