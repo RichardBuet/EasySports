@@ -1,6 +1,7 @@
 import { createHeader } from "../core/header.js";
 import { createNavbar } from "../core/navbar.js";
 import { createFooter } from "../core/footer.js";
+import { createCard } from "../core/card.js";
 
 export function renderHome() {
     return `
