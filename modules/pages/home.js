@@ -3,17 +3,22 @@ import { createNavbar } from "../core/navbar.js";
 import { createFooter } from "../core/footer.js";
 import { createCard } from "../core/card.js";
 import { ROUTES } from "../../config/routes.js";
+import { createHero } from "../core/hero.js";
 
 export function renderHome() {
     return `
         ${createHeader()}
         ${createNavbar()}
 
-<main class="container">
+<main>
 
-    <h1>Bienvenido a EasySports</h1>
+    ${createHero()}
 
-    <div class="cards-grid">
+    <section class="container">
+
+        <h2>Explorá nuestros deportes</h2>
+
+        <div class="cards-grid">
 
         ${createCard(
             "World Cup",
@@ -39,8 +44,8 @@ export function renderHome() {
             ROUTES.ABOUT
         )}
 
-    </div>
-
+        </div>
+    </section>
 </main>
 
         ${createFooter()}
