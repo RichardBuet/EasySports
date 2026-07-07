@@ -1,9 +1,9 @@
 import { createHeader } from "../core/header.js";
 import { createNavbar } from "../core/navbar.js";
 import { createFooter } from "../core/footer.js";
-import { createCard } from "../core/card.js";
+import { createCard } from "../components/card.js";
 import { ROUTES } from "../../config/routes.js";
-import { createHero } from "../core/hero.js";
+import { createHero } from "../components/hero.js";
 
 export function renderHome() {
     return `
