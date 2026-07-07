@@ -2,6 +2,7 @@ import { createHeader } from "../core/header.js";
 import { createNavbar } from "../core/navbar.js";
 import { createFooter } from "../core/footer.js";
 import { createCard } from "../core/card.js";
+import { ROUTES } from "../../config/routes.js";
 
 export function renderHome() {
     return `
@@ -17,19 +18,25 @@ export function renderHome() {
         ${createCard(
             "World Cup",
             "Fixture, grupos, posiciones y estadísticas.",
-            "pages/worldcup.html"
+            ROUTES.WORLDCUP
         )}
-
+        
         ${createCard(
             "Formula 1",
             "Calendario, pilotos y clasificación.",
-            "pages/formula1.html"
+            ROUTES.FORMULA1
         )}
-
+        
         ${createCard(
             "Noticias",
             "Últimas novedades deportivas.",
-            "pages/news.html"
+            ROUTES.NEWS
+        )}
+        
+        ${createCard(
+            "Acerca de",
+            "Conocé más sobre el proyecto EasySports.",
+            ROUTES.ABOUT
         )}
 
     </div>
