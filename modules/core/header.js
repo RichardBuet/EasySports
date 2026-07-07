@@ -1,7 +1,19 @@
 export function createHeader() {
     return `
         <header class="header">
-            <h2>⚽ EasySports</h2>
+
+            <div class="logo">
+                ⚽ EasySports
+            </div>
+
+            <div class="header-actions">
+
+                <button id="themeToggle" class="icon-button">
+                    🌙
+                </button>
+
+            </div>
+
         </header>
     `;
 }
