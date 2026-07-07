@@ -1,6 +1,4 @@
-import { createHeader } from "../modules/core/header.js";
-import { createNavbar } from "../modules/core/navbar.js";
-import { createFooter } from "../modules/core/footer.js";
+import { renderHome } from "../modules/pages/home.js";
 
 export function initRouter() {
 
@@ -10,15 +8,6 @@ export function initRouter() {
 
     const app = document.getElementById("app");
 
-    app.innerHTML = `
-        ${createHeader()}
-        ${createNavbar()}
+    app.innerHTML = renderHome();
 
-        <main class="container">
-            <h1>Bienvenido a EasySports</h1>
-            <p>La plataforma deportiva está en construcción.</p>
-        </main>
-
-        ${createFooter()}
-    `;
 }
