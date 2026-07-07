@@ -16,3 +16,8 @@
 .navbar a:hover{
     color:var(--primary-color);
 }
+.navbar a.active{
+    color:var(--primary-color);
+    border-bottom:2px solid var(--primary-color);
+    padding-bottom:4px;
+}
