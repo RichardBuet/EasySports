@@ -1,1 +1,15 @@
+.card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
 
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    color: var(--text-secondary);
+}
