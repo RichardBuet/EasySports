@@ -17,3 +17,27 @@ export async function getJSON(url) {
         return null;
     }
 }
+
+
+export async function getF1Standings() {
+
+    try {
+
+        const response = await fetch(
+            "https://api.jolpi.ca/ergast/f1/current/driverStandings.json"
+        );
+
+        const data = await response.json();
+
+        return data;
+
+    } catch (error) {
+
+        console.error(error);
+
+        return null;
+
+    }
+
+}
+
