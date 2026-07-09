@@ -1,6 +1,6 @@
 import { renderHome } from "../modules/pages/home.js";
 
-export function initRouter() {
+export async function initRouter() {
 
     console.log("=================================");
     console.log(" EasySports iniciado");
@@ -8,6 +8,6 @@ export function initRouter() {
 
     const app = document.getElementById("app");
 
-    app.innerHTML = renderHome();
+    app.innerHTML = await renderHome();
 
 }
