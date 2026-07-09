@@ -1,13 +1,15 @@
 import { createLayout } from "../core/layout.js";
 import { createCard } from "../components/card.js";
-import { ROUTES } from "../../config/routes.js";
 import { createHero } from "../components/hero.js";
+import { createF1Standings } from "../formula1/standings.js";
+import { ROUTES } from "../../config/routes.js";
 
 export function renderHome() {
 return createLayout(`
 
     ${createHero()}
-
+    ${createF1Standings()}
+    
     <section class="container">
 
         <h2>Explorá nuestros deportes</h2>
