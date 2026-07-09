@@ -1,20 +1,41 @@
-export function createF1Standings() {
+import { getF1Standings } from "../../js/api.js";
+
+export async function renderStandings() {
+
+    const data = await getF1Standings();
+
+    const standings =
+        data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+
     return `
-        <section class="f1-standings">
+        <section class="container">
 
-            <div class="section-header">
-                <h2>🏎 Fórmula 1</h2>
-                <span>Clasificación del Campeonato</span>
-            </div>
+            <h2>🏆 Campeonato de Pilotos</h2>
 
-            <div id="f1StandingsList" class="standings-list">
+            <div class="cards-grid">
 
-                <div class="loading">
-                    Cargando clasificación...
-                </div>
+                ${standings.slice(0,10).map(driver=>`
+
+                    <div class="card">
+
+                        <h3>
+                            ${driver.position}. ${driver.Driver.givenName}
+                            ${driver.Driver.familyName}
+                        </h3>
+
+                        <p><strong>Equipo:</strong> ${driver.Constructors[0].name}</p>
+
+                        <p><strong>Puntos:</strong> ${driver.points}</p>
+
+                        <p><strong>Victorias:</strong> ${driver.wins}</p>
+
+                    </div>
+
+                `).join("")}
 
             </div>
 
         </section>
     `;
+
 }
