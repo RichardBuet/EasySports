@@ -24,8 +24,8 @@ export async function getF1Standings() {
     try {
 
         const response = await fetch(
-            "https://api.jolpi.ca/ergast/f1/current/driverStandings.json?t=" + Date.now()"
-        );
+    "https://api.jolpi.ca/ergast/f1/current/driverStandings.json?t=" + Date.now()
+);
 
         const data = await response.json();
 
