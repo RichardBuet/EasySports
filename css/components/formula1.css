@@ -4,9 +4,8 @@
     display:grid;
 
    /* grid-template-columns:40px 1fr 110px 50px;*/
-    grid-template-columns: 40px 3fr 2fr auto;
+    grid-template-columns:40px minmax(0,3fr) minmax(0,2fr) 50px;
         
-
     align-items:center;
 
 }
@@ -56,6 +55,19 @@
     color:#aaa;
 
     font-size:14px;
+
+}
+
+.driver,
+.team{
+
+    min-width:0;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
 
 }
 
