@@ -1,16 +1,18 @@
 .navbar{
     display:flex;
-    justify-content:center;
-    gap:35px;
-    padding:18px;
-    background:#181818;
+    justify-content: space-around;
+    gap: 4px;
+    padding: 10px;
+    background: #181818;
+    text-align: center;
 }
 
 .navbar a{
-    color:white;
+    color:var(--text-color);
     text-decoration:none;
     font-weight:bold;
     transition:.25s;
+    font-size: inherit;
 }
 
 .navbar a:hover{
