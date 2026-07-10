@@ -12,7 +12,7 @@ export function createSportsMenu(){
                 🏍 MotoGP
             </a>
 
-            <a href="#">
+            <a href="https://richardbuet.github.io/whatscup/">
                 ⚽ Copa del Mundo
             </a>
 
