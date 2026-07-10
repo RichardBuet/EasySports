@@ -1,3 +1,4 @@
+import { createToday } from "../home/today.js";
 import { createLayout } from "../core/layout.js";
 import { createCard } from "../components/card.js";
 import { createHero } from "../components/hero.js";
@@ -9,6 +10,8 @@ export async function renderHome() {
     return createLayout(`
 
         ${createHero()}
+
+${createToday()}
 
         ${await renderStandings()}
 
