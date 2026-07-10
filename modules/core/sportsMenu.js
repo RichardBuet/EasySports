@@ -2,7 +2,7 @@ export function createSportsMenu(){
 
     return `
 
-        <div id="sportsMenuPanel" class="sports-menu hidden">
+        <div id="sportsMenuPanel" class="sports-menu">
 
             <a href="#">
                 🏎 Fórmula 1
