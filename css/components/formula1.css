@@ -12,7 +12,11 @@
 
 .standings-header{
 
-    font-size:12px;
+    font-size:11px;
+
+    letter-spacing:.8px;
+
+    text-transform:uppercase;
 
     font-weight:700;
 
@@ -26,7 +30,7 @@
 
 .standing-row{
 
-    padding:10px 0;
+    padding:6px 0;
 
     border-bottom:1px solid #2a2a2a;
 
