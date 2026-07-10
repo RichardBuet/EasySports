@@ -2,27 +2,29 @@
 
     position:absolute;
 
-    top:100%;
+    top:calc(100% + 10px);
 
-    left:0;
+    left:50%;
 
-    width:220px;
+    transform:translateX(-50%);
+
+    min-width:220px;
 
     display:none;
 
     flex-direction:column;
 
-    background:var(--card-background);
+    background:#1f1f1f;
 
     border:1px solid #333;
 
     border-radius:12px;
 
-    overflow:hidden;
+    padding:8px 0;
 
-    box-shadow:0 8px 24px rgba(0,0,0,.4);
+    box-shadow:0 12px 30px rgba(0,0,0,.5);
 
-    z-index:1000;
+    z-index:9999;
 
 }
 
