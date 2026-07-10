@@ -1,4 +1,5 @@
 import { getF1Standings } from "../../js/api.js";
+import { createWidget } from "../components/widget.js";
 
 export async function renderStandings() {
 
@@ -7,35 +8,41 @@ export async function renderStandings() {
     const standings =
         data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
 
-    return `
-        <section class="container">
+    const content = `
 
-            <h2>🏆 Campeonato de Pilotos</h2>
+        <div class="standings-header">
+            <span>POS</span>
+            <span>PILOTO</span>
+            <span>EQUIPO</span>
+            <span>PTS</span>
+        </div>
 
-            <div class="cards-grid">
+        ${standings.map(driver => `
 
-                ${standings.slice(0,10).map(driver=>`
+            <div class="standing-row">
 
-                    <div class="card">
+                <span class="pos">
+                    ${driver.position}
+                </span>
 
-                        <h3>
-                            ${driver.position}. ${driver.Driver.givenName}
-                            ${driver.Driver.familyName}
-                        </h3>
+                <span class="driver">
+                    ${driver.Driver.familyName}
+                </span>
 
-                        <p><strong>Equipo:</strong> ${driver.Constructors[0].name}</p>
+                <span class="team">
+                    ${driver.Constructors[0].name}
+                </span>
 
-                        <p><strong>Puntos:</strong> ${driver.points}</p>
-
-                        <p><strong>Victorias:</strong> ${driver.wins}</p>
-
-                    </div>
-
-                `).join("")}
+                <span class="points">
+                    ${driver.points}
+                </span>
 
             </div>
 
-        </section>
+        `).join("")}
+
     `;
+
+    return createWidget("🏆 Campeonato de Pilotos", content);
 
 }
