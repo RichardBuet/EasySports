@@ -1,0 +1,66 @@
+.standings-header,
+.standing-row{
+
+    display:grid;
+
+    grid-template-columns:40px 1fr 110px 50px;
+
+    align-items:center;
+
+}
+
+.standings-header{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    opacity:.7;
+
+    padding-bottom:8px;
+
+    border-bottom:2px solid #333;
+
+}
+
+.standing-row{
+
+    padding:10px 0;
+
+    border-bottom:1px solid #2a2a2a;
+
+}
+
+.standing-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.pos{
+
+    font-weight:bold;
+
+}
+
+.driver{
+
+    font-weight:600;
+
+}
+
+.team{
+
+    color:#aaa;
+
+    font-size:14px;
+
+}
+
+.points{
+
+    text-align:right;
+
+    font-weight:bold;
+
+}
