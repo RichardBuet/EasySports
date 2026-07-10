@@ -49,9 +49,14 @@
 }
 
 .sports-menu a:hover{
-
     background:rgba(255,255,255,.05);
-
     color:var(--primary-color);
+}
 
+.hidden{
+    display:none!important;
+}
+
+.sports-menu.show{
+    display:flex!important;
 }
