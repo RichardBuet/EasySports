@@ -8,30 +8,26 @@ export function createNavbar(){
 
     return `
         <nav class="navbar">
-
             <a href="${ROUTES.HOME}" class="${active("home")}">
-                🏠
-                <span>Inicio</span>
+                🏠 <span>Inicio</span>
             </a>
 
-            <a id="sportsMenu">
-                🏅
-                <span>Deportes ▼</span>
-            </a>
+            <div class="navbar-item">
+                <a id="sportsMenu">
+                    🏅 <span>Deportes ▼</span>
+                </a>
+                ${createSportsMenu()}
+            </div>
 
             <a href="${ROUTES.NEWS}" class="${active("news")}">
-                📰
-                <span>Noticias</span>
+                📰 <span>Noticias</span>
             </a>
 
             <a href="${ROUTES.ABOUT}" class="${active("about")}">
-                ℹ️
-                <span>Acerca</span>
+                ℹ️ <span>Acerca</span>
             </a>
-
         </nav>
 
-        ${createSportsMenu()}
     `;
 
 }
