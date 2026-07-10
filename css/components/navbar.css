@@ -24,6 +24,10 @@
     padding-bottom:4px;
 }
 
+.navbar-item{
+    position:relative;
+}
+
 #sportsMenu{
     position:relative;
 }
