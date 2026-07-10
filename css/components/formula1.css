@@ -4,7 +4,7 @@
     display:grid;
 
    /* grid-template-columns:40px 1fr 110px 50px;*/
-    grid-template-columns: 40px 45% 40% 15%;
+    grid-template-columns: 40px 3fr 2fr auto;
         
 
     align-items:center;
