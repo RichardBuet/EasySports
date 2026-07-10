@@ -8,12 +8,28 @@ export function createNavbar(){
 
     return `
         <nav class="navbar">
-            <a class="${active("index.html")}" href="${ROUTES.HOME}">🏠 Inicio</a>
-            <a class="${active("worldcup.html")}" href="${ROUTES.WORLDCUP}">🌍 World Cup</a>
-            <a class="${active("formula1.html")}" href="${ROUTES.FORMULA1}">🏎️ Formula 1</a>
-            <a class="${active("news.html")}" href="${ROUTES.NEWS}">📰 Noticias</a>
-            <a class="${active("about.html")}" href="${ROUTES.ABOUT}">ℹ️ Acerca</a>
-        </nav>
+
+    <a class="active">
+        🏠
+        <span>Inicio</span>
+    </a>
+
+    <a id="sportsMenu">
+        🏅
+        <span>Deportes ▼</span>
+    </a>
+
+    <a>
+        📰
+        <span>Noticias</span>
+    </a>
+
+    <a>
+        ℹ️
+        <span>Acerca</span>
+    </a>
+
+</nav>
     `;
 
 }
