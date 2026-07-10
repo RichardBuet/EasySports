@@ -1,6 +1,6 @@
 .hero{
-    width:100%;
-    padding:20px;
+    width: 100%;
+    padding-top: 5px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -8,8 +8,9 @@
 }
 
 .hero-banner{
-    width:100%;
-    max-width:1400px;
+    width: calc(100vw - 40px);
+    max-width: 1400px;
+    height: calc(100dvw * 0.26);
     border-radius:18px;
     display:block;
 
