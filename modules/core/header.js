@@ -3,7 +3,7 @@ export function createHeader() {
         <header class="header">
 
             <div class="logo">
-                ⚽ EasySports
+                <span class="easy">Easy</span><span class="sports">Sports</span>
             </div>
 
             <div class="header-actions">
