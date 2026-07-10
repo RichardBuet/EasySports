@@ -23,3 +23,7 @@
     border-bottom:2px solid var(--primary-color);
     padding-bottom:4px;
 }
+
+#sportsMenu{
+    position:relative;
+}
