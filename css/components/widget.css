@@ -8,6 +8,10 @@
 
     margin: 16px 20px;
 
+    box-sizing: border-box;
+
+    overflow: hidden;
+
 }
 
 .widget-header{
@@ -47,5 +51,7 @@
     flex-direction:column;
 
     gap:8px;
+
+    width:100%;
 
 }
