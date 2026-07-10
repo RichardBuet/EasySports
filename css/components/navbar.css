@@ -26,6 +26,8 @@
 
 .navbar-item{
     position:relative;
+    display:flex;
+    justify-content:center;
 }
 
 #sportsMenu{
