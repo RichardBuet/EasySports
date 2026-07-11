@@ -2,6 +2,15 @@
 // console.log(await ESPNCore.getDriverStandings());
 
 import { ESPNCore } from "./espn/index.js";
+
+(async()=>{
+    const data=await ESPNCore.getDriverStandings();
+    document.getElementById("output").textContent=
+        JSON.stringify(data,null,2);
+})();
+
+
+import { ESPNCore } from "./espn/index.js";
 import { ESPNSite } from "./espn/index.js";
 
 (async()=>{
