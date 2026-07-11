@@ -5,5 +5,5 @@ import { ESPNSite } from "./site.js";
 export {
     ESPNCore,
     ESPNSite,
-    ESPNFormula1
+    // ESPNFormula1
 };
