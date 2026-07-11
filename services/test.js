@@ -5,8 +5,9 @@ import { ESPNCore } from "./espn/index.js";
 
 (async()=>{
     const data=await ESPNCore.getDriverStandings();
-    document.getElementById("output").textContent=
-        JSON.stringify(data,null,2);
+    const athlete=await ESPNCore.get(data.standings[0].athlete.$ref);
+    // document.getElementById("output").textContent=
+    //     JSON.stringify(data,null,2);
 })();
 
 
