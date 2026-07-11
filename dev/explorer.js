@@ -21,7 +21,7 @@ data=await ESPNFormula1.getDriverStandings();
 break;
 
 case"constructor":
-data=await ESPNFormula1.getConstructorStandings();
+data=await ESPNCore.getConstructorStandings();
 break;
 
 case"calendar":
