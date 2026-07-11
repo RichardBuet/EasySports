@@ -30,6 +30,10 @@ button.addEventListener("click",async()=>{
             case"events":
                 data=await ESPNCore.getEvents();
                 break;
+                
+            case"athletes":
+                data=await ESPNCore.getAthletes();
+            break;
 
             case"news":
                 data=await ESPNSite.getNews();
