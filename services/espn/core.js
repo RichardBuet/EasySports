@@ -8,5 +8,5 @@ export class ESPNCore{
     static async getCalendar(){return await this.get("/calendar");}
     static async getEvents(){ return await this.get("/events");}
     static async getAthletes(){return await this.get("/athletes?limit=5");}
-    static async getByUrl(url){return await fetchJSON(url);}
+    static async getByUrl(url){url=url.replace("http://","https://"); return await fetchJSON(url);}
 }
