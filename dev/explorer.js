@@ -32,6 +32,8 @@ break;
 
 }
 
-output.textContent=JSON.stringify(data,null,2);
+const athlete=await ESPNCore.getByUrl(data.standings[0].athlete.$ref);
+
+output.textContent=JSON.stringify(athlete,null,2);
 
 };
