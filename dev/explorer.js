@@ -32,7 +32,7 @@ break;
 
 }
 
-console.log(data.standings[0].athlete.$ref);
+//console.log(data.standings[0].athlete.$ref);
 
 const athlete=await ESPNCore.getByUrl(data.standings[0].athlete.$ref);
 };
