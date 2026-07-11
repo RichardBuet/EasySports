@@ -1,3 +1,4 @@
+import {ESPNFormula1} from "../services/espn/formula1.js";
 import {ESPNCore} from "../services/espn/core.js";
 import {ESPNSite} from "../services/espn/site.js";
 
@@ -16,7 +17,7 @@ button.addEventListener("click",async()=>{
         switch(endpoint.value){
 
             case"driver":
-                data=await ESPNCore.getDriverStandings();
+                data=await ESPNFormula1.getDriverStandings();
                 break;
 
             case"constructor":
