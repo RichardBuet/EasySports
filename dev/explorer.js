@@ -10,53 +10,52 @@ console.log("Explorer iniciado");
 
 button.addEventListener("click",async()=>{
 
-    try{
+try{
 
-        let data;
+let data;
 
-        switch(endpoint.value){
+switch(endpoint.value){
 
-            case"driver":
-    data=await ESPNFormula1.getStandings();
-    break;
+case"driver":
+data=await ESPNFormula1.getDriverStandings();
+break;
 
-            case"constructor":
-    data=await ESPNFormula1.getConstructors();
-    break;
+case"constructor":
+data=await ESPNFormula1.getConstructorStandings();
+break;
 
 case"calendar":
-    data=await ESPNFormula1.getCalendar();
-    break;
+data=await ESPNFormula1.getCalendar();
+break;
 
 case"events":
-    data=await ESPNFormula1.getEvents();
-    break;
-                
-            case"athletes":
-                data=await ESPNCore.getAthletes();
-            break;
+data=await ESPNFormula1.getEvents();
+break;
 
-            case"news":
-                data=await ESPNSite.getNews();
-                break;
+case"athletes":
+data=await ESPNCore.getAthletes();
+break;
 
-            default:
-                output.textContent="Endpoint no válido";
-                return;
+case"news":
+data=await ESPNSite.getNews();
+break;
 
-        }
+default:
+output.textContent="Endpoint no válido";
+return;
 
-        output.textContent=JSON.stringify(data,null,2);
+}
 
-    }catch(error){
+output.textContent=JSON.stringify(data,null,2);
 
-        console.error(error);
+}catch(error){
 
-        output.textContent=
-`ERROR
+console.error(error);
+
+output.textContent=`ERROR
 
 ${error.message}`;
 
-    }
+}
 
 });
