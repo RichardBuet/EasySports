@@ -1,38 +1,57 @@
-import {ESPNCore,ESPNSite} from "../services/espn/index.js";
+import {ESPNCore} from "../services/espn/core.js";
+import {ESPNSite} from "../services/espn/site.js";
 
 const output=document.getElementById("output");
+const button=document.getElementById("load");
+const endpoint=document.getElementById("endpoint");
 
-document.getElementById("load").onclick=async()=>{
-//alert("Explorer nuevo");
-const option=document.getElementById("endpoint").value;
+console.log("Explorer iniciado");
 
-let data=null;
+button.addEventListener("click",async()=>{
 
-switch(option){
+    try{
 
-case"driver":
-data=await ESPNCore.getDriverStandings();
-break;
+        let data;
 
-case"constructor":
-data=await ESPNCore.getConstructorStandings();
-break;
+        switch(endpoint.value){
 
-case"calendar":
-data=await ESPNCore.getCalendar();
-break;
+            case"driver":
+                data=await ESPNCore.getDriverStandings();
+                break;
 
-case"events":
-data=await ESPNCore.getEvents();
-break;
+            case"constructor":
+                data=await ESPNCore.getConstructorStandings();
+                break;
 
-case"news":
-data=await ESPNSite.getNews();
-break;
+            case"calendar":
+                data=await ESPNCore.getCalendar();
+                break;
 
-}
+            case"events":
+                data=await ESPNCore.getEvents();
+                break;
 
-//console.log(data.standings[0].athlete.$ref);
+            case"news":
+                data=await ESPNSite.getNews();
+                break;
 
-const athlete=await ESPNCore.getByUrl(data.standings[0].athlete.$ref);
-};
+            default:
+                output.textContent="Endpoint no válido";
+                return;
+
+        }
+
+        output.textContent=JSON.stringify(data,null,2);
+
+    }catch(error){
+
+        console.error(error);
+
+        output.textContent=
+`ERROR
+
+${error.message}`;
+
+    }
+
+});
