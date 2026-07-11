@@ -10,27 +10,27 @@ import { ESPNCore } from "./espn/index.js";
 })();
 
 
-import { ESPNCore } from "./espn/index.js";
-import { ESPNSite } from "./espn/index.js";
+// import { ESPNCore } from "./espn/index.js";
+// import { ESPNSite } from "./espn/index.js";
 
-(async()=>{
+// (async()=>{
 
-    console.clear();
+//     console.clear();
 
-    console.log("================================");
-    console.log("      EasySports Lab");
-    console.log("================================");
+//     console.log("================================");
+//     console.log("      EasySports Lab");
+//     console.log("================================");
 
-    console.log("🏆 Driver Standings");
-    console.log(await ESPNCore.getDriverStandings());
+//     console.log("🏆 Driver Standings");
+//     console.log(await ESPNCore.getDriverStandings());
 
-    console.log("📅 Calendar");
-    console.log(await ESPNCore.getCalendar());
+//     console.log("📅 Calendar");
+//     console.log(await ESPNCore.getCalendar());
 
-    console.log("🏁 Events");
-    console.log(await ESPNCore.getEvents());
+//     console.log("🏁 Events");
+//     console.log(await ESPNCore.getEvents());
 
-    console.log("📰 News");
-    console.log(await ESPNSite.getNews());
+//     console.log("📰 News");
+//     console.log(await ESPNSite.getNews());
 
-})();
+// })();
