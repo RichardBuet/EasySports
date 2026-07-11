@@ -17,20 +17,20 @@ button.addEventListener("click",async()=>{
         switch(endpoint.value){
 
             case"driver":
-                data=await ESPNFormula1.getDriverStandings();
-                break;
+    data=await ESPNFormula1.getStandings();
+    break;
 
             case"constructor":
-                data=await ESPNCore.getConstructorStandings();
-                break;
+    data=await ESPNFormula1.getConstructors();
+    break;
 
-            case"calendar":
-                data=await ESPNCore.getCalendar();
-                break;
+case"calendar":
+    data=await ESPNFormula1.getCalendar();
+    break;
 
-            case"events":
-                data=await ESPNCore.getEvents();
-                break;
+case"events":
+    data=await ESPNFormula1.getEvents();
+    break;
                 
             case"athletes":
                 data=await ESPNCore.getAthletes();
