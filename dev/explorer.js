@@ -3,7 +3,7 @@ import {ESPNCore,ESPNSite} from "../services/espn/index.js";
 const output=document.getElementById("output");
 
 document.getElementById("load").onclick=async()=>{
-
+alert("Explorer nuevo");
 const option=document.getElementById("endpoint").value;
 
 let data=null;
