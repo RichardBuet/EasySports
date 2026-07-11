@@ -2,32 +2,31 @@ import {ESPNCore} from "./core.js";
 
 export class ESPNFormula1{
 
-    static async getStandings(){
+static async getStandings(){
 
-        const data=await ESPNCore.getDriverStandings();
+const data=await ESPNCore.getDriverStandings();
 
-        return data.standings;
+const standings=[];
 
-    }
+for(const item of data.standings){
 
-    static async getConstructors(){
+const athlete=await ESPNCore.getByUrl(item.athlete.$ref);
 
-        const data=await ESPNCore.getConstructorStandings();
+const stats=item.records[0].stats;
 
-        return data.standings;
+standings.push({
 
-    }
+rank:stats.find(s=>s.name==="rank")?.value,
+points:stats.find(s=>s.name==="championshipPts")?.value,
+wins:stats.find(s=>s.name==="wins")?.value,
+athlete
 
-    static async getCalendar(){
+});
 
-        return await ESPNCore.getCalendar();
+}
 
-    }
+return standings;
 
-    static async getEvents(){
-
-        return await ESPNCore.getEvents();
-
-    }
+}
 
 }
