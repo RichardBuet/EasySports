@@ -7,5 +7,5 @@ export class ESPNCore{
     static async getConstructorStandings(){return await this.get("/seasons/2026/types/2/standings/1");}
     static async getCalendar(){return await this.get("/calendar");}
     static async getEvents(){ return await this.get("/events");}
-//static async getByUrl(url){return await fetchJSON(url);}
+    static async getByUrl(url){return await fetchJSON(url);}
 }
