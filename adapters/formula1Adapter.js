@@ -1,27 +1,18 @@
-import {ESPNCore} from "../services/espn/core.js";
+export async function adaptDriverStandings(data){
 
-export async function adaptConstructorStandings(data){
-
-const standings=[];
-
-for(const item of data.standings){
-
-const manufacturer=await ESPNCore.getByUrl(item.manufacturer.$ref);
+return data.standings.map(item=>{
 
 const stats=item.records[0].stats;
 
-standings.push({
+return{
 
+id:item.athlete.$ref.split("/").slice(-1)[0].split("?")[0],
 rank:stats.find(s=>s.name==="rank")?.value,
-constructor:manufacturer.displayName,
-points:stats.find(s=>s.name==="points")?.value,
-wins:stats.find(s=>s.name==="wins")?.value,
-logo:manufacturer.logo?.href
+points:stats.find(s=>s.name==="championshipPts")?.value,
+wins:stats.find(s=>s.name==="wins")?.value
+
+};
 
 });
-
-}
-
-return standings;
 
 }
