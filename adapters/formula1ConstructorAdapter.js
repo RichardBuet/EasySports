@@ -6,6 +6,8 @@ const standings=[];
 
 for(const item of data.standings){
 
+console.log(item);
+
 const manufacturer=await ESPNCore.getByUrl(item.manufacturer.$ref);
 
 console.log(manufacturer);
