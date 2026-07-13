@@ -1,12 +1,9 @@
 import { NASCARLive } from "./nascar/live.js";
 import { adaptNascarLive } from "./adapters/nascarLiveAdapter.js";
 import { NASCARWeekend } from "./nascar/weekend.js";
-import { adaptNascarWeekend } from "./adapters/nascarWeekendAdapter.js";
-// import { NASCARResults } from "./nascar/results.js";
-// import { adaptNascarResults } from "./adapters/nascarResultsAdapter.js";
-
-// import { NASCARRaceList } from "./nascar/raceList.js";
-// import { adaptNascarRaceList } from "./adapters/nascarRaceListAdapter.js";
+import { adaptNascarWeekend } from "./adapters/";
+import { NASCARRaceList } from "./nascar/raceList.js";
+import { adaptNascarRaceList } from "./adapters/nascarRaceListAdapter.js";
 
 export class NASCAR {
 
@@ -32,7 +29,7 @@ static async getWeekend(raceId) {
         return adaptNascarResults(data);
 
     }
-
+*/
     static async getRaceList() {
 
         const data = await NASCARRaceList.getRaceList();
@@ -40,6 +37,6 @@ static async getWeekend(raceId) {
         return adaptNascarRaceList(data);
 
     }
-    */
+    
 
 }
