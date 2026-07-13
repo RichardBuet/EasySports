@@ -24,8 +24,10 @@ button.addEventListener("click", async () => {
 
         }
 
-        output.textContent = JSON.stringify(data, null, 2);
+        renderRace(data);
 
+output.textContent = JSON.stringify(data, null, 2);
+  
     } catch (error) {
 
         console.error(error);
