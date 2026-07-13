@@ -209,7 +209,7 @@ function renderRaceList(data) {
             <td>${new Date(race.date).toLocaleDateString("es-AR")}</td>
             <td>${race.name}</td>
             <td>${race.track}</td>
-            <td>${race.laps}</td>
+            <td>${race.scheduledLaps}</td>
             <td>${race.status === "completed"
     ? "🏁 Finalizada"
     : "📅 Pendiente"}</td>
