@@ -19,20 +19,16 @@ button.addEventListener("click", async () => {
                 renderRace(data);
                 break;
 
-//   case "nascar-weekend":
- //   data = await NASCAR.getWeekend(5615);
- //   break;
+
 case "nascar-weekend":
     data = await NASCAR.getWeekend(5615);
     renderWeekend(data);
     break;
-       //     case "nascar-results":
-       //         data = await NASCAR.getResults();
-       //         break;
 
-        //    case "nascar-racelist":
-       //         data = await NASCAR.getRaceList();
-        //        break;
+           case "nascar-racelist":
+           data = await NASCAR.getRaceList();
+           renderRaceList(data);
+    break;
 
         //    default:
         //        output.textContent = "Endpoint no válido";
@@ -161,3 +157,44 @@ function renderWeekend(data){
     table.innerHTML = html;
 
 }
+
+
+function renderRaceList(data) {
+
+    const raceInfo = document.getElementById("raceInfo");
+    const table = document.getElementById("tableContainer");
+
+    raceInfo.innerHTML = `
+        <h2>🏁 NASCAR Cup Series 2026</h2>
+        <p><strong>Total de carreras:</strong> ${data.length}</p>
+    `;
+
+    let html = `
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Fecha</th>
+            <th>Carrera</th>
+            <th>Circuito</th>
+            <th>Estado</th>
+        </tr>
+    `;
+
+    data.forEach(race => {
+
+        html += `
+        <tr>
+            <td>${new Date(race.date).toLocaleDateString("es-AR")}</td>
+            <td>${race.name}</td>
+            <td>${race.track}</td>
+            <td>${race.completed ? "✅ Finalizada" : "⏳ Pendiente"}</td>
+        </tr>
+        `;
+
+    });
+
+    html += "</table>";
+
+    table.innerHTML = html;
+
+}
+
