@@ -164,9 +164,31 @@ function renderRaceList(data) {
     const raceInfo = document.getElementById("raceInfo");
     const table = document.getElementById("tableContainer");
 
+    const completed = data.filter(r => r.completed).length;
+    const pending = data.length - completed;
+
+    const lastRace = [...data]
+        .filter(r => r.completed)
+        .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
+    const nextRace = [...data]
+        .filter(r => !r.completed)
+        .sort((a, b) => new Date(a.date) - new Date(b.date))[0];
+
     raceInfo.innerHTML = `
         <h2>🏁 NASCAR Cup Series 2026</h2>
-        <p><strong>Total de carreras:</strong> ${data.length}</p>
+
+        <p><strong>Total carreras:</strong> ${data.length}</p>
+        <p><strong>Finalizadas:</strong> ${completed}</p>
+        <p><strong>Pendientes:</strong> ${pending}</p>
+
+        <hr>
+
+        <p><strong>🏁 Última carrera:</strong><br>
+        ${lastRace ? lastRace.name : "-"}</p>
+
+        <p><strong>📅 Próxima carrera:</strong><br>
+        ${nextRace ? nextRace.name : "-"}</p>
     `;
 
     let html = `
@@ -175,6 +197,7 @@ function renderRaceList(data) {
             <th>Fecha</th>
             <th>Carrera</th>
             <th>Circuito</th>
+            <th>Vueltas</th>
             <th>Estado</th>
         </tr>
     `;
@@ -186,7 +209,8 @@ function renderRaceList(data) {
             <td>${new Date(race.date).toLocaleDateString("es-AR")}</td>
             <td>${race.name}</td>
             <td>${race.track}</td>
-            <td>${race.completed ? "✅ Finalizada" : "⏳ Pendiente"}</td>
+            <td>${race.laps}</td>
+            <td>${race.completed ? "🏁 Finalizada" : "📅 Próxima"}</td>
         </tr>
         `;
 
@@ -196,5 +220,8 @@ function renderRaceList(data) {
 
     table.innerHTML = html;
 
+    output.textContent = "";
+
 }
+
 
