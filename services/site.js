@@ -1,7 +1,7 @@
 import { NASCARLive } from "./nascar/live.js";
 import { adaptNascarLive } from "./adapters/nascarLiveAdapter.js";
 import { NASCARWeekend } from "./nascar/weekend.js";
-import { adaptNascarWeekend } from "./adapters/";
+import { adaptNascarWeekend } from "./adapters/nascarWeekendAdapter.js";
 import { NASCARRaceList } from "./nascar/raceList.js";
 import { adaptNascarRaceList } from "./adapters/nascarRaceListAdapter.js";
 
