@@ -17,6 +17,9 @@ button.addEventListener("click", async () => {
             case "nascar-live":
                 data = await NASCAR.getLiveRace();
                 break;
+            case "nascar-results":
+    data = await NASCAR.getResults();
+    break;
 
             default:
                 output.textContent = "Endpoint no válido";
