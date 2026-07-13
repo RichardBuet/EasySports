@@ -16,6 +16,10 @@ let data;
 
 switch(endpoint.value){
 
+case "nascar-live":
+resultado = await NASCAR.getLiveRace();
+break;
+    
 case"driver":
 data=await ESPNFormula1.getDriverStandings();
 break;
