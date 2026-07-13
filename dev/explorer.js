@@ -38,4 +38,49 @@ ${error.message}`;
 
     }
 
+function renderRace(data){
+
+    const raceInfo = document.getElementById("raceInfo");
+    const table = document.getElementById("tableContainer");
+
+    raceInfo.innerHTML = `
+        <h2>🏁 NASCAR LIVE</h2>
+        <p><strong>Bandera:</strong> ${data.flag}</p>
+        <p><strong>Vuelta:</strong> ${data.lap} / ${data.totalLaps}</p>
+        <p><strong>Restan:</strong> ${data.lapsToGo}</p>
+    `;
+
+    let html = `
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Pos</th>
+            <th>#</th>
+            <th>Piloto</th>
+            <th>Marca</th>
+            <th>Gap</th>
+        </tr>
+    `;
+
+    data.leaderboard.forEach(driver=>{
+
+        html += `
+        <tr>
+            <td>${driver.position}</td>
+            <td>${driver.number}</td>
+            <td>${driver.driver}</td>
+            <td>${driver.manufacturer}</td>
+            <td>${driver.delta}</td>
+        </tr>
+        `;
+
+    });
+
+    html += "</table>";
+
+    table.innerHTML = html;
+
+}
+
+
+    
 });
