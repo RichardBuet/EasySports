@@ -12,25 +12,33 @@ button.addEventListener("click", async () => {
 
         let data;
 
-        switch (endpoint.value) {
+switch(endpoint.value){
 
-            case "nascar-live":
-                data = await NASCAR.getLiveRace();
-                break;
-            case "nascar-results":
-    data = await NASCAR.getResults();
-    break;
+    case "nascar-live":
 
-            default:
-                output.textContent = "Endpoint no válido";
-                return;
-
-        }
+        data = await NASCAR.getLiveRace();
 
         renderRace(data);
 
+        break;
+
+    case "nascar-results":
+
+        data = await NASCAR.getResults();
+
+        break;
+
+    case "nascar-racelist":
+
+        data = await NASCAR.getRaceList();
+
+        break;
+
+}
+
 output.textContent = JSON.stringify(data, null, 2);
-  
+
+        
     } catch (error) {
 
         console.error(error);
