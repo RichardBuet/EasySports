@@ -6,29 +6,25 @@ export function adaptNascarLive(data){
         Tyt: "Toyota"
     };
 
-const flags = {
-    1: "VERDE",
-    2: "AMARILLA",
-    3: "ROJA",
-    4: "FINAL",
-    6: "DETENIDA",
-    8: "WARMUP",
-    9: "NO ACTIVO"
-};
+    const flags = {
+        1: "VERDE",
+        2: "AMARILLA",
+        3: "ROJA",
+        4: "FINAL",
+        6: "DETENIDA",
+        8: "WARMUP",
+        9: "NO ACTIVO"
+    };
 
-flag: flags[data.flag_state] ?? data.flag_state,
-
-    
     return {
 
         lap: data.lap_number,
         totalLaps: data.laps_in_race,
         lapsToGo: data.laps_to_go,
-        flag: data.flag_state,
+        flag: flags[data.flag_state] ?? data.flag_state,
 
         leaderboard: data.vehicles
             .sort((a,b)=>a.running_position-b.running_position)
-            .slice(0,38)
             .map(car=>({
 
                 position: car.running_position,
