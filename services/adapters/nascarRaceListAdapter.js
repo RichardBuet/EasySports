@@ -1,26 +1,31 @@
 export function adaptNascarRaceList(data) {
 
-    return data.map(race => ({
+    const now = new Date();
 
-        raceId: race.race_id,
+    return data.map(race => {
 
-        name: race.race_name,
+        const raceDate = new Date(race.race_date);
 
-        track: race.track_name,
+        let status = "upcoming";
 
-        date: race.race_date,
-        
-        laps: race.scheduled_laps,
+        if (raceDate <= now) {
+            status = "completed";
+        }
 
-        scheduledLaps: race.scheduled_laps,
+        return {
 
-        completed: race.actual_laps > 0,
+            raceId: race.race_id,
+            name: race.race_name,
+            track: race.track_name,
+            date: race.race_date,
 
-        winner:
-            race.actual_laps > 0 && race.race_comments
-                ? race.race_comments.split(" wins")[0]
-                : "-"
+            scheduledLaps: race.scheduled_laps,
+            actualLaps: race.actual_laps,
 
-    }));
+            status
+
+        };
+
+    });
 
 }
