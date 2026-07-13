@@ -6,6 +6,20 @@ export function adaptNascarLive(data){
         Tyt: "Toyota"
     };
 
+const flags = {
+    1: "VERDE",
+    2: "AMARILLA",
+    3: "ROJA",
+    4: "FINAL",
+    6: "DETENIDA",
+    8: "WARMUP",
+    9: "NO ACTIVO"
+};
+
+flag: flags[data.flag_state] ?? "UNKNOWN"
+
+
+    
     return {
 
         lap: data.lap_number,
@@ -15,7 +29,7 @@ export function adaptNascarLive(data){
 
         leaderboard: data.vehicles
             .sort((a,b)=>a.running_position-b.running_position)
-            .slice(0,10)
+            .slice(0,38)
             .map(car=>({
 
                 position: car.running_position,
