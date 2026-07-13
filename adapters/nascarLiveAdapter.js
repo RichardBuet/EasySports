@@ -16,8 +16,7 @@ const flags = {
     9: "NO ACTIVO"
 };
 
-flag: flags[data.flag_state] ?? "UNKNOWN"
-
+flag: flags[data.flag_state] ?? data.flag_state,
 
     
     return {
