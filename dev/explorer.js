@@ -19,6 +19,12 @@ button.addEventListener("click", async () => {
                 renderRace(data);
                 break;
 
+                case "nascar-weekend":
+
+    data = await NASCAR.getWeekend(5615);
+
+    break;
+
        //     case "nascar-results":
        //         data = await NASCAR.getResults();
        //         break;
