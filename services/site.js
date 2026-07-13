@@ -1,13 +1,15 @@
-import {NASCARLive} from "./nascar/live.js";
-import {adaptNascarLive} from "../adapters/nascarLiveAdapter.js";
-import { NASCARResults } from "./nascar/results.js";
-import { adaptNascarResults } from "../adapters/nascarResultsAdapter.js";
-import { NASCARRaceList } from "./nascar/raceList.js";
-import { adaptNascarRaceList } from "../adapters/nascarRaceListAdapter.js";
+import { NASCARLive } from "./nascar/live.js";
+import { adaptNascarLive } from "./adapters/nascarLiveAdapter.js";
 
-export class NASCAR{
+// import { NASCARResults } from "./nascar/results.js";
+// import { adaptNascarResults } from "./adapters/nascarResultsAdapter.js";
 
-    static async getLiveRace(){
+// import { NASCARRaceList } from "./nascar/raceList.js";
+// import { adaptNascarRaceList } from "./adapters/nascarRaceListAdapter.js";
+
+export class NASCAR {
+
+    static async getLiveRace() {
 
         const data = await NASCARLive.getLiveRace();
 
@@ -15,21 +17,22 @@ export class NASCAR{
 
     }
 
-static async getResults(){
+    /*
+    static async getResults() {
 
-    const data = await NASCARResults.getResults();
+        const data = await NASCARResults.getResults();
 
-    return adaptNascarResults(data);
+        return adaptNascarResults(data);
 
-}
+    }
 
-static async getRaceList(){
+    static async getRaceList() {
 
-    const data = await NASCARRaceList.getRaceList();
+        const data = await NASCARRaceList.getRaceList();
 
-    return adaptNascarRaceList(data);
+        return adaptNascarRaceList(data);
 
-}
-    
-    
+    }
+    */
+
 }
