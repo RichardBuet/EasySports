@@ -1,5 +1,8 @@
 import {NASCARLive} from "./nascar/live.js";
 import {adaptNascarLive} from "../adapters/nascarLiveAdapter.js";
+import { NASCARResults } from "./nascar/results.js";
+import { adaptNascarResults } from "../adapters/nascarResultsAdapter.js";
+
 
 export class NASCAR{
 
@@ -11,4 +14,14 @@ export class NASCAR{
 
     }
 
+static async getResults(){
+
+    const data = await NASCARResults.getResults();
+
+    return adaptNascarResults(data);
+
+}
+
+
+    
 }
