@@ -19,17 +19,17 @@ button.addEventListener("click", async () => {
                 renderRace(data);
                 break;
 
-            case "nascar-results":
-                data = await NASCAR.getResults();
-                break;
+       //     case "nascar-results":
+       //         data = await NASCAR.getResults();
+       //         break;
 
-            case "nascar-racelist":
-                data = await NASCAR.getRaceList();
-                break;
+        //    case "nascar-racelist":
+       //         data = await NASCAR.getRaceList();
+        //        break;
 
-            default:
-                output.textContent = "Endpoint no válido";
-                return;
+        //    default:
+        //        output.textContent = "Endpoint no válido";
+        //        return;
 
         }
 
