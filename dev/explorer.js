@@ -210,8 +210,10 @@ function renderRaceList(data) {
             <td>${race.name}</td>
             <td>${race.track}</td>
             <td>${race.laps}</td>
-            <td>${race.completed ? "🏁 Finalizada" : "📅 Próxima"}</td>
-        </tr>
+            <td>${race.status === "completed"
+    ? "🏁 Finalizada"
+    : "📅 Pendiente"}</td>
+            </tr>
         `;
 
     });
