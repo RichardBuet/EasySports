@@ -9,6 +9,8 @@ export function adaptNascarRaceList(data) {
         track: race.track_name,
 
         date: race.race_date,
+        
+        laps: race.scheduled_laps,
 
         scheduledLaps: race.scheduled_laps,
 
