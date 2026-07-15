@@ -2,7 +2,7 @@ import { createToday } from "../home/today.js";
 import { createLayout } from "../core/layout.js";
 import { createCard } from "../components/card.js";
 import { createHero } from "../components/hero.js";
-import { createLive } from "../home/live.js";
+//import { createLive } from "../home/live.js";
 //import { renderStandings } from "../formula1/standings.js";
 import { createDashboard } from "../home/dashboard.js";
 import { ROUTES } from "../../config/routes.js";
@@ -12,7 +12,6 @@ export async function renderHome() {
 return createLayout(`
 ${createHero()}
 ${createToday()}
-${createLive()}
 ${await createDashboard()}
 
 <section class="container">
