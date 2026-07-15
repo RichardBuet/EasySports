@@ -1,10 +1,10 @@
 export const ROUTES={
-    HOME:"index.html",
-    NASCAR:"pages/nascar.html",
-    WORLDCUP:"pages/worldcup.html",
-    FORMULA1:"pages/formula1.html",
-    NEWS:"pages/news.html",
-    ABOUT:"pages/about.html"
+    HOME:"/EasySports/",
+    NASCAR:"/EasySports/pages/nascar.html",
+    WORLDCUP:"/EasySports/pages/worldcup.html",
+    FORMULA1:"/EasySports/pages/formula1.html",
+    NEWS:"/EasySports/pages/news.html",
+    ABOUT:"/EasySports/pages/about.html"
 };
 
 export function getCurrentPage(){
