@@ -1,14 +1,21 @@
 import { renderNascar } from "../modules/pages/nascar.js";
-import { initNascarSelector } from "../modules/nascar/events.js";
 import { initSportsMenu } from "../modules/core/menu.js";
+import { initNascarSelector } from "../modules/nascar/events.js";
 
-document.addEventListener("DOMContentLoaded",async()=>{
+const app=document.getElementById("app");
 
-    const app=document.getElementById("app");
+export async function refreshNascar(){
 
     app.innerHTML=await renderNascar();
 
     initSportsMenu();
+
     initNascarSelector();
+
+}
+
+document.addEventListener("DOMContentLoaded",async()=>{
+
+    await refreshNascar();
 
 });
