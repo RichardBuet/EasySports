@@ -3,50 +3,52 @@ import { createLayout } from "../core/layout.js";
 import { createCard } from "../components/card.js";
 import { createHero } from "../components/hero.js";
 import { createLive } from "../home/live.js";
-import { renderStandings } from "../formula1/standings.js";
+//import { renderStandings } from "../formula1/standings.js";
+import { createDashboard } from "../home/dashboard.js";
 import { ROUTES } from "../../config/routes.js";
 
 export async function renderHome() {
 
-    return createLayout(`
-        ${createHero()}
+return createLayout(`
+${createHero()}
 ${createToday()}
 ${createLive()}
-        ${await renderStandings()}
+${await createDashboard()}
 
-        <section class="container">
+<section class="container">
 
-            <h2>Explorá nuestros deportes</h2>
+    <h2>Explorar deportes</h2>
 
-            <div class="cards-grid">
+    <div class="cards-grid">
 
-                ${createCard(
-                    "World Cup",
-                    "Fixture, grupos, posiciones y estadísticas.",
-                    ROUTES.WORLDCUP
-                )}
+        ${createCard(
+            "🏁 NASCAR",
+            "Cup, O'Reilly y Craftsman Truck Series.",
+            ROUTES.NASCAR
+        )}
 
-                ${createCard(
-                    "Formula 1",
-                    "Calendario, pilotos y clasificación.",
-                    ROUTES.FORMULA1
-                )}
+        ${createCard(
+            "🏎 Formula 1",
+            "Calendario, pilotos y clasificación.",
+            ROUTES.FORMULA1
+        )}
 
-                ${createCard(
-                    "Noticias",
-                    "Últimas novedades deportivas.",
-                    ROUTES.NEWS
-                )}
+        ${createCard(
+            "🏍 MotoGP",
+            "MotoGP, Moto2 y Moto3.",
+            ROUTES.MOTOGP
+        )}
 
-                ${createCard(
-                    "Acerca de",
-                    "Conocé más sobre el proyecto EasySports.",
-                    ROUTES.ABOUT
-                )}
+        ${createCard(
+            "⚽ World Cup",
+            "Fixture, grupos y estadísticas.",
+            ROUTES.WORLDCUP
+        )}
 
-            </div>
+    </div>
 
-        </section>
+</section>
+
 
     `);
 
