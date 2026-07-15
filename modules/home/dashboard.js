@@ -1,3 +1,15 @@
 import { createLive } from "./live.js";
 
-${createLive()}
+export function createDashboard() {
+
+    return `
+
+        <section class="dashboard">
+
+            ${createLive()}
+
+        </section>
+
+    `;
+
+}
