@@ -1,35 +1,50 @@
-.dashboard-widget{
-
+.dashboard{
     margin:20px;
-
     padding:18px;
-
     background:#1b1b1b;
-
     border-radius:12px;
+}
 
+.dashboard-header{
+    margin-bottom:20px;
+}
+
+.dashboard-header h2{
+    margin:0;
+    font-size:1.4rem;
+}
+
+.dashboard-header p{
+    margin:6px 0 0;
+    color:#a0a0a0;
+    font-size:.9rem;
+}
+
+.dashboard-content{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* Compatibilidad con widgets existentes */
+
+.dashboard-widget{
+    padding:18px;
+    background:#252525;
+    border-radius:10px;
 }
 
 .dashboard-widget h2{
-
     margin-bottom:15px;
-
 }
 
 .today-row{
-
     display:flex;
-
     justify-content:space-between;
-
     padding:10px 0;
-
     border-bottom:1px solid #2b2b2b;
-
 }
 
 .today-row:last-child{
-
     border:none;
-
 }
