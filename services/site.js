@@ -7,22 +7,19 @@ import { adaptNascarRaceList } from "./adapters/nascarRaceListAdapter.js";
 
 export class NASCAR {
 
-static async getLiveRace() {
+    static async getLiveRace() {
         const data = await NASCARLive.getLiveRace();
         return adaptNascarLive(data);
-
     }
-static async getWeekend(raceId) {
-    const data = await NASCARWeekend.getWeekend(raceId);
-    return adaptNascarWeekend(data);
-
-}
-
-    static async getRaceList() {
-        const data = await NASCARRaceList.getRaceList();
-        return adaptNascarRaceList(data);
-
+    static async getWeekend(raceId) {
+        const data = await NASCARWeekend.getWeekend(raceId);
+        return adaptNascarWeekend(data);
     }
     
+    static async getRaceList(series) {
+        const data = await NASCARRaceList.getRaceList(series);
+        return adaptNascarRaceList(data);
+    }
+        
 
 }
