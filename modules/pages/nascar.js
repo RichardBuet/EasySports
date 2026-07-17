@@ -1,9 +1,10 @@
 import { createLayout } from "../core/layout.js";
+import { createNascarHero } from "../nascar/hero.js";
 
 export async function renderNascar(){
 
     return createLayout(`
-        <h1 style="padding:40px;">NASCAR OK</h1>
+        ${await createNascarHero()}
     `);
 
 }
