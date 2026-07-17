@@ -1,17 +1,23 @@
+import { NASCAR } from "../../services/site.js";
 import { createWidget } from "../components/widget.js";
 
-export function createNextEvent(){
+export async function createNextEvent(){
+
+    const nextRace=await NASCAR.getNextRace();
 
     const content=`
 
         <div class="today-row">
-            <span>🏁 NASCAR Cup</span>
-            <span>19 Jul</span>
+            <span>🏁 ${nextRace.name}</span>
+            <span>${new Date(nextRace.date).toLocaleDateString("es-AR",{
+                day:"numeric",
+                month:"short"
+            })}</span>
         </div>
 
         <div class="today-row">
-            <span>🏟 North Wilkesboro</span>
-            <span>19:00</span>
+            <span>🏟 ${nextRace.track}</span>
+            <span>Próximamente</span>
         </div>
 
         <div class="today-row">
