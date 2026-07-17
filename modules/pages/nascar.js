@@ -2,6 +2,7 @@ import { createLayout } from "../core/layout.js";
 import { createNascarHero } from "../nascar/hero.js";
 import { createNascarSelector } from "../nascar/selector.js";
 import { createNascarDashboard } from "../nascar/dashboard.js";
+import { createSchedule } from "../nascar/schedule.js";
 
 export async function renderNascar(){
 
@@ -9,6 +10,7 @@ export async function renderNascar(){
         ${await createNascarHero()}
         ${createNascarSelector()}
         ${await createNascarDashboard()}
+        ${await createSchedule()}
     `);
 
 }
