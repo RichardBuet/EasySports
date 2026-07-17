@@ -4,7 +4,7 @@ import { NASCAR_SERIES } from "../../config/series.js";
 
 export async function createNascarHero(){
     const race=await NASCAR.getRaceList();
-    const nextRace=race.find(r=>!r.completed);
+    
     const category={
         [NASCAR_SERIES.CUP]:"Cup Series",
         [NASCAR_SERIES.OREILLY]:"O'Reilly Series",
