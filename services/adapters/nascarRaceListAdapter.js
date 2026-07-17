@@ -1,28 +1,30 @@
-export function adaptNascarRaceList(data) {
+export function adaptNascarRaceList(data){
 
-    const now = new Date();
+    const now=new Date();
 
-    return data.map(race => {
+    return data.map(race=>{
 
-        const raceDate = new Date(race.race_date);
+        const raceDate=new Date(race.race_date);
 
-        let status = "upcoming";
+        const completed=raceDate<=now;
 
-        if (raceDate <= now) {
-            status = "completed";
-        }
+        return{
 
-        return {
+            raceId:race.race_id,
 
-            raceId: race.race_id,
-            name: race.race_name,
-            track: race.track_name,
-            date: race.race_date,
+            name:race.race_name,
 
-            scheduledLaps: race.scheduled_laps,
-            actualLaps: race.actual_laps,
+            track:race.track_name,
 
-            status
+            date:race.race_date,
+
+            scheduledLaps:race.scheduled_laps,
+
+            actualLaps:race.actual_laps,
+
+            status:completed?"completed":"upcoming",
+
+            completed
 
         };
 
