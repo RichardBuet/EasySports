@@ -3,13 +3,15 @@ import { state } from "../../config/state.js";
 import { NASCAR_SERIES } from "../../config/series.js";
 
 export async function createNascarHero(){
-    const race=await NASCAR.getRaceList();
-    
-    const category={
+
+    const nextRace = await NASCAR.getNextRace();
+
+    const category = {
         [NASCAR_SERIES.CUP]:"Cup Series",
         [NASCAR_SERIES.OREILLY]:"O'Reilly Series",
         [NASCAR_SERIES.TRUCK]:"Craftsman Truck Series"
     };
+
     return `
         <section class="hero nascar-hero">
             <div class="hero-content">
@@ -26,4 +28,5 @@ export async function createNascarHero(){
             </div>
         </section>
     `;
+
 }
