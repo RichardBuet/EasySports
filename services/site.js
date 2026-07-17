@@ -54,7 +54,7 @@ static getSeriesName() {
             return "Cup Series";
 
         case 2:
-            return " O'Reilly Series";
+            return "O'Reilly Series";
 
         case 3:
             return "Craftsman Truck Series";
