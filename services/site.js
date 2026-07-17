@@ -46,6 +46,24 @@ static async getLastRace(){
         .find(r=>r.completed);
 
 }
+static getSeriesName() {
 
+    switch (state.nascarSeries) {
+
+        case 1:
+            return "Cup Series";
+
+        case 2:
+            return " O'Reilly Series";
+
+        case 3:
+            return "Craftsman Truck Series";
+
+        default:
+            return "NASCAR";
+
+    }
+
+}
     
 }
