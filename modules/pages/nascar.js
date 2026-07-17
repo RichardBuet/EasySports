@@ -10,7 +10,7 @@ export async function renderNascar(){
     return createLayout(`
         ${await createNascarHero()}
         ${createNascarSelector()}
-        ${await createNascarDashboard()}
+       // ${await createNascarDashboard()}
         ${await createSchedule()}
         ${await createDrivers()}
     `);
