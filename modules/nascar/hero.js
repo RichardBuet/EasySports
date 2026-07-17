@@ -1,31 +1,31 @@
 import { NASCAR } from "../../services/site.js";
-import { state } from "../../config/state.js";
-import { NASCAR_SERIES } from "../../config/series.js";
 
-export async function createNascarHero(){
+export async function createNascarHero() {
 
     const nextRace = await NASCAR.getNextRace();
-
-    const category = {
-        [NASCAR_SERIES.CUP]:"Cup Series",
-        [NASCAR_SERIES.OREILLY]:"O'Reilly Series",
-        [NASCAR_SERIES.TRUCK]:"Craftsman Truck Series"
-    };
+    const seriesName = NASCAR.getSeriesName();
 
     return `
-        <section class="hero nascar-hero">
-            <div class="hero-content">
-                <span class="hero-category">
-                    🏁 NASCAR ${category[state.nascarSeries]}
-                </span>
+        <section class="nascarHero">
+
+            <div class="nascarHeroOverlay"></div>
+
+            <div class="nascarHeroContent">
+
+                <span class="heroCategory">${seriesName}</span>
+
                 <h1>${nextRace.name}</h1>
-                <p>📍 ${nextRace.track}</p>
-                <div class="hero-info">
-                    <span>
-                        🗓 ${new Date(nextRace.date).toLocaleDateString("es-AR")}
-                    </span>
+
+                <p>${nextRace.track}</p>
+
+                <div class="heroInfo">
+
+                    <span>${new Date(nextRace.date).toLocaleDateString()}</span>
+
                 </div>
+
             </div>
+
         </section>
     `;
 
