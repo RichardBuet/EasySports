@@ -29,5 +29,23 @@ static async getWeekend(raceId){
     return adaptNascarRaceList(data);
 }
         
+static async getNextRace(){
 
+    const races=await this.getRaceList();
+
+    return races.find(r=>!r.completed);
+
+}
+
+static async getLastRace(){
+
+    const races=await this.getRaceList();
+
+    return [...races]
+        .reverse()
+        .find(r=>r.completed);
+
+}
+
+    
 }
