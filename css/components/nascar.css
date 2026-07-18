@@ -66,29 +66,27 @@
 }
 
 .nascarHero p{
-
     margin: 0 0 20px;
-
     color: var(--text-secondary);
-
     font-size: 1.2rem;
 
 }
 
 .heroInfo{
-
     display: flex;
     gap: 20px;
-
     font-weight: 600;
 
 }
 
+.nascar-selector{
+   display: flex;
+    justify-content: space-between;
+}
+
 .nascar-selector button img{
-
-    height:28px;
+    height:40px;
     width:auto;
-
     display:block;
 
 }
