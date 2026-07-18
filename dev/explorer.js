@@ -1,19 +1,19 @@
 import { NASCAR } from "../services/site.js";
+import { state } from "../config/state.js";
 
 const output = document.getElementById("output");
 const button = document.getElementById("load");
 const endpoint = document.getElementById("endpoint");
+const series = document.getElementById("series");
 
 console.log("Explorer iniciado");
 
 button.addEventListener("click", async () => {
 
     try {
-
+        state.nascarSeries = Number(series.value);
         let data;
-
         switch (endpoint.value) {
-
             case "nascar-live":
                 data = await NASCAR.getLiveRace();
                 renderRace(data);
