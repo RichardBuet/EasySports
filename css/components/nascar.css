@@ -72,11 +72,37 @@
 
 }
 
-.heroInfo{
-    display: flex;
-    gap: 20px;
-    font-weight: 600;
+.heroMeta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:24px;
+}
 
+.heroItem{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:999px;
+    backdrop-filter:blur(10px);
+    font-size:.95rem;
+}
+
+.heroItem span{
+    font-size:1rem;
+}
+
+.heroItem strong{
+    font-weight:600;
+    color:var(--text);
+}
+
+.heroStatus{
+    background:rgba(22,163,74,.18);
+    border-color:rgba(22,163,74,.35);
 }
 
 .nascar-selector{
