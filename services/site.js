@@ -28,9 +28,13 @@ export class NASCAR {
 
                     type: "live",
 
-                    title: event.race.name,
-
-                    subtitle: event.race.track,
+                    title: event.race.name.length > 35
+                        ? event.race.name.substring(0, 35).trim() + "..."
+                        : event.race.name,
+                    
+                    subtitle: event.race.track.length > 31
+                        ? event.race.track.substring(0, 31).trim() + "..."
+                        : event.race.track,
 
                     image: null,
 
@@ -62,9 +66,13 @@ export class NASCAR {
 
             type: "next",
 
-            title: race.name,
-
-            subtitle: race.track,
+            title: race.name.length > 35
+            ? race.name.substring(0, 35).trim() + "..."
+            : race.name,
+            
+            subtitle: race.track.length > 31
+            ? race.track.substring(0, 31).trim() + "..."
+            : race.track,
 
             image: null,
 
