@@ -8,6 +8,23 @@ import { state } from "../config/state.js";
 
 export class NASCAR {
 
+static async getHeroData() {
+    const race = await this.getNextRace();
+    return {
+        type: "next",
+        title: race.name,
+        track: race.track,
+        date: race.date,
+        scheduledLaps: race.scheduledLaps,
+        status: {
+            code: "next",
+            label: "Next Race",
+            icon: "🟢"
+        }
+    };
+}
+
+    
     static async getLiveRace() {
         const data = await NASCARLive.getLiveRace();
         return adaptNascarLive(data);
