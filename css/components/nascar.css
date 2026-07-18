@@ -1,6 +1,84 @@
-.nascarHero{}
-.nascarHeroOverlay{}
-.nascarHeroContent{}
-.heroCategory{}
-.heroInfo{}
-.nascar-selector{}
+/* ========================================
+   NASCAR Hero
+======================================== */
+
+.nascarHero{
+
+    position: relative;
+
+    display: flex;
+    align-items: flex-end;
+
+    width: 100%;
+    min-height: 420px;
+
+    padding: 40px;
+
+    color: var(--text);
+
+    background:
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
+        var(--hero-image);
+
+    background-size: cover;
+    background-position: center;
+
+}
+
+.nascarHeroContent{
+
+    position: relative;
+    z-index: 2;
+
+    max-width: 700px;
+
+}
+
+.heroCategory{
+
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    padding: 6px 12px;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--sport-primary);
+
+    color: #000;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+}
+
+.nascarHero h1{
+
+    margin: 0 0 12px;
+
+    font-size: 3rem;
+
+    line-height: 1.1;
+
+}
+
+.nascarHero p{
+
+    margin: 0 0 20px;
+
+    color: var(--text-secondary);
+
+    font-size: 1.2rem;
+
+}
+
+.heroInfo{
+
+    display: flex;
+    gap: 20px;
+
+    font-weight: 600;
+
+}
