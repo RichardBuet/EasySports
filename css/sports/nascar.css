@@ -2,5 +2,6 @@ body.nascar{
     --sport-primary:#ffd100;
     --sport-secondary:#ff9800;
     /* --hero-image:url("../../assets/img/nascar/hero.jpg"); */
-    --hero-image:none;
+    --hero-image:url("https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg");
+    /* --hero-image:none; */
 }
