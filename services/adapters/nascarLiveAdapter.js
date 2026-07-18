@@ -17,7 +17,7 @@ export function adaptNascarLive(data) {
     };
 
     return {
-
+        raceId: data.race_id,
         lap: data.lap_number,
         totalLaps: data.laps_in_race,
         lapsToGo: data.laps_to_go,
