@@ -10,6 +10,9 @@ export class NASCAR {
 
 static async getHeroData() {
 
+    const live = await this.getLiveRace();
+    console.log(live);
+
     const race = await this.getNextRace();
 
     const date = new Date(race.date);
