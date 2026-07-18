@@ -1,7 +1,11 @@
 export function adaptNascarWeekend(data) {
 
     const race = data.weekend_race[0];
-    const results = race.results ?? [];
+
+    const results = (race.results ?? [])
+        .filter(driver => driver.finishing_position > 0)
+        .sort((a, b) => a.finishing_position - b.finishing_position);
+
     const winner = results[0] ?? {};
 
     return {
@@ -21,7 +25,6 @@ export function adaptNascarWeekend(data) {
         cautionLaps: race.number_of_caution_laps,
         averageSpeed: race.average_speed,
 
-        // leaderboard: race.results.map(driver => ({
         leaderboard: results.map(driver => ({
             position: driver.finishing_position,
             number: driver.car_number,
@@ -32,7 +35,6 @@ export function adaptNascarWeekend(data) {
             started: driver.starting_position,
             lapsLed: driver.laps_led,
             points: driver.points_earned
-
         }))
 
     };
