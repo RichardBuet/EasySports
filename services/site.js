@@ -10,36 +10,32 @@ export class NASCAR {
 
 static async getHeroData() {
 
-const live = await this.getLiveRace();
-if (live.lap > 0 && live.flag !== "NO ACTIVO") {
+    const live = await this.getLiveRace();
 
-    return {
+    if (live.lap > 0 && live.flag !== "NO ACTIVO") {
 
-        type: "live",
+        return {
 
-        title: "LIVE",
+            type: "live",
 
-        subtitle: "Race in Progress",
+            title: "LIVE",
 
-        image: null,
+            subtitle: "Race in Progress",
 
-        meta: [
+            image: null,
 
-            {
-                icon: "🔴",
-                value: "LIVE"
-            }
+            meta: [
 
-        ]
+                {
+                    icon: "🔴",
+                    value: "LIVE"
+                }
 
-    };
+            ]
 
-}
+        };
 
-// const race = await this.getNextRace();
-    
-    // const live = await this.getLiveRace();
-//     console.log(live);
+    }
 
     const race = await this.getNextRace();
 
@@ -88,8 +84,7 @@ if (live.lap > 0 && live.flag !== "NO ACTIVO") {
 
     };
 
-// }
-
+}
     
 static async getRaceCenterData() {
 
