@@ -7,6 +7,27 @@ COLORS
 ======================================================*/
 
 :root{
+    /* Punto cero */
+    --bg-color:#121212;
+    --surface-color:#1e1e1e;
+    --primary-color:#00c853;
+    --secondary-color:#00e676;
+    --text-color:#ffffff;
+    --text-secondary:#bdbdbd;
+    --border-color:#2e2e2e;
+    --header-height:70px;
+    --radius:10px;
+    --shadow:0 4px 12px rgba(0,0,0,.35);
+    
+    --bg:#121212;
+    --surface:#1b1b1b;
+    --surface-2:#252525;
+    --text:#ffffff;
+    --text-secondary:#bdbdbd;
+    --primary:#2f80ed;
+    --accent:#ffcc00;
+    --border:#2b2b2b;
+    
     /* Base */
     --bg:#121212;
     
