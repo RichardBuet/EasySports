@@ -30,8 +30,7 @@ export async function createNascarHero() {
                 </span>
 
                 <h1>${hero.title}</h1>
-
-                <p>${hero.track}</p>
+                <p>${hero.subtitle}</p>
 
                 <div class="heroMeta">
 
