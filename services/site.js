@@ -190,6 +190,16 @@ export class NASCAR {
 
     }
 
+
+    static async getCurrentWeekend() {
+
+    const race = await this.getLastRace();
+
+    return this.getWeekend(race.raceId);
+
+}
+
+    
     static async getRaceList(series = state.nascarSeries) {
 
         const data = await NASCARRaceList.getRaceList(series);
