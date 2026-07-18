@@ -246,4 +246,27 @@ export class NASCAR {
 
     }
 
+    static async getTimeline(window = 2) {
+    
+        const races = await this.getRaceList();
+    
+        let currentIndex = races.findIndex(r => !r.completed);
+    
+        // Si terminó la temporada, usar la última carrera
+        if (currentIndex === -1) {
+            currentIndex = races.length - 1;
+        }
+    
+        return {
+            previous: races.slice(Math.max(0, currentIndex - window), currentIndex),
+            current: races[currentIndex],
+            next: races.slice(currentIndex + 1, currentIndex + 1 + window),
+            all: races,
+            currentIndex
+        };
+    
+    }
+
+
+    
 }
