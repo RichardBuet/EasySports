@@ -1,0 +1,101 @@
+.raceCenter{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    padding:24px;
+
+    margin-top:24px;
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+}
+
+.raceCenter h2{
+
+    font-size:.9rem;
+
+    color:var(--sport-primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+.raceCenter h3{
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+}
+
+.raceWinner{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.raceWinner strong{
+
+    font-size:1.15rem;
+
+}
+
+.raceWinner span{
+
+    background:var(--sport-primary);
+
+    color:#000;
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+}
+
+.raceWinner small{
+
+    color:var(--text-secondary);
+
+}
+
+.raceMeta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.raceMetaItem{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+}
