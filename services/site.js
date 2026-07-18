@@ -11,48 +11,30 @@ export class NASCAR {
 static async getHeroData() {
 
     const live = await this.getLiveRace();
-
     if (live.lap > 0 && live.flag !== "NO ACTIVO") {
-
         return {
-
             type: "live",
-
             title: "LIVE",
-
             subtitle: "Race in Progress",
-
             image: null,
-
             meta: [
-
                 {
                     icon: "🔴",
                     value: "LIVE"
                 }
-
             ]
-
         };
-
     }
 
     const race = await this.getNextRace();
 
     const date = new Date(race.date);
-
     return {
-
         type: "next",
-
         title: race.name,
-
         subtitle: race.track,
-
         image: null,
-
         meta: [
-
             {
                 icon: "📅",
                 value: date.toLocaleDateString(undefined, {
@@ -61,7 +43,6 @@ static async getHeroData() {
                     month: "short"
                 })
             },
-
             {
                 icon: "🕒",
                 value: date.toLocaleTimeString([], {
@@ -69,61 +50,58 @@ static async getHeroData() {
                     minute: "2-digit"
                 })
             },
-
             {
                 icon: "🏁",
                 value: `${race.scheduledLaps} Laps`
             },
-
             {
                 icon: "🟢",
                 value: "Next Race"
             }
-
         ]
-
     };
-
 }
     
 static async getRaceCenterData() {
-
     const race = await this.getLastRace();
-
     return {
-
         type: "last",
-
         title: race.name,
-
         winner: {
-
             name: "",
-
             number: "",
-
             team: ""
-
         },
-
         meta: [
-
             {
                 icon: "🏁",
                 value: `${race.actualLaps} / ${race.scheduledLaps} Laps`
             }
-
         ]
-
     };
-
 }
 
     
-    static async getLiveRace() {
-        const data = await NASCARLive.getLiveRace();
-        return adaptNascarLive(data);
+static async getLiveRace() {
+    const data = await NASCARLive.getLiveRace();
+    return adaptNascarLive(data);
+}
+
+
+static async getRaceById(raceId) {
+    for (const series of [1, 2, 3]) {
+        const races = await this.getRaceList(series);
+        const race = races.find(r => r.raceId === raceId);
+        if (race) {
+            return {
+                series,
+                race
+            };
+        }
     }
+    return null;
+}
+
     
 static async getWeekend(raceId){
     const data=await NASCARWeekend.getWeekend(
@@ -134,11 +112,10 @@ static async getWeekend(raceId){
     return adaptNascarWeekend(data);
 }
     
-    static async getRaceList(){
-    const data=await NASCARRaceList.getRaceList(
-        state.nascarSeries
-    );
+static async getRaceList(series = state.nascarSeries) {
+    const data = await NASCARRaceList.getRaceList(series);
     return adaptNascarRaceList(data);
+
 }
         
 static async getNextRace(){
