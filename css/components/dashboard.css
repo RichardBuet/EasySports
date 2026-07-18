@@ -1,7 +1,7 @@
 .dashboard{
     margin:20px;
     padding:18px;
-    background:#1b1b1b;
+    background:var(--surface);
     border-radius:12px;
 }
 
@@ -15,7 +15,8 @@
 
 .dashboard-widget{
     padding:18px;
-    background:#252525;
+    background:var(--surface-2);
+    border:1px solid var(--border);
     border-radius:10px;
 }
 
@@ -24,30 +25,30 @@
 }
 
 .dashboard-widget h3{
-    margin:0 0 8px;
+    margin:0 0 10px;
+    color:var(--accent);
     font-size:.8rem;
     letter-spacing:2px;
     text-transform:uppercase;
-    color:#ffd100;
+}
+
+.race-name{
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:18px;
 }
 
 .dashboard-widget p{
-    margin:6px 0;
-    color:#d0d0d0;
-}
-
-.dashboard-widget .race-name{
-    font-size:1.5rem;
-    font-weight:700;
-    color:#fff;
-    margin-bottom:15px;
+    margin:8px 0;
+    color:var(--text-secondary);
 }
 
 .today-row{
     display:flex;
     justify-content:space-between;
     padding:10px 0;
-    border-bottom:1px solid #2b2b2b;
+    border-bottom:1px solid var(--border);
 }
 
 .today-row:last-child{
