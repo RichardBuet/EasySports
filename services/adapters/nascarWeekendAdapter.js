@@ -1,6 +1,8 @@
 export function adaptNascarWeekend(data) {
 
     const race = data.weekend_race[0];
+    const results = race.results ?? [];
+    const winner = results[0] ?? {};
 
     return {
 
@@ -9,18 +11,18 @@ export function adaptNascarWeekend(data) {
         track: race.track_name,
         date: race.race_date,
 
-        winner: race.results[0].driver_fullname,
-        car: race.results[0].car_number,
-        manufacturer: race.results[0].car_make,
-        team: race.results[0].team_name,
+        winner: winner.driver_fullname ?? "",
+        car: winner.car_number ?? "",
+        manufacturer: winner.car_make ?? "",
+        team: winner.team_name ?? "",
 
         margin: race.margin_of_victory,
         cautions: race.number_of_cautions,
         cautionLaps: race.number_of_caution_laps,
         averageSpeed: race.average_speed,
 
-        leaderboard: race.results.map(driver => ({
-
+        // leaderboard: race.results.map(driver => ({
+        leaderboard: results.map(driver => ({
             position: driver.finishing_position,
             number: driver.car_number,
             driver: driver.driver_fullname,
