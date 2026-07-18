@@ -13,41 +13,43 @@ export async function createNascarDashboard() {
         });
 
     return `
-        <section class="nascarDashboard">
+        <section class="dashboard">
 
-            <div class="dashboardCard">
+            <div class="dashboard-grid">
 
-                <span class="dashboardTitle">NEXT RACE</span>
+                <div class="dashboard-widget">
 
-                <h2>${nextRace.name}</h2>
+                    <h3>NEXT RACE</h3>
 
-                <div class="dashboardInfo">
-                    <span>🏁 ${nextRace.track}</span>
-                    <span>📅 ${formatDate(nextRace.date)}</span>
-                    <span>🏎️ ${nextRace.scheduledLaps} Laps</span>
-                </div>
-
-            </div>
-
-            ${
-                lastRace
-                ? `
-                <div class="dashboardCard">
-
-                    <span class="dashboardTitle">LAST RACE</span>
-
-                    <h2>${lastRace.name}</h2>
-
-                    <div class="dashboardInfo">
-                        <span>🏁 ${lastRace.track}</span>
-                        <span>📅 ${formatDate(lastRace.date)}</span>
-                        <span>✅ ${lastRace.actualLaps}/${lastRace.scheduledLaps} Laps</span>
+                    <div class="race-name">
+                        ${nextRace.name}
                     </div>
 
+                    <p>🏁 ${nextRace.track}</p>
+                    <p>📅 ${formatDate(nextRace.date)}</p>
+                    <p>🏎️ ${nextRace.scheduledLaps} Laps</p>
+
                 </div>
-                `
-                : ""
-            }
+
+                ${
+                    lastRace ? `
+                    <div class="dashboard-widget">
+
+                        <h3>LAST RACE</h3>
+
+                        <div class="race-name">
+                            ${lastRace.name}
+                        </div>
+
+                        <p>🏁 ${lastRace.track}</p>
+                        <p>📅 ${formatDate(lastRace.date)}</p>
+                        <p>✅ ${lastRace.actualLaps}/${lastRace.scheduledLaps} Laps</p>
+
+                    </div>
+                    ` : ""
+                }
+
+            </div>
 
         </section>
     `;
