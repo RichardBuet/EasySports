@@ -34,27 +34,14 @@ export async function createNascarHero() {
 
                 <div class="heroMeta">
 
-                    <div class="heroItem">
-                        <span>📅</span>
-                        <strong>${raceDate}</strong>
-                    </div>
+    ${hero.meta.map(item => `
+        <div class="heroItem">
+            <span>${item.icon}</span>
+            <strong>${item.value}</strong>
+        </div>
+    `).join("")}
 
-                    <div class="heroItem">
-                        <span>🕒</span>
-                        <strong>${raceTime}</strong>
-                    </div>
-
-                    <div class="heroItem">
-                        <span>🏁</span>
-                        <strong>${hero.scheduledLaps} Laps</strong>
-                    </div>
-
-                    <div class="heroItem heroStatus">
-                        <span>${hero.status.icon}</span>
-                        <strong>${hero.status.text}</strong>
-                    </div>
-
-                </div>
+</div>
 
             </div>
 
