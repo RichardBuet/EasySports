@@ -10,50 +10,24 @@ export class NASCAR {
 
 static async getHeroData() {
 
-    const live = await this.getLiveRace();
-    console.log(live);
-
-    const race = await this.getNextRace();
-
-    const date = new Date(race.date);
+const live = await this.getLiveRace();
+if (live.lap > 0 && live.flag !== "NO ACTIVO") {
 
     return {
 
-        type: "next",
+        type: "live",
 
-        title: race.name,
+        title: "LIVE",
 
-        subtitle: race.track,
+        subtitle: "Race in Progress",
 
         image: null,
 
         meta: [
 
             {
-                icon: "📅",
-                value: date.toLocaleDateString(undefined, {
-                    weekday: "short",
-                    day: "numeric",
-                    month: "short"
-                })
-            },
-
-            {
-                icon: "🕒",
-                value: date.toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit"
-                })
-            },
-
-            {
-                icon: "🏁",
-                value: `${race.scheduledLaps} Laps`
-            },
-
-            {
-                icon: "🟢",
-                value: "Next Race"
+                icon: "🔴",
+                value: "LIVE"
             }
 
         ]
@@ -61,6 +35,60 @@ static async getHeroData() {
     };
 
 }
+
+const race = await this.getNextRace();
+    
+//     const live = await this.getLiveRace();
+//     console.log(live);
+
+//     const race = await this.getNextRace();
+
+//     const date = new Date(race.date);
+
+//     return {
+
+//         type: "next",
+
+//         title: race.name,
+
+//         subtitle: race.track,
+
+//         image: null,
+
+//         meta: [
+
+//             {
+//                 icon: "📅",
+//                 value: date.toLocaleDateString(undefined, {
+//                     weekday: "short",
+//                     day: "numeric",
+//                     month: "short"
+//                 })
+//             },
+
+//             {
+//                 icon: "🕒",
+//                 value: date.toLocaleTimeString([], {
+//                     hour: "2-digit",
+//                     minute: "2-digit"
+//                 })
+//             },
+
+//             {
+//                 icon: "🏁",
+//                 value: `${race.scheduledLaps} Laps`
+//             },
+
+//             {
+//                 icon: "🟢",
+//                 value: "Next Race"
+//             }
+
+//         ]
+
+//     };
+
+// }
 
     
 static async getRaceCenterData() {
