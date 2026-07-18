@@ -36,57 +36,57 @@ if (live.lap > 0 && live.flag !== "NO ACTIVO") {
 
 }
 
-const race = await this.getNextRace();
+// const race = await this.getNextRace();
     
-//     const live = await this.getLiveRace();
+    // const live = await this.getLiveRace();
 //     console.log(live);
 
-//     const race = await this.getNextRace();
+    const race = await this.getNextRace();
 
-//     const date = new Date(race.date);
+    const date = new Date(race.date);
 
-//     return {
+    return {
 
-//         type: "next",
+        type: "next",
 
-//         title: race.name,
+        title: race.name,
 
-//         subtitle: race.track,
+        subtitle: race.track,
 
-//         image: null,
+        image: null,
 
-//         meta: [
+        meta: [
 
-//             {
-//                 icon: "📅",
-//                 value: date.toLocaleDateString(undefined, {
-//                     weekday: "short",
-//                     day: "numeric",
-//                     month: "short"
-//                 })
-//             },
+            {
+                icon: "📅",
+                value: date.toLocaleDateString(undefined, {
+                    weekday: "short",
+                    day: "numeric",
+                    month: "short"
+                })
+            },
 
-//             {
-//                 icon: "🕒",
-//                 value: date.toLocaleTimeString([], {
-//                     hour: "2-digit",
-//                     minute: "2-digit"
-//                 })
-//             },
+            {
+                icon: "🕒",
+                value: date.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                })
+            },
 
-//             {
-//                 icon: "🏁",
-//                 value: `${race.scheduledLaps} Laps`
-//             },
+            {
+                icon: "🏁",
+                value: `${race.scheduledLaps} Laps`
+            },
 
-//             {
-//                 icon: "🟢",
-//                 value: "Next Race"
-//             }
+            {
+                icon: "🟢",
+                value: "Next Race"
+            }
 
-//         ]
+        ]
 
-//     };
+    };
 
 // }
 
