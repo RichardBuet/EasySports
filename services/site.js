@@ -9,21 +9,55 @@ import { state } from "../config/state.js";
 export class NASCAR {
 
 static async getHeroData() {
-    const race = await this.getNextRace();
-    return {
-        type: "next",
-        title: race.name,
-        track: race.track,
-        date: race.date,
-        scheduledLaps: race.scheduledLaps,
-        status: {
-            code: "next",
-            label: "Next Race",
-            icon: "🟢"
-        }
-    };
-}
 
+    const race = await this.getNextRace();
+
+    const date = new Date(race.date);
+
+    return {
+
+        type: "next",
+
+        title: race.name,
+
+        subtitle: race.track,
+
+        image: null,
+
+        meta: [
+
+            {
+                icon: "📅",
+                value: date.toLocaleDateString(undefined, {
+                    weekday: "short",
+                    day: "numeric",
+                    month: "short"
+                })
+            },
+
+            {
+                icon: "🕒",
+                value: date.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                })
+            },
+
+            {
+                icon: "🏁",
+                value: `${race.scheduledLaps} Laps`
+            },
+
+            {
+                icon: "🟢",
+                value: "Next Race"
+            }
+
+        ]
+
+    };
+
+}
     
     static async getLiveRace() {
         const data = await NASCARLive.getLiveRace();
