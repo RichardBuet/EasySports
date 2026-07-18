@@ -82,3 +82,12 @@
     font-weight: 600;
 
 }
+
+.nascar-selector button img{
+
+    height:28px;
+    width:auto;
+
+    display:block;
+
+}
