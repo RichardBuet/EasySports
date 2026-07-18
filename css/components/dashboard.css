@@ -23,6 +23,26 @@
     margin-bottom:15px;
 }
 
+.dashboard-widget h3{
+    margin:0 0 8px;
+    font-size:.8rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#ffd100;
+}
+
+.dashboard-widget p{
+    margin:6px 0;
+    color:#d0d0d0;
+}
+
+.dashboard-widget .race-name{
+    font-size:1.5rem;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:15px;
+}
+
 .today-row{
     display:flex;
     justify-content:space-between;
