@@ -21,14 +21,14 @@ button.addEventListener("click", async () => {
 
 
 case "nascar-weekend":
-    const nextRace = await NASCAR.getNextRace();
-    data = await NASCAR.getWeekend(nextRace.raceId);
+    const lastRace = await NASCAR.getLastRace();
+    data = await NASCAR.getWeekend(lastRace.raceId);
     renderWeekend(data);
     break;
 
-           case "nascar-racelist":
-           data = await NASCAR.getRaceList();
-           renderRaceList(data);
+case "nascar-racelist":
+data = await NASCAR.getRaceList();
+renderRaceList(data);
     break;
 
         //    default:
