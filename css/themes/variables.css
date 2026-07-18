@@ -1,21 +1,59 @@
+/*
+========================================================
+EasySports Design System
+Version 2.0
+========================================================
+COLORS
+======================================================*/
+
 :root{
-    --bg-color:#121212;
-    --surface-color:#1e1e1e;
-    --primary-color:#00c853;
-    --secondary-color:#00e676;
-    --text-color:#ffffff;
-    --text-secondary:#bdbdbd;
-    --border-color:#2e2e2e;
-    --header-height:70px;
-    --radius:10px;
-    --shadow:0 4px 12px rgba(0,0,0,.35);
-    
+    /* Base */
     --bg:#121212;
+    
     --surface:#1b1b1b;
     --surface-2:#252525;
+    --surface-3:#303030;
+
     --text:#ffffff;
     --text-secondary:#bdbdbd;
-    --primary:#2f80ed;
-    --accent:#ffcc00;
+
     --border:#2b2b2b;
+
+    /* Brand */
+    --primary:#2f80ed;
+
+    --accent:#ffcc00;
+
+    --success:#00c853;
+    --warning:#ff9800;
+    --danger:#e53935;
+
+    /* Sport Theme */
+    --sport-primary:var(--primary);
+    --sport-secondary:var(--accent);
+
+    /* Hero */
+    --hero-image:none;
+
+    /* Layout */
+    --header-height:70px;
+    --container-width:1500px;
+
+    /* Radius */
+    --radius-xs:6px;
+    --radius-sm:10px;
+    --radius-md:14px;
+    --radius-lg:20px;
+    --radius-xl:30px;
+
+    /* Shadows */
+    --shadow-sm:0 2px 8px rgba(0,0,0,.25);
+    --shadow-md:0 6px 18px rgba(0,0,0,.30);
+    --shadow-lg:0 12px 30px rgba(0,0,0,.45);
+
+    /* Animation */
+    --transition-fast:.20s;
+    --transition:.30s;
+    --transition-slow:.45s;
+
 }
