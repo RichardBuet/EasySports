@@ -1,4 +1,6 @@
 body.nascar{
     --sport-primary:#ffd100;
     --sport-secondary:#ff9800;
+    /* --hero-image:url("../../assets/img/nascar/hero.jpg"); */
+    --hero-image:none;
 }
