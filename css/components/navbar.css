@@ -32,4 +32,5 @@
 
 #sportsMenu{
     position:relative;
+    cursor: pointer;
 }
