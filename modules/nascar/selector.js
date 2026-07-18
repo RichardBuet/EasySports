@@ -6,12 +6,23 @@ export function createNascarSelector(){
     return `
         <section class="container">
             <div id="nascar-selector" class="nascar-selector">
-                <button class="${state.nascarSeries===NASCAR_SERIES.CUP?"active":""}" data-series="1">
-                    🏁 Cup </button>
-                <button class="${state.nascarSeries===NASCAR_SERIES.OREILLY?"active":""}" data-series="2">
-                    🟢 O'Reilly </button>
-                <button class="${state.nascarSeries===NASCAR_SERIES.TRUCK?"active":""}" data-series="3">
-                    🚛 Truck </button>
+                <button class="active" data-series="1">
+                    <img
+                        src="https://www.nascar.com/wp-content/uploads/sites/7/2023/05/10/nascar_cup_series_logo.svg"
+                        alt="Cup Series">
+                </button>
+                
+                <button data-series="2">
+                    <img
+                        src="https://www.nascar.com/wp-content/uploads/sites/7/2025/09/30/NOAPS-Primary_FullColor-RGB.svg"
+                        alt="O'Reilly Series">
+                </button>
+                
+                <button data-series="3">
+                    <img
+                        src="https://www.nascar.com/wp-content/uploads/sites/7/2023/05/10/nascar_craftsman_truck_series_logo.svg"
+                        alt="Craftsman Truck Series">
+                </button>
             </div>
         </section>
     `;
