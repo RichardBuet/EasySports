@@ -33,7 +33,7 @@ export async function createNascarHero() {
 
                 <p>${hero.track}</p>
 
-                <div class="heroInfo">
+                <div class="heroMeta">
 
                     <div class="heroItem">
                         <span>📅</span>
