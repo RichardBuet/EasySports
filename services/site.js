@@ -58,6 +58,41 @@ static async getHeroData() {
     };
 
 }
+
+    
+static async getRaceCenterData() {
+
+    const race = await this.getLastRace();
+
+    return {
+
+        type: "last",
+
+        title: race.name,
+
+        winner: {
+
+            name: "",
+
+            number: "",
+
+            team: ""
+
+        },
+
+        meta: [
+
+            {
+                icon: "🏁",
+                value: `${race.actualLaps} / ${race.scheduledLaps} Laps`
+            }
+
+        ]
+
+    };
+
+}
+
     
     static async getLiveRace() {
         const data = await NASCARLive.getLiveRace();
