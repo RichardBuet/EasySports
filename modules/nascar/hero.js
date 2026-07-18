@@ -2,8 +2,21 @@ import { NASCAR } from "../../services/site.js";
 
 export async function createNascarHero() {
 
-    const nextRace = await NASCAR.getNextRace();
+    const hero = await NASCAR.getHeroData();
     const seriesName = NASCAR.getSeriesName();
+
+    const date = new Date(hero.date);
+
+    const raceDate = date.toLocaleDateString(undefined, {
+        weekday: "short",
+        day: "numeric",
+        month: "short"
+    });
+
+    const raceTime = date.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
 
     return `
         <section class="nascarHero">
@@ -12,15 +25,35 @@ export async function createNascarHero() {
 
             <div class="nascarHeroContent">
 
-                <span class="heroCategory">${seriesName}</span>
+                <span class="heroCategory">
+                    ${seriesName}
+                </span>
 
-                <h1>${nextRace.name}</h1>
+                <h1>${hero.title}</h1>
 
-                <p>${nextRace.track}</p>
+                <p>${hero.track}</p>
 
                 <div class="heroInfo">
 
-                    <span>${new Date(nextRace.date).toLocaleDateString()}</span>
+                    <div class="heroItem">
+                        <span>📅</span>
+                        <strong>${raceDate}</strong>
+                    </div>
+
+                    <div class="heroItem">
+                        <span>🕒</span>
+                        <strong>${raceTime}</strong>
+                    </div>
+
+                    <div class="heroItem">
+                        <span>🏁</span>
+                        <strong>${hero.scheduledLaps} Laps</strong>
+                    </div>
+
+                    <div class="heroItem heroStatus">
+                        <span>${hero.status.icon}</span>
+                        <strong>${hero.status.text}</strong>
+                    </div>
 
                 </div>
 
