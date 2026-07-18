@@ -5,8 +5,9 @@ import { createNascarDashboard } from "../nascar/dashboard.js";
 import { createSchedule } from "../nascar/schedule.js";
 import { createDrivers } from "../nascar/drivers.js";
 
-
+import { setSportTheme } from "../utils/theme.js";
 export async function renderNascar(){
+    setSportTheme("nascar");
 
     return createLayout(`
         ${await createNascarHero()}
