@@ -23,7 +23,8 @@ export function adaptNascarLive(data) {
         lapsToGo: data.laps_to_go,
         flag: flags[data.flag_state] ?? data.flag_state,
 
-        leaderboard: data.vehicles
+        leaderboard: [...data.vehicles]
+       // leaderboard: data.vehicles
             .sort((a, b) => a.running_position - b.running_position)
             .map(car => ({
 
