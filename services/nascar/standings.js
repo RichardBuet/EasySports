@@ -1,16 +1,13 @@
-// services/nascar/standings.js
+import { fetchJSON } from "../shared/fetch.js";
 
-const SERIES = 1; // 1 = Cup Series
-const SEASON = 2026;
+export class NASCARStandings {
 
-const URL = `https://cf.nascar.com/cacher/${SEASON}/${SERIES}/points-feed.json`;
+    static async getStandings(series = 1) {
 
-export async function getStandings() {
-    const response = await fetch(URL);
+        const URL = `https://cf.nascar.com/cacher/2026/${series}/points-feed.json`;
 
-    if (!response.ok) {
-        throw new Error(`Error al obtener la clasificación NASCAR (${response.status})`);
+        return await fetchJSON(URL);
+
     }
 
-    return await response.json();
 }
