@@ -18,22 +18,34 @@ button.addEventListener("click", async () => {
                 data = await NASCAR.getLiveRace();
                 renderRace(data);
                 break;
-        
-        case "nascar-weekend":
-            data = await NASCAR.getCurrentWeekend();
-            renderWeekend(data);
-            break;
-                        
-        case "nascar-racelist":
-            data = await NASCAR.getTimeline();
-            renderRaceTimeline(data);
-            break;
+
+
+case "nascar-weekend":
+
+    data = await NASCAR.getCurrentWeekend();
+
+    renderWeekend(data);
+
+    break;
+
+                
+
+    case "nascar-racelist":
+    data = await NASCAR.getRaceList();
+    renderRaceList(data);
+        break;
+
+
         }
 
     } catch (error) {
+
         console.error(error);
+
         output.textContent = `ERROR
-        ${error.message}`;
+
+${error.message}`;
+
     }
 
 });
@@ -213,5 +225,3 @@ function renderRaceList(data) {
     output.textContent = "";
 
 }
-
-
