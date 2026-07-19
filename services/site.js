@@ -9,8 +9,8 @@ import { state } from "../config/state.js";
 import { NASCARStandings } from "./nascar/standings.js";
 import { adaptNascarStandings } from "./adapters/nascarStandingsAdapter.js";
 
-//import { NASCARDrivers } from "./nascar/drivers.js";
-//import { adaptNascarDrivers } from "./adapters/nascarDriversAdapter.js";
+import { NASCARDrivers } from "./nascar/drivers.js";
+import { adaptNascarDrivers } from "./adapters/nascarDriversAdapter.js";
 
 
 export class NASCAR {
