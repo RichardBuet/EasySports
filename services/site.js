@@ -6,6 +6,13 @@ import { NASCARRaceList } from "./nascar/raceList.js";
 import { adaptNascarRaceList } from "./adapters/nascarRaceListAdapter.js";
 import { state } from "../config/state.js";
 
+import { NASCARStandings } from "./nascar/standings.js";
+import { adaptNascarStandings } from "./adapters/nascarStandingsAdapter.js";
+
+import { NASCARDrivers } from "./nascar/drivers.js";
+import { adaptNascarDrivers } from "./adapters/nascarDriversAdapter.js";
+
+
 export class NASCAR {
 
     static async getHeroData() {
@@ -267,6 +274,37 @@ export class NASCAR {
     
     }
 
+    static async getStandings(series = state.nascarSeries) {
 
+        const data = await NASCARStandings.getStandings(series);
+
+        return adaptNascarStandings(data);
+
+    }
+
+    static async getDrivers() {
+
+        const data = await NASCARDrivers.getDrivers();
+
+        return adaptNascarDrivers(data);
+
+    }
+
+    static async getStandingsWithDrivers(series = state.nascarSeries) {
+
+        const [standings, drivers] = await Promise.all([
+            this.getStandings(series),
+            this.getDrivers()
+        ]);
+
+        return standings.map(driver => ({
+
+            ...driver,
+
+            profile: drivers.find(d => d.driverId === driver.driverId) ?? null
+
+        }));
+
+    }
     
 }
