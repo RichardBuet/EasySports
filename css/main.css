@@ -11,7 +11,7 @@
 
 @import "layouts/container.css";
 @import "layouts/grid.css";
-
+@import "./components/modal.css";
 /* ===================================
    COMPONENTES GENERALES
 =================================== */
@@ -27,6 +27,8 @@
 
 @import "components/nascar.css";
 @import "components/raceTimeline.css";
+
+@import "./components/modal.css";
 /* ===================================
    DASHBOARD
 =================================== */
