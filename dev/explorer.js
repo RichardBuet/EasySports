@@ -1,5 +1,6 @@
 import { NASCAR } from "../services/site.js";
 import { state } from "../config/state.js";
+import { renderRaceTimeline } from "../components/raceTimeline.js";
 
 const output = document.getElementById("output");
 const button = document.getElementById("load");
@@ -26,7 +27,11 @@ button.addEventListener("click", async () => {
                         
         case "nascar-racelist":
             data = await NASCAR.getTimeline();
-            renderRaceTimeline(data);
+            renderRaceTimeline(
+                data,
+                document.getElementById("raceInfo"),
+                document.getElementById("tableContainer")
+            );
             break;
         }
 
@@ -147,71 +152,73 @@ function renderWeekend(data){
 }
 
 
-function renderRaceList(data) {
 
-    const raceInfo = document.getElementById("raceInfo");
-    const table = document.getElementById("tableContainer");
 
-    const completed = data.filter(r => r.completed).length;
-    const pending = data.length - completed;
+// function renderRaceList(data) {
 
-    const lastRace = [...data]
-        .filter(r => r.completed)
-        .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+//     const raceInfo = document.getElementById("raceInfo");
+//     const table = document.getElementById("tableContainer");
 
-    const nextRace = [...data]
-        .filter(r => !r.completed)
-        .sort((a, b) => new Date(a.date) - new Date(b.date))[0];
+//     const completed = data.filter(r => r.completed).length;
+//     const pending = data.length - completed;
 
-    raceInfo.innerHTML = `
-        <h2>🏁 NASCAR Cup Series 2026</h2>
+//     const lastRace = [...data]
+//         .filter(r => r.completed)
+//         .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
-        <p><strong>Total carreras:</strong> ${data.length}</p>
-        <p><strong>Finalizadas:</strong> ${completed}</p>
-        <p><strong>Pendientes:</strong> ${pending}</p>
+//     const nextRace = [...data]
+//         .filter(r => !r.completed)
+//         .sort((a, b) => new Date(a.date) - new Date(b.date))[0];
 
-        <hr>
+//     raceInfo.innerHTML = `
+//         <h2>🏁 NASCAR Cup Series 2026</h2>
 
-        <p><strong>🏁 Última carrera:</strong><br>
-        ${lastRace ? lastRace.name : "-"}</p>
+//         <p><strong>Total carreras:</strong> ${data.length}</p>
+//         <p><strong>Finalizadas:</strong> ${completed}</p>
+//         <p><strong>Pendientes:</strong> ${pending}</p>
 
-        <p><strong>📅 Próxima carrera:</strong><br>
-        ${nextRace ? nextRace.name : "-"}</p>
-    `;
+//         <hr>
 
-    let html = `
-    <table border="1" cellspacing="0" cellpadding="5">
-        <tr>
-            <th>Fecha</th>
-            <th>Carrera</th>
-            <th>Circuito</th>
-            <th>Vueltas</th>
-            <th>Estado</th>
-        </tr>
-    `;
+//         <p><strong>🏁 Última carrera:</strong><br>
+//         ${lastRace ? lastRace.name : "-"}</p>
 
-    data.forEach(race => {
+//         <p><strong>📅 Próxima carrera:</strong><br>
+//         ${nextRace ? nextRace.name : "-"}</p>
+//     `;
 
-        html += `
-        <tr>
-            <td>${new Date(race.date).toLocaleDateString("es-AR")}</td>
-            <td>${race.name}</td>
-            <td>${race.track}</td>
-            <td>${race.scheduledLaps}</td>
-            <td>${race.status === "completed"
-    ? "🏁 Finalizada"
-    : "📅 Pendiente"}</td>
-            </tr>
-        `;
+//     let html = `
+//     <table border="1" cellspacing="0" cellpadding="5">
+//         <tr>
+//             <th>Fecha</th>
+//             <th>Carrera</th>
+//             <th>Circuito</th>
+//             <th>Vueltas</th>
+//             <th>Estado</th>
+//         </tr>
+//     `;
 
-    });
+//     data.forEach(race => {
 
-    html += "</table>";
+//         html += `
+//         <tr>
+//             <td>${new Date(race.date).toLocaleDateString("es-AR")}</td>
+//             <td>${race.name}</td>
+//             <td>${race.track}</td>
+//             <td>${race.scheduledLaps}</td>
+//             <td>${race.status === "completed"
+//     ? "🏁 Finalizada"
+//     : "📅 Pendiente"}</td>
+//             </tr>
+//         `;
 
-    table.innerHTML = html;
+//     });
 
-    output.textContent = "";
+//     html += "</table>";
 
-}
+//     table.innerHTML = html;
+
+//     output.textContent = "";
+
+// }
 
 
