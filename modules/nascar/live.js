@@ -1,5 +1,5 @@
 import { NASCAR } from "../../services/site.js";
-import "../modules/nascar/live.js";
+
 import { openModal } from "../components/modal.js";
 
 window.openLiveRace = async () => {
