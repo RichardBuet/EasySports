@@ -34,13 +34,13 @@ export async function createNascarHero() {
 
         <div class="heroMeta">
 
-            // ${hero.meta.map(item => `
-            //     <div class="heroItem">
-            //         <span>${item.icon}</span>
-            //         <strong>${item.value}</strong>
-            //     </div>
-            // `).join("")}
-
+  <!--          ${hero.meta.map(item => `
+                <div class="heroItem">
+                    <span>${item.icon}</span>
+                    <strong>${item.value}</strong>
+                </div>
+            `).join("")}
+-->
             ${hero.meta.map(item => `
             <div
                 class="heroItem ${item.live ? "heroLive" : ""}"
