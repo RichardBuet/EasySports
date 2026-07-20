@@ -74,13 +74,13 @@ export async function createCalendarCard() {
             </div>
         `).join("")}
 
-        <button
-            class="btn-secondary"
-            onclick="window.openRaceCalendar = async ()">
+<button
+    class="btn-secondary"
+    onclick="window.openRaceCalendar()">
 
-            Ver campeonato completo ▼
+    Ver campeonato completo ▼
 
-        </button>
+</button>
 
     </section>
 
