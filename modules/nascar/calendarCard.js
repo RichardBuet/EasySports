@@ -10,77 +10,52 @@ export async function createCalendarCard() {
 
     return `
 
-    <section class="calendarCard">
+    <section class="raceCenter"">
 
-        <h2>📅 CALENDARIO</h2>
+        <h2>Schedule</h2>
 
         ${previous.map(race => `
             <div class="calendarItem completed">
-
                 <strong>▼ ${race.track}</strong>
-
                 <span>(Finalizada)</span>
-
                 <small>
-
                     ${formatDate(race.date)}
-
                     ·
-
                     Ganó ${race.winner || "-"}
-
                 </small>
-
             </div>
         `).join("")}
 
         <hr>
 
         <div class="calendarItem current">
-
             <strong>⭐ ${current.track}</strong>
-
             <span>(PRÓXIMA)</span>
-
             <small>
-
                 ${formatDate(current.date)}
-
                 ·
-
                 ${formatTime(current.date)}
-
             </small>
-
         </div>
 
         <hr>
 
         ${next.map(race => `
             <div class="calendarItem next">
-
                 <strong>▲ ${race.track}</strong>
-
                 <small>
-
                     ${formatDate(race.date)}
-
                     ·
-
                     Próxima carrera
-
                 </small>
-
             </div>
         `).join("")}
 
-<button
-    class="btn-secondary"
-    onclick="window.openRaceCalendar()">
-
-    Ver campeonato completo ▼
-
-</button>
+        <button
+            class="btn-nsc"
+            onclick="window.openRaceCalendar()">
+            Ver calendario completo ▼
+        </button>
 
     </section>
 
@@ -89,25 +64,15 @@ export async function createCalendarCard() {
 }
 
 function formatDate(date){
-
     return new Date(date).toLocaleDateString("es-AR",{
-
         day:"numeric",
-
         month:"short"
-
     });
-
 }
 
 function formatTime(date){
-
     return new Date(date).toLocaleTimeString("es-AR",{
-
         hour:"2-digit",
-
         minute:"2-digit"
-
     });
-
 }
