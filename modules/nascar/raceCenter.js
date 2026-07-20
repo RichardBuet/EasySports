@@ -29,19 +29,31 @@ export async function createRaceCenter() {
                 </div>
             ` : ""}
 
-            <div class="raceMeta">
+  <div class="raceMeta">
 
-                ${raceCenter.meta.map(item => `
-                    <div class="raceMetaItem">
+    ${raceCenter.meta.map(item => `
+        <div class="raceMetaItem">
 
-                        <span>${item.icon}</span>
+            <span>${item.icon}</span>
 
-                        <strong>${item.value}</strong>
+            <strong>${item.value}</strong>
 
-                    </div>
-                `).join("")}
+        </div>
+    `).join("")}
 
-            </div>
+</div>
+
+<div class="raceActions">
+
+    <button
+        class="btn-secondary"
+        onclick="window.openRaceResult()">
+
+        🏆 Resultado
+
+    </button>
+
+</div>
 
         </section>
     `;
