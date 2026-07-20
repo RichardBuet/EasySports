@@ -76,7 +76,7 @@ export async function createCalendarCard() {
 
         <button
             class="btn-secondary"
-            onclick="window.openRaceCalendar()">
+            onclick="window.openRaceCalendar = async ()">
 
             Ver campeonato completo ▼
 
