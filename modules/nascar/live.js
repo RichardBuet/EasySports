@@ -22,6 +22,8 @@ openModal({
 
 });
 
+clearInterval(refreshTimer);
+
 refreshTimer = setInterval(refreshLiveModal, 15000);
 
 
