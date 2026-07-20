@@ -19,33 +19,41 @@ export async function createNascarHero() {
     });
 
     return `
-        <section class="nascarHero">
+    <section class="nascarHero">
 
-            <div class="nascarHeroOverlay"></div>
+        <div class="nascarHeroOverlay"></div>
 
-            <div class="nascarHeroContent">
+        <div class="nascarHeroContent">
 
-                <span class="heroCategory">
-                    ${seriesName}
-                </span>
+            <span class="heroCategory">
+                ${seriesName}
+            </span>
 
-                <h1>${hero.title}</h1>
-                <p>${hero.subtitle}</p>
+            <h1>${hero.title}</h1>
+            <p>${hero.subtitle}</p>
 
-                <div class="heroMeta">
+        <div class="heroMeta">
 
-    ${hero.meta.map(item => `
-        <div class="heroItem">
-            <span>${item.icon}</span>
-            <strong>${item.value}</strong>
-        </div>
-    `).join("")}
+            // ${hero.meta.map(item => `
+            //     <div class="heroItem">
+            //         <span>${item.icon}</span>
+            //         <strong>${item.value}</strong>
+            //     </div>
+            // `).join("")}
 
-</div>
-
+            ${hero.meta.map(item => `
+            <div
+                class="heroItem ${item.live ? "heroLive" : ""}"
+                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
+                <span>${item.icon}</span>
+                <strong>${item.value}</strong>
             </div>
+        `).join("")}
+        </div>
 
-        </section>
-    `;
+        </div>
+
+    </section>
+`;
 
 }
