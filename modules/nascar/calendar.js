@@ -1,7 +1,7 @@
 import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
 
-window.openCalendar = async () => {
+window.openRaceCalendar = async () => {
 
     const races = await NASCAR.getRaceList();
 
