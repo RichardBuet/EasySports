@@ -1,18 +1,29 @@
 import { NASCAR } from "../../services/site.js";
-
 import { openModal } from "../components/modal.js";
+
+let refreshTimer = null;
 
 window.openLiveRace = async () => {
 console.log("LIVE CLICK");
     const live = await NASCAR.getLiveRace();
 
-    openModal({
 
-        title: "NASCAR LIVE",
+openModal({
 
-        content: await createLiveContent(live)
+    title: "NASCAR LIVE",
 
-    });
+    content: await createLiveContent(live),
+
+    onClose: () => {
+
+        clearInterval(refreshTimer);
+
+    }
+
+});
+
+refreshTimer = setInterval(refreshLiveModal, 15000);
+
 
 };
 
@@ -72,5 +83,18 @@ async function createLiveContent(live){
     </div>
 
 `;
+
+}
+
+
+async function refreshLiveModal() {
+
+    const live = await NASCAR.getLiveRace();
+
+    const body = document.querySelector(".modal-body");
+
+    if (!body) return;
+
+    body.innerHTML = await createLiveContent(live);
 
 }
