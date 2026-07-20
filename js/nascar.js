@@ -4,6 +4,7 @@ import { initNascarSelector } from "../modules/nascar/events.js";
 import "../modules/nascar/live.js";
 import "../modules/nascar/calendar.js";
 import "../modules/nascar/result.js";
+import "../modules/nascar/drivers.js";
 
 const app=document.getElementById("app");
 
