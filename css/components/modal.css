@@ -121,3 +121,38 @@
     font-weight:700;
 
 }
+.driver-header{
+
+    display:grid;
+
+    grid-template-columns:50px 50px 1fr 70px;
+
+    gap:12px;
+
+    padding:12px 20px;
+
+    background:#181818;
+
+    border-bottom:2px solid #444;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#9a9a9a;
+
+    text-transform:uppercase;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1;
+
+}
+
+.driver-header span:last-child{
+
+    text-align:right;
+
+}
