@@ -12,7 +12,7 @@ export async function createDrivers() {
 
             <div class="widget-header">
 
-                <h2>Driver Standings</h2>
+                <h2>Campeonato de pilotos</h2>
 
                 <button
                     class="widget-link"
@@ -22,7 +22,17 @@ export async function createDrivers() {
 
             </div>
 
-            <div class="driver-list">
+            <div class="driver-header">
+
+                <span>POS</span>
+            
+                <span>N°</span>
+            
+                <span>DRIVER</span>
+            
+                <span>PTS</span>
+            
+            </div>
 
                 ${top5.map(driver => `
 
