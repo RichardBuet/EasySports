@@ -55,7 +55,7 @@ export class NASCAR {
 
                         {
                             icon: "🔴",
-                            value: "LIVE"
+                            value: "LIVE",
                             live: true
                         }
 
