@@ -113,10 +113,10 @@ button {
 
 
 /* ========================================
-   NASCAR Tarjetas
+   NASCAR Tarjetas  , .driverCard
 ======================================== */
 
-.raceCenter, .calendarCard, .driverCard{
+.raceCenter, .calendarCard{
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg) 20px;
