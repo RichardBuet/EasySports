@@ -3,128 +3,110 @@
 ======================================== */
 
 .nascarHero{
-
-    position: relative;
-    overflow: hidden;
-   
-    display: flex;
-    align-items: flex-end;
-
-    /* width: 100%;
-    min-height: 420px; */
-
-    padding: 5px 40px;
-
-    color: var(--text);
-
-    background:
-        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
-        var(--hero-image);
-
-    background-size: cover;
-    background-position: center;
-
+   position: relative;
+   overflow: hidden;
+   display: flex;
+   align-items: flex-end;
+   padding: 5px 40px;
+   color: var(--text);
+   background:
+           linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
+           var(--hero-image);
+   background-size: cover;
+   background-position: center;
 }
 
 .nascarHeroContent{
-
-    position: relative;
-    z-index: 2;
-
-    max-width: 700px;
-
+   position: relative;
+   z-index: 2;
+   max-width: 700px;
 }
 
 .heroCategory{
-
-    display: inline-block;
-
-    margin-bottom: 12px;
-
-    padding: 6px 12px;
-
-    border-radius: var(--radius-sm);
-
-    background: var(--sport-primary);
-
-    color: #000;
-
-    font-weight: 700;
-
-    text-transform: uppercase;
-
+   display: inline-block;
+   margin-bottom: 12px;
+   padding: 6px 12px;
+   border-radius: var(--radius-sm);
+   background: var(--sport-primary);
+   color: #000;
+   font-weight: 700;
+   text-transform: uppercase;
 }
 
 .nascarHero h1{
-
-    margin: 0 0 12px;
-
-    font-size: 3rem;
-
-    line-height: 1.1;
-
+   margin: 0 0 12px;
+   font-size: 2rem;
+   line-height: 1.1;
 }
 
 .nascarHero p{
-    margin: 0 0 20px;
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-
+   margin: 0 0 20px;
+   color: var(--text-secondary);
+   font-size: 1.2rem;
 }
 
 .heroMeta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-top:24px;
+   display:flex;
+   flex-wrap:wrap;
+   gap:12px;
+   margin-top:24px;
 }
 
 .heroItem{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:10px 16px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:999px;
-    backdrop-filter:blur(10px);
-    font-size:.95rem;
+   display:flex;
+   align-items:center;
+   gap:8px;
+   padding:10px 16px;
+   background:rgba(255,255,255,.08);
+   border:1px solid rgba(255,255,255,.12);
+   border-radius:999px;
+   backdrop-filter:blur(10px);
+   font-size:.95rem;
 }
 
 .heroItem span{
-    font-size:1rem;
+   font-size:1rem;
 }
 
 .heroItem strong{
-    font-weight:600;
-    color:var(--text);
+   font-weight:600;
+   color:var(--text);
 }
 
 .heroStatus{
-    background:rgba(22,163,74,.18);
-    border-color:rgba(22,163,74,.35);
+   background:rgba(22,163,74,.18);
+   border-color:rgba(22,163,74,.35);
+}
+
+.container{
+   max-width:1200px;
+   margin:auto;
+   padding:20px 20px 5px 20px;
+}
+
+button {
+   cursor: pointer;
 }
 
 .nascar-selector{
    display: flex;
-    justify-content: space-between;
+   justify-content: space-between;
 }
 
 .nascar-selector button img{
-    height:40px;
-    width:auto;
-    display:block;
-
+   height:40px;
+   width:auto;
+   display:block;
 }
 
 .nascarHeroOverlay{
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg);
-    background-repeat: no-repeat;
-    background-position: right 0px center;
-    background-size: contain;
-    margin: 26px;
-    opacity: 0.48;
-    pointer-events: none;
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg);
+   background-repeat: no-repeat;
+   background-position: right 0px center;
+   background-size: contain;
+   margin: 26px;
+   opacity: 0.48;
+   pointer-events: none;
 }
