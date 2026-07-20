@@ -42,7 +42,7 @@ async function createLiveContent(live){
 
                 <span>⏳ Restan</span>
 
-                <strong>${live.remainingLaps}</strong>
+                <strong>${live.lapsToGo}</strong>
 
             </div>
 
