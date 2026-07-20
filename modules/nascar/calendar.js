@@ -3,15 +3,26 @@ import { openModal } from "../components/modal.js";
 
 window.openRaceCalendar = async () => {
 
-    const races = await NASCAR.getRaceList();
+    const timeline = await NASCAR.getTimeline();
+
+const races = timeline.all;
+const currentIndex = timeline.currentIndex;
 
     openModal({
+    title: "Calendar",
+    content: createCalendarContent(races, currentIndex)
+});
 
-        title: "Calendar",
+requestAnimationFrame(() => {
 
-        content: createCalendarContent(races)
+    document
+        .getElementById(`race-${currentIndex}`)
+        ?.scrollIntoView({
+            block: "center",
+            behavior: "instant"
+        });
 
-    });
+});
 
 };
 
@@ -30,9 +41,13 @@ function createCalendarContent(races) {
 
         <div class="driver-list">
 
-            ${races.map(race => `
+            ${races.map((race, index) => `
 
-                <div class="driver-row">
+    <div
+
+        class="driver-row ${index === currentIndex ? "current" : ""}"
+
+        id="race-${index}">
 
                     <span>${new Date(race.date).toLocaleDateString("en-US",{
                         day:"2-digit",
