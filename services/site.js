@@ -13,6 +13,7 @@ import { NASCARDrivers } from "./nascar/drivers.js";
 import { adaptNascarDrivers } from "./adapters/nascarDriversAdapter.js";
 
 
+
 export class NASCAR {
 
     static async getHeroData() {
