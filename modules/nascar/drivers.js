@@ -2,17 +2,15 @@ import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
 
 export async function createDrivers() {
-
+    // <div class="raceCenter">   </div>
     const drivers = await NASCAR.getStandingsWithDrivers();
 
     const top5 = drivers.slice(0, 5);
 
     return `
-        <section class="driverCard">
-
-            <div class="raceCenter">
-                <h2>Campeonato de pilotos</h2>
-            </div>
+        <section class="raceCenter">
+        <h2>Campeonato de pilotos</h2>
+         
 
             <div class="driver-header">
                 <span>POS</span>
