@@ -152,13 +152,26 @@
 }
 
 .driver-header span:last-child{
-
     text-align:right;
+}
 
+.driver-header,
+.driver-row{
+    display:grid;
+    grid-template-columns: 55px 1.8fr 2.8fr 40px;
+    align-items:center;
+    gap:12px;
 }
 
 
 .driver-row.current {
     border-left: 4px solid var(--accent);
-    background: rgba(255,255,255,.05);
+    background: rgba(255,255,255,.06);
+}
+
+.driver-row span:nth-child(2){
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
 }
