@@ -110,3 +110,15 @@ button {
    opacity: 0.48;
    pointer-events: none;
 }
+
+
+/* ========================================
+   NASCAR Tarjetas
+======================================== */
+
+.raceCenter, .calendarCard, .driverCard{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg) 20px;
+    padding: 18px;
+}
