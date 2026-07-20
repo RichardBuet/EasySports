@@ -19,7 +19,35 @@ console.log("LIVE CLICK");
 async function createLiveContent(live){
 
     return `
-        <p>Próximo paso...</p>
+
+        <div class="live-summary">
+
+            <div class="live-item">
+
+                <span>🏳️ Bandera</span>
+
+                <strong>${live.flag}</strong>
+
+            </div>
+
+            <div class="live-item">
+
+                <span>🏁 Vuelta</span>
+
+                <strong>${live.lap} / ${live.totalLaps}</strong>
+
+            </div>
+
+            <div class="live-item">
+
+                <span>⏳ Restan</span>
+
+                <strong>${live.remainingLaps}</strong>
+
+            </div>
+
+        </div>
+
     `;
 
 }
