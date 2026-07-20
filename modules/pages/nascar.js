@@ -15,11 +15,21 @@ export async function renderNascar() {
     return createLayout(`
         ${await createNascarHero()}
         ${createNascarSelector()}
+      <section class="dashboard">
+
+    <div class="dashboard-grid">
+
         ${await createRaceCenter()}
+
         ${await createCalendarCard()}
-        
+
         ${await createSchedule()}
+
         ${await createDrivers()}
+
+    </div>
+
+</section>
     `);
 
 }
