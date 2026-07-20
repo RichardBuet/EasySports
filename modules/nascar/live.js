@@ -3,7 +3,7 @@ import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
 
 window.openLiveRace = async () => {
-
+console.log("LIVE CLICK");
     const live = await NASCAR.getLiveRace();
 
     openModal({
