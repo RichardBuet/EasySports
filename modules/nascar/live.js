@@ -18,36 +18,59 @@ console.log("LIVE CLICK");
 
 async function createLiveContent(live){
 
-    return `
+ return `
 
-        <div class="live-summary">
+    <div class="live-summary">
 
-            <div class="live-item">
-
-                <span>🏳️ Bandera</span>
-
-                <strong>${live.flag}</strong>
-
-            </div>
-
-            <div class="live-item">
-
-                <span>🏁 Vuelta</span>
-
-                <strong>${live.lap} / ${live.totalLaps}</strong>
-
-            </div>
-
-            <div class="live-item">
-
-                <span>⏳ Restan</span>
-
-                <strong>${live.lapsToGo}</strong>
-
-            </div>
-
+        <div class="live-item">
+            <span>🏳️ Bandera</span>
+            <strong>${live.flag}</strong>
         </div>
 
-    `;
+        <div class="live-item">
+            <span>🏁 Vuelta</span>
+            <strong>${live.lap} / ${live.totalLaps}</strong>
+        </div>
+
+        <div class="live-item">
+            <span>⏳ Restan</span>
+            <strong>${live.lapsToGo}</strong>
+        </div>
+
+    </div>
+
+    <div class="driver-header">
+
+        <span>POS</span>
+
+        <span>#</span>
+
+        <span>DRIVER</span>
+
+        <span>GAP</span>
+
+    </div>
+
+    <div class="driver-list">
+
+        ${live.leaderboard.map(driver => `
+
+            <div class="driver-row">
+
+                <span>#${driver.position}</span>
+
+                <span>${driver.number}</span>
+
+                <span>${driver.driver}</span>
+
+                <strong>${driver.delta}</strong>
+
+            </div>
+
+        `).join("")}
+
+    </div>
+
+`;
 
 }
