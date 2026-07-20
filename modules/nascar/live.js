@@ -1,0 +1,24 @@
+import { NASCAR } from "../../services/site.js";
+import { openModal } from "../components/modal.js";
+
+window.openLiveRace = async () => {
+
+    const live = await NASCAR.getLiveRace();
+
+    openModal({
+
+        title: "NASCAR LIVE",
+
+        content: await createLiveContent(live)
+
+    });
+
+};
+
+async function createLiveContent(live){
+
+    return `
+        <p>Próximo paso...</p>
+    `;
+
+}
