@@ -1,8 +1,15 @@
 let overlay = null;
+let onClose = null;
 
-export function openModal({ title = "", content = "" }) {
+export function openModal({
+    title = "",
+    content = "",
+    onClose: callback = null
+}) {
 
     closeModal();
+
+    onClose = callback;
 
     overlay = document.createElement("div");
     overlay.className = "modal-overlay";
@@ -43,10 +50,6 @@ export function openModal({ title = "", content = "" }) {
         .addEventListener("click", closeModal);
 
 }
-
-
-
-
 
 export function closeModal() {
 
