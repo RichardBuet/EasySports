@@ -1,6 +1,8 @@
 export function adaptNascarStandings(data) {
 
-    return data.map(driver => ({
+    return [...data]
+    .sort((a, b) => a.position - b.position)
+    .map(driver => ({
 
         position: driver.position,
 
