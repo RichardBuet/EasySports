@@ -56,6 +56,18 @@ window.openDriverStandings = async () => {
         title: "Driver Standings",
 
         content: `
+            <div class="driver-header">
+        
+                <span>POS</span>
+        
+                <span>N°</span>
+        
+                <span>DRIVER</span>
+        
+                <span>PTS</span>
+        
+            </div>
+        
             <div class="driver-list">
 
                 ${drivers.map(driver => `
