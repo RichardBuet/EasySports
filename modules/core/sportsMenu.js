@@ -16,7 +16,7 @@ export function createSportsMenu(){
                 ⚽ Copa del Mundo
             </a>
 
-            <a href="#">
+            <a href="https://richardbuet.github.io/EasySports/pages/nascar.html">
                 🏁 NASCAR
             </a>
 
