@@ -136,7 +136,12 @@ button {
 }
 
 .btn-nsc{
-   width: 100%;
+    width: 100%;
+    border-radius: var(--radius);
+    margin-top: 20px;
+    padding: 5px 0;
+    background: var(--secondary-color);
+    box-shadow: var(--shadow);
 }
 
 
