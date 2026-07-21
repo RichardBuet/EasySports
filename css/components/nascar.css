@@ -86,6 +86,9 @@
 
 button {
    cursor: pointer;
+   border-radius: 8px;
+   background: var(--text-color);
+   border-style: hidden;
 }
 
 .nascar-selector{
@@ -94,9 +97,10 @@ button {
 }
 
 .nascar-selector button img{
-   height:40px;
-   width:auto;
-   display:block;
+    height: 3em;
+    width: 20vw;
+    display: block;
+    padding: 3px 10px;
 }
 
 .nascarHeroOverlay{
