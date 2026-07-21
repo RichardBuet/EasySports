@@ -128,12 +128,15 @@ button {
 
 
 h2-NSC{
-font-size: 1.1rem;
+   font-size: 1.1rem;
     color: var(--sport-secondary);
     text-transform: uppercase;
     letter-spacing: .08em;
     margin: 0;
 }
 
+.btn-nsc{
+   width: 100%;
+}
 
 
