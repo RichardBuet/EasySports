@@ -116,9 +116,24 @@ button {
    NASCAR Tarjetas  , .driverCard
 ======================================== */
 
-.raceCenter, .calendarCard{
+.raceCenter, .calendarCard, .driversCard{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg) 20px;
     padding: 18px;
 }
+
+
+h2-NSC{
+font-size: 1.1rem;
+    color: var(--sport-secondary);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin: 0;
+}
+
+
+
