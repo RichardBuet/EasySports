@@ -103,9 +103,16 @@ button {
     padding: 3px 10px;
 }
 
+/*
 #btn-nsc-01{background:#FFB300}
 #btn-nsc-02{background:#E4002B}
 #btn-nsc-03{background:#0066B3}
+var(--series-color);
+*/
+
+#btn-nsc-01{box-shadow:0 0 15px #FFB300}
+#btn-nsc-02{box-shadow:0 0 15px #E4002B}
+#btn-nsc-03{box-shadow:0 0 15px #0066B3}
 
    
 .nascarHeroOverlay{
