@@ -127,7 +127,7 @@ button {
 }
 
 
-h2-NSC{
+.h2-NSC{
    font-size: 1.1rem;
     color: var(--sport-secondary);
     text-transform: uppercase;
