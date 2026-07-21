@@ -108,12 +108,39 @@ button {
 #btn-nsc-02{background:#E4002B}
 #btn-nsc-03{background:#0066B3}
 var(--series-color);
-*/
+
 
 #btn-nsc-01{box-shadow:0 0 15px #FFB300}
 #btn-nsc-02{box-shadow:0 0 15px #E4002B}
 #btn-nsc-03{box-shadow:0 0 15px #0066B3}
+*/
 
+#btn-nsc-01,#btn-nsc-02,#btn-nsc-03{
+background:linear-gradient(
+    180deg,
+    #1f1f1f,
+    #111
+);
+}
+
+
+.cup.active{
+
+    box-shadow:0 0 14px #ffd44d;
+
+}
+
+.xfinity.active{
+
+    box-shadow:0 0 14px #d91f3b;
+
+}
+
+.truck.active{
+
+    box-shadow:0 0 14px #2196f3;
+
+}
    
 .nascarHeroOverlay{
    position: absolute;
