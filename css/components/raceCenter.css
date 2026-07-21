@@ -1,4 +1,4 @@
-.raceCenter{
+/* .raceCenter{
     display:flex;
     flex-direction:column;
     gap:6px;
@@ -10,7 +10,7 @@
     text-transform:uppercase;
     letter-spacing:.08em;
     margin: 0;
-}
+} */
 
 .raceCenter h3{
     font-size:1.6rem;
