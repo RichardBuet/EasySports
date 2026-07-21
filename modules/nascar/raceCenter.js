@@ -7,7 +7,7 @@ export async function createRaceCenter() {
     return `
         <section class="raceCenter">
 
-            <h2>${raceCenter.type === "live" ? "🔴 Live Race" : "🏁 Last Race"}</h2>
+            <h2 class="h2-NSC">${raceCenter.type === "live" ? "🔴 Live Race" : "🏁 Última Carrera"}</h2>
 
             <h3>${raceCenter.title}</h3>
 
@@ -46,11 +46,9 @@ export async function createRaceCenter() {
 <div class="raceActions">
 
     <button
-        class="btn-secondary"
+        class="btn-nsc"
         onclick="window.openRaceResult()">
-
-        🏆 Resultado
-
+        Ver Resultado de la carrera ►
     </button>
 
 </div>
