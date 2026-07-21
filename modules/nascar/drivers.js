@@ -8,8 +8,8 @@ export async function createDrivers() {
     const top5 = drivers.slice(0, 5);
 
     return `
-        <section class="raceCenter">
-        <h2>Campeonato de pilotos</h2>
+        <section class="driversCard">
+        <h2 class="h2-NSC">Campeonato de pilotos</h2>
          
 
             <div class="driver-header">
@@ -29,13 +29,15 @@ export async function createDrivers() {
                     </div>
                 `).join("")}
 
-            </div>
-
             <button
                 class="btn-nsc"
                 onclick="window.openDriverStandings()">
                 Ver campeonato completo ▼
             </button>
+            
+            </div>
+
+
         </section>
     `;
 
@@ -49,7 +51,7 @@ window.openDriverStandings = async () => {
             <div class="driver-header">
                 <span>POS</span>
                 <span>N°</span>
-                <span>DRIVER</span>
+                <span>PILOTO</span>
                 <span>PTS</span>
             </div>
         
