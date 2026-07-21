@@ -124,19 +124,19 @@ background:linear-gradient(
 }
 
 
-.cup.active{
+#btn-nsc-01 .active{
 
     box-shadow:0 0 14px #ffd44d;
 
 }
 
-.xfinity.active{
+#btn-nsc-02 .active{
 
     box-shadow:0 0 14px #d91f3b;
 
 }
 
-.truck.active{
+#btn-nsc-03 .active{
 
     box-shadow:0 0 14px #2196f3;
 
