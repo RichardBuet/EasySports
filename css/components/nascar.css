@@ -142,7 +142,28 @@ background:linear-gradient(
     box-shadow:0 0 14px #2196f3;
 
 }
-   
+
+
+
+#nascar-selector button.active[data-series="1"]{
+
+    box-shadow:0 0 14px #FFD54A;
+
+}
+
+#nascar-selector button.active[data-series="2"]{
+
+    box-shadow:0 0 14px #D91F3B;
+
+}
+
+#nascar-selector button.active[data-series="3"]{
+
+    box-shadow:0 0 14px #2196F3;
+
+}
+
+
 .nascarHeroOverlay{
    position: absolute;
    inset: 0;
