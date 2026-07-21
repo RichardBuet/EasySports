@@ -10,9 +10,9 @@ export async function createCalendarCard() {
 
     return `
 
-    <section class="raceCenter"">
+    <section class="calendarCard"">
 
-        <h2>Schedule</h2>
+        <h2 class="h2-NSC">Schedule</h2>
 
         ${previous.map(race => `
             <div class="calendarItem completed">
