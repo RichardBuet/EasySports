@@ -142,6 +142,8 @@
 .calendar-row.current, .driver-row.current {
     border-left: 4px solid var(--accent);
     background: rgba(255,255,255,.06);
+        background: var(--bg);
+    border-radius: 6px;
 }
 
 .driver-row span:nth-child(2){
