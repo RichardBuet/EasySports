@@ -101,11 +101,11 @@ button {
 .nascar-selector{
    display: flex;
    justify-content: space-between;
+   gap: 2vw;
 }
 
 .nascar-selector button img{
-    height: 3em;
-    width: 20vw;
+    height: 3.3em;
     display: block;
     padding: 3px 10px;
 }
@@ -129,45 +129,36 @@ background:linear-gradient(
     #111
 );
    border: 1px solid var(--border);
+   display: flex;
+   justify-content: center;
+   width: -webkit-fill-available;
 }
 
 
 #btn-nsc-01 .active{
-
     box-shadow:0 0 14px #ffd44d;
-
 }
 
 #btn-nsc-02 .active{
-
     box-shadow:0 0 14px #d91f3b;
-
 }
 
 #btn-nsc-03 .active{
-
     box-shadow:0 0 14px #2196f3;
-
 }
 
 
 
 #nascar-selector button.active[data-series="1"]{
-
     box-shadow:0 0 14px #FFD54A;
-
 }
 
 #nascar-selector button.active[data-series="2"]{
-
     box-shadow:0 0 14px #D91F3B;
-
 }
 
 #nascar-selector button.active[data-series="3"]{
-
     box-shadow:0 0 14px #2196F3;
-
 }
 
 
