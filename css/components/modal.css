@@ -119,6 +119,13 @@
     gap:12px;
 }
 
+.calendar-row strong{
+    text-align: right;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
 .driver-row.current {
     border-left: 4px solid var(--accent);
     background: rgba(255,255,255,.06);
