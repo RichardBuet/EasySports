@@ -114,7 +114,10 @@
 .driver-header span:last-child{
     text-align:right;
 }
-
+.calendar-header span:last-child{
+    display: flex;
+    justify-content: center;
+}
 
 .driver-header,
 .driver-row{
@@ -130,6 +133,8 @@
     grid-template-columns:65px 1fr 1fr 40px;
     align-items:center;
     gap:12px;
+    padding: 12px 20px;
+    border-bottom: 1px solid #333;
 }
 
 
