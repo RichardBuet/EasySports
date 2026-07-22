@@ -35,7 +35,7 @@ function createCalendarContent(races, currentIndex) {
         <div class="driver-list">
             ${races.map((race, index) => `
                 <div
-                    class="driver-row ${index === currentIndex ? "current" : ""}"
+                    class="calendar-row ${index === currentIndex ? "current" : ""}"
                     id="race-${index}">
                     <span>${new Date(race.date).toLocaleDateString("en-US", {
                         day: "2-digit",
