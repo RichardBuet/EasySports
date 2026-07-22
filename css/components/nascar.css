@@ -16,6 +16,18 @@
    background-position: center;
 }
 
+.nascarHeroOverlay{
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg);
+   background-repeat: no-repeat;
+   background-position: right 0px center;
+   background-size: contain;
+   margin: 26px;
+   opacity: 0.48;
+   pointer-events: none;
+}
+
 .nascarHeroContent{
    position: relative;
    z-index: 2;
@@ -29,19 +41,20 @@
 .heroCategory{
    display: inline-block;
    margin-bottom: 12px;
-   padding: 5px 6px;
-   /*border-radius: var(--radius-sm);
-   background: var(--sport-primary);
-   /*color: #000;*/
-   border-radius: 1.5px solid #ffffff;
-   color: #ffffff;
+   color: var(--text-color);
    font-weight: 700;
    text-transform: uppercase;
+   padding: 6px 10px;
+   background: rgba(255, 255, 255, .08);
+   border: 1px solid rgba(255, 255, 255, .12);
+   border-radius: 999px;
+   backdrop-filter: blur(10px);
+   font-size: clamp(0.9rem, 1.7vw, 3rem);
 }
 
 .nascarHero h1{
    margin: 0 0 12px;
-   font-size: 2rem;
+   font-size: clamp(1.5rem, 4.6vw, 4rem);
    line-height: 1.1;
 }
 
@@ -105,7 +118,7 @@ button {
 }
 
 .nascar-selector button img{
-    height: 3.3em;
+    max-height: 5em;
     display: block;
     padding: 3px 10px;
 }
@@ -150,29 +163,18 @@ background:linear-gradient(
 
 
 #nascar-selector button.active[data-series="1"]{
-    box-shadow:0 0 14px #FFD54A;
+    box-shadow:0 0 14px #bfbfbf;
 }
 
 #nascar-selector button.active[data-series="2"]{
-    box-shadow:0 0 14px #D91F3B;
+    box-shadow:0 0 14px #009d57;
 }
 
 #nascar-selector button.active[data-series="3"]{
-    box-shadow:0 0 14px #2196F3;
+    box-shadow:0 0 14px #de1e26;
 }
 
 
-.nascarHeroOverlay{
-   position: absolute;
-   inset: 0;
-   background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg);
-   background-repeat: no-repeat;
-   background-position: right 0px center;
-   background-size: contain;
-   margin: 26px;
-   opacity: 0.48;
-   pointer-events: none;
-}
 
 
 /* ========================================
