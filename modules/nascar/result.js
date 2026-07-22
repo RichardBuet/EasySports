@@ -7,7 +7,7 @@ window.openRaceResult = async () => {
 
     openModal({
 
-        title: "Race Result",
+        title: "Resultado de la carrera",
 
         content: await createRaceResultContent(race)
 
@@ -22,37 +22,37 @@ async function createRaceResultContent(race){
         <div class="live-summary">
 
             <div class="live-item">
-                <span>📍 Circuito</span>
+                <span>📍 Circuito:</span>
                 <strong>${race.track}</strong>
             </div>
 
             <div class="live-item">
-                <span>🥇 Ganador</span>
+                <span>🥇 Ganador:</span>
                 <strong>${race.winner} (#${race.car})</strong>
             </div>
 
             <div class="live-item">
-                <span>🏎 Marca</span>
+                <span>🏎️ Marca:</span>
                 <strong>${race.manufacturer}</strong>
             </div>
 
             <div class="live-item">
-                <span>👥 Equipo</span>
+                <span>👥 Equipo:</span>
                 <strong>${race.team}</strong>
             </div>
 
             <div class="live-item">
-                <span>⚠ Amarillas</span>
+                <span>🟡 Banderas Amarillas:</span>
                 <strong>${race.cautions}</strong>
             </div>
 
             <div class="live-item">
-                <span>⚡ Velocidad Promedio</span>
+                <span>⚡ Velocidad Promedio:</span>
                 <strong>${race.averageSpeed} mph</strong>
             </div>
 
             <div class="live-item">
-                <span>🏆 Margen</span>
+                <span>🏆 Margen del ganador:</span>
                 <strong>${race.margin} s</strong>
             </div>
 
@@ -64,7 +64,7 @@ async function createRaceResultContent(race){
 
             <span>#</span>
 
-            <span>DRIVER</span>
+            <span>PILOTOS</span>
 
             <span>PTS</span>
 
