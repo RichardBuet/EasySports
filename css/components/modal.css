@@ -139,7 +139,7 @@
 
 
 
-.driver-row.current {
+.calendar-row.current, .driver-row.current {
     border-left: 4px solid var(--accent);
     background: rgba(255,255,255,.06);
 }
