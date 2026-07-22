@@ -208,7 +208,7 @@ background:linear-gradient(
     border-radius: var(--radius);
     margin-top: 20px;
     padding: 5px 0;
-    background: var(--secondary-color);
+    background: var(--text-secondary);
     box-shadow: var(--shadow);
 }
 
