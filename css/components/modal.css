@@ -69,8 +69,14 @@
     border-bottom:1px solid #333;
 }
 
-.driver-row:hover{
+.calendar-row, .driver-row:hover{
     background:#2b2b2b;
+}
+
+
+.calendar-row, .driver-row span:first-child{
+    color:#f4c542;
+    font-weight:700;
 }
 
 .driver-row strong{
@@ -78,11 +84,13 @@
     color:#ffffff;
 }
 
-.driver-row span:first-child{
-    color:#f4c542;
-    font-weight:700;
+.calendar-row strong{
+    text-align: right;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
 }
-.driver-header{
+.calendar-header, .driver-header{
     display:grid;
     /* grid-template-columns:50px 50px 1fr 70px; */
     gap:12px;
@@ -119,12 +127,7 @@
     gap:12px;
 }
 
-.calendar-row strong{
-    text-align: right;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-}
+
 
 .driver-row.current {
     border-left: 4px solid var(--accent);
