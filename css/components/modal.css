@@ -74,7 +74,12 @@
 }
 
 
-.calendar-row, .driver-row span:first-child{
+.driver-row span:first-child{
+    color:#f4c542;
+    font-weight:700;
+}
+
+.calendar-row span:first-child{
     color:#f4c542;
     font-weight:700;
 }
