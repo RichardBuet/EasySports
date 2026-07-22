@@ -23,7 +23,6 @@ window.openRaceCalendar = async () => {
 };
 
 function createCalendarContent(races, currentIndex) {
-
     return `
         <div class="calendar-header">
             <span>FECHA</span>
