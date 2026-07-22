@@ -29,8 +29,8 @@
    /*border-radius: var(--radius-sm);
    background: var(--sport-primary);
    /*color: #000;*/
-   border-radius: 1px solid white;
-   color: white;
+   border-radius: 1.5px solid #ffffff;
+   color: #ffffff;
    font-weight: 700;
    text-transform: uppercase;
 }
