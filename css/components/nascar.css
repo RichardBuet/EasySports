@@ -102,7 +102,7 @@
 }
 
 .container{
-   margin:auto;
+   /* margin:auto; */
    padding:20px 20px 5px 20px;
 }
 
@@ -114,15 +114,16 @@ button {
 }
 
 .nascar-selector{
-   display: flex;
-   justify-content: space-between;
-   gap: 2vw;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .nascar-selector button img{
-    max-height: 5em;
-    display: block;
-    padding: 3px 10px;
+   max-height: 5em;
+   display: block;
+   padding: 3px 10px;
+   background: linear-gradient(180deg, #1f1f1f, #111);
 }
 
 /*
@@ -130,19 +131,10 @@ button {
 #btn-nsc-02{background:#E4002B}
 #btn-nsc-03{background:#0066B3}
 var(--series-color);
-
-
-#btn-nsc-01{box-shadow:0 0 15px #FFB300}
-#btn-nsc-02{box-shadow:0 0 15px #E4002B}
-#btn-nsc-03{box-shadow:0 0 15px #0066B3}
 */
 
 #btn-nsc-01,#btn-nsc-02,#btn-nsc-03{
-background:linear-gradient(
-    180deg,
-    #1f1f1f,
-    #111
-);
+   background:linear-gradient(180deg, #1f1f1f, #111);
    border: 1px solid var(--border);
    display: flex;
    justify-content: center;
@@ -150,17 +142,9 @@ background:linear-gradient(
 }
 
 
-#btn-nsc-01 .active{
-    box-shadow:0 0 14px #ffd44d;
-}
-
-#btn-nsc-02 .active{
-    box-shadow:0 0 14px #d91f3b;
-}
-
-#btn-nsc-03 .active{
-    box-shadow:0 0 14px #2196f3;
-}
+#btn-nsc-01 .active{ box-shadow:0 0 14px #ffd44d;}
+#btn-nsc-02 .active{ box-shadow:0 0 14px #d91f3b;}
+#btn-nsc-03 .active{ box-shadow:0 0 14px #2196f3;}
 
 
 
@@ -196,7 +180,7 @@ background:linear-gradient(
 
 
 .h2-NSC{
-   font-size: 1.1rem;
+    font-size: 1.1rem;
     color: var(--sport-secondary);
     text-transform: uppercase;
     letter-spacing: .08em;
