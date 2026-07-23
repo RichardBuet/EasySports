@@ -145,7 +145,7 @@
     animation:pulse 1.2s infinite;
 }
 
-.calendar-row.current::after { content: " ⭐";}
+.calendar-row.current strong::before{ content: " ⭐";}
 
 .driver-row span:nth-child(2){
     display:-webkit-box;
