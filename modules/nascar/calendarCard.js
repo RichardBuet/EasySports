@@ -7,12 +7,15 @@ export async function createCalendarCard() {
     const previous = timeline.previous;
     const current = timeline.current;
     const next = timeline.next;
-
+                    // ·
+                    // Ganó ${race.winner || "-"}
+        // <hr>
+    
     return `
 
     <section class="calendarCard"">
 
-        <h2 class="h2-NSC">Schedule</h2>
+        <h2 class="h2-NSC" style=" border-bottom: 1px solid #333;">Schedule</h2>
 
         ${previous.map(race => `
             <div class="calendarItem completed">
@@ -20,13 +23,14 @@ export async function createCalendarCard() {
                 <span>(Finalizada)</span>
                 <small>
                     ${formatDate(race.date)}
-                    ·
-                    Ganó ${race.winner || "-"}
+
+
+
                 </small>
             </div>
         `).join("")}
 
-        <hr>
+
 
         <div class="calendarItem current">
             <strong>⭐ ${current.track}</strong>
@@ -38,7 +42,7 @@ export async function createCalendarCard() {
             </small>
         </div>
 
-        <hr>
+
 
         ${next.map(race => `
             <div class="calendarItem next">
