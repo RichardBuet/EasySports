@@ -37,8 +37,8 @@ function createCalendarContent(races, currentIndex) {
                     class="calendar-row ${index === currentIndex ? "current" : ""}"
                     id="race-${index}">
                     <span>${new Date(race.date).toLocaleDateString("en-US", {
-                        day: "2-digit",
-                        month: "short"
+                        month: "short",
+                        day: "2-digit"
                     })}</span>
                     <span>${race.name}</span>
                     <span>${race.track}</span>
