@@ -118,13 +118,29 @@ button {
     justify-content: space-between;
     gap: 16px;
 }
-
+/*
 .nascar-selector button img{
    max-height: 5em;
    display: block;
    padding: 3px 10px;
    background: linear-gradient(180deg, #1f1f1f, #111);
 }
+*/
+
+.nascar-selector button{
+    min-height: clamp(60px, 8vw, 90px);
+}
+
+.nascar-selector button img{
+    display: block;
+   height: clamp(42px, 5vw, 72px);
+    width: auto;
+    object-fit: contain;
+background: linear-gradient(180deg, #1f1f1f, #111);
+}
+
+
+
 
 /*
 #btn-nsc-01{background:#FFB300}
