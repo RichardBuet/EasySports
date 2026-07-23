@@ -67,12 +67,13 @@
 .heroMeta{
     display: flex;
     flex-wrap: nowrap;
+   width: 100%;
     gap: 8px;
     margin-right: 15px;
     margin-top: 24px;
     justify-content: space-between;
 }
-
+/*
 .heroItem{
     display: flex;
     align-items: center;
@@ -86,6 +87,27 @@
     width: stretch;
     justify-content: center;
 }
+*/
+
+.heroItem{
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+}
+
 
 .heroItem span{
    font-size: clamp(0.62rem, 1.35vw, 2.4rem);
