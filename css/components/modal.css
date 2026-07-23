@@ -137,8 +137,6 @@
     border-bottom: 1px solid #333;
 }
 
-
-
 .calendar-row.current, .driver-row.current {
     border-left: 4px solid var(--accent);
     background: rgba(255,255,255,.06);
@@ -147,9 +145,12 @@
     animation:pulse 1.2s infinite;
 }
 
+.calendar-row.current::after { content: " ⭐";}
+
 .driver-row span:nth-child(2){
     display:-webkit-box;
     -webkit-line-clamp:2;
     -webkit-box-orient:vertical;
     overflow:hidden;
 }
+
