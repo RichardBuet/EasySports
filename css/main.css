@@ -37,6 +37,8 @@
 @import "components/hero.css";
 @import "components/raceCenter.css";
 
+@import "./components/nascarDriverModal.css";
+
 /* ===================================
    WIDGETS DEL DASHBOARD
 =================================== */
