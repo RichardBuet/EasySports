@@ -1,7 +1,7 @@
 import { openModal } from "../components/modal.js";
 
 export function showDriverModal(driver) {
-
+    console.log(driver.profile);
     openModal({
 
         title: driver.driver,
