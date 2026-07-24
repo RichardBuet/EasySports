@@ -10,7 +10,7 @@ window.openRaceResult = async () => {
         title: "Resultado de la carrera",
 
         content: await createRaceResultContent(race)
-
+console.log(race.leaderboard[0]);
     });
 
 };
