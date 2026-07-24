@@ -56,7 +56,7 @@ function renderStats(driver) {
 
 function renderProfile(driver) {
     return `
-        <section class="driver-profile"
+        <section class="driver-profile">
             <h3>Perfil</h3>
             <div class="driver-grid">
                 <span>Equipo</span>
