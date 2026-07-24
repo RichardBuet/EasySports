@@ -7,7 +7,9 @@ export function adaptNascarWeekend(data) {
         .sort((a, b) => a.finishing_position - b.finishing_position);
 
     const winner = results[0] ?? {};
-
+    
+    console.dir(results[0]);
+    
     return {
 
         raceId: race.race_id,
