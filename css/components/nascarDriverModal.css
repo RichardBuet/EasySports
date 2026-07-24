@@ -3,46 +3,36 @@
 ========================================================== */
 
 .driver-modal-header{
-
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:30px;
-
     padding:24px;
-
 }
 
 .driver-info{
-
     flex:1;
-
 }
 
 .driver-info h2{
-
+    color: var(--secondary-color);
     margin:0 0 10px;
     font-size:2rem;
     font-weight:700;
     line-height:1.2;
-
 }
 
 .driver-info p{
-
     margin:8px 0;
     color:#cfcfcf;
     font-size:.95rem;
-
 }
 
 .driver-photo{
-
     width:220px;
     max-width:35%;
     object-fit:contain;
     flex-shrink:0;
-
 }
 
 
@@ -52,23 +42,16 @@
 
 .driver-stats,
 .driver-profile{
-
     padding:22px 24px;
-
     border-top:1px solid rgba(255,255,255,.08);
-
 }
 
 .driver-stats h3,
 .driver-profile h3{
-
     margin:0 0 18px;
-
     color:#FFD54A;
-
     font-size:1.1rem;
     font-weight:600;
-
 }
 
 
@@ -77,28 +60,19 @@
 ========================================================== */
 
 .driver-grid{
-
     display:grid;
-
     grid-template-columns:1fr auto;
-
     row-gap:12px;
     column-gap:25px;
-
 }
 
 .driver-grid span{
-
     color:#A9A9A9;
-
 }
 
 .driver-grid strong{
-
     color:#FFFFFF;
-
     justify-self:end;
-
 }
 
 
@@ -107,62 +81,39 @@
 ========================================================== */
 
 @media (max-width:700px){
-
     .driver-modal-header{
-
         flex-direction:column-reverse;
-
         text-align:center;
-
     }
 
     .driver-photo{
-
         max-width:220px;
         width:100%;
-
     }
 
     .driver-info{
-
         width:100%;
-
     }
 
 }
 
 .driver-link{
-
     cursor:pointer;
-
     transition:.2s;
-
 }
 
 .driver-link:hover{
-
     color:#FFD54A;
-
     text-decoration:underline;
-
 }
 
 .driver-number{
-
     display:inline-block;
-
     margin-bottom:12px;
-
     padding:4px 12px;
-
     border-radius:20px;
-
     background:#FFD54A;
-
     color:#111;
-
     font-weight:700;
-
     font-size:.9rem;
-
 }
