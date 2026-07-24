@@ -9,17 +9,11 @@ import "../modules/nascar/drivers.js";
 const app=document.getElementById("app");
 
 export async function refreshNascar(){
-
     app.innerHTML=await renderNascar();
-
     initSportsMenu();
-
     initNascarSelector();
-
 }
 
 document.addEventListener("DOMContentLoaded",async()=>{
-
     await refreshNascar();
-
 });
