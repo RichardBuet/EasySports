@@ -308,5 +308,16 @@ export class NASCAR {
         }));
 
     }
+
+    static async getDriver(driverId, series = state.nascarSeries) {
+    
+        const drivers = await this.getStandingsWithDrivers(series);
+    
+        return drivers.find(
+            driver => driver.driverId === Number(driverId)
+        ) ?? null;
+    
+    }
+
     
 }
