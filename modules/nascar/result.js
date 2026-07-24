@@ -10,13 +10,13 @@ window.openRaceResult = async () => {
         title: "Resultado de la carrera",
 
         content: await createRaceResultContent(race)
-console.log(race.leaderboard[0]);
+
     });
 
 };
 
 async function createRaceResultContent(race){
-
+console.log(race.leaderboard[0]);
     return `
 
         <div class="live-summary">
