@@ -28,6 +28,7 @@ export function adaptNascarWeekend(data) {
         averageSpeed: race.average_speed,
 
         leaderboard: results.map(driver => ({
+            driverId: driver.driver_id,
             position: driver.finishing_position,
             number: driver.car_number,
             driver: driver.driver_fullname,
