@@ -23,6 +23,7 @@ window.openRaceCalendar = async () => {
 };
 
 function createCalendarContent(races, currentIndex) {
+
     return `
         <div class="calendar-header">
             <span>FECHA</span>
@@ -32,21 +33,36 @@ function createCalendarContent(races, currentIndex) {
         </div>
 
         <div class="driver-list">
-            ${races.map((race, index) => `
-                <div
-                    class="calendar-row ${index === currentIndex ? "current" : ""}"
-                    id="race-${index}">
-                    <span>${new Date(race.date).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "2-digit"
-                    })}</span>
-                    <span>${race.name}</span>
-                    <span>${race.track}</span>
-                    <strong>
-                        ${race.completed ? "🏁" : "📅"}
-                    </strong>
-                </div>
-            `).join("")}
+            ${races.map((race, index) => {
+
+                const status =
+                    index === currentIndex
+                        ? { icon: "⭐", title: "Próxima carrera" }
+                        : race.completed
+                            ? { icon: "🏁", title: "Finalizada" }
+                            : { icon: "📅", title: "Programada" };
+
+                return `
+                    <div
+                        class="calendar-row ${index === currentIndex ? "current" : ""}"
+                        id="race-${index}">
+
+                        <span>${new Date(race.date).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "2-digit"
+                        })}</span>
+
+                        <span>${race.name}</span>
+
+                        <span>${race.track}</span>
+
+                        <strong title="${status.title}">
+                            ${status.icon}
+                        </strong>
+
+                    </div>
+                `;
+            }).join("")}
         </div>
     `;
 }
