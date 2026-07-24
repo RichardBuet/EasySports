@@ -80,7 +80,11 @@ console.log(race.leaderboard[0]);
 
                     <span>${driver.number}</span>
 
-                    <span>${driver.driver}</span>
+                    <span
+                        class="driver-link"
+                        data-driver-id="${driver.driverId}">
+                        ${driver.driver}
+                    </span>
 
                     <strong>${driver.points}</strong>
 
