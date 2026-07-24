@@ -1,5 +1,10 @@
 import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
+import { showDriverModal } from "./driverModal.js";
+
+
+
+
 
 export async function createDrivers() {
     // <div class="raceCenter">   </div>
@@ -24,7 +29,11 @@ export async function createDrivers() {
                     <div class="driver-row">
                         <span>#${driver.position}</span>
                         <span>${driver.number}</span>
-                        <span>${driver.driver}</span>
+                        <span
+                            class="driver-link"
+                            data-driver-id="${driver.driverId}">
+                            ${driver.driver}
+                        </span>
                         <strong>${driver.points}</strong>
                     </div>
                 `).join("")}
@@ -60,7 +69,11 @@ window.openDriverStandings = async () => {
                     <div class="driver-row">
                         <span>#${driver.position}</span>
                         <span>${driver.number}</span>
-                        <span>${driver.driver}</span>
+                        <span
+                            class="driver-link"
+                            data-driver-id="${driver.driverId}">
+                            ${driver.driver}
+                        </span>
                         <strong>${driver.points}</strong>
                     </div>
                 `).join("")}
@@ -70,3 +83,19 @@ window.openDriverStandings = async () => {
     });
 
 };
+
+document.addEventListener("click", async (event) => {
+
+    const link = event.target.closest(".driver-link");
+
+    if (!link) return;
+
+    const driver = await NASCAR.getDriver(
+        link.dataset.driverId
+    );
+
+    if (driver) {
+        showDriverModal(driver);
+    }
+
+});
