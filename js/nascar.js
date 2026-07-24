@@ -11,7 +11,7 @@ const app=document.getElementById("app");
 export async function refreshNascar(){
     app.innerHTML=await renderNascar();
     initSportsMenu();
-    initNascarSelector();
+    initNascarEvents();
 }
 
 document.addEventListener("DOMContentLoaded",async()=>{
