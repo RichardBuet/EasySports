@@ -2,7 +2,7 @@ import { openModal } from "../components/modal.js";
 
 export function showDriverModal(driver) {
     openModal({
-        title: "",
+        title: "Información de Piloto",
         content: `
             ${renderHeader(driver)}
             ${renderStats(driver)}
