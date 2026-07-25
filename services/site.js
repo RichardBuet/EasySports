@@ -55,7 +55,7 @@ export class NASCAR {
 
                       {
     icon: "🔴",
-    value: formatLiveSession(live.session),
+    value: live.sessionName,
     live: true
 }
 
@@ -322,18 +322,3 @@ export class NASCAR {
     
 }
 
-
-function formatLiveSession(session = "") {
-
-    if (session.includes("Practice"))
-        return "Practice";
-
-    if (session.includes("Qualifying"))
-        return "Pole Qualifying";
-
-    if (session.includes("Race"))
-        return "Race";
-
-    return "LIVE";
-
-}
