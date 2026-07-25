@@ -55,26 +55,55 @@ export function adaptNascarLive(data) {
 
         leaderboard: [...data.vehicles]
 
-            .sort((a, b) => a.running_position - b.running_position)
+    .sort((a, b) => a.running_position - b.running_position)
 
-            .map(car => ({
+    .map(car => ({
 
-                position: car.running_position,
-                number: car.vehicle_number,
-                driver: car.driver.full_name,
-                manufacturer: manufacturers[car.vehicle_manufacturer] ?? car.vehicle_manufacturer,
-                sponsor: car.sponsor_name,
+        position: car.running_position,
+        number: car.vehicle_number,
 
-                delta: car.delta,
+        driver: car.driver.full_name,
 
-                lastLap: car.last_lap_time,
-                bestLap: car.best_lap_time,
+        manufacturer: manufacturers[car.vehicle_manufacturer] ?? car.vehicle_manufacturer,
 
-                status: car.status,
-                lapsCompleted: car.laps_completed,
-                onTrack: car.is_on_track
+        sponsor: car.sponsor_name,
 
-            }))
+        delta: car.delta,
+
+        lastLap: car.last_lap_time,
+        lastLapSpeed: car.last_lap_speed,
+
+        bestLap: car.best_lap_time,
+        bestLapRank: car.best_lap,
+
+        averageSpeed: car.average_speed,
+        averageRunningPosition: car.average_running_position,
+
+        lapsCompleted: car.laps_completed,
+
+        lapsLed: car.laps_led.reduce(
+            (total, stint) => total + (stint.end_lap - stint.start_lap + 1),
+            0
+        ),
+
+        fastestLaps: car.fastest_laps_run,
+
+        startingPosition: car.starting_position,
+
+        positionGain: car.laps_position_improved,
+
+        passesMade: car.passes_made,
+        passingDifferential: car.passing_differential,
+
+        pitStops: car.pit_stops.length,
+
+        status: car.status,
+
+        onTrack: car.is_on_track,
+
+        onDVP: car.is_on_dvp
+
+    }))
 
     };
 
