@@ -16,13 +16,31 @@ export function adaptNascarLive(data) {
         9: "NO ACTIVO"
     };
 
-    return {
-        session: data.run_name,
-sessionType: data.run_type,
-        raceId: data.race_id,
-        lap: data.lap_number,
-        totalLaps: data.laps_in_race,
-        lapsToGo: data.laps_to_go,
+    const runTypes = {
+
+    1: "Practice",
+
+    2: "Qualifying",
+
+    3: "Race"
+
+};
+
+return {
+
+    session: data.run_name,
+
+    sessionType: data.run_type,
+
+    sessionName: runTypes[data.run_type] ?? "LIVE",
+
+    raceId: data.race_id,
+
+    lap: data.lap_number,
+
+    totalLaps: data.laps_in_race,
+
+    lapsToGo: data.laps_to_go,
         flag: flags[data.flag_state] ?? data.flag_state,
 
         leaderboard: [...data.vehicles]
