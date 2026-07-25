@@ -17,6 +17,8 @@ export function adaptNascarLive(data) {
     };
 
     return {
+        session: data.run_name,
+sessionType: data.run_type,
         raceId: data.race_id,
         lap: data.lap_number,
         totalLaps: data.laps_in_race,
