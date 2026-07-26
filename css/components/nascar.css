@@ -134,12 +134,12 @@ button {
 */
 
 .nascar-selector button{
-    min-height: clamp(60px, 8vw, 90px);
+    min-height: clamp(50px, 8vw, 90px);
 }
 
 .nascar-selector button img{
     display: block;
-   height: clamp(42px, 5vw, 72px);
+   height: clamp(34px, 5vw, 72px);
     width: auto;
     object-fit: contain;
 background: linear-gradient(180deg, #1f1f1f, #111);
