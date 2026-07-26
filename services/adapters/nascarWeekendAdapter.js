@@ -47,7 +47,20 @@ second: results[1]
             sponsor: driver.sponsor,
             started: driver.starting_position,
             lapsLed: driver.laps_led,
-            points: driver.points_earned
+            points: driver.points_earned,
+                gap:
+
+        driver.finishing_position === 1
+
+            ? "LIDER"
+
+            : driver.diff_laps > 0
+
+                ? `+${driver.diff_laps} Lap${driver.diff_laps > 1 ? "s" : ""}`
+
+                : `+${(driver.diff_time / 1000).toFixed(3)}`,
+
+    status: driver.finishing_status
         }))
 
     };
