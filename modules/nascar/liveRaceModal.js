@@ -19,7 +19,7 @@ export async function openLiveRaceModal() {
 
     clearInterval(refreshTimer);
 
-    refreshTimer = setInterval(refreshLiveModal, 10000);
+    refreshTimer = setInterval(refreshLiveModal, 50000);
 
 }
 
@@ -31,24 +31,24 @@ async function createLiveContent(live) {
 
         <div class="live-summary">
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>🏁 Lap</span>
                 <strong>${live.liveFeed.displayed_lap} / ${live.liveFeed.laps_in_race}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>🏳️ Flag</span>
                 <strong>${live.liveFeed.flag_state}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>⚡ Speed</span>
                 <strong>${live.liveFeed.series}</strong>
             </div>
 
         </div>
 
-        <div class="driver-header">
+        <div class="driver-header-full">
 
             <span>POS</span>
             <span>#</span>
@@ -59,7 +59,7 @@ async function createLiveContent(live) {
 
         </div>
 
-        <div class="driver-list">
+        <div class="driver-list-full">
 
             ${live.pitData.map(driver => {
 
@@ -69,7 +69,7 @@ async function createLiveContent(live) {
 
                 return `
 
-                    <div class="driver-row">
+                    <div class="driver-row-full">
 
                         <span>${driver.running_position}</span>
 
