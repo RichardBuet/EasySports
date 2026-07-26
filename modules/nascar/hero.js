@@ -2,9 +2,31 @@ import { NASCAR } from "../../services/site.js";
 
 export async function createNascarHero() {
 
-    const hero = await NASCAR.getHeroData();
+    const heroState = await NASCAR.getHeroState();
+
+const hero = heroState.data;
+    
     const seriesName = NASCAR.getSeriesName();
 
+let heroCategory = `🏁 ${seriesName}`;
+
+switch (heroState.state) {
+
+    case "TODAY":
+        heroCategory = `🔥 ${seriesName} · HOY HAY CARRERA`;
+        break;
+
+    case "LIVE":
+        heroCategory = `🔴 ${seriesName} · EN VIVO`;
+        break;
+
+    case "FINISHED":
+        heroCategory = `🏁 ${seriesName} · CARRERA FINALIZADA`;
+        break;
+
+}
+
+    
     const date = new Date(hero.date);
 
     const raceDate = date.toLocaleDateString(undefined, {
@@ -26,7 +48,7 @@ export async function createNascarHero() {
         <div class="nascarHeroContent">
 
             <span class="heroCategory">
-                ${seriesName}
+                ${heroCategory}
             </span>
 
             <h1>${hero.title}</h1>
