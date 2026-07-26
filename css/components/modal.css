@@ -61,12 +61,9 @@
 }
 
 .driver-row{
-    display:grid;
-    grid-template-columns:50px 50px 1fr 70px;
-    align-items:center;
-    gap:12px;
-    padding:12px 20px;
-    border-bottom:1px solid #333;
+    padding: 0 20px 8px 20px;
+    border-bottom: 1px solid #333;
+    height: 30px;
 }
 
 .calendar-row, .driver-row:hover{
@@ -122,12 +119,12 @@
 .driver-header,
 .driver-row{
     display:grid;
-    grid-template-columns: 50px 0.7fr 2.8fr 50px;
+    grid-template-columns: 40px 30px 1fr 48px 30px
     align-items:center;
     gap:12px;
 }
 
-.calendar-header,
+/* .calendar-header,
 .calendar-row{
     display:grid;
     grid-template-columns:30px 25px 2.5fr 1.3fr 20px;
@@ -136,7 +133,7 @@
     gap:12px;
     padding: 12px 20px;
     border-bottom: 1px solid #333;
-}
+} */
 
 .calendar-row.current, .driver-row.current {
     border-left: 4px solid var(--accent);
