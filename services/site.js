@@ -17,6 +17,7 @@ import { NASCARFlagData } from "./nascar/flagData.js";
 
 import { adaptNascarLiveRace } from "./adapters/nascarLiveRaceAdapter.js";
 
+import { fetchJSON } from "./shared/fetch.js";
 
 export class NASCAR {
 
