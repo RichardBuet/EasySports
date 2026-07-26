@@ -73,34 +73,16 @@
     margin-top: 24px;
     justify-content: space-between;
 }
-/*
-.heroItem{
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 6px 0 6px 1px;
-    background: rgba(255, 255, 255, .08);
-    border: 1px solid rgba(255, 255, 255, .12);
-    border-radius: 999px;
-    backdrop-filter: blur(10px);
-    font-size: clamp(0.65rem, 1.4vw, 2.5rem);
-    width: stretch;
-    justify-content: center;
-}
-*/
 
 .heroItem{
     flex: 1 1 0;
     display: flex;
     justify-content: center;
     align-items: center;
-
     gap: 6px;
-
     padding: 6px;
     white-space: nowrap;
     overflow: hidden;
-
     background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.12);
     border-radius: 999px;
@@ -117,6 +99,8 @@
    font-weight:600;
    color:var(--text);
 }
+
+
 
 .heroStatus{
    background:rgba(22,163,74,.18);
