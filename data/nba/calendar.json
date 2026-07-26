@@ -1,1 +1,47 @@
+    static async getLiveRaceData() {
 
+        try {
+    
+            const live = await this.getLiveRace();
+    
+            const raceId = live.raceId;
+    
+            const series = state.nascarSeries;
+    
+            const [
+                liveFeed,
+                lapTimes,
+                pitData,
+                flagData
+            ] = await Promise.all([
+    
+                NASCARLive.getLiveRace(),
+    
+                NASCARLapTimes.getLapTimes(raceId, series),
+    
+                NASCARPitData.getPitData(raceId, series),
+    
+                NASCARFlagData.getFlagData(raceId, series)
+    
+            ]);
+    
+            const data = adaptNascarLiveRace(
+                liveFeed,
+                lapTimes,
+                pitData,
+                flagData
+            );
+    
+            console.log(data);
+    
+            return data;
+    
+        } catch (error) {
+    
+            console.error(error);
+    
+            throw error;
+    
+        }
+    
+    }
