@@ -1,5 +1,7 @@
 import { NASCAR } from "../../services/site.js";
+import { openLiveRaceModal } from "./liveRaceModal.js";
 
+//                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
 export async function createNascarHero() {
 
     const heroState = await NASCAR.getHeroState();
@@ -58,7 +60,8 @@ switch (heroState.state) {
             ${hero.meta.map(item => `
             <div
                 class="heroItem ${item.live ? "heroLive" : ""}"
-                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
+
+                ${item.live ? 'onclick="window.openLiveRaceModal()"' : ""}>
                 <span>${item.icon}</span>
                 <strong>${item.value}</strong>
             </div>
