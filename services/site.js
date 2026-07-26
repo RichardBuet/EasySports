@@ -322,3 +322,52 @@ export class NASCAR {
     
 }
 
+static async getHeroState(series) {
+
+    const [hero, races] = await Promise.all([
+        this.getHeroData(series),
+        this.getRaceList(series)
+    ]);
+
+    const currentRace = races.find(r => r.current);
+    const nextRace = races.find(r => !r.completed);
+
+    // Existe una carrera en vivo
+    if (hero.live && hero.live.lapsToGo > 0) {
+
+        return {
+            state: "LIVE",
+            data: hero
+        };
+
+    }
+
+    // Hoy hay carrera
+    if (nextRace) {
+
+        const today = new Date();
+        const raceDate = new Date(nextRace.date);
+
+        const isToday =
+            today.getFullYear() === raceDate.getFullYear() &&
+            today.getMonth() === raceDate.getMonth() &&
+            today.getDate() === raceDate.getDate();
+
+        if (isToday) {
+
+            return {
+                state: "TODAY",
+                data: hero
+            };
+
+        }
+
+    }
+
+    // Próxima carrera
+    return {
+        state: "UPCOMING",
+        data: hero
+    };
+
+}
