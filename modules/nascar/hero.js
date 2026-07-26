@@ -1,5 +1,5 @@
 import { NASCAR } from "../../services/site.js";
-import { openLiveRaceModal } from "./liveRaceModal.js";
+//import { openLiveRaceModal } from "./liveRaceModal.js";
 
 //                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
 export async function createNascarHero() {
