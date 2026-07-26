@@ -61,7 +61,7 @@ switch (heroState.state) {
             <div
                 class="heroItem ${item.live ? "heroLive" : ""}"
 
-                ${item.live ? 'onclick="openLiveRaceModal()"' : ""}>
+                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
                 <span>${item.icon}</span>
                 <strong>${item.value}</strong>
             </div>
