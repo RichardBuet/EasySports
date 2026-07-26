@@ -117,38 +117,62 @@ export class NASCAR {
 
     }
 
-    static async getRaceCenterData() {
+static async getRaceCenterData() {
 
-        const race = await this.getLastRace();
+    const race = await this.getLastRace();
+    const weekend = await this.getWeekend(race.raceId);
 
-        return {
+    return {
 
-            type: "last",
+        type: "last",
 
-            title: race.name,
+        title: race.name,
 
-            winner: {
+        date: new Date(race.date).toLocaleDateString(undefined, {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        }),
 
-                name: "",
+        track: race.track,
 
-                number: "",
+        winner: {
 
-                team: ""
+            ...weekend.winner
 
+        },
+
+        second: weekend.second,
+
+        margin: weekend.margin,
+
+        meta: [
+
+            {
+                icon: "🏁",
+                value: `${race.actualLaps} / ${race.scheduledLaps} Laps`
             },
 
-            meta: [
+            {
+                icon: "🟡",
+                value: `${weekend.cautions} amarillas`
+            },
 
-                {
-                    icon: "🏁",
-                    value: `${race.actualLaps} / ${race.scheduledLaps} Laps`
-                }
+            {
+                icon: "🚧",
+                value: `${weekend.cautionLaps} vueltas`
+            },
 
-            ]
+            {
+                icon: "💨",
+                value: `${weekend.averageSpeed} mph`
+            }
 
-        };
+        ]
 
-    }
+    };
+
+}
 
     static async getLiveRace() {
 
