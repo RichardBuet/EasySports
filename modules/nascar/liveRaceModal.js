@@ -6,13 +6,14 @@ export async function openLiveRaceModal() {
 
         const live = await NASCAR.getLiveRaceData();
 
-        console.log("LIVE RACE");
         console.log(live);
 
     } catch (error) {
 
-        console.error("Error cargando Live Race:", error);
+        console.error(error);
 
     }
 
 }
+
+window.openLiveRace = openLiveRaceModal;
