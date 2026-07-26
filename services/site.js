@@ -384,4 +384,49 @@ static async getRaceCenterData() {
         };
 
     }
+
+
+    static async getLiveRaceData() {
+
+        const live = await this.getLiveRace();
+    
+        const raceId = live.raceId;
+    
+        const series = state.nascarSeries;
+    
+        const [
+    
+            liveFeed,
+            lapTimes,
+            pitData,
+            flagData
+    
+        ] = await Promise.all([
+    
+            NASCARLive.getLiveRace(),
+    
+            NASCARLapTimes.getLapTimes(raceId, series),
+    
+            NASCARPitData.getPitData(raceId, series),
+    
+            NASCARFlagData.getFlagData(raceId, series)
+    
+        ]);
+    
+        return adaptNascarLiveRace(
+    
+            liveFeed,
+            lapTimes,
+            pitData,
+            flagData
+    
+        );
+    
+    }
+
+
+
+
+
+    
 }
