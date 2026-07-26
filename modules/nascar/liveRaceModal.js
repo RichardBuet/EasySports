@@ -29,7 +29,7 @@ async function createLiveContent(live) {
 
     return `
 
-        <div class="live-summary">
+        <div class="live-summary-full">
 
             <div class="live-item-full">
                 <span>🏁 Lap</span>
