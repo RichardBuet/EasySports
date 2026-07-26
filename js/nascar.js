@@ -5,7 +5,7 @@ import "../modules/nascar/live.js";
 import "../modules/nascar/calendar.js";
 import "../modules/nascar/result.js";
 import "../modules/nascar/drivers.js";
-
+import "../modules/nascar/liveRaceModal.js";
 const app=document.getElementById("app");
 
 export async function refreshNascar(){
