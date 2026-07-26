@@ -389,39 +389,49 @@ static async getRaceCenterData() {
 
     static async getLiveRaceData() {
 
-        const live = await this.getLiveRace();
+        try {
     
-        const raceId = live.raceId;
+            const live = await this.getLiveRace();
     
-        const series = state.nascarSeries;
+            const raceId = live.raceId;
     
-        const [
+            const series = state.nascarSeries;
     
-            liveFeed,
-            lapTimes,
-            pitData,
-            flagData
+            const [
+                liveFeed,
+                lapTimes,
+                pitData,
+                flagData
+            ] = await Promise.all([
     
-        ] = await Promise.all([
+                NASCARLive.getLiveRace(),
     
-            NASCARLive.getLiveRace(),
+                NASCARLapTimes.getLapTimes(raceId, series),
     
-            NASCARLapTimes.getLapTimes(raceId, series),
+                NASCARPitData.getPitData(raceId, series),
     
-            NASCARPitData.getPitData(raceId, series),
+                NASCARFlagData.getFlagData(raceId, series)
     
-            NASCARFlagData.getFlagData(raceId, series)
+            ]);
     
-        ]);
+            const data = adaptNascarLiveRace(
+                liveFeed,
+                lapTimes,
+                pitData,
+                flagData
+            );
     
-        return adaptNascarLiveRace(
+            console.log(data);
     
-            liveFeed,
-            lapTimes,
-            pitData,
-            flagData
+            return data;
     
-        );
+        } catch (error) {
+    
+            console.error(error);
+    
+            throw error;
+    
+        }
     
     }
 
