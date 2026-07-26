@@ -391,14 +391,8 @@ static async getRaceCenterData() {
 
 
     static async getLiveRaceData() {
-
+    
         try {
-    
-            const live = await this.getLiveRace();
-    
-            const raceId = live.raceId;
-    
-            const series = state.nascarSeries;
     
             const [
                 liveFeed,
@@ -407,13 +401,13 @@ static async getRaceCenterData() {
                 flagData
             ] = await Promise.all([
     
-                NASCARLive.getLiveRace(),
+                fetchJSON("/data/nascar/live/liveFeed.json"),
     
-                NASCARLapTimes.getLapTimes(raceId, series),
+                fetchJSON("/data/nascar/live/lapTimes.json"),
     
-                NASCARPitData.getPitData(raceId, series),
+                fetchJSON("/data/nascar/live/pitData.json"),
     
-                NASCARFlagData.getFlagData(raceId, series)
+                fetchJSON("/data/nascar/live/flagData.json")
     
             ]);
     
