@@ -20,52 +20,49 @@ export class NASCAR {
 
         const live = await this.getLiveRace();
 
-        if (live.lap > 0 && live.flag !== "NO ACTIVO") {
+if (live.lap > 0 && live.flag !== "NO ACTIVO") {
 
-            const event = await this.getRaceById(live.raceId);
+    const event = await this.getRaceById(live.raceId);
 
-            if (event) {
+    if (event && event.series === state.nascarSeries) {
 
-                const seriesName = {
-                    1: "Cup Series",
-                    2: "O'Reilly Series",
-                    3: "Craftsman Truck Series"
-                };
+        const seriesName = {
+            1: "Cup Series",
+            2: "O'Reilly Series",
+            3: "Craftsman Truck Series"
+        };
 
-                return {
+        return {
 
-                    type: "live",
+            type: "live",
 
-                    title: event.race.name.length > 35
-                        ? event.race.name.substring(0, 35).trim() + "..."
-                        : event.race.name,
-                    
-                    subtitle: event.race.track.length > 31
-                        ? event.race.track.substring(0, 31).trim() + "..."
-                        : event.race.track,
+            title: event.race.name.length > 35
+                ? event.race.name.substring(0, 35).trim() + "..."
+                : event.race.name,
 
-                    image: null,
+            subtitle: event.race.track.length > 31
+                ? event.race.track.substring(0, 31).trim() + "..."
+                : event.race.track,
 
-                    meta: [
+            image: null,
 
-                        {
-                            icon: "🏁",
-                            value: seriesName[event.series]
-                        },
+            meta: [
+                {
+                    icon: "🏁",
+                    value: seriesName[event.series]
+                },
+                {
+                    icon: "🔴",
+                    value: live.sessionName,
+                    live: true
+                }
+            ]
 
-                      {
-    icon: "🔴",
-    value: live.sessionName,
-    live: true
+        };
+
+    }
+
 }
-
-                    ]
-
-                };
-
-            }
-
-        }
 
         const race = await this.getNextRace();
 
