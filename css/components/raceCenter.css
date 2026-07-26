@@ -1,21 +1,13 @@
-/* .raceCenter{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-.raceCenter h2{
-    font-size:1.1rem;
-    color:var(--sport-secondary);
-    text-transform:uppercase;
-    letter-spacing:.08em;
-    margin: 0;
-} */
-
 .raceCenter h3{
     font-size:1.6rem;
     font-weight:700;
     margin: 0;
+}
+
+.raceInfo{
+    display: flex;
+    flex-direction: column;
+    margin: 4px 0px;
 }
 
 .raceWinner{
@@ -25,20 +17,28 @@
     flex-wrap:wrap;
 }
 
+.winnerHeader{ 
+    padding: 4px 8px;
+}
+
 .raceWinner strong{
-    font-size:1.15rem;
+    font-size: 1.05rem;
+    background: var(--sport-primary);
+    color: var(--text);
+    padding: 4px 8px;
+    border-radius: 999px;
 }
 
 .raceWinner span{
-    background:var(--sport-primary);
-    color:#000;
-    padding:4px 10px;
-    border-radius:999px;
-    font-weight:700;
+    font-size: clamp(0.9rem, 1vw, 2.5rem);
+    color: var(--text-secondary);
+    padding: 0px 14px;
+    border-radius: 999px;
 }
 
 .raceWinner small{
-    color:var(--text-secondary);
+    color: var(--sport-primary);
+    border-bottom: double;
 }
 
 .raceMeta{
@@ -48,11 +48,18 @@
 }
 
 .raceMetaItem{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:10px 16px;
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 6px;
+    white-space: nowrap;
     border-radius:999px;
     background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.12);
 }
+
+.raceMetaItem span{ font-size: clamp(0.8rem, 1vw, 2.5rem); }
+.raceMetaItem strong{ font-size: clamp(0.8rem, 1vw, 2.5rem); }
+
