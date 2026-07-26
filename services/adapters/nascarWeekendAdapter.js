@@ -17,11 +17,21 @@ export function adaptNascarWeekend(data) {
         track: race.track_name,
         date: race.race_date,
 
-        winner: winner.driver_fullname ?? "",
-        car: winner.car_number ?? "",
-        manufacturer: winner.car_make ?? "",
-        team: winner.team_name ?? "",
-
+        winner: {
+    driverId: winner.driver_id,
+    name: winner.driver_fullname,
+    number: winner.car_number,
+    manufacturer: winner.car_make,
+    team: winner.team_name
+},
+second: results[1]
+    ? {
+        driverId: results[1].driver_id,
+        name: results[1].driver_fullname,
+        number: results[1].car_number
+    }
+    : null,
+        
         margin: race.margin_of_victory,
         cautions: race.number_of_cautions,
         cautionLaps: race.number_of_caution_laps,
