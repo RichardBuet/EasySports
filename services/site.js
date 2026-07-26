@@ -20,7 +20,7 @@ export class NASCAR {
 
         const live = await this.getLiveRace();
 
-if (live.lap > 0 && live.flag !== "NO ACTIVO") {
+    if (live.isLive) {
 
     const event = await this.getRaceById(live.raceId);
 
