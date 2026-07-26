@@ -41,7 +41,7 @@ export function adaptNascarLive(data) {
         lap: data.lap_number,
         totalLaps: data.laps_in_race,
         lapsToGo: data.laps_to_go,
-
+        flagState: data.flag_state,
         flag: flags[data.flag_state] ?? data.flag_state,
 
         stage: data.stage ? {
