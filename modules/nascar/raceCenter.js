@@ -1,5 +1,5 @@
 import { NASCAR } from "../../services/site.js";
-
+// tarjeta (1) de última carrera
 export async function createRaceCenter() {
 
     const raceCenter = await NASCAR.getRaceCenterData();
@@ -7,51 +7,92 @@ export async function createRaceCenter() {
     return `
         <section class="raceCenter">
 
-            <h2 class="h2-NSC">${raceCenter.type === "live" ? "🔴 Live Race" : "🏁 Última Carrera"}</h2>
+            <h2 class="h2-NSC">
+                ${raceCenter.type === "live"
+                    ? "🔴 Live Race"
+                    : "🏁 Última Carrera"}
+            </h2>
 
             <h3>${raceCenter.title}</h3>
 
-            ${raceCenter.winner?.name ? `
-                <div class="raceWinner">
+            ${raceCenter.date || raceCenter.track ? `
+                <div class="raceInfo">
 
-                    <strong>${raceCenter.winner.name}</strong>
+                    ${raceCenter.date
+                        ? `<span>📅 ${raceCenter.date}</span>`
+                        : ""}
 
-                    ${raceCenter.winner.number
-                        ? `<span>#${raceCenter.winner.number}</span>`
-                        : ""
-                    }
-
-                    ${raceCenter.winner.team
-                        ? `<small>${raceCenter.winner.team}</small>`
-                        : ""
-                    }
+                    ${raceCenter.track
+                        ? `<span>📍 ${raceCenter.track}</span>`
+                        : ""}
 
                 </div>
             ` : ""}
 
-  <div class="raceMeta">
+            ${raceCenter.winner?.name ? `
+                <div class="raceWinner">
 
-    ${raceCenter.meta.map(item => `
-        <div class="raceMetaItem">
+                    <div class="winnerHeader">
 
-            <span>${item.icon}</span>
+                        <strong>
+                            ${raceCenter.winner.number
+                                ? `#${raceCenter.winner.number}`
+                                : ""}
+                            ${raceCenter.winner.name}
+                        </strong>
 
-            <strong>${item.value}</strong>
+                        ${raceCenter.winner.manufacturerLogo
+                            ? `<img
+                                    src="${raceCenter.winner.manufacturerLogo}"
+                                    alt="${raceCenter.winner.manufacturer}"
+                               >`
+                            : ""}
 
-        </div>
-    `).join("")}
+                    </div>
 
-</div>
+                    ${raceCenter.winner.team
+                        ? `<small>${raceCenter.winner.team}</small>`
+                        : ""}
 
-<div class="raceActions">
+                    ${raceCenter.margin && raceCenter.second?.name
+                        ? `
+                            <span class="winnerMargin">
+                                +${raceCenter.margin}
+                                sobre ${raceCenter.second.name}
+                            </span>
+                        `
+                        : ""}
 
-    <button
-        class="btn-nsc"
-        onclick="window.openRaceResult()">
-        Ver Resultado de la carrera ►
-    </button>
+                </div>
+            ` : ""}
 
-</div>
+            <hr>
+
+            <div class="raceMeta">
+
+                ${raceCenter.meta.map(item => `
+                    <div class="raceMetaItem">
+
+                        <span>${item.icon}</span>
+
+                        <strong>${item.value}</strong>
+
+                    </div>
+                `).join("")}
+
+            </div>
+
+            <div class="raceActions">
+
+                <button
+                    class="btn-nsc"
+                    onclick="window.openRaceResult()">
+
+                    Ver resultado completo →
+
+                </button>
+
+            </div>
 
         </section>
     `;
