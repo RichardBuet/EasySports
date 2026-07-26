@@ -400,15 +400,10 @@ static async getRaceCenterData() {
                 pitData,
                 flagData
             ] = await Promise.all([
-    
-                fetchJSON("/data/nascar/live/liveFeed.json"),
-    
-                fetchJSON("/data/nascar/live/lapTimes.json"),
-    
-                fetchJSON("/data/nascar/live/pitData.json"),
-    
-                fetchJSON("/data/nascar/live/flagData.json")
-    
+                fetchJSON("/data/nascar/live/lap-times.json"),
+                fetchJSON("/data/nascar/live/live-feed.json"),
+                fetchJSON("/data/nascar/live/live-flag-data.json"),
+                fetchJSON("/data/nascar/live/live-pit-data.json")
             ]);
     
             const data = adaptNascarLiveRace(
