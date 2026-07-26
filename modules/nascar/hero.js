@@ -1,6 +1,11 @@
 import { NASCAR } from "../../services/site.js";
 //import { openLiveRaceModal } from "./liveRaceModal.js";
 
+
+            // <span class="heroCategory">
+            //     ${heroCategory}
+            // </span>
+
 //                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
 export async function createNascarHero() {
     
@@ -38,9 +43,6 @@ switch (heroState.state) {
     <section class="nascarHero">
         <div class="nascarHeroOverlay"></div>
         <div class="nascarHeroContent">
-            // <span class="heroCategory">
-            //     ${heroCategory}
-            // </span>
 
 <span class="heroCategory">
     ${heroCategory}
