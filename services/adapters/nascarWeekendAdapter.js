@@ -8,8 +8,8 @@ export function adaptNascarWeekend(data) {
 
     const winner = results[0] ?? {};
     
-    console.dir(results[0]);
-    
+    //console.dir(results[0]);
+    console.table(results);
     return {
 
         raceId: race.race_id,
