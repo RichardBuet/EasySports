@@ -73,7 +73,8 @@
 }
 
 .driver-row .driver-gap {
-text-align-last: right;
+    text-align-last: right;
+    width: max-content;
 }
 
 .calendar-row, .driver-row:hover{
