@@ -66,7 +66,6 @@ export async function createRaceCenter() {
                 </div>
             ` : ""}
 
-            <hr>
 
             <div class="raceMeta">
 
@@ -88,7 +87,7 @@ export async function createRaceCenter() {
                     class="btn-nsc"
                     onclick="window.openRaceResult()">
 
-                    Ver resultado completo →
+                    Ver resultado completo ▼
 
                 </button>
 
