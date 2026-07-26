@@ -23,7 +23,7 @@ export async function openLiveRaceModal() {
 
 }
 
-window.openLiveRace = openLiveRaceModal;
+window.openLiveRaceModal = openLiveRaceModal;
 
 async function createLiveContent(live) {
 
