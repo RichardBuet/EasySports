@@ -43,7 +43,7 @@ export function adaptNascarLive(data) {
         lapsToGo: data.laps_to_go,
         flagState: data.flag_state,
         flag: flags[data.flag_state] ?? data.flag_state,
-
+        isLive: data.flag_state !== 9,
         stage: data.stage ? {
 
             number: data.stage.stage_num,
