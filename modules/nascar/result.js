@@ -28,17 +28,17 @@ console.log(race.leaderboard[0]);
 
             <div class="live-item">
                 <span>🥇 Ganador:</span>
-                <strong>${race.winner} (#${race.car})</strong>
+                <strong>${race.winner.name} (#${race.winner.number})</strong>
             </div>
 
             <div class="live-item">
                 <span>🏎️ Marca:</span>
-                <strong>${race.manufacturer}</strong>
+                <strong>${race.winner.manufacturer}</strong>
             </div>
 
             <div class="live-item">
                 <span>👥 Equipo:</span>
-                <strong>${race.team}</strong>
+                <strong>${race.winner.team}</strong>
             </div>
 
             <div class="live-item">
@@ -65,6 +65,8 @@ console.log(race.leaderboard[0]);
             <span>#</span>
 
             <span>PILOTOS</span>
+            
+            <span>GAP</span>
 
             <span>PTS</span>
 
@@ -85,6 +87,8 @@ console.log(race.leaderboard[0]);
                         data-driver-id="${driver.driverId}">
                         ${driver.driver}
                     </span>
+
+                    <span class="driver-gap">${driver.gap}</span>
 
                     <strong>${driver.points}</strong>
 
