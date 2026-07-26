@@ -49,6 +49,12 @@
     padding:0;
 }
 
+.live-summary{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .live-item{
     padding: 4px 20px;
 }
@@ -64,6 +70,10 @@
     padding: 0 20px 8px 20px;
     border-bottom: 1px solid #333;
     height: 30px;
+}
+
+.driver-row .driver-gap {
+text-align-last: right;
 }
 
 .calendar-row, .driver-row:hover{
