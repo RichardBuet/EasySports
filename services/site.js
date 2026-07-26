@@ -11,6 +11,7 @@ import { adaptNascarStandings } from "./adapters/nascarStandingsAdapter.js";
 
 import { NASCARDrivers } from "./nascar/drivers.js";
 import { adaptNascarDrivers } from "./adapters/nascarDriversAdapter.js";
+import { adaptNascarLiveRace } from "./adapters/nascarLiveRaceAdapter.js";
 
 
 
