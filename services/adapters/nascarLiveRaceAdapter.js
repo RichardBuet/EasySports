@@ -34,12 +34,15 @@ export function adaptNascarLiveRace(
 
     return {
 
-
 summary: {
 
     series: SERIES[liveFeed.series] ?? "NASCAR",
 
-    session: SESSIONS[liveFeed.run_type] ?? "",
+    session: {
+        1: { icon: "🛠", name: "Practice" },
+        2: { icon: "⏱", name: "Qualifying" },
+        3: { icon: "🏎", name: "Race" }
+    }[liveFeed.run_type],
 
     lap:
         liveFeed.run_type === 3
@@ -49,7 +52,6 @@ summary: {
     flag: FLAGS[liveFeed.flag_state]
 
 },
-
 
         leaderboard: liveFeed.vehicles.map(vehicle => ({
 
