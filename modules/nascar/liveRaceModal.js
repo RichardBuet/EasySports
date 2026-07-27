@@ -33,12 +33,12 @@ async function createLiveContent(live) {
 
             <div class="live-item-full">
                 <span>🏁 Lap</span>
-                <strong>${live.liveFeed.displayed_lap} / ${live.liveFeed.laps_in_race}</strong>
+                <strong>${live.summary.lap} / ${live.summary.totalLaps}</strong>
             </div>
 
             <div class="live-item-full">
                 <span>🏳️ Flag</span>
-                <strong>${live.liveFeed.flag_state}</strong>
+                <strong>${live.summary.flag}</strong>
             </div>
 
             <div class="live-item-full">
@@ -61,7 +61,7 @@ async function createLiveContent(live) {
 
         <div class="driver-list-full">
 
-            ${live.pitData.map(driver => {
+            ${live.leaderboard.map(driver => {
 
                 const lap = live.lapTimes.laps.find(
                     d => d.vehicle_number == driver.vehicle_number
