@@ -28,24 +28,22 @@ window.openLiveRaceModal = openLiveRaceModal;
 async function createLiveContent(live) {
 
     return `
-
+    
         <div class="live-summary-full">
-
             <div class="live-item-full">
-                <span>🏁 Lap</span>
-                <strong>${live.summary.lap} / ${live.summary.totalLaps}</strong>
+                <span>🏁 Series</span>
+                <strong>NASCAR Cup Series</strong>
             </div>
-
+        
             <div class="live-item-full">
                 <span>🏳️ Flag</span>
                 <strong>${live.summary.flag}</strong>
             </div>
-
+        
             <div class="live-item-full">
-                <span>⚡ Speed</span>
-                <strong>${live.liveFeed.series}</strong>
+                <span>🏁 Lap</span>
+                <strong>${live.summary.lap} / ${live.summary.totalLaps}</strong>
             </div>
-
         </div>
 
         <div class="driver-header-full">
