@@ -1,3 +1,30 @@
+const FLAGS = {
+    0: { icon: "⚪", name: "No Flag" },
+    1: { icon: "🟢", name: "Green" },
+    2: { icon: "🟡", name: "Caution" },
+    3: { icon: "🔴", name: "Red" },
+    4: { icon: "⚪", name: "White" },
+    5: { icon: "🏁", name: "Checkered" },
+    6: { icon: "⚪", name: "Unknown" },
+    7: { icon: "⚪", name: "Unknown" },
+    8: { icon: "🟠", name: "Hot Track" },
+    9: { icon: "🔵", name: "Cold Track" }
+};
+
+const SERIES = {
+    1: "NASCAR Cup Series",
+    2: "NASCAR Xfinity Series",
+    3: "NASCAR Craftsman Truck Series"
+};
+
+const SESSIONS = {
+    1: "Practice",
+    2: "Qualifying",
+    3: "Race"
+};
+
+
+
 export function adaptNascarLiveRace(
     liveFeed,
     lapTimes,
@@ -7,14 +34,23 @@ export function adaptNascarLiveRace(
 
     return {
 
-        summary: {
 
-            lap: liveFeed.lap_number,
-            totalLaps: liveFeed.laps_in_race,
-            lapsToGo: liveFeed.laps_to_go,
-            flag: liveFeed.flag_state
+summary: {
 
-        },
+    series: SERIES[liveFeed.series] ?? "NASCAR",
+
+    session: SESSIONS[liveFeed.run_type] ?? "",
+
+    lap:
+        liveFeed.run_type === 3
+            ? `${liveFeed.lap_number} / ${liveFeed.laps_in_race}`
+            : `${liveFeed.lap_number}`,
+
+    flag: FLAGS[liveFeed.flag_state]
+
+},
+
+
         leaderboard: liveFeed.vehicles.map(vehicle => ({
 
     position: vehicle.running_position,
