@@ -29,24 +29,29 @@ async function createLiveContent(live) {
 
     return `
     
-        <div class="live-summary-full">
-            <div class="live-item-full">
-                <span>🏁 Series</span>
-                <strong>${live.summary.series}</strong>
-                 <small>${live.summary.session}</small>
-            </div>
-        
-<div class="live-item-full">
-    <span>${live.summary.flag.icon}</span>
-    <strong>${live.summary.flag.name}</strong>
-</div>
-        
-<div class="live-item-full">
-    <span>🏁 Lap</span>
-    <strong>${live.summary.lap}</strong>
-</div>
+<div class="live-summary-full">
 
-        </div>
+    <div class="live-item-full">
+        <span>🏁 Series</span>
+        <strong>${live.summary.series}</strong>
+    </div>
+
+    <div class="live-item-full">
+        <span>${live.summary.session.icon}</span>
+        <strong>${live.summary.session.name}</strong>
+    </div>
+
+    <div class="live-item-full">
+        <span>${live.summary.flag.icon}</span>
+        <strong>${live.summary.flag.name}</strong>
+    </div>
+
+    <div class="live-item-full">
+        <span>🏁 Lap</span>
+        <strong>${live.summary.lap}</strong>
+    </div>
+
+</div>
 
         <div class="driver-header-full">
 
