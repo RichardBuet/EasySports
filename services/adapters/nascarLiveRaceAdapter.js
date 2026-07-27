@@ -1,26 +1,26 @@
 const FLAGS = {
-    0: { icon: "⚪", name: "No Flag" },
-    1: { icon: "🟢", name: "Green" },
-    2: { icon: "🟡", name: "Caution" },
-    3: { icon: "🔴", name: "Red" },
-    4: { icon: "⚪", name: "White" },
-    5: { icon: "🏁", name: "Checkered" },
-    6: { icon: "⚪", name: "Unknown" },
-    7: { icon: "⚪", name: "Unknown" },
-    8: { icon: "🟠", name: "Hot Track" },
-    9: { icon: "🔵", name: "Cold Track" }
+    0: { icon: "⚪", name: "Sin bandera" },
+    1: { icon: "🟢", name: "Bandera verde" },
+    2: { icon: "🟡", name: "Bandera amarilla" },
+    3: { icon: "🔴", name: "Bandera roja" },
+    4: { icon: "⚪", name: "Última vuelta" },
+    5: { icon: "🏁", name: "Finalizada" },
+    6: { icon: "⚪", name: "Estado 6" },
+    7: { icon: "⚪", name: "Estado 7" },
+    8: { icon: "🟠", name: "Pista habilitada" },
+    9: { icon: "🔵", name: "Actividad finalizada" }
 };
 
 const SERIES = {
-    1: "NASCAR Cup Series",
-    2: "NASCAR Xfinity Series",
-    3: "NASCAR Craftsman Truck Series"
+    1: "Cup Series",
+    2: "O'Reilly Series",
+    3: "Craftsman Truck"
 };
 
 const SESSIONS = {
-    1: "Practice",
-    2: "Qualifying",
-    3: "Race"
+    1: { icon: "🛠", name: "Práctica" },
+    2: { icon: "⏱", name: "Clasificación" },
+    3: { icon: "🏎", name: "Carrera" }
 };
 
 
