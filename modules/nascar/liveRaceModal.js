@@ -68,7 +68,7 @@ async function createLiveContent(live) {
         <span>${driver.number}</span>
 
         <span>
-            <strong>${driver.driver}</strong><br>
+            <strong>${driver.driver}</strong>
             <small>${driver.sponsor}</small>
         </span>
 
