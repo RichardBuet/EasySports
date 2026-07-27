@@ -52,8 +52,7 @@ async function createLiveContent(live) {
 <span>#</span>
 <span>DRIVER</span>
 <span>GAP</span>
-<span>LAST</span>
-<span>BEST</span>
+<span>LAST / BEST</span>
 <span>PITS</span>
 
         </div>
@@ -75,9 +74,10 @@ async function createLiveContent(live) {
 
         <span>${driver.gap.toFixed(3)}</span>
 
-        <span>${driver.lastLap.toFixed(3)}</span>
-
-        <span>${driver.bestLap.toFixed(3)}</span>
+        <span>
+    ${driver.lastLap.toFixed(3)}<br>
+    <small>${driver.bestLap.toFixed(3)}</small>
+</span>
 
         <span>${driver.pitStops}</span>
 
