@@ -28,13 +28,7 @@
 .driver-row-full{
     display:grid;
     grid-template-columns:
-        32px
-        40px
-        minmax(150px,1fr)
-        60px
-        70px
-        70px
-        45px;
+ 30px 25px minmax(110px,1fr) 45px 55px 30px;
 
     align-items:center;
     gap:8px;
@@ -92,7 +86,10 @@
     color:#ffd54f;
 }
 
-
+.driver-row-full span:last-child{
+    display: flex;
+    justify-content: center;
+}
 
 
 
