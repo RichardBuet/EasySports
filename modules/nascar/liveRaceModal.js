@@ -32,18 +32,20 @@ async function createLiveContent(live) {
         <div class="live-summary-full">
             <div class="live-item-full">
                 <span>🏁 Series</span>
-                <strong>NASCAR Cup Series</strong>
+                <strong>${live.summary.series}</strong>
+                 <small>${live.summary.session}</small>
             </div>
         
-            <div class="live-item-full">
-                <span>🏳️ Flag</span>
-                <strong>${live.summary.flag}</strong>
-            </div>
+<div class="live-item-full">
+    <span>${live.summary.flag.icon}</span>
+    <strong>${live.summary.flag.name}</strong>
+</div>
         
-            <div class="live-item-full">
-                <span>🏁 Lap</span>
-                <strong>${live.summary.lap} / ${live.summary.totalLaps}</strong>
-            </div>
+<div class="live-item-full">
+    <span>🏁 Lap</span>
+    <strong>${live.summary.lap}</strong>
+</div>
+
         </div>
 
         <div class="driver-header-full">
