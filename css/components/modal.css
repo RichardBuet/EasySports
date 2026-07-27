@@ -28,16 +28,16 @@
 .driver-row-full{
     display:grid;
     grid-template-columns:
+        32px
         40px
-        45px
-        minmax(220px,1fr)
+        minmax(150px,1fr)
+        60px
         70px
-        80px
-        80px
-        55px;
+        70px
+        45px;
 
     align-items:center;
-    gap:10px;
+    gap:8px;
 }
 
 .driver-header-full{
@@ -53,8 +53,8 @@
 }
 
 .driver-list-full{
-    max-height:520px;
-    overflow-y:auto;
+    max-height:55vh;
+    overflow:auto;
 }
 
 .driver-row-full{
@@ -263,6 +263,3 @@
     overflow:hidden;
 }
 
-.driver-row-full{
-    background:red !important;
-}
