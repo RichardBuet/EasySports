@@ -75,7 +75,7 @@ async function createLiveContent(live) {
         <span>${driver.gap.toFixed(3)}</span>
 
         <span>
-    ${driver.lastLap.toFixed(3)}<br>
+    ${driver.lastLap.toFixed(3)}
     <small>${driver.bestLap.toFixed(3)}</small>
 </span>
 
