@@ -19,7 +19,7 @@ export async function openLiveRaceModal() {
 
     clearInterval(refreshTimer);
 
-    refreshTimer = setInterval(refreshLiveModal, 50000);
+    //refreshTimer = setInterval(refreshLiveModal, 50000);
 
 }
 
