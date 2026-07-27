@@ -48,36 +48,42 @@ async function createLiveContent(live) {
 
         <div class="driver-header-full">
 
-            <span>POS</span>
-            <span>#</span>
-            <span>DRIVER</span>
-            <span>LAST</span>
-            <span>BEST</span>
-            <span>PITS</span>
+           <span>POS</span>
+<span>#</span>
+<span>DRIVER</span>
+<span>GAP</span>
+<span>LAST</span>
+<span>BEST</span>
+<span>PITS</span>
 
         </div>
 
         <div class="driver-list-full">
 
-            ${live.leaderboard.map(driver => `
+          ${live.leaderboard.map(driver => `
 
-            <div class="driver-row-full">
-        
-                <span>${driver.position}</span>
-        
-                <span>${driver.number}</span>
-        
-                <span>${driver.driver}</span>
-        
-                <span>${driver.lastLap}</span>
-        
-                <span>${driver.bestLap}</span>
-        
-                <span>${driver.pitStops}</span>
-        
-            </div>
-        
-        `).join("")}
+    <div class="driver-row-full">
+
+        <span>${driver.position}</span>
+
+        <span>${driver.number}</span>
+
+        <span>
+            <strong>${driver.driver}</strong><br>
+            <small>${driver.sponsor}</small>
+        </span>
+
+        <span>${driver.gap.toFixed(3)}</span>
+
+        <span>${driver.lastLap.toFixed(3)}</span>
+
+        <span>${driver.bestLap.toFixed(3)}</span>
+
+        <span>${driver.pitStops}</span>
+
+    </div>
+
+`).join("")}
 
         </div>
 
