@@ -59,33 +59,25 @@ async function createLiveContent(live) {
 
         <div class="driver-list-full">
 
-            ${live.leaderboard.map(driver => {
+            ${live.leaderboard.map(driver => `
 
-                const lap = live.lapTimes.laps.find(
-                    d => d.vehicle_number == driver.vehicle_number
-                );
-
-                return `
-
-                    <div class="driver-row-full">
-
-                        <span>${driver.running_position}</span>
-
-                        <span>${driver.vehicle_number}</span>
-
-                        <span>${driver.driver_name}</span>
-
-                        <span>${lap?.last_lap_time ?? "-"}</span>
-
-                        <span>${lap?.best_lap_time ?? "-"}</span>
-
-                        <span>${driver.pit_stops}</span>
-
-                    </div>
-
-                `;
-
-            }).join("")}
+            <div class="driver-row-full">
+        
+                <span>${driver.position}</span>
+        
+                <span>${driver.number}</span>
+        
+                <span>${driver.driver}</span>
+        
+                <span>${driver.lastLap}</span>
+        
+                <span>${driver.bestLap}</span>
+        
+                <span>${driver.pitStops}</span>
+        
+            </div>
+        
+        `).join("")}
 
         </div>
 
