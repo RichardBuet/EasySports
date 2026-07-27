@@ -2,14 +2,15 @@
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:12px;
-    margin-bottom:16px;
+    margin-bottom:10px;
 }
 
 .live-item-full{
     background:#2d2d2d;
     border-radius:8px;
-    padding:10px;
+    padding:5px;
     text-align:center;
+    margin:5px;
 }
 
 .live-item-full span{
