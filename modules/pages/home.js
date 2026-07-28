@@ -9,7 +9,8 @@ export async function renderHome() {
 
 return createLayout(`
 ${createHero()}
-${createToday()}
+
+
 ${await createDashboard()}
 
 <section class="container">
