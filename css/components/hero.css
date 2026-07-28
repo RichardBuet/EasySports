@@ -10,8 +10,9 @@
 .hero-banner{
     width: calc(100vw - 40px);
     max-width: 1400px;
-    height: calc(100dvw * 0.26);
-    border-radius:18px;
+    height: auto;
+    /* calc(100dvw * 0.26); */
+    border-radius:12px;
     display:block;
 
     box-shadow:
