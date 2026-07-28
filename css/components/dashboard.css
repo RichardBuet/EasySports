@@ -1,8 +1,10 @@
 .dashboard{
-    margin:20px;
+    /* margin:20px;
     padding:18px;
     background:var(--surface);
-    border-radius:12px;
+    border-radius:12px; */
+    margin: 20px;
+    border-radius: 12px;
 }
 
 .dashboard-content{
