@@ -2,10 +2,17 @@ import { createHeader } from "./header.js";
 import { createNavbar } from "./navbar.js";
 import { createFooter } from "./footer.js";
 
+    // return `
+    //     ${createHeader()}
+    //     ${createNavbar()}
+    //     <main>
+
 export function createLayout(content){
     return `
-        ${createHeader()}
-        ${createNavbar()}
+        <div class="logo">
+            ${createHeader()}
+            ${createNavbar()}
+        </div>
         <main>
             ${content}
         </main>
