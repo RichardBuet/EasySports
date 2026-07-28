@@ -1,16 +1,11 @@
 .widget{
-
-    background: var(--card-background);
-
-    border-radius: 12px;
-
-    padding: 16px;
-
-    margin: 16px 20px;
-
-    box-sizing: border-box;
-
+box-sizing: border-box;
     overflow: hidden;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
 
 }
 
@@ -27,11 +22,9 @@
 }
 
 .widget-header h2{
-
     font-size:18px;
-
     font-weight:600;
-
+    margin: 0;
 }
 
 .widget-link{
