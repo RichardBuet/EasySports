@@ -3,7 +3,8 @@ export function createHero() {
         <section class="hero">
 
             <img
-                src="assets/images/bannerTop01.jpg"
+                
+                src="assets/images/Bunner-EasySports.svg"
                 alt="EasySports Banner"
                 class="hero-banner"
             >
@@ -11,3 +12,4 @@ export function createHero() {
         </section>
     `;
 }
+//src="assets/images/bannerTop01.jpg"
