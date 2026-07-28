@@ -8,7 +8,7 @@ export function createToday() {
 
             <div class="today-row">
                 <span>09:00</span>
-                <span>🏎 FP2 • Bélgica</span>
+                <span>🏎 Q1 • Bélgica</span>
             </div>
 
             <div class="today-row">
