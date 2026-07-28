@@ -4,7 +4,7 @@ export function createHero() {
 
             <img
                 
-                src="assets/images/Bunner-EasySports.svg"
+                src="assets/images/Bunner-EasySports.png"
                 alt="EasySports Banner"
                 class="hero-banner"
             >
