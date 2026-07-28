@@ -9,7 +9,7 @@ import { createFooter } from "./footer.js";
 
 export function createLayout(content){
     return `
-        <div class="logo">
+        <div class="headBar">
             ${createHeader()}
             ${createNavbar()}
         </div>
