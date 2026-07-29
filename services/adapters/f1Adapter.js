@@ -29,23 +29,25 @@ export function adaptStandings(data) {
 
 }
 
+export function adaptConstructorStandings(data) {
 
+    const standings =
+        data?.MRData?.StandingsTable?.StandingsLists?.[0]?.ConstructorStandings ?? [];
 
-adaptConstructorStandings(data){
-position,
+    return standings.map(constructor => ({
 
-    constructor: {
+        position: Number(constructor.position),
 
-        id,
+        constructor: {
+            id: constructor.Constructor.constructorId,
+            name: constructor.Constructor.name,
+            nationality: constructor.Constructor.nationality
+        },
 
-        name,
+        points: Number(constructor.points),
+        wins: Number(constructor.wins)
 
-        nationality
-
-    },
-
-    points,
-
-    wins
+    }));
 
 }
+
