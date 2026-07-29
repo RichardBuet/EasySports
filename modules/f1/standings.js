@@ -1,7 +1,11 @@
-import { F1 } from "../../services/siteF1.js";
+export async function createStandings() {
 
-export async function renderStandings() {
+    const standings = await F1.getStandings();
 
-    document.body.innerHTML = "<h1>🔥 F1 funciona 🔥</h1>";
+    return `
+        <section>
+            <h2>Driver Standings</h2>
+        </section>
+    `;
 
 }
