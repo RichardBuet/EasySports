@@ -1,5 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
+export async function renderF1() {
 
-    document.getElementById("app").innerHTML = "<h1>🚀 F1 OK</h1>";
+    return `
+        <h1>Formula 1</h1>
+    `;
 
-});
+}
