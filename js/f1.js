@@ -1,7 +1,15 @@
-import { renderStandings } from "../pages/f1/standings.js";
+import { renderF1 } from "../modules/pages/f1.js";
+
+const app = document.getElementById("app");
+
+export async function refreshF1() {
+
+    app.innerHTML = await renderF1();
+
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    await renderStandings();
+    await refreshF1();
 
 });
