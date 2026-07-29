@@ -7,7 +7,7 @@
    overflow: hidden;
    display: flex;
    align-items: flex-end;
-   padding: 5px 5px 5px 20px;
+   padding: 15px 5px 10px 20px;
    color: var(--text);
    background:
            linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
@@ -23,7 +23,7 @@
    background-repeat: no-repeat;
    background-position: right 0px center;
    background-size: contain;
-   margin: 26px;
+   margin: 30px;
    opacity: 0.48;
    pointer-events: none;
 }
