@@ -10,10 +10,10 @@ export async function createStandings() {
 
             <ul>
                 ${standings.map(driver => `
-                    <li>
-                        ${driver.position}. ${driver.name} - ${driver.points} pts
-                    </li>
-                `).join("")}
+    <li>
+        ${driver.position}. ${driver.driver.fullName} - ${driver.points} pts
+    </li>
+`).join("")}
             </ul>
         </section>
     `;
