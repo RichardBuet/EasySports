@@ -8,5 +8,11 @@ export async function renderF1() {
 
     return createLayout(`
     ${await createStandings()}
+    ${await createConstructorStandings()}
+    ${await createSchedule()}
+    ${await createResults()}
+    ${await createQualifying()}
+    ${await createDrivers()}
+    ${await createCircuits()}
 `);
 }
