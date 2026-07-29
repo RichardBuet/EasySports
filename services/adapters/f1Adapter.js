@@ -28,3 +28,24 @@ export function adaptStandings(data) {
     }));
 
 }
+
+
+
+adaptConstructorStandings(data){
+position,
+
+    constructor: {
+
+        id,
+
+        name,
+
+        nationality
+
+    },
+
+    points,
+
+    wins
+
+}
