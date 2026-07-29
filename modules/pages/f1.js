@@ -1,7 +1,7 @@
-import { renderStandings } from "../f1/standings.js";
+export async function renderF1() {
 
-document.addEventListener("DOMContentLoaded", async () => {
+    return `
+        <h1>Formula one 1</h1>
+    `;
 
-    await renderStandings();
-
-});
+}
