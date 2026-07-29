@@ -4,16 +4,8 @@ export function createSportsMenu(){
 
         <div id="sportsMenuPanel" class="sports-menu">
 
-            <a href="#">
+            <a href="https://richardbuet.github.io/EasySports/pages/formula1.html">
                 🏎 Fórmula 1
-            </a>
-
-            <a href="#">
-                🏍 MotoGP
-            </a>
-
-            <a href="https://richardbuet.github.io/whatscup/">
-                ⚽ Copa del Mundo
             </a>
 
             <a href="https://richardbuet.github.io/EasySports/pages/nascar.html">
@@ -32,6 +24,14 @@ export function createSportsMenu(){
                 🏆 WEC
             </a>
 
+            <a href="#">
+                🏍 MotoGP
+            </a>
+
+            <a href="https://richardbuet.github.io/whatscup/">
+                ⚽ Copa del Mundo
+            </a>
+            
             <a href="#">
                 🏀 NBA
             </a>
