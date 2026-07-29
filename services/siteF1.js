@@ -8,7 +8,12 @@ export class F1 {
         return adaptStandings(data);
     }
 
+static async getConstructorStandings(season = "current") {
+    const data = await getConstructorStandings(season);
+    return adaptConstructorStandings(data);
 
+}
+    
 
   
 }
