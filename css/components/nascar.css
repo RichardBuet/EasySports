@@ -20,13 +20,13 @@
    position: absolute;
    inset: 0;
    background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url("../../assets/images/NASCAR_FullColor_onBlack_CMYK-6.svg");
-   
    background-repeat: no-repeat;
    background-position: right 0px center;
    background-size: contain;
-   margin: 50px 35px;
+   margin: 55px 6px;
    opacity: 0.48;
    pointer-events: none;
+   width: inherit;
 }
 
 .nascarHeroContent{
