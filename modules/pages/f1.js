@@ -6,5 +6,7 @@ export async function renderF1() {
 
     setSportTheme("f1");
 
-    return createLayout("<h1>F1 vamos 🔥 one re OK</h1>");
+    return createLayout(`
+    ${await createStandings()}
+`);
 }
