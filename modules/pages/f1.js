@@ -1,7 +1,5 @@
-import { renderStandings } from "../f1/standings.js";
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", async () => {
-
-    await renderStandings();
+    document.getElementById("app").innerHTML = "<h1>🚀 F1 OK</h1>";
 
 });
