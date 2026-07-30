@@ -1,6 +1,6 @@
-export function createHero() {
+export function createBunner() {
     return `
-        <section class="hero">
+        <section class="bunner">
 
             <img
                 
@@ -12,4 +12,3 @@ export function createHero() {
         </section>
     `;
 }
-//src="assets/images/bannerTop01.jpg"
