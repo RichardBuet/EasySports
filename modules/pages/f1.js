@@ -1,24 +1,24 @@
 import { createLayout } from "../core/layout.js";
 import { setSportTheme } from "../utils/theme.js";
-import { createStandings } from "../f1/standings.js";
-import { createConstructorStandings } from "../f1/constructorStandings.js";
-import { createSchedule } from "../f1/schedule.js";
-import { createResults } from "../f1/results.js";
-import { createQualifying } from "../f1/qualifying.js";
-import { createDrivers } from "../f1/drivers.js";
-import { createCircuits } from "../f1/circuits.js";
+
+import { createHero } from "../f1/hero.js";
+import { createDashboard } from "../f1/dashboard.js";
+import { createSelector } from "../f1/selector.js";
+import { createRaceCenter } from "../f1/raceCenter.js";
+import { createCalendarCard } from "../f1/calendarCard.js";
+import { createDriversCard } from "../f1/driversCard.js";
 
 export async function renderF1() {
+
     setSportTheme("f1");
 
-return createLayout(`
-    ${await createStandings()}
-    ${await createConstructorStandings()}
-    ${await createSchedule()}
-    ${await createResults()}
-    ${await createQualifying()}
-    ${await createDrivers()}
-    ${await createCircuits()}
-`);
-    
+    return createLayout(`
+        ${await createHero()}
+        ${await createDashboard()}
+        ${createSelector()}
+        ${await createRaceCenter()}
+        ${await createCalendarCard()}
+        ${await createDriversCard()}
+    `);
+
 }
