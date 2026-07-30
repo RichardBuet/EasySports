@@ -3,19 +3,19 @@ import { F1 } from "../../services/siteF1.js";
 function createDashboardCard(title, value, subtitle, icon) {
 
     return `
-        <article class="dashboard-card">
+        <article class="f1-dashboard-card">
 
-            <span class="dashboard-card__icon">${icon}</span>
+            <span class="f1-dashboard-card__icon">${icon}</span>
 
-            <span class="dashboard-card__title">
+            <span class="f1-dashboard-card__title">
                 ${title}
             </span>
 
-            <h3 class="dashboard-card__value">
+            <h3 class="f1-dashboard-card__value">
                 ${value}
             </h3>
 
-            <span class="dashboard-card__subtitle">
+            <span class="f1-dashboard-card__subtitle">
                 ${subtitle}
             </span>
 
@@ -41,9 +41,9 @@ export async function createDashboard() {
     const nextRace = schedule[0];
 
     return `
-        <section class="dashboard">
+        <section class="section f1-dashboard">
 
-            <div class="dashboard-grid">
+            <div class="f1-dashboard-grid">
 
                 ${createDashboardCard(
                     "Driver Leader",
