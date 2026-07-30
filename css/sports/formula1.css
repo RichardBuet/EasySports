@@ -3,9 +3,20 @@
 ========================================================== */
 
 .hero--f1 {
-
     position: relative;
+}
 
+.f1HeroOverlay{
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url("../../assets/images/FIA-F1.png");
+   background-repeat: no-repeat;
+   background-position: right 0px center;
+   background-size: contain;
+   margin: 55px 6px;
+   opacity: 0.48;
+   pointer-events: none;
+   width: inherit;
 }
 
 .hero--f1 .hero__category {
