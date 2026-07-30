@@ -1,4 +1,68 @@
 /* ==========================================================
+   HERO - FORMULA 1
+========================================================== */
+
+.hero--f1 {
+
+    position: relative;
+
+}
+
+.hero--f1 .hero__category {
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+}
+
+.hero--f1 .hero__title {
+
+    color: var(--text);
+
+}
+
+.hero--f1 .hero__subtitle {
+
+    color: var(--text-secondary);
+
+}
+
+.hero--f1 .hero__meta {
+
+    color: var(--text);
+
+}
+
+.hero--f1 .hero__leaders {
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+.hero--f1 .hero__leader {
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 1rem;
+
+}
+
+.hero--f1 .hero__leader strong {
+
+    color: var(--text);
+
+    font-weight: 700;
+
+}
+
+
+
+/* ==========================================================
    DASHBOARD
 ========================================================== */
 .section f1-dashboard{
