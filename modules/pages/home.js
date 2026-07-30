@@ -1,14 +1,14 @@
 import { createToday } from "../home/today.js";
 import { createLayout } from "../core/layout.js";
 import { createCard } from "../components/card.js";
-import { createHero } from "../components/hero.js";
+import { createBunner } from "../components/bunner.js";
 import { createDashboard } from "../home/dashboard.js";
 import { ROUTES } from "../../config/routes.js";
 
 export async function renderHome() {
 
 return createLayout(`
-${createHero()}
+${createBunner()}
 
 
 ${await createDashboard()}
