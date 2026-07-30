@@ -7,7 +7,7 @@
     background:transparent;
 }
 
-.hero-banner{
+.hero-bunner{
     /* width: calc(100vw - 40px); */
     width: inherit;
     max-width: 1400px;
@@ -20,7 +20,7 @@
     transition:.35s ease;
 }
 
-.hero-banner:hover{
+.hero-bunner:hover{
 
     transform:scale(1.01);
 
