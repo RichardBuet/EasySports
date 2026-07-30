@@ -3,17 +3,29 @@
 ========================================================== */
 
 .hero--f1 {
-    position: relative;
+    
+   position: relative;
+   overflow: hidden;
+   display: flex;
+   align-items: flex-end;
+   padding: 15px 5px 10px 20px;
+   color: var(--text);
+   background:
+           linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
+           var(--hero-image);
+   background-size: cover;
+   background-position: center;
+
 }
 
 .f1HeroOverlay{
    position: absolute;
    inset: 0;
-   background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url("../../assets/images/FIA-F1.png");
+   background: radial-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url("../../assets/images/FIA-F1.png");
    background-repeat: no-repeat;
    background-position: right 0px center;
    background-size: contain;
-   margin: 55px 6px;
+   margin: 20px 20px;
    opacity: 0.48;
    pointer-events: none;
    width: inherit;
