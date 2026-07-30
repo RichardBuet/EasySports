@@ -6,7 +6,7 @@ export function createBunner() {
                 
                 src="assets/images/Bunner-EasySports.png"
                 alt="EasySports Banner"
-                class="hero-banner"
+                class="hero-bunner"
             >
 
         </section>
