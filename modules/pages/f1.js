@@ -12,13 +12,16 @@ export async function renderF1() {
 
     setSportTheme("f1");
 
-    return createLayout(`
-        ${await createHero()}
-        ${await createDashboard()}
-        ${createSelector()}
-        ${await createRaceCenter()}
-        ${await createCalendarCard()}
-        ${await createDriversCard()}
-    `);
+return createLayout(`
+    ${await createHero()}
+
+    ${createSelector()}
+
+    ${await createDashboard()}
+
+    ${await createExtras()}
+`);
 
 }
+    
+
