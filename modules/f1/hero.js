@@ -12,9 +12,9 @@ export async function createHero() {
 
     return `
         <section class="hero hero--f1">
-
+            <div class="f1HeroOverlay"></div>
             <div class="hero__content">
-              <div class="f1HeroOverlay"></div>
+              
                 <span class="hero__category">
                     Formula 1
                 </span>
