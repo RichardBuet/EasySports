@@ -1,12 +1,5 @@
 import { NASCAR } from "../../services/site.js";
-//import { openLiveRaceModal } from "./liveRaceModal.js";
 
-
-            // <span class="heroCategory">
-            //     ${heroCategory}
-            // </span>
-
-//                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
 export async function createNascarHero() {
     
     const heroState = await NASCAR.getHeroState();
