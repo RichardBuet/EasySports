@@ -1,4 +1,4 @@
-import { createSchedule } from "./calender.js";
+import { createSchedule } from "./calendar.js";
 
 export async function createCalendarCard() {
 
