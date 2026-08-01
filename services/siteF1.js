@@ -53,6 +53,31 @@ export class F1 {
         return schedule.find(race => new Date(`${race.date}T${race.time}`) > now) ?? schedule[schedule.length - 1];
     }
 
+    static async getHeroState(season = "current") {
+        const [
+            nextRace,
+            standings,
+            constructors
+        ] = await Promise.all([
+            this.getNextRace(season),
+            this.getStandings(season),
+            this.getConstructorStandings(season)
+        ]);
+    
+        return {
+            state: "NEXT",
+            category: "🏎 Formula 1",
+            title: nextRace.raceName,
+            subtitle: nextRace.circuit.name,
+            race: nextRace,
+            leaders: {
+                driver: standings[0],
+                constructor: constructors[0]
+            }
+        };
+    }
+
+    
     static async getLastRace(season = "current") {
         const schedule = await this.getSchedule(season);
         const now = new Date();
