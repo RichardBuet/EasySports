@@ -23,8 +23,9 @@
    inset: 0;
    background: 
       linear-gradient(256deg, rgb(11 11 11 / 0%), rgb(5 5 5 / 73%)),
-      url("../../assets/images/FIA-F1.png");
- /*     radial-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)),
+      url("../../assets/images/F1EasySports.png");
+  /*    url("../../assets/images/FIA-F1.png");
+      radial-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)),
       */
    background-repeat: no-repeat;
    background-position: right 0px center;
