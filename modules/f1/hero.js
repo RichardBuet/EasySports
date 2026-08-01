@@ -1,47 +1,33 @@
 import { F1 } from "../../services/siteF1.js";
 
-function formatWeekend(startDate, endDate) {
-
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    const month = end.toLocaleDateString("es-AR", {
+function formatWeekend(race) {
+    const start =
+        race.firstPractice?.date ??
+        race.sprintQualifying?.date ??
+        race.qualifying?.date ??
+        race.date;
+    const end = race.date;
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const month = endDate.toLocaleDateString("es-AR", {
         month: "short"
     }).toUpperCase();
-
-    return `${start.getDate()}–${end.getDate()} ${month} ${end.getFullYear()}`;
-
+    if (startDate.getDate() === endDate.getDate()) {
+        return `${endDate.getDate()} ${month} ${endDate.getFullYear()}`;
+    }
+    return `${startDate.getDate()}–${endDate.getDate()} ${month} ${endDate.getFullYear()}`;
 }
 
 export async function createHero() {
-
-    const [schedule, standings, constructors] = await Promise.all([
-        F1.getSchedule(),
-        F1.getStandings(),
-        F1.getConstructorStandings()
-    ]);
-
-    console.log(schedule);
-    console.log(schedule[0]);
-    
-    const nextRace = schedule[0];
-    const driverLeader = standings[0];
-    const constructorLeader = constructors[0];
-
-    const eventDate = new Date(nextRace.date);
-
-    const dateText = eventDate.toLocaleDateString("es-AR", {
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-    }).toUpperCase();
-
-    
+    const heroData = await F1.getHeroState();
+    const nextRace = heroData.race;
+    const driverLeader = heroData.leaders.driver;
+    const constructorLeader = heroData.leaders.constructor;
     const hero = {
 
-        state: "NEXT",
+        state: heroData.state,
 
-        category: "🏎 Formula 1",
+        category: heroData.category,
 
         title: nextRace.raceName,
 
@@ -56,7 +42,7 @@ export async function createHero() {
     
             {
                 icon: "📅",
-                value: formatWeekend(nextRace.firstPractice, nextRace.date)
+                value: formatWeekend(nextRace)
             },
     
             {
