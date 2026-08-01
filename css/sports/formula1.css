@@ -3,94 +3,116 @@
 ========================================================== */
 
 .hero--f1 {
-    
-   position: relative;
-   overflow: hidden;
-   display: flex;
-   align-items: flex-end;
-   padding: 15px 5px 10px 20px;
-   color: var(--text);
-   background:
-           linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
-           var(--hero-image);
-   background-size: cover;
-   background-position: center;
-
+    position: relative;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    color: var(--text);
+    width: 100%;
+    background: linear-gradient(rgb(1 2 6 / 58%), rgb(0 0 0 / 79%));
+    overflow: hidden;
 }
 
 .f1HeroOverlay{
-   position: absolute;
-   inset: 0;
-   background: 
-      linear-gradient(256deg, rgb(11 11 11 / 0%), rgb(5 5 5 / 73%)),
-      url("../../assets/images/F1EasySports.png");
-  /*    url("../../assets/images/FIA-F1.png");
-      radial-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)),
-      */
-   background-repeat: no-repeat;
-   background-position: right 0px center;
-   background-size: contain;
-   margin: 20px 20px;
-   opacity: 0.48;
-   pointer-events: none;
-   width: inherit;
-   z-index:-1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(../../assets/images/F1EasySports.png);
+    background-repeat: no-repeat;
+    background-position: right 0px center;
+    background-size: contain;
+    opacity: 0.48;
+    pointer-events: none;
+    width: inherit;
+    z-index: 2;
+    background-blend-mode: screen;
+}
+
+.hero__content {
+    z-index: 2;
+    padding: 20px;
 }
 
 .hero--f1 .hero__category {
-
     color: var(--primary);
-
     font-weight: 600;
-
 }
 
 .hero--f1 .hero__title {
-
     color: var(--text);
-
+    margin: 10px 0;
+    font-size: clamp(1.5rem, 4.6vw, 4rem);
+    line-height: 1.1;
 }
 
 .hero--f1 .hero__subtitle {
-
     color: var(--text-secondary);
+    margin: 0 0 20px;
+    font-size: 1.2rem;
+}
 
+.hero__info {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    column-gap: 0px;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .hero--f1 .hero__meta {
-
     color: var(--text);
-
+    flex: auto;
+    width: max-content;
 }
 
-.hero--f1 .hero__leaders {
+.hero__championship {
+    width: initial;
+    flex: 1 2 1;
+    display: inline;
+    text-align: center;
+    align-content: center;
+    max-width: 58vw;
+}
 
+.hero--f1 .hero__leaders 
     display: flex;
     flex-direction: column;
     gap: 8px;
-
 }
 
 .hero--f1 .hero__leader {
-
     display: flex;
     align-items: center;
     gap: 8px;
-
     font-size: 1rem;
-
 }
 
 .hero--f1 .hero__leader strong {
-
     color: var(--text);
-
     font-weight: 700;
-
 }
 
-
-
+.hero__info{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.hero__championship {
+    width: initial;
+    flex: 1 2 1;
+    display: inline;
+    text-align: center;
+    align-content: center;
+    max-width: 58vw;
+}
 /* ==========================================================
    DASHBOARD
 ========================================================== */
