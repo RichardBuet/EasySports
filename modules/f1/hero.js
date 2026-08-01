@@ -24,17 +24,11 @@ export async function createHero() {
     const driverLeader = heroData.leaders.driver;
     const constructorLeader = heroData.leaders.constructor;
     const hero = {
-
         state: heroData.state,
-
         category: heroData.category,
-
         title: nextRace.raceName,
-
         subtitle: nextRace.circuit.name,
-
         meta: [
-    
             {
                 icon: "📍",
                 value: `Round ${nextRace.round}`
@@ -49,12 +43,10 @@ export async function createHero() {
                 icon: "🏁",
                 value: `${nextRace.laps ?? "—"} vueltas`
             }
-    
         ],
 
 
         leaders: [
-
             {
                 icon: "👤",
                 label: "Driver Leader",
@@ -66,7 +58,6 @@ export async function createHero() {
                 label: "Team Leader",
                 value: constructorLeader.constructor.name
             }
-
         ]
 
     };
@@ -96,48 +87,31 @@ export async function createHero() {
     }
 
     return `
-        <section class="hero hero--f1">
-
+          <section class="hero hero--f1">
+            <div class="f1HeroOverlay"></div>
             <div class="hero__content">
-
-                <div class="f1HeroOverlay"></div>
-
                 <span class="hero__category">
-                    ${hero.category}
-                </span>
-
-                <h1 class="hero__title">
-                    ${hero.title}
-                </h1>
-
-                <p class="hero__subtitle">
-                    ${hero.subtitle}
-                </p>
-
-                <div class="hero__meta">
-
-                    ${hero.meta.map(item => `
-                        <div class="hero__meta-item">
-                            <span>${item.icon}</span>
-                            <strong>${item.value}</strong>
-                        </div>
-                    `).join("")}
-
+                            ${hero.category}
+                        </span>
+                <h1 class="hero__title">${hero.title}</h1>
+                <p class="hero__subtitle">${hero.subtitle}</p>
+                <div class="hero__info">
+                    <div class="hero__meta">
+                        ${hero.meta.map(item => `
+                            <div class="hero__meta-item">
+                                <span>${item.icon}</span>
+                                <strong>${item.value}</strong>
+                            </div>
+                        `).join("")}
+                    </div>
+                    <div class="hero__championship">
+                        <span class="hero__championship-title"> 🏆 Puntero del campeonato</span>
+                        <strong class="hero__championship-driver"> ${driverLeader.driver.fullName}</strong>
+                        <span class="hero__championship-team">${constructorLeader.constructor.name}</span>
+                    </div>
                 </div>
-
-                <div class="hero__leaders">
-
-                    ${hero.leaders.map(item => `
-                        <div class="hero__leader">
-                            ${item.icon} ${item.label}
-                            <strong>${item.value}</strong>
-                        </div>
-                    `).join("")}
-
-                </div>
-
             </div>
-
+        
         </section>
     `;
 
