@@ -106,8 +106,10 @@ export async function createHero() {
                     </div>
                     <div class="hero__championship">
                         <span class="hero__championship-title"> 🏆 Puntero del campeonato</span>
-                        <strong class="hero__championship-driver"> ${driverLeader.driver.fullName}</strong>
+                        <div  class="hero__championship-driver-driver">
+                        <strong> ${driverLeader.driver.fullName}</strong>
                         <span class="hero__championship-team">${constructorLeader.constructor.name}</span>
+                        </div>
                     </div>
                 </div>
             </div>
