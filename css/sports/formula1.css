@@ -16,20 +16,24 @@
 .f1HeroOverlay{
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(../../assets/images/F1EasySports.png);
+    background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(../../assets/images/F1wid3.png);
     background-repeat: no-repeat;
-    background-position: right 0px center;
+    background-position: 90% center;
     background-size: contain;
     opacity: 0.48;
     pointer-events: none;
-    width: inherit;
+    /* width: inherit; */
+    /* padding-left: 5em; */
+    margin-left: 2em;
     z-index: 2;
     background-blend-mode: screen;
+   
 }
 
 .hero__content {
     z-index: 2;
-    padding: 20px;
+    padding: 15px 5px 10px 20px;
+    width: inherit;
 }
 
 .hero--f1 .hero__category {
@@ -39,45 +43,57 @@
 
 .hero--f1 .hero__title {
     color: var(--text);
-    margin: 10px 0;
+    margin: 10px 0 5px 0;
     font-size: clamp(1.5rem, 4.6vw, 4rem);
     line-height: 1.1;
 }
 
 .hero--f1 .hero__subtitle {
     color: var(--text-secondary);
-    margin: 0 0 20px;
-    font-size: 1.2rem;
+    margin: 0px 0 70px;
+    font-size: clamp(0.8rem, 2.9vw, 2rem);
 }
 
 .hero__info {
     display: flex;
-    flex-wrap: nowrap;
     align-content: center;
+    align-items: flex-end;
+    font-size: clamp(0.8rem, 2.6dvw, 1.4rem);
+    flex-wrap: wrap;
+    justify-content: space-between;
     column-gap: 0px;
     width: 100%;
     height: auto;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
 }
 
 .hero--f1 .hero__meta {
     color: var(--text);
-    flex: auto;
-    width: max-content;
+    display: flex;
+    gap: 0.3vw;
+    flex-direction: column;
 }
 
 .hero__championship {
     width: initial;
-    flex: 1 2 1;
+    flex: 1 2;
     display: inline;
-    text-align: center;
+    text-align: revert-rule;
     align-content: center;
-    max-width: 58vw;
+    max-width: 50vw;
 }
 
-.hero--f1 .hero__leaders 
+.hero__championship-title {
+    color: var(--danger);
+    font-weight: bolder;
+}
+
+.hero__championship-team{
+    color: var(--border-color);
+}
+
+/* 
+.hero--f1 .hero__leaders {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -93,26 +109,9 @@
 .hero--f1 .hero__leader strong {
     color: var(--text);
     font-weight: 700;
-}
+} */
 
-.hero__info{
-    display: flex;
-    flex-wrap: nowrap;
-    align-content: center;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-.hero__championship {
-    width: initial;
-    flex: 1 2 1;
-    display: inline;
-    text-align: center;
-    align-content: center;
-    max-width: 58vw;
-}
+
 /* ==========================================================
    DASHBOARD
 ========================================================== */
