@@ -1,28 +1,23 @@
-export function adaptSchedule(data) {
-    const races =
-        data?.MRData?.RaceTable?.Races ?? [];
-    return races.map(race => ({
-        season: Number(race.season),
-        round: Number(race.round),
-        raceName: race.raceName,
-        circuit: {
-            id: race.Circuit.circuitId,
-            name: race.Circuit.circuitName,
-            location: {
-                locality: race.Circuit.Location.locality,
-                country: race.Circuit.Location.country,
-                lat: Number(race.Circuit.Location.lat),
-                long: Number(race.Circuit.Location.long)
-            }
+export function adaptStandings(data) {
+    const standings =
+        data?.MRData?.StandingsTable?.StandingsLists?.[0]?.DriverStandings ?? [];
+    return standings.map(driver => ({
+        position: Number(driver.position),
+        driver: {
+            id: driver.Driver.driverId,
+            code: driver.Driver.code,
+            givenName: driver.Driver.givenName,
+            familyName: driver.Driver.familyName,
+            fullName: `${driver.Driver.givenName} ${driver.Driver.familyName}`,
+            nationality: driver.Driver.nationality
         },
-        date: race.date,
-        time: race.time,
-        firstPractice: race.FirstPractice ?? null,
-        secondPractice: race.SecondPractice ?? null,
-        thirdPractice: race.ThirdPractice ?? null,
-        qualifying: race.Qualifying ?? null,
-        sprint: race.Sprint ?? null,
-        sprintQualifying: race.SprintQualifying ?? null
+        constructor: {
+            id: driver.Constructors[0]?.constructorId,
+            name: driver.Constructors[0]?.name,
+            nationality: driver.Constructors[0]?.nationality
+        },
+        points: Number(driver.points),
+        wins: Number(driver.wins)
     }));
 }
 
