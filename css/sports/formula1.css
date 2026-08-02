@@ -88,6 +88,13 @@
     text-align: center;
 }
 
+.hero__championship-driver{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
 .hero__championship-team{
     color: var(--border-color);
 }
