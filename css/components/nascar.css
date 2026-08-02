@@ -234,3 +234,11 @@ var(--series-color);
     padding: 12px 20px;
     border-bottom: 1px solid #333;
 }
+
+.calendarItem small{
+    display: block;
+    margin-top: 2px;
+    color: var(--text-secondary);
+    font-size: .82rem;
+    font-weight: 400;
+}
