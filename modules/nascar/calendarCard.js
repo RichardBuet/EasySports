@@ -13,47 +13,36 @@ export async function createCalendarCard() {
     
     return `
 
-    <section class="calendarCard"">
+    <section class="calendarCard">
 
-        <h2 class="h2-NSC" style=" border-bottom: 1px solid #333;">Schedule</h2>
+        <h2 class="h2-NSC" style=" border-bottom: 1px solid #333;">Calendario</h2>
 
-        ${previous.map(race => `
-            <div class="calendarItem completed">
-                <strong>▼ ${race.track}</strong>
-                <span>(Finalizada)</span>
-                <small>
-                    ${formatDate(race.date)}
+${previous.map(race => `
 
+<div class="calendarItem completed">
+    <strong>▼ ${race.track}</strong>
+    <small>
+        ${formatDate(race.date)} • Finalizada
+    </small>
+</div>
+`).join("")}
 
+<div class="calendarItem current">
+    <strong>⭐ ${current.track}</strong>
+    <small>
+        ${formatDate(current.date)} • ${formatTime(current.date)}
+    </small>
+</div>
 
-                </small>
-            </div>
-        `).join("")}
+${next.map(race => `
 
-
-
-        <div class="calendarItem current">
-            <strong>⭐ ${current.track}</strong>
-            <span>(PRÓXIMA)</span>
-            <small>
-                ${formatDate(current.date)}
-                ·
-                ${formatTime(current.date)}
-            </small>
-        </div>
-
-
-
-        ${next.map(race => `
-            <div class="calendarItem next">
-                <strong>▲ ${race.track}</strong>
-                <small>
-                    ${formatDate(race.date)}
-                    ·
-                    Próxima carrera
-                </small>
-            </div>
-        `).join("")}
+<div class="calendarItem next">
+    <strong>▲ ${race.track}</strong>
+    <small>
+        ${formatDate(race.date)} • Programada
+    </small>
+</div>
+`).join("")}
 
         <button
             class="btn-nsc"
