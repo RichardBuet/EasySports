@@ -63,12 +63,14 @@
     background:#2d2d2d;
 }
 
-.driver-row-full strong{
+.driver-row-full strong,
+.driver-link strong{
     display:block;
     color:#fff;
 }
 
-.driver-row-full small{
+.driver-row-full small,
+.driver-link small{
     display:block;
     color:#999;
     font-size:.72rem;
@@ -93,7 +95,10 @@
     justify-content: center;
 }
 
-
+.driver-link{
+    display:flex;
+    flex-direction:column;
+}
 
 
 
@@ -169,7 +174,7 @@
 .driver-row{
     padding: 0 20px 8px 20px;
     border-bottom: 1px solid #333;
-    height: 30px;
+   /* height: 30px;*/
 }
 
 .driver-row .driver-gap {
