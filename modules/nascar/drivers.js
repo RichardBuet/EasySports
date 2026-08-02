@@ -29,11 +29,19 @@ export async function createDrivers() {
                     <div class="driver-row">
                         <span>#${driver.position}</span>
                         <span>${driver.number}</span>
-                        <span
-                            class="driver-link"
-                            data-driver-id="${driver.driverId}">
-                            ${driver.driver}
-                        </span>
+
+<span
+    class="driver-link"
+    data-driver-id="${driver.driverId}">
+
+    <strong>${driver.driver}</strong>
+
+    ${driver.profile?.team
+        ? `<small>${driver.profile.team}</small>`
+        : ""}
+
+</span>
+
                         <strong>${driver.points}</strong>
                     </div>
                 `).join("")}
