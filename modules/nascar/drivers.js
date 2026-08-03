@@ -21,6 +21,7 @@ export async function createDrivers() {
                 <span>POS</span>
                 <span>N°</span>
                 <span>DRIVER</span>
+                <span></span>
                 <span>PTS</span>
 
             </div>
@@ -28,20 +29,30 @@ export async function createDrivers() {
                 ${top5.map(driver => `
                     <div class="driver-row">
                         <span>#${driver.position}</span>
+                        
                         <span>${driver.number}</span>
 
-<span
-    class="driver-link"
-    data-driver-id="${driver.driverId}">
-
-    <strong>${driver.driver}</strong>
-
-    ${driver.profile?.team
-        ? `<small>${driver.profile.team}</small>`
-        : ""}
-
-</span>
-
+                        <span
+                            class="driver-link"
+                            data-driver-id="${driver.driverId}">
+                        
+                            <strong>${driver.driver}</strong>
+                        
+                            ${driver.profile?.team
+                                ? `<small>${driver.profile.team}</small>`
+                                : ""}
+                        
+                        </span>
+                        
+                        <span class="manufacturer-cell">
+                            ${driver.profile?.manufacturerLogo
+                                ? `<img
+                                    class="manufacturer-logo"
+                                    src="${driver.profile.manufacturerLogo}"
+                                    alt="${driver.profile.manufacturer}">`
+                                : ""}
+                        </span>
+                        
                         <strong>${driver.points}</strong>
                     </div>
                 `).join("")}
@@ -69,6 +80,7 @@ window.openDriverStandings = async () => {
                 <span>POS</span>
                 <span>N°</span>
                 <span>PILOTO</span>
+                <span></span>
                 <span>PTS</span>
             </div>
         
@@ -76,20 +88,30 @@ window.openDriverStandings = async () => {
                 ${drivers.map(driver => `
                     <div class="driver-row">
                         <span>#${driver.position}</span>
+                        
                         <span>${driver.number}</span>
 
-<span
-    class="driver-link"
-    data-driver-id="${driver.driverId}">
-
-    <strong>${driver.driver}</strong>
-
-    ${driver.profile?.team
-        ? `<small>${driver.profile.team}</small>`
-        : ""}
-
-</span>
-
+                        <span
+                            class="driver-link"
+                            data-driver-id="${driver.driverId}">
+                        
+                            <strong>${driver.driver}</strong>
+                        
+                            ${driver.profile?.team
+                                ? `<small>${driver.profile.team}</small>`
+                                : ""}
+                        
+                        </span>
+                        
+                        <span class="manufacturer-cell">
+                            ${driver.profile?.manufacturerLogo
+                                ? `<img
+                                    class="manufacturer-logo"
+                                    src="${driver.profile.manufacturerLogo}"
+                                    alt="${driver.profile.manufacturer}">`
+                                : ""}
+                        </span>
+                        
                         <strong>${driver.points}</strong>
                     </div>
                 `).join("")}
