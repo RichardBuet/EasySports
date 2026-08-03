@@ -19,6 +19,14 @@ import { adaptNascarLiveRace } from "./adapters/nascarLiveRaceAdapter.js";
 
 import { fetchJSON } from "./shared/fetch.js";
 
+const MANUFACTURER_LOGOS = {
+    Chevrolet: "/assets/logos/nascar/chevrolet-logo.svg",
+    Ford: "/assets/logos/nascar/ford-logo.svg",
+    Toyota: "/assets/logos/nascar/ram-horizontal-logo.svg",
+    Dodge: "/assets/logos/nascar/toyota-horizontal-logo.svg"
+};
+
+
 export class NASCAR {
 
     static async getHeroData() {
@@ -319,20 +327,34 @@ static async getRaceCenterData() {
     }
 
     static async getStandingsWithDrivers(series = state.nascarSeries) {
-
+    
         const [standings, drivers] = await Promise.all([
             this.getStandings(series),
             this.getDrivers()
         ]);
-
-        return standings.map(driver => ({
-
-            ...driver,
-
-            profile: drivers.find(d => d.driverId === driver.driverId) ?? null
-
-        }));
-
+    
+        return standings.map(driver => {
+    
+            const profile = drivers.find(
+                d => d.driverId === driver.driverId
+            );
+    
+            return {
+    
+                ...driver,
+    
+                profile: profile
+                    ? {
+                        ...profile,
+                        manufacturerLogo:
+                            MANUFACTURER_LOGOS[profile.manufacturer] ?? null
+                    }
+                    : null
+    
+            };
+    
+        });
+    
     }
 
     static async getDriver(driverId, series = state.nascarSeries) {
