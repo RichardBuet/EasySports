@@ -345,8 +345,7 @@ static async getRaceCenterData() {
             const profile = drivers.find( d => d.driverId === driver.driverId);
              console.log(
                 driver.driver,
-                driver.manufacturer,
-                profile?.manufacturer
+manufacturerLogo
             );
             const manufacturerLogo =
                 profile?.manufacturer &&
