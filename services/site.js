@@ -314,31 +314,21 @@ static async getRaceCenterData() {
             all: races,
             currentIndex
         };
-    
+
     }
 
     static async getStandings(series = state.nascarSeries) {
-
         const data = await NASCARStandings.getStandings(series);
-
         return adaptNascarStandings(data);
-
     }
 
     static async getDrivers() {
-    
         const data = await NASCARDrivers.getDrivers();
-    
         const drivers = adaptNascarDrivers(data).map(driver => ({
-            ...driver,
-            manufacturerLogo:
-                MANUFACTURER_LOGOS[driver.manufacturer] ?? null
+            ...driver, manufacturerLogo: MANUFACTURER_LOGOS[driver.manufacturer] ?? null
         }));
-    
         console.log("GET DRIVERS", drivers[0]);
-    
         return drivers;
-    
     }
 
     static async getStandingsWithDrivers(series = state.nascarSeries) {
@@ -349,25 +339,17 @@ static async getRaceCenterData() {
         ]);
     
         return standings.map(driver => {
-    
-            const profile = drivers.find(
-                d => d.driverId === driver.driverId
-            );
-    
-            console.log(
-                driver.driver,
-                driver.driverId,
-                profile
-            );
-    
+            const profile = drivers.find( d => d.driverId === driver.driverId);
+            const manufacturerLogo =
+                profile?.manufacturer &&
+                profile.manufacturer.trim() !== ""
+                    ? profile.manufacturer : MANUFACTURER_LOGOS[driver.manufacturer] ?? null;
             return {
-    
                 ...driver,
-    
-                profile: profile ?? null
-    
-            };
-    
+                profile: profile
+                    ? { ...profile, manufacturerLogo } : { manufacturerLogo }
+          };
+        
         });
     
     }
