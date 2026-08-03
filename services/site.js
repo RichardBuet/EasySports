@@ -21,9 +21,16 @@ import { fetchJSON } from "./shared/fetch.js";
 
 const MANUFACTURER_LOGOS = {
     Chevrolet: "/assets/logos/nascar/chevrolet-logo.svg",
+    Chv: "/assets/logos/nascar/chevrolet-logo.svg",
+
     Ford: "/assets/logos/nascar/ford-logo.svg",
-    Toyota: "/assets/logos/nascar/ram-horizontal-logo.svg",
-    Dodge: "/assets/logos/nascar/toyota-horizontal-logo.svg"
+    Frd: "/assets/logos/nascar/ford-logo.svg",
+
+    Toyota: "/assets/logos/nascar/toyota-horizontal-logo.svg",
+    Tyt: "/assets/logos/nascar/toyota-horizontal-logo.svg",
+
+    Dodge: "/assets/logos/nascar/ram-horizontal-logo.svg",
+    Ram: "/assets/logos/nascar/ram-horizontal-logo.svg"
 };
 
 
@@ -319,19 +326,19 @@ static async getRaceCenterData() {
     }
 
     static async getDrivers() {
-
+    
         const data = await NASCARDrivers.getDrivers();
-
-        return adaptNascarDrivers(data).map(driver => ({
+    
+        const drivers = adaptNascarDrivers(data).map(driver => ({
             ...driver,
             manufacturerLogo:
                 MANUFACTURER_LOGOS[driver.manufacturer] ?? null
         }));
-      
-        console.log(drivers[0]);
+    
+        console.log("GET DRIVERS", drivers[0]);
     
         return drivers;
-
+    
     }
 
     static async getStandingsWithDrivers(series = state.nascarSeries) {
@@ -341,15 +348,27 @@ static async getRaceCenterData() {
             this.getDrivers()
         ]);
     
-        return standings.map(driver => ({
+        return standings.map(driver => {
     
-            ...driver,
-    
-            profile: drivers.find(
+            const profile = drivers.find(
                 d => d.driverId === driver.driverId
-            ) ?? null
+            );
     
-        }));
+            console.log(
+                driver.driver,
+                driver.driverId,
+                profile
+            );
+    
+            return {
+    
+                ...driver,
+    
+                profile: profile ?? null
+    
+            };
+    
+        });
     
     }
 
