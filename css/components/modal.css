@@ -98,9 +98,16 @@
 .driver-link{
     display:flex;
     flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    text-align:left;
 }
 
-
+.driver-link strong,
+.driver-link small{
+    width:100%;
+    text-align:left;
+}
 
 
 .modal-overlay{
@@ -197,7 +204,7 @@
     font-weight:700;
 }
 
-.driver-row strong{
+.driver-row > strong{
     text-align:right;
     color:#ffffff;
 }
