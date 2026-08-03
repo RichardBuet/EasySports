@@ -337,7 +337,13 @@ static async getRaceCenterData() {
             this.getStandings(series),
             this.getDrivers()
         ]);
-    
+
+        console.log(
+    driver.driver,
+    driver.manufacturer,
+    profile?.manufacturer
+);
+        
         return standings.map(driver => {
             const profile = drivers.find( d => d.driverId === driver.driverId);
             const manufacturerLogo =
