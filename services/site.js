@@ -20,17 +20,17 @@ import { adaptNascarLiveRace } from "./adapters/nascarLiveRaceAdapter.js";
 import { fetchJSON } from "./shared/fetch.js";
 
 const MANUFACTURER_LOGOS = {
-    Chevrolet: "/EasySports/assets/logos/nascar/chevrolet-logo.svg",
-    Chv: "/EasySports/assets/logos/nascar/chevrolet-logo.svg",
+    Chevrolet: "../assets/logos/nascar/chevrolet-logo.svg",
+    Chv: "../assets/logos/nascar/chevrolet-logo.svg",
 
-    Ford: "/EasySports/assets/logos/nascar/ford-logo.svg",
-    Frd: "/EasySports/assets/logos/nascar/ford-logo.svg",
+    Ford: "../assets/logos/nascar/ford-logo.svg",
+    Frd: "../assets/logos/nascar/ford-logo.svg",
 
-    Toyota: "/EasySports/assets/logos/nascar/toyota-horizontal-logo.svg",
-    Tyt: "/EasySports/assets/logos/nascar/toyota-horizontal-logo.svg",
+    Toyota: "../assets/logos/nascar/toyota-horizontal-logo.svg",
+    Tyt: "../assets/logos/nascar/toyota-horizontal-logo.svg",
 
-    Dodge: "/EasySports/assets/logos/nascar/ram-horizontal-logo.svg",
-    Ram: "/EasySports/assets/logos/nascar/ram-horizontal-logo.svg"
+    Dodge: "../assets/logos/nascar/ram-horizontal-logo.svg",
+    Ram: "../assets/logos/nascar/ram-horizontal-logo.svg"
 };
 
 
