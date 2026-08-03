@@ -102,13 +102,12 @@ window.openDriverStandings = async () => {
                         
                         </span>
                         
-                        <span class="manufacturer-cell">
-                            ${ driver.profile?.manufacturer ? `<img
-                                class="manufacturer-logo"
-                                src="${driver.profile.manufacturer}"
-                                alt="Manufacturer">`
-                            : "" }
-                        </span>
+ <span class="manufacturer-cell">
+    <img
+        class="manufacturer-logo"
+        src="../assets/logos/nascar/chevrolet-logo.svg"
+        alt="Chevrolet">
+</span>
                         
                         <strong>${driver.points}</strong>
                     </div>
