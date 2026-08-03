@@ -45,11 +45,12 @@ export async function createDrivers() {
                         </span>
                         
                         <span class="manufacturer-cell">
-                            ${ driver.profile?.manufacturer ? `<img
-                                class="manufacturer-logo"
-                                src="${driver.profile.manufacturer}"
-                                alt="Manufacturer">`
-                            : "" }
+                            ${driver.profile?.manufacturerLogo
+                                ? `<img
+                                    class="manufacturer-logo"
+                                    src="${driver.profile.manufacturerLogo}"
+                                    alt="${driver.profile.manufacturer}">`
+                                : ""}
                         </span>
                         
                         <strong>${driver.points}</strong>
@@ -102,13 +103,14 @@ window.openDriverStandings = async () => {
                         
                         </span>
                         
-<span class="manufacturer-cell" style="background:red;">
-    <img
-        class="manufacturer-logo"
-        src="${driver.profile?.manufacturerLogo}"
-        alt=""
-        style="width:32px;height:32px;border:1px solid yellow;">
-</span>
+                        <span class="manufacturer-cell">
+                            ${driver.profile?.manufacturerLogo
+                                ? `<img
+                                    class="manufacturer-logo"
+                                    src="${driver.profile.manufacturerLogo}"
+                                    alt="${driver.profile.manufacturer}">`
+                                : ""}
+                        </span>
                         
                         <strong>${driver.points}</strong>
                     </div>
