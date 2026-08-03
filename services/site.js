@@ -327,7 +327,10 @@ static async getRaceCenterData() {
             manufacturerLogo:
                 MANUFACTURER_LOGOS[driver.manufacturer] ?? null
         }));
-
+      
+        console.log(drivers[0]);
+    
+        return drivers;
 
     }
 
@@ -338,27 +341,15 @@ static async getRaceCenterData() {
             this.getDrivers()
         ]);
     
-        return standings.map(driver => {
+        return standings.map(driver => ({
     
-            const profile = drivers.find(
+            ...driver,
+    
+            profile: drivers.find(
                 d => d.driverId === driver.driverId
-            );
+            ) ?? null
     
-            return {
-    
-                ...driver,
-    
-                profile: profile
-                    ? {
-                        ...profile,
-                        manufacturerLogo:
-                            MANUFACTURER_LOGOS[profile.manufacturer] ?? null
-                    }
-                    : null
-    
-            };
-    
-        });
+        }));
     
     }
 
