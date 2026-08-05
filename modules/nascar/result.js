@@ -19,44 +19,34 @@ async function createRaceResultContent(race){
 console.log(race.leaderboard[0]);
     return `
 
-        <div class="live-summary">
+<div class="live-summary">
 
-            <div class="live-item">
-                <span>📍 Circuito:</span>
-                <strong>${race.track}</strong>
-            </div>
+    <div class="live-item">
+        <span>🏁 Serie</span>
+        <strong>${race.series}</strong>
+    </div>
 
-            <div class="live-item">
-                <span>🥇 Ganador:</span>
-                <strong>${race.winner.name} (#${race.winner.number})</strong>
-            </div>
+    <div class="live-item">
+        <span>📍 Circuito</span>
+        <strong>${race.track}</strong>
+    </div>
 
-            <div class="live-item">
-                <span>🏎️ Marca:</span>
-                <strong>${race.winner.manufacturer}</strong>
-            </div>
+    <div class="live-item">
+        <span>🟡 Amarillas</span>
+        <strong>${race.cautions}</strong>
+    </div>
 
-            <div class="live-item">
-                <span>👥 Equipo:</span>
-                <strong>${race.winner.team}</strong>
-            </div>
+    <div class="live-item">
+        <span>⚡ Promedio</span>
+        <strong>${race.averageSpeed} mph</strong>
+    </div>
 
-            <div class="live-item">
-                <span>🟡 Banderas Amarillas:</span>
-                <strong>${race.cautions}</strong>
-            </div>
+    <div class="live-item">
+        <span>🏆 Margen</span>
+        <strong>${race.margin} s</strong>
+    </div>
 
-            <div class="live-item">
-                <span>⚡ Velocidad Promedio:</span>
-                <strong>${race.averageSpeed} mph</strong>
-            </div>
-
-            <div class="live-item">
-                <span>🏆 Margen del ganador:</span>
-                <strong>${race.margin} s</strong>
-            </div>
-
-        </div>
+</div>
 
         <div class="driver-header">
 
@@ -82,11 +72,27 @@ console.log(race.leaderboard[0]);
 
                     <span>${driver.number}</span>
 
-                    <span
-                        class="driver-link"
-                        data-driver-id="${driver.driverId}">
-                        ${driver.driver}
-                    </span>
+<span
+    class="driver-link"
+    data-driver-id="${driver.driverId}">
+
+    <strong>
+        ${driver.driver}
+
+        ${driver.manufacturerLogo
+            ? `<img
+                class="manufacturer-logo"
+                src="${driver.manufacturerLogo}"
+                alt="">`
+            : ""}
+    </strong>
+
+    ${driver.team
+        ? `<small>${driver.team}</small>`
+        : ""}
+
+</span>
+
 
                     <span class="driver-gap">${driver.gap}</span>
 
