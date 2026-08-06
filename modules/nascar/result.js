@@ -12,7 +12,6 @@ window.openRaceResult = async () => {
         content: await createRaceResultContent(race)
 
     });
-
 };
 
 async function createRaceResultContent(race){
