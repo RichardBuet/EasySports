@@ -18,12 +18,14 @@ async function createRaceResultContent(race){
 console.log(race.leaderboard[0]);
     return `
 
-<div class="live-summary-full">
-
     <div class="live-item">
         <span>📍 Circuito</span>
         <strong>${race.track}</strong>
     </div>
+    
+<div class="live-summary-full">
+
+
     
     <div class="live-item-full">
         <span>🏁 Serie</span>
