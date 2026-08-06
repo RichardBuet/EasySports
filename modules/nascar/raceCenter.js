@@ -36,7 +36,7 @@ return `
 
             ${raceCenter.margin && raceCenter.second?.name ? `
                 <span class="winnerMargin">
-                    +${raceCenter.margin}Seg. sobre ${raceCenter.second.name}
+                    +${raceCenter.margin}Seg. sobre: ${raceCenter.second.name}
                 </span>
             `
             : ""}
