@@ -1,5 +1,5 @@
 import { NASCAR } from "../../services/site.js";
-
+//Arxhivo ppal de la categoría 
 export async function createNascarHero() {
     
     const heroState = await NASCAR.getHeroState();
