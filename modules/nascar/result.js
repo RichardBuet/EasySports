@@ -19,29 +19,31 @@ async function createRaceResultContent(race){
 console.log(race.leaderboard[0]);
     return `
 
-<div class="live-summary">
-
-    <div class="live-item">
-        <span>🏁 Serie</span>
-        <strong>${race.series}</strong>
-    </div>
+<div class="live-summary-full">
 
     <div class="live-item">
         <span>📍 Circuito</span>
         <strong>${race.track}</strong>
     </div>
+    
+    <div class="live-item-full">
+        <span>🏁 Serie</span>
+        <strong>${race.series}</strong>
+    </div>
 
-    <div class="live-item">
+
+
+    <div class="live-item-full">
         <span>🟡 Amarillas</span>
         <strong>${race.cautions}</strong>
     </div>
 
-    <div class="live-item">
+    <div class="live-item-full">
         <span>⚡ Promedio</span>
         <strong>${race.averageSpeed} mph</strong>
     </div>
 
-    <div class="live-item">
+    <div class="live-item-full">
         <span>🏆 Margen</span>
         <strong>${race.margin} s</strong>
     </div>
