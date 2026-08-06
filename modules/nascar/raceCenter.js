@@ -1,5 +1,5 @@
 import { NASCAR } from "../../services/site.js";
-// tarjeta (1) de última carrera
+// tarjeta (1) de última carrera.requiere cambio de nombre
 export async function createRaceCenter() {
 const raceCenter = await NASCAR.getRaceCenterData();
 
