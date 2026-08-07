@@ -209,7 +209,7 @@ background: linear-gradient(180deg, #1f1f1f, #111);
     box-shadow: var(--shadow);
 }
 
-.calendarItem .completed, .calendarItem .current, .calendarItem .next, {
+.calendarItem_completed, .calendarItem_current, .calendarItem_next, {
     padding: 12px 20px;
     border-bottom: 1px solid #333;
 }
@@ -222,7 +222,7 @@ background: linear-gradient(180deg, #1f1f1f, #111);
     font-weight: 400;
 }
 
-.calendarItem current {background: rgb(237 20 61 / 44%);}
+.calendarItem_current {background: rgb(237 20 61 / 44%);}
 
 .calendarItem {
     border-bottom: 1px solid #333;
