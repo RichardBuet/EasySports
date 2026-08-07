@@ -34,10 +34,10 @@ return `
 
             ${raceCenter.winner.team? `<small> [Team: ${raceCenter.winner.team}]</small>` : ""}
 
-            ${raceCenter.margin && raceCenter.second?.name ? `
-                <span class="winnerMargin">
-                    +${raceCenter.margin}Seg. sobre: ${raceCenter.second.name}
-                </span>
+            // ${raceCenter.margin && raceCenter.second?.name ? `
+            //     <span class="winnerMargin">
+            //         +${raceCenter.margin}Seg. sobre: ${raceCenter.second.name}
+            //     </span>
             `
             : ""}
 
