@@ -242,3 +242,10 @@ var(--series-color);
     font-size: .82rem;
     font-weight: 400;
 }
+
+.calendarItem .current {background: rgb(237 20 61 / 44%);}
+
+.calendarItem {
+    border-bottom: 1px solid #333;
+    padding: 5px;
+}
