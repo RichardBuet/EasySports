@@ -33,6 +33,7 @@
 }
 
 .raceWinner span{
+    display: none; /*Se oculta para ahorrar espacio*/
     font-size: clamp(0.9rem, 1vw, 2.5rem);
     color: var(--text-secondary);
     padding: 0px 14px;
@@ -45,7 +46,7 @@
 } */
 
 .raceMeta{
-    display:none; /*flex;*/
+    display:flex; 
     flex-wrap:wrap;
     gap: 6px;
     margin-top: 2px;
