@@ -47,8 +47,8 @@
 .raceMeta{
     display:flex;
     flex-wrap:wrap;
-    gap: 10px;
-    margin-top: 12px;
+    gap: 6px;
+    margin-top: 2px;
 }
 
 .raceMetaItem{
