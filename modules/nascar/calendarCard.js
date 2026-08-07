@@ -19,7 +19,7 @@ export async function createCalendarCard() {
 
 ${previous.map(race => `
 
-<div class="calendarItem completed">
+<div class="calendarItem_completed">
     <strong>▼ ${race.track}</strong>
     <small>
         ${formatDate(race.date)} • Finalizada
@@ -27,7 +27,7 @@ ${previous.map(race => `
 </div>
 `).join("")}
 
-<div class="calendarItem current">
+<div class="calendarItem_current">
     <strong>⭐ ${current.track}</strong>
     <small>
         ${formatDate(current.date)} • ${formatTime(current.date)}
@@ -36,7 +36,7 @@ ${previous.map(race => `
 
 ${next.map(race => `
 
-<div class="calendarItem next">
+<div class="calendarItem_next">
     <strong>▲ ${race.track}</strong>
     <small>
         ${formatDate(race.date)} • Programada
