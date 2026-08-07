@@ -146,28 +146,7 @@ button {
 background: linear-gradient(180deg, #1f1f1f, #111);
 }
 
-
-
-
-/*
-#btn-nsc-01{background:#FFB300}
-#btn-nsc-02{background:#E4002B}
-#btn-nsc-03{background:#0066B3}
-var(--series-color);
-
-
-#btn-nsc-01,#btn-nsc-02,#btn-nsc-03{
-   background:linear-gradient(180deg, #1f1f1f, #111);
-   border: 1px solid var(--border);
-   display: flex;
-   justify-content: center;
-   width: -webkit-fill-available;
-}
-*/
-
-#btn-nsc-01,
-#btn-nsc-02,
-#btn-nsc-03{
+#btn-nsc-01, #btn-nsc-02, #btn-nsc-03 {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -176,9 +155,9 @@ var(--series-color);
     border: 1px solid var(--border);
 }
 
-#btn-nsc-01 .active{ box-shadow:0 0 14px #ffd44d;}
-#btn-nsc-02 .active{ box-shadow:0 0 14px #d91f3b;}
-#btn-nsc-03 .active{ box-shadow:0 0 14px #2196f3;}
+#btn-nsc-01 .active { box-shadow:0 0 14px #ffd44d;}
+#btn-nsc-02 .active { box-shadow:0 0 14px #d91f3b;}
+#btn-nsc-03 .active { box-shadow:0 0 14px #2196f3;}
 
 
 
@@ -243,7 +222,7 @@ var(--series-color);
     font-weight: 400;
 }
 
-.calendarItem .current {background: rgb(237 20 61 / 44%);}
+.calendarItem current {background: rgb(237 20 61 / 44%);}
 
 .calendarItem {
     border-bottom: 1px solid #333;
