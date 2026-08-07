@@ -5,7 +5,7 @@ import { NASCAR } from "../../services/site.js";
             //     <span class="winnerMargin">
             //         +${raceCenter.margin}Seg. sobre: ${raceCenter.second.name}
             //     </span>
-            //`
+            //` : ""}
 
 export async function createRaceCenter() {
 const raceCenter = await NASCAR.getRaceCenterData();
@@ -23,7 +23,7 @@ return `
             ${raceCenter.date ? `<span>📅 ${raceCenter.date}</span>` : ""}
             ${raceCenter.track ? `<span>📍 ${raceCenter.track}</span>` : ""}
         </div>
-        ` : ""}
+        
              ${raceCenter.winner?.name ? `
         <div class="raceWinner">
             <div class="winnerHeader">
