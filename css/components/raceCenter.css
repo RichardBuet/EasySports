@@ -45,7 +45,7 @@
 } */
 
 .raceMeta{
-    display:flex;
+    display:none; /*flex;*/
     flex-wrap:wrap;
     gap: 6px;
     margin-top: 2px;
