@@ -11,10 +11,13 @@
 }
 
 .raceWinner{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    flex: inherit;
+    flex-wrap: balance;
+    color: var(--secondary-color);
 }
 
 .winnerHeader{ padding: 4px 0px; }
