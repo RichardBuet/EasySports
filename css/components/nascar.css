@@ -9,9 +9,7 @@
    align-items: flex-end;
    padding: 15px 5px 10px 20px;
    color: var(--text);
-   background:
-           linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
-           var(--hero-image);
+   background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)), var(--hero-image);
    background-size: cover;
    background-position: center;
 }
@@ -32,12 +30,8 @@
 .nascarHeroContent{
    position: relative;
    z-index: 2;
-   /*max-width: 700px;*/
-    width: clamp(400px, 90vw, 1200px); 
+   width: clamp(400px, 90vw, 1200px); 
 }
-  /* 
- width: clamp(300px, 80vw, 1200px); 
- Mínimo: 300px, Ideal: 80% del ancho de pantalla, Máximo: 1200px */
   
 .heroCategory{
    display: inline-block;
@@ -68,11 +62,10 @@
 .heroMeta{
     display: flex;
     flex-wrap: nowrap;
-   width: 100%;
-    gap: 8px;
-    margin-right: 15px;
-    margin-top: 24px;
     justify-content: space-between;
+    max-width: 700px;
+    gap: 10px;
+    margin-top: 24px;
 }
 
 .heroItem{
@@ -84,12 +77,12 @@
     padding: 6px;
     white-space: nowrap;
     overflow: hidden;
-    background: rgba(255,255,255,.08);
-    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .12);
     border-radius: 999px;
     backdrop-filter: blur(10px);
+    max-width: 156px;
 }
-
 
 .heroItem span{
    font-size: clamp(0.60rem, 1.2vw, 1.6rem)
@@ -102,15 +95,12 @@
    color:var(--text);
 }
 
-
-
 .heroStatus{
    background:rgba(22,163,74,.18);
    border-color:rgba(22,163,74,.35);
 }
 
 .container{
-   /* margin:auto; */
    padding:20px 20px 5px 20px;
 }
 
@@ -121,19 +111,15 @@ button {
    border-style: hidden;
 }
 
+/* ========================================
+   NASCAR Selector
+======================================== */
+
 .nascar-selector{
     display: flex;
     justify-content: space-between;
     gap: 16px;
 }
-/*
-.nascar-selector button img{
-   max-height: 5em;
-   display: block;
-   padding: 3px 10px;
-   background: linear-gradient(180deg, #1f1f1f, #111);
-}
-*/
 
 .nascar-selector button{
     min-height: clamp(50px, 8vw, 0px);
@@ -160,22 +146,9 @@ background: linear-gradient(180deg, #1f1f1f, #111);
 #btn-nsc-02 .active { box-shadow:0 0 14px #d91f3b;}
 #btn-nsc-03 .active { box-shadow:0 0 14px #2196f3;}
 
-
-
-#nascar-selector button.active[data-series="1"]{
-    box-shadow:0 0 14px #bfbfbf;
-}
-
-#nascar-selector button.active[data-series="2"]{
-    box-shadow:0 0 14px #009d57;
-}
-
-#nascar-selector button.active[data-series="3"]{
-    box-shadow:0 0 14px #de1e26;
-}
-
-
-
+#nascar-selector button.active[data-series="1"]{ box-shadow:0 0 14px #bfbfbf; }
+#nascar-selector button.active[data-series="2"]{ box-shadow:0 0 14px #009d57; }
+#nascar-selector button.active[data-series="3"]{ box-shadow:0 0 14px #de1e26; }
 
 /* ========================================
    NASCAR Tarjetas  , .driverCard
@@ -191,7 +164,6 @@ background: linear-gradient(180deg, #1f1f1f, #111);
     border-radius: var(--radius-lg) 20px;
     padding: 18px;
 }
-
 
 .h2-NSC{
     font-size: 1.1rem;
