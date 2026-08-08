@@ -36,6 +36,10 @@
 
 .raceWinner small{ color: var(--text-secondary); }
 
+.driver-winner-logo {
+    height: 30px;
+    max-width: max-content;
+}
 /* 
 .raceWinner span{
     display: none; / *Se oculta para ahorrar espacio* /
