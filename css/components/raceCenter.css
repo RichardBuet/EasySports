@@ -13,16 +13,18 @@
 .raceWinner{
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-top: 2px;
-    flex: inherit;
-    flex-wrap: balance;
-    color: var(--secondary-color);
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 5px 8px;
+    white-space: nowrap;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .12);
 }
 
 .winnerHeader{ padding: 4px 0px; }
 
-.raceWinner strong, .raceWinner span{
+.raceWinner strong {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,13 +35,16 @@
     border: 1px solid rgba(255, 255, 255, .12);
 }
 
+.raceWinner small{ color: var(--text-secondary); }
+
+/* 
 .raceWinner span{
-    display: none; /*Se oculta para ahorrar espacio*/
+    display: none; / *Se oculta para ahorrar espacio* /
     font-size: clamp(0.9rem, 1vw, 2.5rem);
     color: var(--text-secondary);
     padding: 0px 14px;
     border-radius: 999px;
-}
+} */
 
 .raceMeta{
     display: flex;
