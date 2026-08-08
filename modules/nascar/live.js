@@ -24,7 +24,7 @@ openModal({
 
 clearInterval(refreshTimer);
 
-refreshTimer = setInterval(refreshLiveModal, 15000);
+refreshTimer = setInterval(refreshLiveModal, 5000);
 
 
 };
@@ -181,7 +181,7 @@ async function createLiveContent(live) {
 
 async function refreshLiveModal() {
 
-    const live = await NASCAR.getLiveRace();
+    const live = await NASCAR.getLiveRaceData();
 
     const body = document.querySelector(".modal-body");
 
