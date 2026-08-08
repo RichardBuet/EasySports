@@ -293,7 +293,7 @@ static async getRaceCenterData() {
                 return "Craftsman Truck Series";
 
             default:
-                return "NASCAR";
+                return "NASCAR 2026";
 
         }
 
@@ -446,7 +446,9 @@ static async getRaceCenterData() {
                 pitData,
                 flagData
             );
-    
+
+            data.summary.series = this.getSeriesName();
+            
             console.log(data);
     
             return data;
