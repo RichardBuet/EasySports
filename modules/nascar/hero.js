@@ -52,9 +52,9 @@ switch (heroState.state) {
             ${hero.meta.map(item => `
             <div
                 class="heroItem ${item.live ? "heroLive" : ""}"
-                ${item.live ? 'onclick="window.openLiveRaceModal()"' : ""}>
+                ${item.live ? 'onclick="window.openLiveRace()"' : ""}>
                 <span>${item.icon}</span>
-                <strong>${item.value}</strong>
+                <strong>${item.live ? "EN VIVO" : item.value}</strong>
             </div>
         `).join("")}
         </div>
