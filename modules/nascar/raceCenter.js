@@ -1,5 +1,9 @@
 import { NASCAR } from "../../services/site.js";
 // tarjeta (1) de última carrera.requiere cambio de nombre 23.42
+            // ${raceCenter.margin && raceCenter.second?.name ? `
+            //     <span class="winnerMargin">
+            //         +${raceCenter.margin}Seg. sobre: ${raceCenter.second.name}
+            //     </span>` : ""}
 export async function createRaceCenter() {
 const raceCenter = await NASCAR.getRaceCenterData();
 
@@ -17,6 +21,7 @@ return `
     </div> ` : ""}
     
     ${raceCenter.winner?.name ? `
+    
     <div class="raceWinner">
         <div class="winnerHeader">
             <strong>
@@ -32,10 +37,12 @@ return `
 
         ${raceCenter.winner.team? `<small> [Team: ${raceCenter.winner.team}]</small>` : ""}
 
-        ${raceCenter.margin && raceCenter.second?.name ? `
-            <span class="winnerMargin">
-                +${raceCenter.margin}Seg. sobre: ${raceCenter.second.name}
-            </span>` : ""}
+
+
+
+
+
+
     </div>` : ""}
 
 
