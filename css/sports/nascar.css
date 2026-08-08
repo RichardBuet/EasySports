@@ -108,6 +108,16 @@ body.nascar{
    border-color:rgba(22,163,74,.35);
 }
 
+.heroItem .heroLive {
+    animation: heroLivePulse 1.5s infinite;
+}
+
+@keyframes heroLivePulse {
+    0% { opacity: 1;transform: scale(1); }
+    50% { opacity: 0.65;transform: scale(1.03); }
+    100% { opacity: 1;transform: scale(1); }
+}
+
 .container{
    padding:20px 20px 5px 20px;
 }
