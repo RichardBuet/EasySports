@@ -1,8 +1,9 @@
 body.nascar{
     --sport-primary:#ffd100;
-    --sport-secondary:#ff9800;
+    /* >>> estas configuraciones funcionan pero no se usará por el momento <<< */
+    /* --sport-secondary:#ff9800; */
     /* --hero-image:url("../../assets/img/nascar/hero.jpg"); */
-    --hero-image:url("https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg");
+    /* --hero-image:url("https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg"); */
     /* --hero-image:none; */
 }
 
@@ -17,7 +18,6 @@ body.nascar{
    align-items: flex-end;
    padding: 15px 5px 10px 20px;
    color: var(--text);
-   background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)), var(--hero-image);
    background-size: cover;
    background-position: center;
 }
