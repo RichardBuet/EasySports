@@ -39,10 +39,12 @@
 }
 
 .raceMeta{
-    display:flex; 
-    flex-wrap:wrap;
+    display: flex;
     gap: 6px;
     margin-top: 2px;
+    flex: inherit;
+    justify-content: space-between;
+    flex-wrap: balance;
 }
 
 .raceMetaItem{
