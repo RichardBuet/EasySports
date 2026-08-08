@@ -70,7 +70,7 @@ body.nascar{
 .heroMeta{
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     max-width: 700px;
     gap: 10px;
     margin-top: 24px;
