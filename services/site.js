@@ -19,12 +19,6 @@ import { adaptNascarLiveRace } from "./adapters/nascarLiveRaceAdapter.js";
 
 import { fetchJSON } from "./shared/fetch.js";
 
-// Info usada en RaceCenter en tarjeta
-// {
-//     icon: "🚧",
-//     value: `${weekend.cautionLaps} vueltas`
-// },
-
 
 const MANUFACTURER_LOGOS = {
     Chevrolet: "../assets/logos/nascar/chevrolet-logo.svg",
@@ -80,7 +74,7 @@ export class NASCAR {
                 },
                 {
                     icon: "🔴",
-                    value: live.sessionName,
+                    value: "EN VIVO",
                     live: true
                 }
             ]
