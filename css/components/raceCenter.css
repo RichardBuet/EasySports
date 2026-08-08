@@ -20,9 +20,14 @@
     border-radius: 8px;
     background: rgba(255, 255, 255, .08);
     border: 1px solid rgba(255, 255, 255, .12);
+    width: inherit;
 }
 
-.winnerHeader{ padding: 4px 0px; }
+.winnerHeader{ 
+    padding: 4px 0px;
+    display: flex;
+    gap: inherit;
+}
 
 .raceWinner strong {
     display: flex;
