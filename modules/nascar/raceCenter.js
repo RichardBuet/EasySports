@@ -37,7 +37,7 @@ return `
     </span>
 
     ${raceCenter.winner.manufacturerLogo ?
-        `<img
+        `<img class="driver-winner-logo"
             src="${raceCenter.winner.manufacturerLogo}"
             alt="${raceCenter.winner.manufacturer}">`
         : ""}
