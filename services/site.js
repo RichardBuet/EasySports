@@ -165,13 +165,12 @@ static async getRaceCenterData() {
 
         winner: {
 
-            ...weekend.winner
+            ...weekend.winner,
+
+            manufacturerLogo:
+                MANUFACTURER_LOGOS[weekend.winner?.manufacturer] ?? null
 
         },
-
-        second: weekend.second,
-
-        margin: weekend.margin,
 
         meta: [
 
@@ -196,6 +195,8 @@ static async getRaceCenterData() {
 
 }
 
+
+    
     static async getLiveRace() {
 
         const data = await NASCARLive.getLiveRace();
