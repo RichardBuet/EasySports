@@ -32,6 +32,8 @@ return `
             ${raceCenter.winner.name}
         </strong>
 
+ ${raceCenter.winner.team? `<small>${raceCenter.winner.team}</small>` : ""}
+ 
     </span>
 
     ${raceCenter.winner.manufacturerLogo ?
@@ -42,7 +44,7 @@ return `
 
 </div>
 
-        ${raceCenter.winner.team? `<small> [Team: ${raceCenter.winner.team}]</small>` : ""}
+       
 
 
 
