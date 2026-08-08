@@ -118,6 +118,15 @@ body.nascar{
     100% { opacity: 1;transform: scale(1); }
 }
 
+.heroLive {
+    animation: heroLivePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes heroLivePulse {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.04);}
+}
+
 .container{
    padding:20px 20px 5px 20px;
 }
