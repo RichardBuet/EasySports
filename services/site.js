@@ -74,7 +74,7 @@ export class NASCAR {
                 },
                 {
                     icon: "🔴",
-                    value: "EN VIVO",
+                    value: live.sessionName,
                     live: true
                 }
             ]
