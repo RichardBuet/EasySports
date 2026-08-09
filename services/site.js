@@ -146,7 +146,8 @@ static async getRaceCenterData() {
     return {
 
         type: "last",
-
+        raceId: race.raceId,
+        seriesId: race.seriesId,
         title: race.name,
 
         date: new Date(race.date).toLocaleDateString(undefined, {
