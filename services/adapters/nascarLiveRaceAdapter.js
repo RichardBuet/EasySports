@@ -34,63 +34,88 @@ export function adaptNascarLiveRace(
 
     return {
 
-summary: {
+        summary: {
 
-    series: SERIES[liveFeed.series] ?? "NASCAR",
+            series: SERIES[liveFeed.series_id] ?? "NASCAR",
 
-    session: {
-        1: { icon: "🛠", name: "Practice" },
-        2: { icon: "⏱", name: "Qualifying" },
-        3: { icon: "🏎", name: "Race" }
-    }[liveFeed.run_type],
+            session: {
+                1: { icon: "🛠", name: "Práctica" },
+                2: { icon: "⏱", name: "Clasificación" },
+                3: { icon: "🏎", name: "Carrera" }
+            }[liveFeed.run_type],
 
-    lap:
-        liveFeed.run_type === 3
-            ? `${liveFeed.lap_number} / ${liveFeed.laps_in_race}`
-            : `${liveFeed.lap_number}`,
+            track: liveFeed.track_name,
 
-    flag: FLAGS[liveFeed.flag_state]
+            trackLength: liveFeed.track_length,
 
-},
+            lap:
+                liveFeed.run_type === 3
+                    ? `${liveFeed.lap_number} / ${liveFeed.laps_in_race}`
+                    : `${liveFeed.lap_number}`,
+
+            lapsToGo: liveFeed.laps_to_go,
+
+            flag: FLAGS[liveFeed.flag_state],
+
+            leaders: liveFeed.number_of_leaders,
+
+            leadChanges: liveFeed.number_of_lead_changes,
+
+            cautions: liveFeed.number_of_caution_segments,
+
+            cautionLaps: liveFeed.number_of_caution_laps,
+
+            stage: liveFeed.stage
+                ? {
+                    number: liveFeed.stage.stage_num,
+                    finishLap: liveFeed.stage.finish_at_lap,
+                    lapsRemaining:
+                        Math.max(
+                            0,
+                            liveFeed.stage.finish_at_lap - liveFeed.lap_number
+                        )
+                }
+                : null
+        },
 
         leaderboard: liveFeed.vehicles.map(vehicle => ({
 
-    position: vehicle.running_position,
-
-    number: vehicle.vehicle_number,
-
-    driver: vehicle.driver.full_name,
-
-    manufacturer: vehicle.vehicle_manufacturer,
-
-    sponsor: vehicle.sponsor_name,
-
-    gap: vehicle.delta,
-
-    averageSpeed: vehicle.average_speed,
-
-    lastLap: vehicle.last_lap_time,
-
-    bestLap: vehicle.best_lap_time,
-
-    pitStops: vehicle.pit_stops.length,
-
-    lapsLed: vehicle.laps_led.reduce(
-        (total, stint) => total + (stint.end_lap - stint.start_lap + 1),
-        0
-    ),
-
-    fastestLaps: vehicle.fastest_laps_run,
-
-    startingPosition: vehicle.starting_position,
-
-    onTrack: vehicle.is_on_track,
-
-    onDVP: vehicle.is_on_dvp,
-
-    status: vehicle.status
-
-})),
+            position: vehicle.running_position,
+        
+            number: vehicle.vehicle_number,
+        
+            driver: vehicle.driver.full_name,
+        
+            manufacturer: vehicle.vehicle_manufacturer,
+        
+            sponsor: vehicle.sponsor_name,
+        
+            gap: vehicle.delta,
+        
+            averageSpeed: vehicle.average_speed,
+        
+            lastLap: vehicle.last_lap_time,
+        
+            bestLap: vehicle.best_lap_time,
+        
+            pitStops: vehicle.pit_stops.length,
+        
+            lapsLed: vehicle.laps_led.reduce(
+                (total, stint) => total + (stint.end_lap - stint.start_lap + 1),
+                0
+            ),
+        
+            fastestLaps: vehicle.fastest_laps_run,
+        
+            startingPosition: vehicle.starting_position,
+        
+            onTrack: vehicle.is_on_track,
+        
+            onDVP: vehicle.is_on_dvp,
+        
+            status: vehicle.status
+        
+        })),
         lapTimes,
         pitData,
         flagData
