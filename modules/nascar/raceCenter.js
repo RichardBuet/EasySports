@@ -64,7 +64,8 @@ return `
     </div>
 
     <div class="raceActions">
-        <button class="btn-nsc" onclick="window.openRaceResult()">
+        <button class="btn-nsc" 
+        onclick="window.openRaceResult(${raceCenter.raceId}, ${raceCenter.seriesId})">
         Ver resultado completo ▼ </button>
     </div>
 </section>
