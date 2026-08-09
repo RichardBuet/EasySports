@@ -32,6 +32,11 @@ export function adaptNascarLiveRace(
     flagData
 ) {
 
+    console.log("🔥 LIVE FEED:", liveFeed);
+    console.log("🔥 RUN TYPE:", liveFeed.run_type);
+    console.log("🔥 TRACK:", liveFeed.track_name);
+    console.log("🔥 LAP:", liveFeed.lap_number);
+    
     return {
 
         summary: {
