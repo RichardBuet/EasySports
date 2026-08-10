@@ -358,9 +358,14 @@
 
 /* Lista con scroll */
 
-.driver-list-full {
+.driver-table-full {
     max-height: 62vh;
     overflow: auto;
+}
+
+.driver-header-full,
+.driver-row-full {
+    min-width: 800px;
 }
 
 
