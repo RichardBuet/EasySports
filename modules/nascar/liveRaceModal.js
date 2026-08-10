@@ -103,37 +103,34 @@ async function refreshLiveModal() {
 
     const live = await NASCAR.getLiveRaceData();
 
-    const body = document.querySelector(".modal-body");
+    const driverList = document.querySelector(".driver-list-full");
 
-    if (!body) return;
+    if (!driverList) return;
 
-    // Encontrar el elemento que realmente tiene el scroll
-    let scrollElement = body;
+    driverList.innerHTML = live.leaderboard.map(driver => `
 
-    while (scrollElement.parentElement) {
+        <div class="driver-row-full">
 
-        const style = getComputedStyle(scrollElement);
+            <span>${driver.position}</span>
 
-        if (
-            (style.overflowY === "auto" ||
-             style.overflowY === "scroll") &&
-            scrollElement.scrollHeight > scrollElement.clientHeight
-        ) {
-            break;
-        }
+            <span>${driver.number}</span>
 
-        scrollElement = scrollElement.parentElement;
-    }
+            <span>
+                <strong>${driver.driver}</strong>
+                <small>${driver.sponsor}</small>
+            </span>
 
-    // Guardar posición actual
-    const scrollPosition = scrollElement.scrollTop;
+            <span>${driver.gap.toFixed(3)}</span>
 
-    // Actualizar contenido
-    body.innerHTML = await createLiveContent(live);
+            <span>
+                ${driver.lastLap.toFixed(3)}
+                <small>${driver.bestLap.toFixed(3)}</small>
+            </span>
 
-    // Restaurar posición
-    requestAnimationFrame(() => {
-        scrollElement.scrollTop = scrollPosition;
-    });
+            <span>${driver.pitStops}</span>
+
+        </div>
+
+    `).join("");
 
 }
