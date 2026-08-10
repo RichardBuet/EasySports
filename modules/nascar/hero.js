@@ -41,7 +41,7 @@ switch (heroState.state) {
     ${heroCategory}
     <span
         class="heroRaceCenter"
-        onclick="window.openLiveRaceModal()">
+        onclick="window.openLiveFullModal()">
         📊 Race Center
     </span>
 </span>
