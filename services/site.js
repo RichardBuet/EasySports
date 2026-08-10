@@ -325,7 +325,7 @@ static async getRaceCenterData() {
         const drivers = adaptNascarDrivers(data).map(driver => ({
             ...driver, manufacturerLogo: MANUFACTURER_LOGOS[driver.manufacturer] ?? null
         }));
-        console.log("GET DRIVERS", drivers[0]);
+        
         return drivers;
     }
 
