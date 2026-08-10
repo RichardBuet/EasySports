@@ -9,7 +9,7 @@ export async function openLiveRaceModal() {
 
     openModal({
 
-        title: "🏁 NASCAR Race Center",
+        title: "🏁NASCAR Race Center",
 
         content: await createLiveContent(live),
 
@@ -107,12 +107,33 @@ async function refreshLiveModal() {
 
     if (!body) return;
 
+    // Encontrar el elemento que realmente tiene el scroll
+    let scrollElement = body;
+
+    while (scrollElement.parentElement) {
+
+        const style = getComputedStyle(scrollElement);
+
+        if (
+            (style.overflowY === "auto" ||
+             style.overflowY === "scroll") &&
+            scrollElement.scrollHeight > scrollElement.clientHeight
+        ) {
+            break;
+        }
+
+        scrollElement = scrollElement.parentElement;
+    }
+
     // Guardar posición actual
-    const scrollPosition = body.scrollTop;
+    const scrollPosition = scrollElement.scrollTop;
 
     // Actualizar contenido
     body.innerHTML = await createLiveContent(live);
 
     // Restaurar posición
-    body.scrollTop = scrollPosition;
+    requestAnimationFrame(() => {
+        scrollElement.scrollTop = scrollPosition;
+    });
+
 }
