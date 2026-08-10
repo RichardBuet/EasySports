@@ -55,6 +55,8 @@ body.nascar{
    font-size: clamp(0.76rem, 1vw, 3rem);
 }
 
+.heroRaceCenter { cursor: pointer;}
+
 .nascarHero h1{
    margin: 0 0 12px;
    font-size: clamp(1.5rem, 4.6vw, 2.6rem);
@@ -110,6 +112,7 @@ body.nascar{
 
 .heroItem .heroLive {
     animation: heroLivePulse 1.5s infinite;
+    cursor: pointer;
 }
 
 @keyframes heroLivePulse {
