@@ -327,17 +327,17 @@
     grid-template-columns:
         40px
         35px
-        minmax(160px, 1fr)
+        minmax(120px, 1fr)
         70px
-        110px
+        60px
+        60px
+        60px
         45px
-        75px
         45px
-        50px
+        45px
         55px
         55px
-        45px
-        65px;
+        60px;
 
     align-items: center;
     gap: 8px;
