@@ -1,9 +1,9 @@
 import { renderNascar } from "../modules/pages/nascar.js";
 import { initSportsMenu } from "../modules/core/menu.js";
 import { initNascarEvents } from "../modules/nascar/events.js";
-import "../modules/nascar/live.js";
+import "../modules/nascar/liveModal.js";
 import "../modules/nascar/calendar.js";
-import "../modules/nascar/result.js";
+import "../modules/nascar/resultModal.js";
 import "../modules/nascar/drivers.js";
 import "../modules/nascar/liveRaceModal.js";
 const app=document.getElementById("app");
