@@ -1,93 +1,82 @@
 import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
-
+// Modal con toda la información de la carrera Full
 let refreshTimer = null;
 
 window.openLiveFullModal = async () => {
 console.log("LIVE CLICK");
-    const live = await NASCAR.getLiveRace();
+const live = await NASCAR.getLiveRace();
 
 
 openModal({
-
     title: "NASCAR LIVE MODAL",
-
     content: await createLiveContent(live),
-
     onClose: () => {
-
         clearInterval(refreshTimer);
-
     }
-
 });
 
 clearInterval(refreshTimer);
-
-refreshTimer = setInterval(refreshLiveFullModal, 5000);
-
-
+refreshTimer = setInterval(refreshLiveFullModal, 10000);
 };
 
 async function createLiveContent(live) {
-
     return `
+        <div class="live-summary-full">
 
-        <div class="live-summary">
-
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>📋 Sesión</span>
                 <strong>${live.sessionName}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>🏟 Circuito</span>
                 <strong>${live.track}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>📏 Longitud</span>
                 <strong>${live.trackLength} mi</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>🏳️ Bandera</span>
                 <strong>${live.flag}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>🏁 Vuelta</span>
                 <strong>${live.lap} / ${live.totalLaps}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>⏳ Restan</span>
                 <strong>${live.lapsToGo}</strong>
             </div>
 
             ${live.stage ? `
-                <div class="live-item">
+                <div class="live-item-full">
                     <span>🏆 Stage</span>
                     <strong>${live.stage.number}</strong>
                 </div>
 
-                <div class="live-item">
+                <div class="live-item-full">
                     <span>🏁 Final Stage</span>
                     <strong>V${live.stage.finishLap}</strong>
                 </div>
 
-                <div class="live-item">
+                <div class="live-item-full">
                     <span>⌛ Restan Stage</span>
                     <strong>${live.stage.lapsRemaining}</strong>
                 </div>
             ` : ""}
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>👑 Líderes</span>
                 <strong>${live.leaders}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>🔄 Lead Changes</span>
                 <strong>${live.leadChanges}</strong>
             </div>
@@ -97,14 +86,14 @@ async function createLiveContent(live) {
                 <strong>${live.cautions}</strong>
             </div>
 
-            <div class="live-item">
+            <div class="live-item-full">
                 <span>🟨 Caution Laps</span>
                 <strong>${live.cautionLaps}</strong>
             </div>
 
         </div>
 
-        <div class="driver-header">
+        <div class="driver-header-full">
 
             <span>POS</span>
             <span>#</span>
@@ -122,11 +111,11 @@ async function createLiveContent(live) {
 
         </div>
 
-        <div class="driver-list">
+        <div class="driver-list-full">
 
             ${live.leaderboard.map(driver => `
 
-                <div class="driver-row">
+                <div class="driver-row-full">
 
                     <span>${driver.position}</span>
 
@@ -180,20 +169,16 @@ async function createLiveContent(live) {
 
 
 async function refreshLiveFullModal() {
-
     const live = await NASCAR.getLiveRaceData();
-
     const body = document.querySelector(".modal-body");
-
     if (!body) return;
-
     // Guardar posición actual del scroll
     const scrollPosition = body.scrollTop;
-
     // Actualizar contenido
     body.innerHTML = await createLiveContent(live);
-
     // Recuperar posición del scroll
     body.scrollTop = scrollPosition;
-
 }
+
+
+
