@@ -187,6 +187,13 @@ async function refreshLiveModal() {
 
     if (!body) return;
 
+    // Guardar posición actual del scroll
+    const scrollPosition = body.scrollTop;
+
+    // Actualizar contenido
     body.innerHTML = await createLiveContent(live);
+
+    // Recuperar posición del scroll
+    body.scrollTop = scrollPosition;
 
 }
