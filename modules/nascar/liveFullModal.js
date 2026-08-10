@@ -166,7 +166,7 @@ async function createLiveContent(live) {
 
 
 async function refreshLiveFullModal() {
-    const live = await NASCAR.getLiveRaceData();
+    const live = await NASCAR.getLiveRace();
     const body = document.querySelector(".modal-body");
     if (!body) return;
     // Guardar posición actual del scroll
