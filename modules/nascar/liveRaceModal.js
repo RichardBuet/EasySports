@@ -30,31 +30,31 @@ async function createLiveContent(live) {
 
     return `
     
-<div class="live-summary-full">
+<div class="live-summary-compact">
 
-    <div class="live-item-full">
+    <div class="live-item-compact">
         <span>🏁 Series</span>
         <strong>${live.summary.series}</strong>
     </div>
 
-    <div class="live-item-full">
+    <div class="live-item-compact">
         <span>${live.summary.session.icon}</span>
         <strong>${live.summary.session.name}</strong>
     </div>
 
-    <div class="live-item-full">
+    <div class="live-item-compact">
         <span>${live.summary.flag.icon}</span>
         <strong>${live.summary.flag.name}</strong>
     </div>
 
-    <div class="live-item-full">
+    <div class="live-item-compact">
         <span>🏁 Lap</span>
         <strong>${live.summary.lap}</strong>
     </div>
 
 </div>
 
-        <div class="driver-header-full">
+        <div class="driver-header-compact">
 
            <span>POS</span>
 <span>#</span>
@@ -65,11 +65,11 @@ async function createLiveContent(live) {
 
         </div>
 
-        <div class="driver-list-full">
+        <div class="driver-list-compact">
 
           ${live.leaderboard.map(driver => `
 
-    <div class="driver-row-full">
+    <div class="driver-row-compact">
 
         <span>${driver.position}</span>
 
@@ -103,13 +103,13 @@ async function refreshLiveModal() {
 
     const live = await NASCAR.getLiveRaceData();
 
-    const driverList = document.querySelector(".driver-list-full");
+    const driverList = document.querySelector(".driver-list-compact");
 
     if (!driverList) return;
 
     driverList.innerHTML = live.leaderboard.map(driver => `
 
-        <div class="driver-row-full">
+        <div class="driver-row-compact">
 
             <span>${driver.position}</span>
 
