@@ -194,25 +194,58 @@ async function refreshLiveFullModal() {
 
     const live = await NASCAR.getLiveRaceData();
 
-    const body = document.querySelector(".modal-body");
-
-    if (!body) return;
-
-    // Guardar posición del scroll del listado
     const driverList = document.querySelector(".driver-list-full");
 
-    const scrollTop = driverList?.scrollTop ?? 0;
-    const scrollLeft = driverList?.scrollLeft ?? 0;
+    if (!driverList) return;
 
-    // Actualizar solamente el contenido
-    body.innerHTML = await createLiveContent(live);
+    // Guardar posición actual
+    const scrollTop = driverList.scrollTop;
+    const scrollLeft = driverList.scrollLeft;
 
-    // Recuperar posición del listado
-    const newDriverList = document.querySelector(".driver-list-full");
+    // Actualizar solamente los pilotos
+    driverList.innerHTML = live.leaderboard.map(driver => `
 
-    if (newDriverList) {
-        newDriverList.scrollTop = scrollTop;
-        newDriverList.scrollLeft = scrollLeft;
-    }
+        <div class="driver-row-full">
+
+            <span>${driver.position}</span>
+
+            <span>${driver.number}</span>
+
+            <span>
+                <strong>${driver.driver}</strong>
+                <small>${driver.sponsor}</small>
+                <small>${driver.manufacturer}</small>
+            </span>
+
+            <span>${driver.delta}</span>
+
+            <span>${driver.lastLap}</span>
+
+            <span>${driver.bestLap}</span>
+
+            <span>${driver.averageSpeed.toFixed(3)}</span>
+
+            <span>${driver.lapsLed}</span>
+
+            <span>${driver.fastestLaps}</span>
+
+            <span>+${driver.positionGain}</span>
+
+            <span>${driver.startingPosition}</span>
+
+            <span>${driver.pitStops}</span>
+
+            <span>
+                ${driver.onTrack ? "🟢" : "🔴"}
+                ${driver.onDVP ? "⚠️" : ""}
+            </span>
+
+        </div>
+
+    `).join("");
+
+    // Recuperar posición
+    driverList.scrollTop = scrollTop;
+    driverList.scrollLeft = scrollLeft;
 
 }
