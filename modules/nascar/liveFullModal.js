@@ -22,7 +22,7 @@ window.openLiveFullModal = async () => {
     clearInterval(refreshTimer);
 
     // Actualización cada 10 segundos
-    refreshTimer = setInterval(refreshLiveFullModal, 10000);
+  //  refreshTimer = setInterval(refreshLiveFullModal, 10000);
 
 };
 
