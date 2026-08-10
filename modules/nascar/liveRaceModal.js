@@ -18,8 +18,9 @@ export async function openLiveRaceModal() {
     });
 
     clearInterval(refreshTimer);
-// actuaalización cada 50 segundos 
-    refreshTimer = setInterval(refreshLiveModal, 50000);
+// actuaalización cada 10 segundos 
+    // Formato de encabezado 4 datos superior
+    refreshTimer = setInterval(refreshLiveModal, 10000);
 
 }
 
