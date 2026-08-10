@@ -18,8 +18,8 @@ export async function openLiveRaceModal() {
     });
 
     clearInterval(refreshTimer);
-// actuaalización cada 5 segundos 
-    refreshTimer = setInterval(refreshLiveModal, 5000);
+// actuaalización cada 50 segundos 
+    refreshTimer = setInterval(refreshLiveModal, 50000);
 
 }
 
