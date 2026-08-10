@@ -9,7 +9,7 @@ const live = await NASCAR.getLiveRace();
 
 
 openModal({
-    title: "NASCAR LIVE MODAL",
+    title: "NASCAR Racing LIVE MODAL",
     content: await createLiveContent(live),
     onClose: () => {
         clearInterval(refreshTimer);
@@ -93,75 +93,72 @@ async function createLiveContent(live) {
 
         </div>
 
-        <div class="driver-header-full">
+        <div class="driver-table-full">
 
-            <span>POS</span>
-            <span>#</span>
-            <span>DRIVER</span>
-            <span>GAP</span>
-            <span>LAST</span>
-            <span>BEST</span>
-            <span>AVG</span>
-            <span>LED</span>
-            <span>FAST</span>
-            <span>GAIN</span>
-            <span>START</span>
-            <span>PITS</span>
-            <span>STATUS</span>
+    <div class="driver-header-full">
 
-        </div>
+        <span>POS</span>
+        <span>#</span>
+        <span>DRIVER</span>
+        <span>GAP</span>
+        <span>LAST</span>
+        <span>BEST</span>
+        <span>AVG</span>
+        <span>LED</span>
+        <span>FAST</span>
+        <span>GAIN</span>
+        <span>START</span>
+        <span>PITS</span>
+        <span>STATUS</span>
 
-        <div class="driver-list-full">
+    </div>
 
-            ${live.leaderboard.map(driver => `
+    <div class="driver-list-full">
 
-                <div class="driver-row-full">
+        ${live.leaderboard.map(driver => `
 
-                    <span>${driver.position}</span>
+            <div class="driver-row-full">
 
-                    <span>${driver.number}</span>
+                <span>${driver.position}</span>
 
-                    <span>
+                <span>${driver.number}</span>
 
-                        <strong>${driver.driver}</strong><br>
+                <span>
+                    <strong>${driver.driver}</strong>
+                    <small>${driver.sponsor}</small>
+                    <small>${driver.manufacturer}</small>
+                </span>
 
-                        <small>${driver.sponsor}</small><br>
+                <span>${driver.delta}</span>
 
-                        <small>${driver.manufacturer}</small>
+                <span>${driver.lastLap}</span>
 
-                    </span>
+                <span>${driver.bestLap}</span>
 
-                    <span>${driver.delta}</span>
+                <span>${driver.averageSpeed.toFixed(3)}</span>
 
-                    <span>${driver.lastLap}</span>
+                <span>${driver.lapsLed}</span>
 
-                    <span>${driver.bestLap}</span>
+                <span>${driver.fastestLaps}</span>
 
-                    <span>${driver.averageSpeed.toFixed(3)}</span>
+                <span>+${driver.positionGain}</span>
 
-                    <span>${driver.lapsLed}</span>
+                <span>${driver.startingPosition}</span>
 
-                    <span>${driver.fastestLaps}</span>
+                <span>${driver.pitStops}</span>
 
-                    <span>+${driver.positionGain}</span>
+                <span>
+                    ${driver.onTrack ? "🟢" : "🔴"}
+                    ${driver.onDVP ? "⚠️" : ""}
+                </span>
 
-                    <span>${driver.startingPosition}</span>
+            </div>
 
-                    <span>${driver.pitStops}</span>
+        `).join("")}
 
-                    <span>
+    </div>
 
-                        ${driver.onTrack ? "🟢" : "🔴"}
-
-                        ${driver.onDVP ? "⚠️" : ""}
-
-                    </span>
-
-                </div>
-
-            `).join("")}
-
-        </div>
+</div>
 
     `;
 
