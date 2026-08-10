@@ -5,7 +5,7 @@ let refreshTimer = null;
 
 window.openLiveFullModal = async () => {
 console.log("LIVE CLICK");
-    const live = await NASCAR.getLiveFullModal();
+    const live = await NASCAR.getLiveRace();
 
 
 openModal({
