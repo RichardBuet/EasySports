@@ -286,3 +286,123 @@
     object-fit:contain;
     background: azure;
 }
+
+
+/* =========================================================
+   NASCAR LIVE FULL MODAL
+   ========================================================= */
+
+.live-summary-full {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 8px;
+}
+
+.live-item-full {
+    background: #2d2d2d;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
+}
+
+.live-item-full span {
+    display: block;
+    font-size: .75rem;
+    color: #bdbdbd;
+    margin-bottom: 4px;
+}
+
+.live-item-full strong {
+    font-size: 1rem;
+    color: #fff;
+}
+
+
+/* Encabezado de la tabla */
+
+.driver-header-full,
+.driver-row-full {
+    display: grid;
+    grid-template-columns:
+        40px
+        35px
+        minmax(160px, 1fr)
+        70px
+        110px
+        45px
+        75px
+        45px
+        50px
+        55px
+        55px
+        45px
+        65px;
+
+    align-items: center;
+    gap: 8px;
+}
+
+.driver-header-full {
+    padding: 10px 8px;
+    background: #2c2c2c;
+    font-weight: 700;
+    font-size: .75rem;
+    color: #ddd;
+    border-bottom: 2px solid #444;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+
+/* Lista con scroll */
+
+.driver-list-full {
+    max-height: 62vh;
+    overflow: auto;
+}
+
+
+/* Filas */
+
+.driver-row-full {
+    padding: 8px;
+    border-bottom: 1px solid #333;
+    font-size: .85rem;
+}
+
+.driver-row-full:hover {
+    background: #2d2d2d;
+}
+
+.driver-row-full strong {
+    display: block;
+    color: #fff;
+}
+
+.driver-row-full small {
+    display: block;
+    color: #999;
+    font-size: .72rem;
+    margin-top: 2px;
+}
+
+.driver-row-full span {
+    white-space: nowrap;
+}
+
+.driver-row-full span:first-child {
+    font-weight: 700;
+}
+
+.driver-row-full span:nth-child(2) {
+    font-weight: 700;
+    color: #ffd54f;
+}
+
+.driver-row-full span:last-child {
+    display: flex;
+    justify-content: center;
+}
+
