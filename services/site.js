@@ -348,10 +348,7 @@ static async getRaceCenterData() {
                     ? profile.manufacturer : MANUFACTURER_LOGOS[driver.manufacturer] ?? null;
 
 
-                console.log(
-                    driver.driver,
-                    manufacturerLogo
-                );
+     
             
             return {
                 ...driver,
