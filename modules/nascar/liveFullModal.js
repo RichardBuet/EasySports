@@ -3,14 +3,14 @@ import { openModal } from "../components/modal.js";
 
 let refreshTimer = null;
 
-window.openLiveRace = async () => {
+window.openLiveFullModal = async () => {
 console.log("LIVE CLICK");
-    const live = await NASCAR.getLiveRace();
+    const live = await NASCAR.getLiveFullModal();
 
 
 openModal({
 
-    title: "NASCAR LIVE",
+    title: "NASCAR LIVE MODAL",
 
     content: await createLiveContent(live),
 
@@ -24,7 +24,7 @@ openModal({
 
 clearInterval(refreshTimer);
 
-refreshTimer = setInterval(refreshLiveModal, 5000);
+refreshTimer = setInterval(refreshLiveFullModal, 5000);
 
 
 };
@@ -179,7 +179,7 @@ async function createLiveContent(live) {
 }
 
 
-async function refreshLiveModal() {
+async function refreshLiveFullModal() {
 
     const live = await NASCAR.getLiveRaceData();
 
