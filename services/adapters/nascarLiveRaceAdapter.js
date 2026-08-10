@@ -113,7 +113,7 @@ export function adaptNascarLiveRace(
             fastestLaps: vehicle.fastest_laps_run,
         
             startingPosition: vehicle.starting_position,
-        
+            positionGain: vehicle.laps_position_improved,
             onTrack: vehicle.is_on_track,
         
             onDVP: vehicle.is_on_dvp,
