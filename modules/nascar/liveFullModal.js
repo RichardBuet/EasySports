@@ -188,8 +188,6 @@ async function createLiveContent(live) {
     `;
 
 }
-
-
 async function refreshLiveFullModal() {
 
     const live = await NASCAR.getLiveRaceData();
@@ -198,11 +196,9 @@ async function refreshLiveFullModal() {
 
     if (!driverList) return;
 
-    // Guardar posición actual
     const scrollTop = driverList.scrollTop;
     const scrollLeft = driverList.scrollLeft;
 
-    // Actualizar solamente los pilotos
     driverList.innerHTML = live.leaderboard.map(driver => `
 
         <div class="driver-row-full">
@@ -217,7 +213,7 @@ async function refreshLiveFullModal() {
                 <small>${driver.manufacturer}</small>
             </span>
 
-            <span>${driver.delta}</span>
+            <span>${driver.gap}</span>
 
             <span>${driver.lastLap}</span>
 
@@ -244,8 +240,7 @@ async function refreshLiveFullModal() {
 
     `).join("");
 
-    // Recuperar posición
     driverList.scrollTop = scrollTop;
     driverList.scrollLeft = scrollLeft;
-
 }
+
