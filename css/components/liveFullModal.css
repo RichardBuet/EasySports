@@ -538,51 +538,55 @@
 
     .live-summary-full {
         gap: 7px;
+
         padding:
             9px
             36px;
     }
 
-
     .live-item-full {
+
         /*
-           Cuatro tarjetas visibles.
+           4 tarjetas visibles en el teléfono.
         */
-        flex: 0 0 165px;
-        min-width: 165px;
+
+        flex: 0 0
+            calc(
+                (100% - 21px) / 4
+            );
+
+        min-width: 0;
+
         min-height: 70px;
-        padding: 7px 4px;
+
+        padding:
+            7px 4px;
+
         border-radius: 13px;
     }
-
 
     .live-item-full span {
         font-size: 8px;
         margin-bottom: 4px;
     }
 
-
     .live-item-full strong {
         font-size: 12px;
     }
 
-
     .summary-arrow {
-        width: 29px;
-        height: 29px;
+        width: 30px;
+        height: 30px;
         font-size: 22px;
     }
-
 
     .summary-arrow-left {
         left: 4px;
     }
 
-
     .summary-arrow-right {
         right: 4px;
     }
-
 }
 
 
