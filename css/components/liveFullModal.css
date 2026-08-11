@@ -403,7 +403,7 @@
         38px;
     gap: 5px;
     align-items: center;
-    min-width: 900px;
+    min-width: fit-content;
 }
 
 
@@ -449,7 +449,7 @@
 
 
 .driver-row-full {
-    min-height: 60px;
+    min-height: auto;
     padding: 9px 10px;
     background:
         linear-gradient(
@@ -735,7 +735,7 @@
 
 
     .driver-row-full {
-        min-height: 57px;
+        min-height: auto;
         padding: 8px 7px;
         font-size: 9px;
     }
@@ -791,7 +791,7 @@
 
     .driver-header-full,
     .driver-row-full {
-        min-width: 900px;
+        min-width: fit-content;
     }
 
 
