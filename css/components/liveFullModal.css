@@ -12,11 +12,9 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background:
         radial-gradient(
             circle at 50% 20%,
@@ -24,7 +22,6 @@
             transparent 45%
         ),
         rgba(0, 0, 0, .82);
-
     backdrop-filter: blur(10px);
 }
 
@@ -37,10 +34,8 @@
     width: min(96vw, 1100px);
     max-width: 1100px;
     max-height: 88vh;
-
     display: flex;
     flex-direction: column;
-
     background:
         linear-gradient(
             145deg,
@@ -48,16 +43,12 @@
             #101216 55%,
             #0b0d10 100%
         );
-
     color: #f5f5f5;
-
     border: 1px solid rgba(255,255,255,.10);
     border-radius: 20px;
-
     box-shadow:
         0 25px 80px rgba(0,0,0,.75),
         0 0 35px rgba(255,40,40,.08);
-
     overflow: hidden;
 }
 
@@ -68,24 +59,18 @@
 
 .modal-header {
     min-height: 68px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 22px;
-
     position: relative;
-
     background:
         linear-gradient(
             135deg,
             #1b1d23,
             #111318
         );
-
     border-bottom: 1px solid rgba(255,255,255,.08);
-
     box-shadow:
         0 4px 18px rgba(0,0,0,.35);
 }
@@ -95,15 +80,11 @@
 
 .modal-header::after {
     content: "";
-
     position: absolute;
-
     left: 0;
     right: 0;
     bottom: 0;
-
     height: 2px;
-
     background:
         linear-gradient(
             90deg,
@@ -116,17 +97,11 @@
 
 
 .modal-header h2 {
-
     margin: 0;
-
     color: #ffffff;
-
     font-size: clamp(19px, 3vw, 25px);
-
     font-weight: 800;
-
     letter-spacing: -.3px;
-
     text-shadow:
         0 0 18px rgba(255,255,255,.08);
 }
@@ -137,26 +112,17 @@
    ========================================================= */
 
 .modal-close {
-
     width: 40px;
     height: 40px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: rgba(255,255,255,.055);
-
     border: 1px solid rgba(255,255,255,.09);
-
     border-radius: 50%;
-
     color: #ffffff;
-
     font-size: 25px;
-
     cursor: pointer;
-
     transition:
         background .2s ease,
         border-color .2s ease,
@@ -165,12 +131,9 @@
 
 
 .modal-close:hover {
-
     background: rgba(255,55,55,.16);
-
     border-color:
         rgba(255,70,70,.40);
-
     transform: rotate(90deg);
 }
 
@@ -180,26 +143,18 @@
    ========================================================= */
 
 .modal-body {
-
     flex: 1;
-
     min-height: 0;
-
     overflow-y: auto;
-
     overflow-x: hidden;
-
     padding: 0;
-
     background:
         radial-gradient(
             circle at 50% 0%,
             rgba(255,255,255,.025),
             transparent 45%
         );
-
     scrollbar-width: thin;
-
     scrollbar-color:
         #50535a
         #111318;
@@ -207,27 +162,22 @@
 
 
 .modal-body::-webkit-scrollbar {
-
     width: 7px;
 }
 
 
 .modal-body::-webkit-scrollbar-track {
-
     background: #101216;
 }
 
 
 .modal-body::-webkit-scrollbar-thumb {
-
     background: #454850;
-
     border-radius: 10px;
 }
 
 
 .modal-body::-webkit-scrollbar-thumb:hover {
-
     background: #666a73;
 }
 
@@ -237,16 +187,11 @@
    ========================================================= */
 
 .live-summary-full {
-
     display: grid;
-
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
-
     gap: 10px;
-
     padding: 13px;
-
     background:
         linear-gradient(
             180deg,
@@ -261,40 +206,26 @@
    ========================================================= */
 
 .live-item-full {
-
     position: relative;
-
     min-height: 78px;
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     padding: 9px;
-
     text-align: center;
-
     background:
         linear-gradient(
             145deg,
             #25282e,
             #1b1d21
         );
-
     border: 1px solid rgba(255,255,255,.08);
-
     border-radius: 16px;
-
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.04),
         0 5px 15px rgba(0,0,0,.20);
-
     overflow: hidden;
-
     transition:
         transform .18s ease,
         border-color .18s ease,
@@ -305,17 +236,12 @@
 /* brillo superior */
 
 .live-item-full::before {
-
     content: "";
-
     position: absolute;
-
     top: 0;
     left: 12%;
     right: 12%;
-
     height: 1px;
-
     background:
         linear-gradient(
             90deg,
@@ -327,12 +253,9 @@
 
 
 .live-item-full:hover {
-
     transform: translateY(-2px);
-
     border-color:
         rgba(255,255,255,.16);
-
     background:
         linear-gradient(
             145deg,
@@ -343,37 +266,23 @@
 
 
 .live-item-full span {
-
     display: block;
-
     margin-bottom: 5px;
-
     color: #9da1a8;
-
     font-size: 10px;
-
     font-weight: 700;
-
     text-transform: uppercase;
-
     letter-spacing: .45px;
-
     line-height: 1.2;
 }
 
 
 .live-item-full strong {
-
     display: block;
-
     color: #ffffff;
-
     font-size: 15px;
-
     font-weight: 800;
-
     line-height: 1.15;
-
     text-shadow:
         0 1px 5px rgba(0,0,0,.5);
 }
@@ -386,7 +295,6 @@
 /* Carrera */
 
 .live-item-full:nth-child(2) strong {
-
     color: #ff5b5b;
 }
 
@@ -394,7 +302,6 @@
 /* Estado pista */
 
 .live-item-full:nth-child(5) strong {
-
     color: #61a8ff;
 }
 
@@ -402,7 +309,6 @@
 /* Restan */
 
 .live-item-full:nth-child(7) strong {
-
     color: #ffd84d;
 }
 
@@ -410,7 +316,6 @@
 /* Líderes */
 
 .live-item-full:nth-child(10) strong {
-
     color: #ffd84d;
 }
 
@@ -418,7 +323,6 @@
 /* Lead Changes */
 
 .live-item-full:nth-child(11) strong {
-
     color: #ffd84d;
 }
 
@@ -426,7 +330,6 @@
 /* Cautions */
 
 .live-item-full:nth-child(12) strong {
-
     color: #ffcf4d;
 }
 
@@ -457,27 +360,22 @@
 
 
 .live-table-full::-webkit-scrollbar {
-
     height: 7px;
 }
 
 
 .live-table-full::-webkit-scrollbar-track {
-
     background: #101216;
 }
 
 
 .live-table-full::-webkit-scrollbar-thumb {
-
     background: #4a4d55;
-
     border-radius: 10px;
 }
 
 
 .live-table-full::-webkit-scrollbar-thumb:hover {
-
     background: #686b74;
 }
 
@@ -488,9 +386,7 @@
 
 .driver-header-full,
 .driver-row-full {
-
     display: grid;
-
     grid-template-columns:
         27px
         34px
@@ -505,11 +401,8 @@
         42px
         35px
         38px;
-
     gap: 5px;
-
     align-items: center;
-
     min-width: 900px;
 }
 
@@ -519,38 +412,25 @@
    ========================================================= */
 
 .driver-header-full {
-
     position: sticky;
-
     top: 0;
-
     z-index: 5;
-
     padding: 10px 10px;
-
     background:
         linear-gradient(
             180deg,
             #292c31,
             #202328
         );
-
     border-top:
         1px solid rgba(255,255,255,.06);
-
     border-bottom:
         2px solid #444;
-
     color: #bfc3c9;
-
     font-size: 8px;
-
     font-weight: 800;
-
     text-transform: uppercase;
-
     letter-spacing: .25px;
-
     box-shadow:
         0 4px 12px rgba(0,0,0,.35);
 }
@@ -561,35 +441,26 @@
    ========================================================= */
 
 .driver-list-full {
-
-    min-width: 900px;
+    /* min-width: 900px; trae problemas dejarlo*/
 
     display: flex;
-
     flex-direction: column;
 }
 
 
 .driver-row-full {
-
     min-height: 60px;
-
     padding: 9px 10px;
-
     background:
         linear-gradient(
             90deg,
             #15171a,
             #121417
         );
-
     border-bottom:
         1px solid rgba(255,255,255,.065);
-
     color: #e0e2e5;
-
     font-size: 10px;
-
     transition:
         background .15s ease,
         box-shadow .15s ease;
@@ -597,21 +468,18 @@
 
 
 .driver-row-full:nth-child(even) {
-
     background:
         #15171c;
 }
 
 
 .driver-row-full:hover {
-
     background:
         linear-gradient(
             90deg,
             #202329,
             #181b20
         );
-
     box-shadow:
         inset 3px 0 0 #ff3030;
 }
@@ -622,13 +490,9 @@
    ========================================================= */
 
 .driver-row-full span:first-child {
-
     color: #ffffff;
-
     font-size: 11px;
-
     font-weight: 800;
-
     text-align: center;
 }
 
@@ -638,15 +502,10 @@
    ========================================================= */
 
 .driver-row-full span:nth-child(2) {
-
     color: #ffd52f;
-
     font-size: 12px;
-
     font-weight: 900;
-
     text-align: center;
-
     text-shadow:
         0 0 8px rgba(255,210,40,.18);
 }
@@ -657,47 +516,30 @@
    ========================================================= */
 
 .driver-row-full span:nth-child(3) {
-
     min-width: 0;
-
     overflow: hidden;
 }
 
 
 .driver-row-full strong {
-
     display: block;
-
     overflow: hidden;
-
     white-space: nowrap;
-
     text-overflow: ellipsis;
-
     color: #ffffff;
-
     font-size: 11px;
-
     font-weight: 800;
 }
 
 
 .driver-row-full small {
-
     display: block;
-
     margin-top: 2px;
-
     overflow: hidden;
-
     white-space: nowrap;
-
     text-overflow: ellipsis;
-
     color: #858a92;
-
     font-size: 8px;
-
     line-height: 1.15;
 }
 
@@ -707,11 +549,8 @@
    ========================================================= */
 
 .driver-row-full span:nth-child(n+4):nth-child(-n+12) {
-
     color: #e0e2e5;
-
     text-align: center;
-
     font-variant-numeric: tabular-nums;
 }
 
@@ -719,9 +558,7 @@
 /* GAP */
 
 .driver-row-full span:nth-child(4) {
-
     color: #ffffff;
-
     font-weight: 700;
 }
 
@@ -729,7 +566,6 @@
 /* LAST */
 
 .driver-row-full span:nth-child(5) {
-
     color: #d8dbe0;
 }
 
@@ -737,9 +573,7 @@
 /* BEST */
 
 .driver-row-full span:nth-child(6) {
-
     color: #d875ff;
-
     font-weight: 800;
 }
 
@@ -750,9 +584,7 @@
    ========================================================= */
 
 .pur {
-
     color: #c084fc !important;
-
     font-weight: 800;
 }
 
@@ -760,9 +592,7 @@
 /* FAST */
 
 .fast {
-
     color: #c084fc !important;
-
     font-weight: 800;
 }
 
@@ -770,9 +600,7 @@
 /* GAIN */
 
 .gain {
-
     color: #65d6a0 !important;
-
     font-weight: 800;
 }
 
@@ -780,9 +608,7 @@
 /* GAP */
 
 .gap {
-
     color: #ffffff !important;
-
     font-weight: 700;
 }
 
@@ -790,9 +616,7 @@
 /* BEST */
 
 .best {
-
     color: #c084fc !important;
-
     font-weight: 800;
 }
 
@@ -802,9 +626,7 @@
    ========================================================= */
 
 .status-live {
-
     color: #59e36d;
-
     filter:
         drop-shadow(
             0 0 4px
@@ -814,9 +636,7 @@
 
 
 .status-off {
-
     color: #ff5555;
-
     filter:
         drop-shadow(
             0 0 4px
@@ -826,15 +646,10 @@
 
 
 .driver-row-full span:last-child {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     min-width: 0;
-
     font-size: 13px;
 }
 
@@ -844,11 +659,8 @@
    ========================================================= */
 
 .driver-row-full span:nth-child(12) {
-
     color: #d9dce0;
-
     text-align: center;
-
     font-variant-numeric: tabular-nums;
 }
 
@@ -858,27 +670,20 @@
    ========================================================= */
 
 @media (max-width: 600px) {
-
     .modal {
-
         width: 96vw;
-
         max-height: 86vh;
-
         border-radius: 18px;
     }
 
 
     .modal-header {
-
         min-height: 62px;
-
         padding: 0 16px;
     }
 
 
     .modal-header h2 {
-
         font-size: 20px;
     }
 
@@ -886,36 +691,27 @@
     /* Cards */
 
     .live-summary-full {
-
         grid-template-columns:
             repeat(4, minmax(0, 1fr));
-
         gap: 7px;
-
         padding: 9px;
     }
 
 
     .live-item-full {
-
         min-height: 70px;
-
         padding: 7px 4px;
-
         border-radius: 13px;
     }
 
 
     .live-item-full span {
-
         font-size: 8px;
-
         margin-bottom: 4px;
     }
 
 
     .live-item-full strong {
-
         font-size: 12px;
     }
 
@@ -933,43 +729,34 @@
 
 
     .driver-header-full {
-
         padding: 9px 7px;
-
         font-size: 7px;
     }
 
 
     .driver-row-full {
-
         min-height: 57px;
-
         padding: 8px 7px;
-
         font-size: 9px;
     }
 
 
     .driver-row-full strong {
-
         font-size: 10px;
     }
 
 
     .driver-row-full small {
-
         font-size: 7.5px;
     }
 
 
     .driver-row-full span:first-child {
-
         font-size: 10px;
     }
 
 
     .driver-row-full span:nth-child(2) {
-
         font-size: 11px;
     }
 }
@@ -980,62 +767,50 @@
    ========================================================= */
 
 @media (max-width: 390px) {
-
     .live-summary-full {
-
         gap: 5px;
-
         padding: 7px;
     }
 
 
     .live-item-full {
-
         min-height: 63px;
-
         border-radius: 11px;
     }
 
 
     .live-item-full span {
-
         font-size: 7px;
     }
 
 
     .live-item-full strong {
-
         font-size: 11px;
     }
 
 
     .driver-header-full,
     .driver-row-full {
-
         min-width: 900px;
     }
 
 
     .driver-header-full {
-
         font-size: 6.5px;
     }
 
 
     .driver-row-full {
-
         font-size: 8px;
     }
 
 
     .driver-row-full strong {
-
         font-size: 9px;
     }
 
 
     .driver-row-full small {
-
         font-size: 7px;
     }
 }
