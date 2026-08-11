@@ -445,16 +445,11 @@
 */
 
 .live-table-full {
-
     width: 100%;
-
     overflow-x: auto;
     overflow-y: hidden;
-
     -webkit-overflow-scrolling: touch;
-
     scrollbar-width: thin;
-
     scrollbar-color:
         #50535a
         #111318;
@@ -499,7 +494,7 @@
     grid-template-columns:
         27px
         34px
-        minmax(125px, 1fr)
+        minmax(130px, 1fr)
         52px
         52px
         52px
@@ -933,8 +928,7 @@
 
     .driver-header-full,
     .driver-row-full {
-
-        min-width: 900px;
+        min-width: fit-content;
     }
 
 
