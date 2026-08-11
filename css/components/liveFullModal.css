@@ -3,11 +3,9 @@
    Diseño exclusivo del Live Full / Race Center
    ========================================================= */
 
-
 /* =========================================================
    OVERLAY
    ========================================================= */
-
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -29,7 +27,6 @@
 /* =========================================================
    MODAL
    ========================================================= */
-
 .modal {
     width: min(96vw, 1100px);
     max-width: 1100px;
@@ -56,7 +53,6 @@
 /* =========================================================
    HEADER
    ========================================================= */
-
 .modal-header {
     min-height: 68px;
     display: flex;
@@ -77,7 +73,6 @@
 
 
 /* Línea NASCAR */
-
 .modal-header::after {
     content: "";
     position: absolute;
@@ -110,7 +105,6 @@
 /* =========================================================
    CLOSE
    ========================================================= */
-
 .modal-close {
     width: 40px;
     height: 40px;
@@ -141,7 +135,6 @@
 /* =========================================================
    BODY
    ========================================================= */
-
 .modal-body {
     flex: 1;
     min-height: 0;
@@ -185,7 +178,6 @@
 /* =========================================================
    LIVE SUMMARY — CARRUSEL
    ========================================================= */
-
 .live-summary-wrapper {
 
     position: relative;
@@ -206,7 +198,6 @@
 /* =========================================================
    ÁREA DESLIZABLE
    ========================================================= */
-
 .live-summary-full {
 
     display: flex;
@@ -237,7 +228,6 @@
 /* =========================================================
    SUMMARY CARDS
    ========================================================= */
-
 .live-item-full {
 
     position: relative;
@@ -247,10 +237,7 @@
        aproximadamente 4 tarjetas visibles.
     */
 
-    flex: 0 0
-        calc(
-            (100% - 30px) / 4
-        );
+    flex: 0 0 180px;
 
     min-width: 0;
 
@@ -297,7 +284,6 @@
 /* =========================================================
    BRILLO SUPERIOR
    ========================================================= */
-
 .live-item-full::before {
 
     content: "";
@@ -325,7 +311,6 @@
 /* =========================================================
    HOVER
    ========================================================= */
-
 .live-item-full:hover {
 
     transform: translateY(-2px);
@@ -345,7 +330,6 @@
 /* =========================================================
    TEXTO
    ========================================================= */
-
 .live-item-full span {
 
     display: block;
@@ -388,7 +372,6 @@
    ========================================================= */
 
 /* Carrera */
-
 .live-item-full:nth-child(2) strong {
 
     color: #ff5b5b;
@@ -396,7 +379,6 @@
 
 
 /* Estado de pista */
-
 .live-item-full:nth-child(5) strong {
 
     color: #61a8ff;
@@ -404,7 +386,6 @@
 
 
 /* Restan */
-
 .live-item-full:nth-child(7) strong {
 
     color: #ffd84d;
@@ -412,7 +393,6 @@
 
 
 /* Stage */
-
 .live-item-full:nth-child(8) strong {
 
     color: #ffd84d;
@@ -420,7 +400,6 @@
 
 
 /* Restan Stage */
-
 .live-item-full:nth-child(10) strong {
 
     color: #ffd84d;
@@ -428,7 +407,6 @@
 
 
 /* Líderes */
-
 .live-item-full:nth-child(11) strong {
 
     color: #ffd84d;
@@ -436,7 +414,6 @@
 
 
 /* Lead Changes */
-
 .live-item-full:nth-child(12) strong {
 
     color: #ffd84d;
@@ -444,7 +421,6 @@
 
 
 /* Cautions */
-
 .live-item-full:nth-child(13) strong {
 
     color: #ffcf4d;
@@ -452,7 +428,6 @@
 
 
 /* Caution Laps */
-
 .live-item-full:nth-child(14) strong {
 
     color: #ffcf4d;
@@ -462,7 +437,6 @@
 /* =========================================================
    FLECHAS
    ========================================================= */
-
 .summary-arrow {
 
     position: absolute;
@@ -539,26 +513,18 @@
 @media (max-width: 900px) {
 
     .live-summary-full {
-
         padding-left: 38px;
-
         padding-right: 38px;
     }
 
 
     .live-item-full {
-
         /*
            Entre 5 y 7 tarjetas aproximadamente,
            dependiendo del ancho real.
         */
-
-        flex-basis:
-            calc(
-                (100% - 50px) / 6
-            );
-
-        min-width: 120px;
+    flex: 0 0 170px;
+    min-width: 170px;
     }
 
 }
@@ -571,9 +537,7 @@
 @media (max-width: 600px) {
 
     .live-summary-full {
-
         gap: 7px;
-
         padding:
             9px
             36px;
@@ -581,58 +545,41 @@
 
 
     .live-item-full {
-
         /*
            Cuatro tarjetas visibles.
         */
-
-        flex: 0 0
-            calc(
-                (100% - 21px) / 4
-            );
-
-        min-width: 0;
-
+        flex: 0 0 165px;
+        min-width: 165px;
         min-height: 70px;
-
         padding: 7px 4px;
-
         border-radius: 13px;
     }
 
 
     .live-item-full span {
-
         font-size: 8px;
-
         margin-bottom: 4px;
     }
 
 
     .live-item-full strong {
-
         font-size: 12px;
     }
 
 
     .summary-arrow {
-
         width: 29px;
-
         height: 29px;
-
         font-size: 22px;
     }
 
 
     .summary-arrow-left {
-
         left: 4px;
     }
 
 
     .summary-arrow-right {
-
         right: 4px;
     }
 
@@ -646,9 +593,7 @@
 @media (max-width: 390px) {
 
     .live-summary-full {
-
         gap: 5px;
-
         padding:
             7px
             32px;
@@ -656,36 +601,25 @@
 
 
     .live-item-full {
-
-        flex-basis:
-            calc(
-                (100% - 15px) / 4
-            );
-
+        flex-basis: 155px;
         min-height: 63px;
-
         border-radius: 11px;
     }
 
 
     .live-item-full span {
-
         font-size: 7px;
     }
 
 
     .live-item-full strong {
-
         font-size: 11px;
     }
 
 
     .summary-arrow {
-
         width: 27px;
-
         height: 27px;
-
         font-size: 20px;
     }
 
@@ -699,32 +633,24 @@
 @media (min-width: 901px) {
 
     .live-summary-full {
-
         /*
            En desktop dejamos que las tarjetas
            puedan acomodarse en dos filas.
         */
 
         display: grid;
-
         grid-template-columns:
             repeat(7, minmax(0, 1fr));
-
         overflow-x: hidden;
-
         padding:
             13px;
-
         gap: 10px;
     }
 
 
     .live-item-full {
-
         min-width: 0;
-
         width: auto;
-
         flex: initial;
     }
 
@@ -735,7 +661,6 @@
     */
 
     .summary-arrow {
-
         display: none;
     }
 
@@ -754,7 +679,6 @@
    - header y filas se mueven juntos
    - el resto del modal permanece fijo
 */
-
 .live-table-full {
     width: 100%;
     overflow-x: auto;
@@ -791,7 +715,6 @@
 /* =========================================================
    GRID BASE
    ========================================================= */
-
 .driver-header-full,
 .driver-row-full {
     display: grid;
@@ -818,7 +741,6 @@
 /* =========================================================
    HEADER TABLA
    ========================================================= */
-
 .driver-header-full {
     position: sticky;
     top: 0;
@@ -847,7 +769,6 @@
 /* =========================================================
    FILAS
    ========================================================= */
-
 .driver-list-full {
     /* min-width: 900px; trae problemas dejarlo*/
 
@@ -896,7 +817,6 @@
 /* =========================================================
    POS
    ========================================================= */
-
 .driver-row-full span:first-child {
     color: #ffffff;
     font-size: 11px;
@@ -908,7 +828,6 @@
 /* =========================================================
    NÚMERO AUTO
    ========================================================= */
-
 .driver-row-full span:nth-child(2) {
     color: #ffd52f;
     font-size: 12px;
@@ -922,7 +841,6 @@
 /* =========================================================
    DRIVER
    ========================================================= */
-
 .driver-row-full span:nth-child(3) {
     min-width: 0;
     overflow: hidden;
@@ -955,7 +873,6 @@
 /* =========================================================
    DATOS NUMÉRICOS
    ========================================================= */
-
 .driver-row-full span:nth-child(n+4):nth-child(-n+12) {
     color: #e0e2e5;
     text-align: center;
@@ -964,7 +881,6 @@
 
 
 /* GAP */
-
 .driver-row-full span:nth-child(4) {
     color: #ffffff;
     font-weight: 700;
@@ -972,14 +888,12 @@
 
 
 /* LAST */
-
 .driver-row-full span:nth-child(5) {
     color: #d8dbe0;
 }
 
 
 /* BEST */
-
 .driver-row-full span:nth-child(6) {
     color: #d875ff;
     font-weight: 800;
@@ -990,7 +904,6 @@
    CLASES SEMÁNTICAS
    Se utilizarán en el JS
    ========================================================= */
-
 .pur {
     color: #c084fc !important;
     font-weight: 800;
@@ -998,7 +911,6 @@
 
 
 /* FAST */
-
 .fast {
     color: #c084fc !important;
     font-weight: 800;
@@ -1006,7 +918,6 @@
 
 
 /* GAIN */
-
 .gain {
     color: #65d6a0 !important;
     font-weight: 800;
@@ -1014,7 +925,6 @@
 
 
 /* GAP */
-
 .gap {
     color: #ffffff !important;
     font-weight: 700;
@@ -1022,7 +932,6 @@
 
 
 /* BEST */
-
 .best {
     color: #c084fc !important;
     font-weight: 800;
@@ -1032,7 +941,6 @@
 /* =========================================================
    STATUS
    ========================================================= */
-
 .status-live {
     color: #59e36d;
     filter:
@@ -1065,7 +973,6 @@
 /* =========================================================
    PITS
    ========================================================= */
-
 .driver-row-full span:nth-child(12) {
     color: #d9dce0;
     text-align: center;
