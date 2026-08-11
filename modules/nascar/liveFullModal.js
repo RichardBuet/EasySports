@@ -119,7 +119,7 @@ async function createLiveContent(live) {
                 <span>DRIVER</span>
                 <span>GAP</span>
                 <span>LAST</span>
-                <span>BEST</span>
+                <span class="pur">BEST</span>
                 <span>AVG</span>
                 <span>LED</span>
                 <span>FAST</span>
