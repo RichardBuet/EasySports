@@ -21,11 +21,15 @@ window.openLiveFullModal = async () => {
 
     clearInterval(refreshTimer);
 
-    // Actualización cada 10 segundos
-  //  refreshTimer = setInterval(refreshLiveFullModal, 10000);
+    // Actualización cada 5 segundos
+    refreshTimer = setInterval(refreshLiveFullModal, 5000);
 
 };
 
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
 
 async function createLiveContent(live) {
 
@@ -44,73 +48,19 @@ async function createLiveContent(live) {
             </div>
 
             <div class="live-item-full">
-                <span>🏟 Circuito</span>
-                <strong>${live.summary.track}</strong>
-            </div>
-
-            <div class="live-item-full">
-                <span>📏 Longitud</span>
-                <strong>${live.summary.trackLength} mi</strong>
-            </div>
-
-            <div class="live-item-full">
                 <span>${live.summary.flag.icon}</span>
                 <strong>${live.summary.flag.name}</strong>
             </div>
 
             <div class="live-item-full">
-                <span>🏁 Vuelta</span>
+                <span>🏁 Lap</span>
                 <strong>${live.summary.lap}</strong>
-            </div>
-
-            <div class="live-item-full">
-                <span>⏳ Restan</span>
-                <strong>${live.summary.lapsToGo}</strong>
-            </div>
-
-            ${live.summary.stage ? `
-
-                <div class="live-item-full">
-                    <span>🏆 Stage</span>
-                    <strong>${live.summary.stage.number}</strong>
-                </div>
-
-                <div class="live-item-full">
-                    <span>🏁 Final Stage</span>
-                    <strong>V${live.summary.stage.finishLap}</strong>
-                </div>
-
-                <div class="live-item-full">
-                    <span>⌛ Restan Stage</span>
-                    <strong>${live.summary.stage.lapsRemaining}</strong>
-                </div>
-
-            ` : ""}
-
-            <div class="live-item-full">
-                <span>👑 Líderes</span>
-                <strong>${live.summary.leaders}</strong>
-            </div>
-
-            <div class="live-item-full">
-                <span>🔄 Lead Changes</span>
-                <strong>${live.summary.leadChanges}</strong>
-            </div>
-
-            <div class="live-item-full">
-                <span>⚠️ Cautions</span>
-                <strong>${live.summary.cautions}</strong>
-            </div>
-
-            <div class="live-item-full">
-                <span>🟨 Caution Laps</span>
-                <strong>${live.summary.cautionLaps}</strong>
             </div>
 
         </div>
 
 
-        <div class="driver-table-full">
+        <div class="live-table-full">
 
             <div class="driver-header-full">
 
@@ -122,7 +72,7 @@ async function createLiveContent(live) {
                 <span class="pur">BEST</span>
                 <span>AVG</span>
                 <span>LED</span>
-                <span>FAST</span>
+                <span class="pur">FAST</span>
                 <span>GAIN</span>
                 <span>START</span>
                 <span>PITS</span>
@@ -133,53 +83,7 @@ async function createLiveContent(live) {
 
             <div class="driver-list-full">
 
-                ${live.leaderboard.map(driver => `
-
-                    <div class="driver-row-full">
-
-                        <span>${driver.position}</span>
-
-                        <span>${driver.number}</span>
-
-                        <span>
-
-                            <strong>${driver.driver}</strong>
-
-                            <small>${driver.sponsor}</small>
-
-                            <small>${driver.manufacturer}</small>
-
-                        </span>
-
-                        <span>${driver.gap.toFixed(3)}</span>
-
-                        <span>${driver.lastLap.toFixed(3)}</span>
-
-                        <span>${driver.bestLap.toFixed(3)}</span>
-
-                        <span>${driver.averageSpeed.toFixed(3)}</span>
-
-                        <span>${driver.lapsLed}</span>
-
-                        <span>${driver.fastestLaps}</span>
-
-                        <span>+${driver.positionGain}</span>
-
-                        <span>${driver.startingPosition}</span>
-
-                        <span>${driver.pitStops}</span>
-
-                        <span>
-
-                            ${driver.onTrack ? "🟢" : "🔴"}
-
-                            ${driver.onDVP ? "⚠️" : ""}
-
-                        </span>
-
-                    </div>
-
-                `).join("")}
+                ${createDriverRows(live.leaderboard)}
 
             </div>
 
@@ -188,59 +92,151 @@ async function createLiveContent(live) {
     `;
 
 }
+
+
+/* =========================================================
+   FILAS DE PILOTOS
+   ========================================================= */
+
+function createDriverRows(leaderboard) {
+
+    return leaderboard.map(driver => {
+
+        const statusClass =
+            driver.onTrack
+                ? "status-live"
+                : "status-off";
+
+        return `
+
+            <div class="driver-row-full">
+
+                <span>
+                    ${driver.position}
+                </span>
+
+
+                <span>
+                    ${driver.number}
+                </span>
+
+
+                <span>
+
+                    <strong>
+                        ${driver.driver}
+                    </strong>
+
+                    <small>
+                        ${driver.sponsor}
+                    </small>
+
+                    <small>
+                        ${driver.manufacturer}
+                    </small>
+
+                </span>
+
+
+                <span class="gap">
+                    ${driver.gap}
+                </span>
+
+
+                <span>
+                    ${driver.lastLap}
+                </span>
+
+
+                <span class="best pur">
+                    ${driver.bestLap}
+                </span>
+
+
+                <span>
+                    ${Number(driver.averageSpeed).toFixed(3)}
+                </span>
+
+
+                <span>
+                    ${driver.lapsLed}
+                </span>
+
+
+                <span class="fast pur">
+                    ${driver.fastestLaps}
+                </span>
+
+
+                <span class="gain">
+                    ${driver.positionGain > 0
+                        ? `+${driver.positionGain}`
+                        : driver.positionGain}
+                </span>
+
+
+                <span>
+                    ${driver.startingPosition}
+                </span>
+
+
+                <span>
+                    ${driver.pitStops}
+                </span>
+
+
+                <span class="${statusClass}">
+
+                    ${driver.onTrack ? "🟢" : "🔴"}
+
+                    ${driver.onDVP ? "⚠️" : ""}
+
+                </span>
+
+            </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   REFRESH
+   ========================================================= */
+
 async function refreshLiveFullModal() {
 
     const live = await NASCAR.getLiveRaceData();
 
+    /*
+       El scroll horizontal está en .live-table-full
+       El scroll vertical del listado está en .driver-list-full
+    */
+
+    const table = document.querySelector(".live-table-full");
     const driverList = document.querySelector(".driver-list-full");
 
-    if (!driverList) return;
+    if (!table || !driverList) return;
 
-    const scrollTop = driverList.scrollTop;
-    const scrollLeft = driverList.scrollLeft;
 
-    driverList.innerHTML = live.leaderboard.map(driver => `
+    /* Guardar posiciones */
 
-        <div class="driver-row-full">
+    const horizontalScroll = table.scrollLeft;
+    const verticalScroll = driverList.scrollTop;
 
-            <span>${driver.position}</span>
 
-            <span>${driver.number}</span>
+    /* Actualizar SOLO las filas */
 
-            <span>
-                <strong>${driver.driver}</strong>
-                <small>${driver.sponsor}</small>
-                <small>${driver.manufacturer}</small>
-            </span>
+    driverList.innerHTML =
+        createDriverRows(live.leaderboard);
 
-            <span>${driver.gap}</span>
 
-            <span>${driver.lastLap}</span>
+    /* Recuperar posiciones */
 
-            <span>${driver.bestLap}</span>
+    table.scrollLeft = horizontalScroll;
 
-            <span>${driver.averageSpeed.toFixed(3)}</span>
+    driverList.scrollTop = verticalScroll;
 
-            <span>${driver.lapsLed}</span>
-
-            <span>${driver.fastestLaps}</span>
-
-            <span>+${driver.positionGain}</span>
-
-            <span>${driver.startingPosition}</span>
-
-            <span>${driver.pitStops}</span>
-
-            <span>
-                ${driver.onTrack ? "🟢" : "🔴"}
-                ${driver.onDVP ? "⚠️" : ""}
-            </span>
-
-        </div>
-
-    `).join("");
-
-    driverList.scrollTop = scrollTop;
-    driverList.scrollLeft = scrollLeft;
 }
-
