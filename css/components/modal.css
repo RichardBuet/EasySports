@@ -291,7 +291,7 @@
 /* =========================================================
    NASCAR LIVE FULL MODAL
    ========================================================= */
-
+/*
 .live-summary-full {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -319,7 +319,7 @@
 }
 
 
-/* Encabezado de la tabla */
+/* Encabezado de la tabla * /
 
 .driver-header-full,
 .driver-row-full {
@@ -356,7 +356,7 @@
 }
 
 
-/* Lista con scroll */
+/* Lista con scroll * /
 
 .driver-table-full {
     max-height: 62vh;
@@ -376,7 +376,7 @@
 }
 
 .driver-header-full {
-    /* min-width: 900px; */
+    
     background: #2c2c2c;
     padding: 10px 8px;
     border-bottom: 2px solid #444;
@@ -386,7 +386,7 @@
 }
 
 
-/* Filas */
+/* Filas * /
 
 .driver-row-full {
     padding: 8px;
@@ -427,4 +427,4 @@
     display: flex;
     justify-content: center;
 }
-
+*/
