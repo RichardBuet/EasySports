@@ -740,6 +740,343 @@
 }
 
 
+
+
+/* =========================================================
+   NASCAR LIVE FULL — PREMIUM
+   ========================================================= */
+
+.liveFullModal {
+    background:
+        radial-gradient(circle at 50% -20%, rgba(255, 60, 60, .08), transparent 45%),
+        #111216;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.liveFullModal .modal-header {
+    background:
+        linear-gradient(
+            135deg,
+            #191b21 0%,
+            #121318 100%
+        );
+
+    border-bottom: 2px solid #e53935;
+    padding: 18px 22px;
+
+    box-shadow:
+        0 4px 18px rgba(0,0,0,.35);
+}
+
+.liveFullModal .modal-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.liveFullModal .modal-close {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.liveFullModal .modal-close:hover {
+    background: rgba(255,70,70,.15);
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+
+.liveFullModal .live-summary-full {
+    gap: 10px;
+    padding: 12px;
+}
+
+.liveFullModal .live-item-full {
+    min-height: 82px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #22242b,
+            #191a20
+        );
+
+    border: 1px solid rgba(255,255,255,.09);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 4px 12px rgba(0,0,0,.18);
+
+    transition:
+        transform .18s ease,
+        border-color .18s ease;
+}
+
+.liveFullModal .live-item-full:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,.18);
+}
+
+.liveFullModal .live-item-full span {
+    color: #a6a7ad;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.liveFullModal .live-item-full strong {
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   COLORES SEMÁNTICOS
+   ========================================================= */
+
+/* Carrera */
+.liveFullModal .live-item-full:nth-child(2) strong {
+    color: #ff5b5b;
+}
+
+/* Estado pista */
+.liveFullModal .live-item-full:nth-child(5) strong {
+    color: #61a8ff;
+}
+
+/* Restan */
+.liveFullModal .live-item-full:nth-child(7) strong,
+.liveFullModal .live-item-full:nth-child(10) strong {
+    color: #ffd84d;
+}
+
+/* Líderes */
+.liveFullModal .live-item-full:nth-child(11) strong {
+    color: #ffd84d;
+}
+
+/* Lead changes */
+.liveFullModal .live-item-full:nth-child(12) strong {
+    color: #ffd84d;
+}
+
+
+/* =========================================================
+   LEADERBOARD HEADER
+   ========================================================= */
+
+.liveFullModal .driver-header-full {
+    background:
+        linear-gradient(
+            180deg,
+            #292c33,
+            #202228
+        );
+
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 2px solid #3b3e46;
+
+    padding: 9px 12px;
+
+    font-size: .70rem;
+    font-weight: 800;
+
+    color: #bfc1c7;
+
+    text-transform: uppercase;
+    letter-spacing: .35px;
+}
+
+
+/* =========================================================
+   LEADERBOARD ROWS
+   ========================================================= */
+
+.liveFullModal .driver-row-full {
+    min-height: 58px;
+
+    padding: 9px 12px;
+
+    background: #121318;
+
+    border-bottom: 1px solid rgba(255,255,255,.07);
+
+    font-size: .78rem;
+
+    transition:
+        background .15s ease;
+}
+
+.liveFullModal .driver-row-full:nth-child(even) {
+    background: #15171c;
+}
+
+.liveFullModal .driver-row-full:hover {
+    background: #1c1f26;
+}
+
+
+/* POS */
+.liveFullModal .driver-row-full span:first-child {
+    font-weight: 800;
+    color: #f2f2f2;
+}
+
+
+/* CAR NUMBER */
+.liveFullModal .driver-row-full span:nth-child(2) {
+    color: #ffd84d;
+    font-weight: 900;
+}
+
+
+/* DRIVER */
+.liveFullModal .driver-row-full strong {
+    font-size: .82rem;
+    font-weight: 800;
+    color: #f5f5f5;
+}
+
+.liveFullModal .driver-row-full small {
+    color: #858891;
+    font-size: .68rem;
+}
+
+
+/* GAP */
+.liveFullModal .driver-row-full span:nth-child(4) {
+    font-weight: 700;
+}
+
+
+/* BEST LAP */
+.liveFullModal .driver-row-full span:nth-child(6) {
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FAST — PÚRPURA
+   ========================================================= */
+
+.liveFullModal .driver-header-full span:nth-child(9) {
+    color: #c084fc;
+}
+
+.liveFullModal .driver-row-full span:nth-child(9) {
+    color: #c084fc;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   GAIN
+   ========================================================= */
+
+.liveFullModal .driver-header-full span:nth-child(10) {
+    color: #65d6a0;
+}
+
+.liveFullModal .driver-row-full span:nth-child(10) {
+    color: #65d6a0;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.liveFullModal .driver-row-full span:last-child {
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .liveFullModal .modal-header {
+        padding: 15px 16px;
+    }
+
+    .liveFullModal .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .liveFullModal .live-summary-full {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .liveFullModal .live-item-full {
+        min-height: 76px;
+        padding: 7px;
+        border-radius: 12px;
+    }
+
+    .liveFullModal .live-item-full span {
+        font-size: .65rem;
+    }
+
+    .liveFullModal .live-item-full strong {
+        font-size: .86rem;
+    }
+
+    .liveFullModal .driver-header-full,
+    .liveFullModal .driver-row-full {
+        font-size: .68rem;
+        gap: 6px;
+    }
+
+    .liveFullModal .driver-row-full strong {
+        font-size: .76rem;
+    }
+
+    .liveFullModal .driver-row-full small {
+        font-size: .62rem;
+    }
+}
+
+
+
+
+
+
 /* =========================================================
    VERY SMALL PHONES
    ========================================================= */
