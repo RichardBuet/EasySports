@@ -1,0 +1,144 @@
+/* 🎨 Estilo base */
+.live-summary-full,
+.driver-table-full {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #fff;
+  background: #0b0c10;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* 🏁 Panel resumen */
+.live-summary-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.live-item-full {
+  background: #14161a;
+  border: 1px solid #1f2228;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.live-item-full span {
+  display: block;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.live-item-full strong {
+  display: block;
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 4px;
+}
+
+/* 🏎 Tabla de pilotos */
+.driver-table-full {
+  background: #14161a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.driver-header-full {
+  display: grid;
+  grid-template-columns: 40px 40px 160px repeat(10, 1fr);
+  background: #1c1f24;
+  color: #ccc;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  border-bottom: 1px solid #2a2e35;
+}
+
+.driver-list-full {
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.driver-row-full {
+  display: grid;
+  grid-template-columns: 40px 40px 160px repeat(10, 1fr);
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #1f2228;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.driver-row-full:hover {
+  background: #1a1d22;
+}
+
+.driver-row-full strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.driver-row-full small {
+  display: block;
+  font-size: 0.7rem;
+  color: #888;
+}
+
+/* 📈 Colores de ganancia/perdida */
+.driver-row-full span:nth-child(10) {
+  font-weight: 600;
+}
+
+.driver-row-full span:nth-child(10):has(+){
+  color: #00ff6a;
+}
+
+.driver-row-full span:nth-child(10):has(-){
+  color: #ff4d4d;
+}
+
+/* 🕓 Scrollbar */
+.driver-list-full::-webkit-scrollbar {
+  width: 6px;
+}
+.driver-list-full::-webkit-scrollbar-thumb {
+  background: #2a2e35;
+  border-radius: 3px;
+}
+
+/* 📱 Responsive móvil */
+@media (max-width: 768px) {
+  .live-summary-full {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .driver-header-full,
+  .driver-row-full {
+    grid-template-columns: 35px 35px 120px repeat(6, 1fr);
+    font-size: 0.75rem;
+  }
+
+  .driver-list-full {
+    max-height: 400px;
+  }
+
+  .live-item-full strong {
+    font-size: 0.9rem;
+  }
+}
+
+/* 💻 Responsive laptop */
+@media (min-width: 1024px) {
+  .live-summary-full {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .driver-header-full,
+  .driver-row-full {
+    grid-template-columns: 50px 50px 180px repeat(10, 1fr);
+  }
+
+  .driver-row-full {
+    font-size: 0.9rem;
+  }
+}
