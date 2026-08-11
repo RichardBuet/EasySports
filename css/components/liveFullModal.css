@@ -183,15 +183,17 @@
 
 
 /* =========================================================
-   SUMMARY
+   LIVE SUMMARY — CARRUSEL
    ========================================================= */
 
-.live-summary-full {
-    display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-    gap: 10px;
-    padding: 13px;
+.live-summary-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
     background:
         linear-gradient(
             180deg,
@@ -202,30 +204,89 @@
 
 
 /* =========================================================
+   ÁREA DESLIZABLE
+   ========================================================= */
+
+.live-summary-full {
+
+    display: flex;
+
+    gap: 10px;
+
+    padding: 13px 42px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+}
+
+
+.live-summary-full::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+/* =========================================================
    SUMMARY CARDS
    ========================================================= */
 
 .live-item-full {
+
     position: relative;
+
+    /*
+       En pantallas chicas:
+       aproximadamente 4 tarjetas visibles.
+    */
+
+    flex: 0 0
+        calc(
+            (100% - 30px) / 4
+        );
+
+    min-width: 0;
+
     min-height: 78px;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
+
     padding: 9px;
+
     text-align: center;
+
+    scroll-snap-align: start;
+
     background:
         linear-gradient(
             145deg,
             #25282e,
             #1b1d21
         );
+
     border: 1px solid rgba(255,255,255,.08);
+
     border-radius: 16px;
+
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.04),
         0 5px 15px rgba(0,0,0,.20);
+
     overflow: hidden;
+
     transition:
         transform .18s ease,
         border-color .18s ease,
@@ -233,15 +294,24 @@
 }
 
 
-/* brillo superior */
+/* =========================================================
+   BRILLO SUPERIOR
+   ========================================================= */
 
 .live-item-full::before {
+
     content: "";
+
     position: absolute;
+
     top: 0;
+
     left: 12%;
+
     right: 12%;
+
     height: 1px;
+
     background:
         linear-gradient(
             90deg,
@@ -252,10 +322,17 @@
 }
 
 
+/* =========================================================
+   HOVER
+   ========================================================= */
+
 .live-item-full:hover {
+
     transform: translateY(-2px);
+
     border-color:
         rgba(255,255,255,.16);
+
     background:
         linear-gradient(
             145deg,
@@ -265,43 +342,63 @@
 }
 
 
+/* =========================================================
+   TEXTO
+   ========================================================= */
+
 .live-item-full span {
+
     display: block;
+
     margin-bottom: 5px;
+
     color: #9da1a8;
+
     font-size: 10px;
+
     font-weight: 700;
+
     text-transform: uppercase;
+
     letter-spacing: .45px;
+
     line-height: 1.2;
 }
 
 
 .live-item-full strong {
+
     display: block;
+
     color: #ffffff;
+
     font-size: 15px;
+
     font-weight: 800;
+
     line-height: 1.15;
+
     text-shadow:
         0 1px 5px rgba(0,0,0,.5);
 }
 
 
 /* =========================================================
-   SUMMARY — COLORES
+   COLORES SEMÁNTICOS
    ========================================================= */
 
 /* Carrera */
 
 .live-item-full:nth-child(2) strong {
+
     color: #ff5b5b;
 }
 
 
-/* Estado pista */
+/* Estado de pista */
 
 .live-item-full:nth-child(5) strong {
+
     color: #61a8ff;
 }
 
@@ -309,28 +406,339 @@
 /* Restan */
 
 .live-item-full:nth-child(7) strong {
+
+    color: #ffd84d;
+}
+
+
+/* Stage */
+
+.live-item-full:nth-child(8) strong {
+
+    color: #ffd84d;
+}
+
+
+/* Restan Stage */
+
+.live-item-full:nth-child(10) strong {
+
     color: #ffd84d;
 }
 
 
 /* Líderes */
 
-.live-item-full:nth-child(10) strong {
+.live-item-full:nth-child(11) strong {
+
     color: #ffd84d;
 }
 
 
 /* Lead Changes */
 
-.live-item-full:nth-child(11) strong {
+.live-item-full:nth-child(12) strong {
+
     color: #ffd84d;
 }
 
 
 /* Cautions */
 
-.live-item-full:nth-child(12) strong {
+.live-item-full:nth-child(13) strong {
+
     color: #ffcf4d;
+}
+
+
+/* Caution Laps */
+
+.live-item-full:nth-child(14) strong {
+
+    color: #ffcf4d;
+}
+
+
+/* =========================================================
+   FLECHAS
+   ========================================================= */
+
+.summary-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 10;
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background:
+        rgba(20,22,27,.90);
+
+    color: #ffffff;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.35);
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+
+.summary-arrow:hover {
+
+    background:
+        rgba(255,45,45,.20);
+
+    transform:
+        translateY(-50%) scale(1.08);
+}
+
+
+.summary-arrow-left {
+
+    left: 7px;
+}
+
+
+.summary-arrow-right {
+
+    right: 7px;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE HORIZONTAL
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .live-summary-full {
+
+        padding-left: 38px;
+
+        padding-right: 38px;
+    }
+
+
+    .live-item-full {
+
+        /*
+           Entre 5 y 7 tarjetas aproximadamente,
+           dependiendo del ancho real.
+        */
+
+        flex-basis:
+            calc(
+                (100% - 50px) / 6
+            );
+
+        min-width: 120px;
+    }
+
+}
+
+
+/* =========================================================
+   IPHONE VERTICAL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .live-summary-full {
+
+        gap: 7px;
+
+        padding:
+            9px
+            36px;
+    }
+
+
+    .live-item-full {
+
+        /*
+           Cuatro tarjetas visibles.
+        */
+
+        flex: 0 0
+            calc(
+                (100% - 21px) / 4
+            );
+
+        min-width: 0;
+
+        min-height: 70px;
+
+        padding: 7px 4px;
+
+        border-radius: 13px;
+    }
+
+
+    .live-item-full span {
+
+        font-size: 8px;
+
+        margin-bottom: 4px;
+    }
+
+
+    .live-item-full strong {
+
+        font-size: 12px;
+    }
+
+
+    .summary-arrow {
+
+        width: 29px;
+
+        height: 29px;
+
+        font-size: 22px;
+    }
+
+
+    .summary-arrow-left {
+
+        left: 4px;
+    }
+
+
+    .summary-arrow-right {
+
+        right: 4px;
+    }
+
+}
+
+
+/* =========================================================
+   IPHONE MUY ANGOSTO
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .live-summary-full {
+
+        gap: 5px;
+
+        padding:
+            7px
+            32px;
+    }
+
+
+    .live-item-full {
+
+        flex-basis:
+            calc(
+                (100% - 15px) / 4
+            );
+
+        min-height: 63px;
+
+        border-radius: 11px;
+    }
+
+
+    .live-item-full span {
+
+        font-size: 7px;
+    }
+
+
+    .live-item-full strong {
+
+        font-size: 11px;
+    }
+
+
+    .summary-arrow {
+
+        width: 27px;
+
+        height: 27px;
+
+        font-size: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP GRANDE
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    .live-summary-full {
+
+        /*
+           En desktop dejamos que las tarjetas
+           puedan acomodarse en dos filas.
+        */
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+
+        overflow-x: hidden;
+
+        padding:
+            13px;
+
+        gap: 10px;
+    }
+
+
+    .live-item-full {
+
+        min-width: 0;
+
+        width: auto;
+
+        flex: initial;
+    }
+
+
+    /*
+       En desktop grande no necesitamos
+       flechas del carrusel.
+    */
+
+    .summary-arrow {
+
+        display: none;
+    }
+
 }
 
 
