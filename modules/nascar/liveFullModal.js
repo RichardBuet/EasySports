@@ -9,7 +9,7 @@ window.openLiveFullModal = async () => {
 
     openModal({
 
-        title: "🏁 NASCAR LIVE",
+        title: "🏁 NASCAR LIVE v5",
 
         content: await createLiveContent(live),
 
@@ -22,7 +22,7 @@ window.openLiveFullModal = async () => {
     clearInterval(refreshTimer);
 
     // Actualización cada 5 segundos
-    //refreshTimer = setInterval(refreshLiveFullModal, 5000);
+    refreshTimer = setInterval(refreshLiveFullModal, 5000);
 
 };
 
