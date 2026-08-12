@@ -1,18 +1,27 @@
 import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
 
+
 let refreshTimer = null;
+
+let summaryCarousel = null;
+
+let summaryAutoTimer = null;
+
+let summaryPaused = false;
 
 
 /* =========================================================
-   OPEN NASCAR LIVE FULL MODAL
+   OPEN NASCAR LIVE FULL
    ========================================================= */
 
 window.openLiveFullModal = async () => {
 
     try {
 
-        const live = await NASCAR.getLiveRaceData();
+        const live =
+            await NASCAR.getLiveRaceData();
+
 
         openModal({
 
@@ -20,26 +29,34 @@ window.openLiveFullModal = async () => {
 
             modalClass: "nascar-live-full",
 
-            content: await createLiveContent(live),
+            content:
+                await createLiveContent(live),
 
             onClose: () => {
 
-                clearInterval(refreshTimer);
-
-                refreshTimer = null;
+                stopLiveFull();
 
             }
 
         });
 
+
         clearInterval(refreshTimer);
 
-        refreshTimer = setInterval(
-            refreshLiveFullModal,
-            5000
-        );
+        refreshTimer =
+            setInterval(
+                refreshLiveFullModal,
+                5000
+            );
+
+
+        /*
+           El DOM ya existe porque openModal()
+           acaba de insertar el contenido.
+        */
 
         initSummaryCarousel();
+
 
     } catch (error) {
 
@@ -61,70 +78,121 @@ async function createLiveContent(live) {
 
     return `
 
-        <div class="nascar-live-summary-wrapper">
+        <!-- =================================================
+             SUMMARY
+             ================================================= -->
+
+        <div class="nascar-live-full-summary-wrapper">
+
 
             <button
-                class="nascar-summary-arrow nascar-summary-arrow-left"
+                class="nascar-live-full-summary-arrow
+                       nascar-live-full-summary-arrow-left"
                 type="button"
                 aria-label="Información anterior">
                 ‹
             </button>
 
 
-            <div class="nascar-live-summary">
+            <div class="nascar-live-full-summary">
 
-                <div class="nascar-live-item">
+
+                <div class="nascar-live-full-item">
+
                     <span>🏁 Series</span>
-                    <strong>${live.summary.series}</strong>
+
+                    <strong>
+                        ${live.summary.series}
+                    </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
-                    <span>${live.summary.session.icon}</span>
-                    <strong>${live.summary.session.name}</strong>
+                <div class="nascar-live-full-item">
+
+                    <span>
+                        ${live.summary.session.icon}
+                    </span>
+
+                    <strong>
+                        ${live.summary.session.name}
+                    </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>🏟 Circuito</span>
-                    <strong>${live.summary.track}</strong>
+
+                    <strong>
+                        ${live.summary.track}
+                    </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>📏 Longitud</span>
-                    <strong>${live.summary.trackLength} mi</strong>
+
+                    <strong>
+                        ${live.summary.trackLength} mi
+                    </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
-                    <span>${live.summary.flag.icon}</span>
-                    <strong>${live.summary.flag.name}</strong>
+                <div class="nascar-live-full-item">
+
+                    <span>
+                        ${live.summary.flag.icon}
+                    </span>
+
+                    <strong>
+                        ${live.summary.flag.name}
+                    </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>🏁 Vuelta</span>
-                    <strong>${live.summary.lap}</strong>
+
+                    <strong>
+                        ${live.summary.lap}
+                    </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>⏳ Restan</span>
-                    <strong>${live.summary.lapsToGo}</strong>
+
+                    <strong>
+                        ${live.summary.lapsToGo}
+                    </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>🏆 Stage</span>
+
                     <strong>
                         ${live.summary.stage?.number ?? "-"}
                     </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>🏁 Final Stage</span>
+
                     <strong>
                         ${
                             live.summary.stage?.finishLap
@@ -132,87 +200,128 @@ async function createLiveContent(live) {
                                 : "-"
                         }
                     </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>⏳ Restan Stage</span>
+
                     <strong>
                         ${live.summary.stage?.lapsRemaining ?? "-"}
                     </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>👑 Líderes</span>
+
                     <strong>
                         ${live.summary.leaders}
                     </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>🔄 Lead Changes</span>
+
                     <strong>
                         ${live.summary.leadChanges}
                     </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>⚠️ Cautions</span>
+
                     <strong>
                         ${live.summary.cautions}
                     </strong>
+
                 </div>
 
 
-                <div class="nascar-live-item">
+                <div class="nascar-live-full-item">
+
                     <span>🟨 Caution Laps</span>
+
                     <strong>
                         ${live.summary.cautionLaps}
                     </strong>
+
                 </div>
+
 
             </div>
 
 
             <button
-                class="nascar-summary-arrow nascar-summary-arrow-right"
+                class="nascar-live-full-summary-arrow
+                       nascar-live-full-summary-arrow-right"
                 type="button"
                 aria-label="Siguiente información">
                 ›
             </button>
 
+
         </div>
 
 
-        <div class="nascar-live-table">
+        <!-- =================================================
+             TABLE
+             ================================================= -->
 
-            <div class="nascar-driver-header">
+        <div class="nascar-live-full-table">
+
+
+            <div class="nascar-live-full-driver-header">
 
                 <span>POS</span>
+
                 <span>#</span>
+
                 <span>DRIVER</span>
+
                 <span>GAP</span>
+
                 <span>LAST</span>
-                <span class="nascar-pur">BEST</span>
+
+                <span class="nascar-live-full-pur">
+                    BEST
+                </span>
+
                 <span>AVG</span>
+
                 <span>LED</span>
-                <span class="nascar-pur">FAST</span>
+
+                <span class="nascar-live-full-pur">
+                    FAST
+                </span>
+
                 <span>GAIN</span>
+
                 <span>START</span>
+
                 <span>PITS</span>
+
                 <span>STATUS</span>
 
             </div>
 
 
-            <div class="nascar-driver-list">
+            <div class="nascar-live-full-driver-list">
 
                 ${createDriverRows(live.leaderboard)}
 
             </div>
+
 
         </div>
 
@@ -229,23 +338,29 @@ function createDriverRows(leaderboard = []) {
 
     return leaderboard.map(driver => {
 
+
         const statusClass =
             driver.onTrack
-                ? "nascar-status-live"
-                : "nascar-status-off";
+                ? "nascar-live-full-status-live"
+                : "nascar-live-full-status-off";
 
 
         const positionGain =
-            Number(driver.positionGain ?? 0);
+            Number(
+                driver.positionGain ?? 0
+            );
 
 
         const averageSpeed =
-            Number(driver.averageSpeed);
+            Number(
+                driver.averageSpeed
+            );
 
 
         return `
 
-            <div class="nascar-driver-row">
+            <div class="nascar-live-full-driver-row">
+
 
                 <span>
                     ${driver.position}
@@ -274,7 +389,7 @@ function createDriverRows(leaderboard = []) {
                 </span>
 
 
-                <span class="nascar-gap">
+                <span class="nascar-live-full-gap">
                     ${driver.gap ?? "-"}
                 </span>
 
@@ -284,17 +399,22 @@ function createDriverRows(leaderboard = []) {
                 </span>
 
 
-                <span class="nascar-best nascar-pur">
+                <span class="nascar-live-full-best
+                             nascar-live-full-pur">
+
                     ${driver.bestLap ?? "-"}
+
                 </span>
 
 
                 <span>
+
                     ${
                         Number.isFinite(averageSpeed)
                             ? averageSpeed.toFixed(3)
                             : "-"
                     }
+
                 </span>
 
 
@@ -303,17 +423,22 @@ function createDriverRows(leaderboard = []) {
                 </span>
 
 
-                <span class="nascar-fast nascar-pur">
+                <span class="nascar-live-full-fast
+                             nascar-live-full-pur">
+
                     ${driver.fastestLaps ?? 0}
+
                 </span>
 
 
-                <span class="nascar-gain">
+                <span class="nascar-live-full-gain">
+
                     ${
                         positionGain > 0
                             ? `+${positionGain}`
                             : positionGain
                     }
+
                 </span>
 
 
@@ -329,11 +454,20 @@ function createDriverRows(leaderboard = []) {
 
                 <span class="${statusClass}">
 
-                    ${driver.onTrack ? "🟢" : "🔴"}
+                    ${
+                        driver.onTrack
+                            ? "🟢"
+                            : "🔴"
+                    }
 
-                    ${driver.onDVP ? "⚠️" : ""}
+                    ${
+                        driver.onDVP
+                            ? "⚠️"
+                            : ""
+                    }
 
                 </span>
+
 
             </div>
 
@@ -352,30 +486,48 @@ async function refreshLiveFullModal() {
 
     try {
 
-        const live = await NASCAR.getLiveRaceData();
+        const live =
+            await NASCAR.getLiveRaceData();
 
-        const driverList =
+
+        const modal =
             document.querySelector(
-                ".nascar-live-full .nascar-driver-list"
+                ".nascar-live-full"
             );
 
 
-        const table =
-            document.querySelector(
-                ".nascar-live-full .nascar-live-table"
-            );
+        if (!modal) {
 
-
-        if (!driverList || !table) {
-
-            clearInterval(refreshTimer);
-
-            refreshTimer = null;
+            stopLiveFull();
 
             return;
 
         }
 
+
+        const driverList =
+            modal.querySelector(
+                ".nascar-live-full-driver-list"
+            );
+
+
+        const table =
+            modal.querySelector(
+                ".nascar-live-full-table"
+            );
+
+
+        if (!driverList || !table) {
+
+            return;
+
+        }
+
+
+        /*
+           Guardamos los scrolls
+           antes de actualizar las filas.
+        */
 
         const horizontalScroll =
             table.scrollLeft;
@@ -390,6 +542,10 @@ async function refreshLiveFullModal() {
                 live.leaderboard
             );
 
+
+        /*
+           Restauramos la posición.
+        */
 
         table.scrollLeft =
             horizontalScroll;
@@ -415,43 +571,38 @@ async function refreshLiveFullModal() {
    SUMMARY CAROUSEL
    ========================================================= */
 
-let summaryCarousel = null;
-
-let summaryAutoTimer = null;
-
-let summaryPaused = false;
-
-
-/* =========================================================
-   INIT CAROUSEL
-   ========================================================= */
-
 function initSummaryCarousel() {
 
     summaryCarousel =
         document.querySelector(
-            ".nascar-live-full .nascar-live-summary"
+            ".nascar-live-full-summary"
         );
 
 
-    if (!summaryCarousel) return;
+    if (!summaryCarousel) {
+
+        return;
+
+    }
 
 
     const leftButton =
         document.querySelector(
-            ".nascar-live-full .nascar-summary-arrow-left"
+            ".nascar-live-full-summary-arrow-left"
         );
 
 
     const rightButton =
         document.querySelector(
-            ".nascar-live-full .nascar-summary-arrow-right"
+            ".nascar-live-full-summary-arrow-right"
         );
 
 
     if (leftButton) {
 
-        leftButton.onclick = () => {
+        leftButton.onclick = (event) => {
+
+            event.stopPropagation();
 
             pauseSummaryCarousel();
 
@@ -464,7 +615,9 @@ function initSummaryCarousel() {
 
     if (rightButton) {
 
-        rightButton.onclick = () => {
+        rightButton.onclick = (event) => {
+
+            event.stopPropagation();
 
             pauseSummaryCarousel();
 
@@ -474,6 +627,11 @@ function initSummaryCarousel() {
 
     }
 
+
+    /*
+       Click sobre las tarjetas:
+       pausa / reanuda.
+    */
 
     summaryCarousel.onclick = () => {
 
@@ -488,21 +646,29 @@ function initSummaryCarousel() {
 
 
 /* =========================================================
-   SCROLL
+   SCROLL SUMMARY
    ========================================================= */
 
 function scrollSummary(direction) {
 
-    if (!summaryCarousel) return;
+    if (!summaryCarousel) {
+
+        return;
+
+    }
 
 
     const card =
         summaryCarousel.querySelector(
-            ".nascar-live-item"
+            ".nascar-live-full-item"
         );
 
 
-    if (!card) return;
+    if (!card) {
+
+        return;
+
+    }
 
 
     const gap = 10;
@@ -526,7 +692,7 @@ function scrollSummary(direction) {
 
 
 /* =========================================================
-   AUTO
+   AUTO CAROUSEL
    ========================================================= */
 
 function startSummaryCarousel() {
@@ -540,9 +706,19 @@ function startSummaryCarousel() {
     summaryAutoTimer =
         setInterval(() => {
 
-            if (!summaryCarousel) return;
 
-            if (summaryPaused) return;
+            if (!summaryCarousel) {
+
+                return;
+
+            }
+
+
+            if (summaryPaused) {
+
+                return;
+
+            }
 
 
             const maxScroll =
@@ -550,7 +726,17 @@ function startSummaryCarousel() {
                 summaryCarousel.clientWidth;
 
 
-            if (summaryCarousel.scrollLeft >= maxScroll - 5) {
+            if (maxScroll <= 0) {
+
+                return;
+
+            }
+
+
+            if (
+                summaryCarousel.scrollLeft
+                >= maxScroll - 5
+            ) {
 
                 summaryCarousel.scrollTo({
 
@@ -566,6 +752,7 @@ function startSummaryCarousel() {
 
             }
 
+
         }, 3500);
 
 }
@@ -580,6 +767,8 @@ function pauseSummaryCarousel() {
     summaryPaused = true;
 
     clearInterval(summaryAutoTimer);
+
+    summaryAutoTimer = null;
 
 }
 
@@ -609,7 +798,12 @@ function toggleSummaryCarousel() {
 
 function stopSummaryCarousel() {
 
+    clearInterval(refreshTimer);
+
     clearInterval(summaryAutoTimer);
+
+
+    refreshTimer = null;
 
     summaryAutoTimer = null;
 
