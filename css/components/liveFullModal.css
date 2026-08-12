@@ -550,8 +550,8 @@
            Entre 5 y 7 tarjetas aproximadamente,
            dependiendo del ancho real.
         */
-    flex: 0 0 170px;
-    min-width: 170px;
+    flex: 0 0 145px;
+    /* min-width: 170px; */
     }
 
 }
@@ -579,7 +579,7 @@
 
         flex: 0 0
             calc(
-                (100% - 21px) / 4
+                (100% - 60px) / 4
             );
 
         min-width: 0;
@@ -1045,9 +1045,9 @@
 
 
     .live-item-full {
-        min-height: 70px;
+        /* min-height: 70px;
         padding: 7px 4px;
-        border-radius: 13px;
+        border-radius: 13px; */
     }
 
 
