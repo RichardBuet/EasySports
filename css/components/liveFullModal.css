@@ -318,7 +318,7 @@
 
     min-width: 0;
 
-    min-height: 78px;
+    min-height: auto;
 
     display: flex;
 
@@ -678,29 +678,12 @@
 
 .nascar-live-full-driver-header,
 .nascar-live-full-driver-row {
-
     display: grid;
-
-    grid-template-columns:
-        27px
-        34px
-        minmax(130px, 1fr)
-        52px
-        52px
-        52px
-        52px
-        38px
-        38px
-        45px
-        42px
-        35px
-        38px;
-
+    grid-template-columns: 26px 34px minmax(129px, 1fr) 46px 46px 46px 46px 36px 36px 36px 40px 36px 44px;
     gap: 5px;
-
     align-items: center;
-
     min-width: fit-content;
+    text-align: center;
 }
 
 
@@ -1060,22 +1043,17 @@ span:nth-child(12) {
 @media (max-width: 900px) {
 
     .nascar-live-full-summary {
-
-        padding-left:
-            38px;
-
-        padding-right:
-            38px;
+        /* padding-left: 38px;
+        padding-right: 38px; */
+        gap: 7px;
+        padding: 0px 0px;
+        margin: 7px 44px 7px 44px;
     }
 
 
     .nascar-live-full-item {
-
-        flex:
-            0 0 170px;
-
-        min-width:
-            170px;
+        flex: 0 0 calc((100% - 128px) / 5);
+        min-width: 72px;
     }
 
 }
@@ -1123,41 +1101,23 @@ span:nth-child(12) {
        --------------------------------------------- */
 
     .nascar-live-full-summary {
-
-        gap:
-            7px;
-
-        padding:
-            9px 36px;
+        gap: 7px;
+        padding: 0px 0px;
+        margin: 7px 36px 7px 36px;
     }
 
-
     .nascar-live-full-item {
-
         /*
            Fórmula que ya comprobamos
            que funciona correctamente
            en iPhone.
-
            4 tarjetas visibles.
         */
-
-        flex:
-            0 0 calc(
-                (100% - 60px) / 4
-            );
-
-        min-width:
-            0;
-
-        min-height:
-            70px;
-
-        padding:
-            7px 4px;
-
-        border-radius:
-            13px;
+        flex: 0 0 calc((100% - 60px) / 4);
+        min-width: 0;
+        min-height: 70px;
+        padding: 7px 4px;
+        border-radius: 13px;
     }
 
 
