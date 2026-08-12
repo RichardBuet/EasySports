@@ -22,7 +22,7 @@ window.openLiveFullModal = async () => {
     clearInterval(refreshTimer);
 
     // Actualización cada 5 segundos
-    refreshTimer = setInterval(refreshLiveFullModal, 5000);
+    //refreshTimer = setInterval(refreshLiveFullModal, 5000);
 
 };
 
