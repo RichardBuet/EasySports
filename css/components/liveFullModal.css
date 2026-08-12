@@ -138,8 +138,11 @@
 .modal-body {
     flex: 1;
     min-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     padding: 0;
     background:
         radial-gradient(
@@ -179,8 +182,8 @@
    LIVE SUMMARY — CARRUSEL
    ========================================================= */
 .live-summary-wrapper {
-
     position: relative;
+    flex-shrink: 0;
 
     width: 100%;
 
@@ -202,9 +205,11 @@
 
     display: flex;
 
+    width: 100%;
+
     gap: 10px;
 
-    padding: 13px 42px;
+    padding: 13px;
 
     overflow-x: auto;
     overflow-y: hidden;
@@ -213,14 +218,12 @@
 
     scroll-snap-type: x mandatory;
 
-    -webkit-overflow-scrolling: touch;
-
     scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
 }
 
-
 .live-summary-full::-webkit-scrollbar {
-
     display: none;
 }
 
@@ -233,22 +236,23 @@
     position: relative;
 
     /*
-       En pantallas chicas:
-       aproximadamente 4 tarjetas visibles.
+       IMPORTANTE:
+       el ancho lo controla el breakpoint.
+       No usar min-width fija acá.
     */
 
-    flex: 0 0 180px;
+    flex: 0 0 calc(
+        (100% - 30px) / 4
+    );
 
     min-width: 0;
 
     min-height: 78px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 9px;
@@ -443,30 +447,27 @@
 
     top: 50%;
 
+    transform: translateY(-50%);
+
     z-index: 10;
 
-    width: 32px;
-
-    height: 32px;
+    width: 40px;
+    height: 40px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    transform: translateY(-50%);
 
     border-radius: 50%;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.15);
 
     background:
-        rgba(20,22,27,.90);
+        rgba(15,17,21,.88);
 
     color: #ffffff;
 
-    font-size: 24px;
+    font-size: 26px;
 
     line-height: 1;
 
@@ -475,36 +476,62 @@
     backdrop-filter: blur(8px);
 
     box-shadow:
-        0 5px 15px rgba(0,0,0,.35);
+        0 5px 18px rgba(0,0,0,.45);
 
     transition:
-        background .2s ease,
-        transform .2s ease,
-        opacity .2s ease;
+        transform .18s ease,
+        background .18s ease,
+        border-color .18s ease;
 }
-
 
 .summary-arrow:hover {
 
     background:
-        rgba(255,45,45,.20);
+        rgba(255,45,45,.18);
+
+    border-color:
+        rgba(255,70,70,.45);
+}
+
+.summary-arrow:active {
 
     transform:
-        translateY(-50%) scale(1.08);
+        translateY(-50%) scale(.92);
 }
 
 
 .summary-arrow-left {
-
-    left: 7px;
+    left: 8px;
 }
 
 
 .summary-arrow-right {
-
-    right: 7px;
+    right: 8px;
 }
 
+/* =========================================================
+   TABLA
+   ========================================================= */
+
+.live-table-full {
+
+    flex: 1;
+
+    min-height: 0;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #50535a
+        #111318;
+}
 
 /* =========================================================
    TABLET / MOBILE HORIZONTAL
