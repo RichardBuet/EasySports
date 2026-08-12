@@ -53,8 +53,8 @@ async function createLiveContent(live) {
 
 
                 <div class="live-item-full">
-                    <span>${live.summary.session.icon}</span>
-                    <strong>${live.summary.session.name}</strong>
+                    <span>${live.summary.session?.icon ?? "🏁"}</span>
+                    <strong>${live.summary.session?.name ?? "Carrera"}</strong>
                 </div>
 
 
@@ -71,8 +71,8 @@ async function createLiveContent(live) {
 
 
                 <div class="live-item-full">
-                    <span>${live.summary.flag.icon}</span>
-                    <strong>${live.summary.flag.name}</strong>
+                    <span>${live.summary.flag?.icon ?? "🏁"}</span>
+                    <strong>${live.summary.flag?.name ?? "-"}</strong>
                 </div>
 
 
