@@ -21,8 +21,8 @@ window.openLiveFullModal = async () => {
 
     clearInterval(refreshTimer);
 
-    // Actualización cada 5 segundos RRBlock
-    //refreshTimer = setInterval(refreshLiveFullModal, 5000);
+    // Actualización cada 5 segundos
+    refreshTimer = setInterval(refreshLiveFullModal, 5000);
 
 };
 
@@ -35,118 +35,27 @@ async function createLiveContent(live) {
 
     return `
 
-        <div class="live-summary-wrapper">
+        <div class="live-summary-full">
 
-            <button
-                class="summary-arrow summary-arrow-left"
-                aria-label="Información anterior">
-                ‹
-            </button>
-
-
-            <div class="live-summary-full">
-
-                <div class="live-item-full">
-                    <span>🏁 Series</span>
-                    <strong>${live.summary.series}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>${live.summary.session?.icon ?? "🏁"}</span>
-                    <strong>${live.summary.session?.name ?? "Carrera"}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>🏟 Circuito</span>
-                    <strong>${live.summary.track}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>📏 Longitud</span>
-                    <strong>${live.summary.trackLength} mi</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>${live.summary.flag?.icon ?? "🏁"}</span>
-                    <strong>${live.summary.flag?.name ?? "-"}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>🏁 Vuelta</span>
-                    <strong>${live.summary.lap}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>⏳ Restan</span>
-                    <strong>${live.summary.lapsToGo}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>🏆 Stage</span>
-                    <strong>
-                        ${live.summary.stage?.number ?? "-"}
-                    </strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>🏁 Final Stage</span>
-                    <strong>
-                        ${
-                            live.summary.stage?.finishLap
-                                ? `V${live.summary.stage.finishLap}`
-                                : "-"
-                        }
-                    </strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>⏳ Restan Stage</span>
-                    <strong>
-                        ${live.summary.stage?.lapsRemaining ?? "-"}
-                    </strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>👑 Líderes</span>
-                    <strong>${live.summary.leaders}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>🔄 Lead Changes</span>
-                    <strong>${live.summary.leadChanges}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>⚠️ Cautions</span>
-                    <strong>${live.summary.cautions}</strong>
-                </div>
-
-
-                <div class="live-item-full">
-                    <span>🟨 Caution Laps</span>
-                    <strong>${live.summary.cautionLaps}</strong>
-                </div>
-
+            <div class="live-item-full">
+                <span>🏁 Series</span>
+                <strong>${live.summary.series}</strong>
             </div>
 
+            <div class="live-item-full">
+                <span>${live.summary.session.icon}</span>
+                <strong>${live.summary.session.name}</strong>
+            </div>
 
-            <button
-                class="summary-arrow summary-arrow-right"
-                aria-label="Siguiente información">
-                ›
-            </button>
+            <div class="live-item-full">
+                <span>${live.summary.flag.icon}</span>
+                <strong>${live.summary.flag.name}</strong>
+            </div>
+
+            <div class="live-item-full">
+                <span>🏁 Lap</span>
+                <strong>${live.summary.lap}</strong>
+            </div>
 
         </div>
 
