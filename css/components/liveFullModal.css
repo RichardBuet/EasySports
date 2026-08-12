@@ -1,0 +1,1135 @@
+/* =========================================================
+   NASCAR LIVE FULL MODAL
+   Diseño exclusivo del Live Full / Race Center
+   ========================================================= */
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 40, 40, .10),
+            transparent 45%
+        ),
+        rgba(0, 0, 0, .82);
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+.modal {
+    width: min(96vw, 1100px);
+    max-width: 1100px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    background:
+        linear-gradient(
+            145deg,
+            #181a1f 0%,
+            #101216 55%,
+            #0b0d10 100%
+        );
+    color: #f5f5f5;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 20px;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.75),
+        0 0 35px rgba(255,40,40,.08);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.modal-header {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    position: relative;
+    background:
+        linear-gradient(
+            135deg,
+            #1b1d23,
+            #111318
+        );
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    box-shadow:
+        0 4px 18px rgba(0,0,0,.35);
+}
+
+
+/* Línea NASCAR */
+.modal-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background:
+        linear-gradient(
+            90deg,
+            #ff2020,
+            #ff4d4d 35%,
+            rgba(255,60,60,.15) 75%,
+            transparent
+        );
+}
+
+
+.modal-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(19px, 3vw, 25px);
+    font-weight: 800;
+    letter-spacing: -.3px;
+    text-shadow:
+        0 0 18px rgba(255,255,255,.08);
+}
+
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+.modal-close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 25px;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+.modal-close:hover {
+    background: rgba(255,55,55,.16);
+    border-color:
+        rgba(255,70,70,.40);
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+.modal-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,.025),
+            transparent 45%
+        );
+    scrollbar-width: thin;
+    scrollbar-color:
+        #50535a
+        #111318;
+}
+
+
+.modal-body::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.modal-body::-webkit-scrollbar-track {
+    background: #101216;
+}
+
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #454850;
+    border-radius: 10px;
+}
+
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #666a73;
+}
+
+
+/* =========================================================
+   LIVE SUMMARY — CARRUSEL
+   ========================================================= */
+.live-summary-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #15171b,
+            #101216
+        );
+}
+
+
+/* =========================================================
+   ÁREA DESLIZABLE
+   ========================================================= */
+.live-summary-full {
+
+    display: flex;
+
+    gap: 10px;
+
+    padding: 13px 42px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+}
+
+
+.live-summary-full::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+.live-item-full {
+
+    position: relative;
+
+    /*
+       En pantallas chicas:
+       aproximadamente 4 tarjetas visibles.
+    */
+
+    flex: 0 0 180px;
+
+    min-width: 0;
+
+    min-height: 78px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 9px;
+
+    text-align: center;
+
+    scroll-snap-align: start;
+
+    background:
+        linear-gradient(
+            145deg,
+            #25282e,
+            #1b1d21
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 16px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 5px 15px rgba(0,0,0,.20);
+
+    overflow: hidden;
+
+    transition:
+        transform .18s ease,
+        border-color .18s ease,
+        background .18s ease;
+}
+
+
+/* =========================================================
+   BRILLO SUPERIOR
+   ========================================================= */
+.live-item-full::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 12%;
+
+    right: 12%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.20),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+.live-item-full:hover {
+
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(255,255,255,.16);
+
+    background:
+        linear-gradient(
+            145deg,
+            #292c32,
+            #1e2025
+        );
+}
+
+
+/* =========================================================
+   TEXTO
+   ========================================================= */
+.live-item-full span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #9da1a8;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .45px;
+
+    line-height: 1.2;
+}
+
+
+.live-item-full strong {
+
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    text-shadow:
+        0 1px 5px rgba(0,0,0,.5);
+}
+
+
+/* =========================================================
+   COLORES SEMÁNTICOS
+   ========================================================= */
+
+/* Carrera */
+.live-item-full:nth-child(2) strong {
+
+    color: #ff5b5b;
+}
+
+
+/* Estado de pista */
+.live-item-full:nth-child(5) strong {
+
+    color: #61a8ff;
+}
+
+
+/* Restan */
+.live-item-full:nth-child(7) strong {
+
+    color: #ffd84d;
+}
+
+
+/* Stage */
+.live-item-full:nth-child(8) strong {
+
+    color: #ffd84d;
+}
+
+
+/* Restan Stage */
+.live-item-full:nth-child(10) strong {
+
+    color: #ffd84d;
+}
+
+
+/* Líderes */
+.live-item-full:nth-child(11) strong {
+
+    color: #ffd84d;
+}
+
+
+/* Lead Changes */
+.live-item-full:nth-child(12) strong {
+
+    color: #ffd84d;
+}
+
+
+/* Cautions */
+.live-item-full:nth-child(13) strong {
+
+    color: #ffcf4d;
+}
+
+
+/* Caution Laps */
+.live-item-full:nth-child(14) strong {
+
+    color: #ffcf4d;
+}
+
+
+/* =========================================================
+   FLECHAS
+   ========================================================= */
+.summary-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 10;
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background:
+        rgba(20,22,27,.90);
+
+    color: #ffffff;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.35);
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+
+.summary-arrow:hover {
+
+    background:
+        rgba(255,45,45,.20);
+
+    transform:
+        translateY(-50%) scale(1.08);
+}
+
+
+.summary-arrow-left {
+
+    left: 7px;
+}
+
+
+.summary-arrow-right {
+
+    right: 7px;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE HORIZONTAL
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .live-summary-full {
+        padding-left: 38px;
+        padding-right: 38px;
+    }
+
+
+    .live-item-full {
+        /*
+           Entre 5 y 7 tarjetas aproximadamente,
+           dependiendo del ancho real.
+        */
+    flex: 0 0 170px;
+    min-width: 170px;
+    }
+
+}
+
+
+/* =========================================================
+   IPHONE VERTICAL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .live-summary-full {
+        gap: 7px;
+
+        padding:
+            9px
+            36px;
+    }
+
+    .live-item-full {
+
+        /*
+           4 tarjetas visibles en el teléfono.
+        */
+
+        flex: 0 0
+            calc(
+                (100% - 21px) / 4
+            );
+
+        min-width: 0;
+
+        min-height: 70px;
+
+        padding:
+            7px 4px;
+
+        border-radius: 13px;
+    }
+
+    .live-item-full span {
+        font-size: 8px;
+        margin-bottom: 4px;
+    }
+
+    .live-item-full strong {
+        font-size: 12px;
+    }
+
+    .summary-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+    }
+
+    .summary-arrow-left {
+        left: 4px;
+    }
+
+    .summary-arrow-right {
+        right: 4px;
+    }
+}
+
+
+/* =========================================================
+   IPHONE MUY ANGOSTO
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .live-summary-full {
+        gap: 5px;
+        padding:
+            7px
+            32px;
+    }
+
+
+    .live-item-full {
+        flex-basis: 155px;
+        min-height: 63px;
+        border-radius: 11px;
+    }
+
+
+    .live-item-full span {
+        font-size: 7px;
+    }
+
+
+    .live-item-full strong {
+        font-size: 11px;
+    }
+
+
+    .summary-arrow {
+        width: 27px;
+        height: 27px;
+        font-size: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP GRANDE
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    .live-summary-full {
+        /*
+           En desktop dejamos que las tarjetas
+           puedan acomodarse en dos filas.
+        */
+
+        display: grid;
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+        overflow-x: hidden;
+        padding:
+            13px;
+        gap: 10px;
+    }
+
+
+    .live-item-full {
+        min-width: 0;
+        width: auto;
+        flex: initial;
+    }
+
+
+    /*
+       En desktop grande no necesitamos
+       flechas del carrusel.
+    */
+
+    .summary-arrow {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   TABLA — CONTENEDOR DE SCROLL
+   ========================================================= */
+
+/*
+   Este contenedor será agregado al JS.
+
+   Permite:
+   - scroll horizontal SOLO en la tabla
+   - header y filas se mueven juntos
+   - el resto del modal permanece fijo
+*/
+.live-table-full {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color:
+        #50535a
+        #111318;
+}
+
+
+.live-table-full::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.live-table-full::-webkit-scrollbar-track {
+    background: #101216;
+}
+
+
+.live-table-full::-webkit-scrollbar-thumb {
+    background: #4a4d55;
+    border-radius: 10px;
+}
+
+
+.live-table-full::-webkit-scrollbar-thumb:hover {
+    background: #686b74;
+}
+
+
+/* =========================================================
+   GRID BASE
+   ========================================================= */
+.driver-header-full,
+.driver-row-full {
+    display: grid;
+    grid-template-columns:
+        27px
+        34px
+        minmax(130px, 1fr)
+        52px
+        52px
+        52px
+        52px
+        38px
+        38px
+        45px
+        42px
+        35px
+        38px;
+    gap: 5px;
+    align-items: center;
+    min-width: fit-content;
+}
+
+
+/* =========================================================
+   HEADER TABLA
+   ========================================================= */
+.driver-header-full {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 10px 10px;
+    background:
+        linear-gradient(
+            180deg,
+            #292c31,
+            #202328
+        );
+    border-top:
+        1px solid rgba(255,255,255,.06);
+    border-bottom:
+        2px solid #444;
+    color: #bfc3c9;
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .25px;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.35);
+}
+
+
+/* =========================================================
+   FILAS
+   ========================================================= */
+.driver-list-full {
+    /* min-width: 900px; trae problemas dejarlo*/
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.driver-row-full {
+    min-height: auto;
+    padding: 9px 10px;
+    background:
+        linear-gradient(
+            90deg,
+            #15171a,
+            #121417
+        );
+    border-bottom:
+        1px solid rgba(255,255,255,.065);
+    color: #e0e2e5;
+    font-size: 10px;
+    transition:
+        background .15s ease,
+        box-shadow .15s ease;
+}
+
+
+.driver-row-full:nth-child(even) {
+    background:
+        #15171c;
+}
+
+
+.driver-row-full:hover {
+    background:
+        linear-gradient(
+            90deg,
+            #202329,
+            #181b20
+        );
+    box-shadow:
+        inset 3px 0 0 #ff3030;
+}
+
+
+/* =========================================================
+   POS
+   ========================================================= */
+.driver-row-full span:first-child {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-align: center;
+}
+
+
+/* =========================================================
+   NÚMERO AUTO
+   ========================================================= */
+.driver-row-full span:nth-child(2) {
+    color: #ffd52f;
+    font-size: 12px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow:
+        0 0 8px rgba(255,210,40,.18);
+}
+
+
+/* =========================================================
+   DRIVER
+   ========================================================= */
+.driver-row-full span:nth-child(3) {
+    min-width: 0;
+    overflow: hidden;
+}
+
+
+.driver-row-full strong {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+.driver-row-full small {
+    display: block;
+    margin-top: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #858a92;
+    font-size: 8px;
+    line-height: 1.15;
+}
+
+
+/* =========================================================
+   DATOS NUMÉRICOS
+   ========================================================= */
+.driver-row-full span:nth-child(n+4):nth-child(-n+12) {
+    color: #e0e2e5;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* GAP */
+.driver-row-full span:nth-child(4) {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+/* LAST */
+.driver-row-full span:nth-child(5) {
+    color: #d8dbe0;
+}
+
+
+/* BEST */
+.driver-row-full span:nth-child(6) {
+    color: #d875ff;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CLASES SEMÁNTICAS
+   Se utilizarán en el JS
+   ========================================================= */
+.pur {
+    color: #c084fc !important;
+    font-weight: 800;
+}
+
+
+/* FAST */
+.fast {
+    color: #c084fc !important;
+    font-weight: 800;
+}
+
+
+/* GAIN */
+.gain {
+    color: #65d6a0 !important;
+    font-weight: 800;
+}
+
+
+/* GAP */
+.gap {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+
+/* BEST */
+.best {
+    color: #c084fc !important;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+.status-live {
+    color: #59e36d;
+    filter:
+        drop-shadow(
+            0 0 4px
+            rgba(70,230,100,.45)
+        );
+}
+
+
+.status-off {
+    color: #ff5555;
+    filter:
+        drop-shadow(
+            0 0 4px
+            rgba(255,70,70,.35)
+        );
+}
+
+
+.driver-row-full span:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PITS
+   ========================================================= */
+.driver-row-full span:nth-child(12) {
+    color: #d9dce0;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+    .modal {
+        width: 96vw;
+        max-height: 86vh;
+        border-radius: 18px;
+    }
+
+
+    .modal-header {
+        min-height: 62px;
+        padding: 0 16px;
+    }
+
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+
+    /* Cards */
+
+    .live-summary-full {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+        gap: 7px;
+        padding: 9px;
+    }
+
+
+    .live-item-full {
+        min-height: 70px;
+        padding: 7px 4px;
+        border-radius: 13px;
+    }
+
+
+    .live-item-full span {
+        font-size: 8px;
+        margin-bottom: 4px;
+    }
+
+
+    .live-item-full strong {
+        font-size: 12px;
+    }
+
+
+    /*
+       La tabla mantiene un ancho mínimo.
+       Si supera el ancho del teléfono,
+       aparece scroll horizontal SOLO aquí.
+    */
+
+    .driver-header-full,
+    .driver-row-full {
+        min-width: fit-content;
+    }
+
+
+    .driver-header-full {
+        padding: 9px 7px;
+        font-size: 7px;
+    }
+
+
+    .driver-row-full {
+        min-height: auto;
+        padding: 8px 7px;
+        font-size: 9px;
+    }
+
+
+    .driver-row-full strong {
+        font-size: 10px;
+    }
+
+
+    .driver-row-full small {
+        font-size: 7.5px;
+    }
+
+
+    .driver-row-full span:first-child {
+        font-size: 10px;
+    }
+
+
+    .driver-row-full span:nth-child(2) {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+    .live-summary-full {
+        gap: 5px;
+        padding: 7px;
+    }
+
+
+    .live-item-full {
+        min-height: 63px;
+        border-radius: 11px;
+    }
+
+
+    .live-item-full span {
+        font-size: 7px;
+    }
+
+
+    .live-item-full strong {
+        font-size: 11px;
+    }
+
+
+    .driver-header-full,
+    .driver-row-full {
+        min-width: fit-content;
+    }
+
+
+    .driver-header-full {
+        font-size: 6.5px;
+    }
+
+
+    .driver-row-full {
+        font-size: 8px;
+    }
+
+
+    .driver-row-full strong {
+        font-size: 9px;
+    }
+
+
+    .driver-row-full small {
+        font-size: 7px;
+    }
+}
