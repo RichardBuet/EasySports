@@ -1,6 +1,19 @@
 /* =========================================================
    NASCAR LIVE FULL MODAL
-   Diseño exclusivo del Live Full / Race Center
+   =========================================================
+   IMPORTANTE:
+   Este CSS está completamente aislado.
+
+   NO utiliza:
+   .modal
+   .modal-body
+   .live-summary
+   .live-item
+   .driver-row
+   .driver-header
+   etc.
+
+   Todo pertenece exclusivamente a NASCAR LIVE FULL.
    ========================================================= */
 
 
@@ -8,7 +21,7 @@
    OVERLAY
    ========================================================= */
 
-.modal-overlay {
+.nascar-live-full-overlay {
 
     position: fixed;
 
@@ -38,7 +51,7 @@
    MODAL
    ========================================================= */
 
-.modal {
+.nascar-live-full {
 
     width: min(96vw, 1100px);
 
@@ -60,7 +73,8 @@
 
     color: #f5f5f5;
 
-    border: 1px solid rgba(255,255,255,.10);
+    border:
+        1px solid rgba(255,255,255,.10);
 
     border-radius: 20px;
 
@@ -76,7 +90,7 @@
    HEADER
    ========================================================= */
 
-.modal-header {
+.nascar-live-full-header {
 
     min-height: 68px;
 
@@ -90,6 +104,8 @@
 
     position: relative;
 
+    flex-shrink: 0;
+
     background:
         linear-gradient(
             135deg,
@@ -97,16 +113,17 @@
             #111318
         );
 
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 
     box-shadow:
         0 4px 18px rgba(0,0,0,.35);
 }
 
 
-/* Línea NASCAR */
+/* Línea roja NASCAR */
 
-.modal-header::after {
+.nascar-live-full-header::after {
 
     content: "";
 
@@ -131,13 +148,16 @@
 }
 
 
-.modal-header h2 {
+/* Título */
+
+.nascar-live-full-header h2 {
 
     margin: 0;
 
     color: #ffffff;
 
-    font-size: clamp(19px, 3vw, 25px);
+    font-size:
+        clamp(19px, 3vw, 25px);
 
     font-weight: 800;
 
@@ -152,7 +172,7 @@
    CLOSE
    ========================================================= */
 
-.modal-close {
+.nascar-live-full-close {
 
     width: 40px;
 
@@ -164,9 +184,11 @@
 
     justify-content: center;
 
-    background: rgba(255,255,255,.055);
+    background:
+        rgba(255,255,255,.055);
 
-    border: 1px solid rgba(255,255,255,.09);
+    border:
+        1px solid rgba(255,255,255,.09);
 
     border-radius: 50%;
 
@@ -183,14 +205,16 @@
 }
 
 
-.modal-close:hover {
+.nascar-live-full-close:hover {
 
-    background: rgba(255,55,55,.16);
+    background:
+        rgba(255,55,55,.16);
 
     border-color:
         rgba(255,70,70,.40);
 
-    transform: rotate(90deg);
+    transform:
+        rotate(90deg);
 }
 
 
@@ -198,15 +222,17 @@
    BODY
    ========================================================= */
 
-.modal-body {
+.nascar-live-full-body {
 
     flex: 1;
 
     min-height: 0;
 
-    overflow-y: auto;
+    display: flex;
 
-    overflow-x: hidden;
+    flex-direction: column;
+
+    overflow: hidden;
 
     padding: 0;
 
@@ -216,48 +242,18 @@
             rgba(255,255,255,.025),
             transparent 45%
         );
-
-    scrollbar-width: thin;
-
-    scrollbar-color:
-        #50535a
-        #111318;
-}
-
-
-.modal-body::-webkit-scrollbar {
-
-    width: 7px;
-}
-
-
-.modal-body::-webkit-scrollbar-track {
-
-    background: #101216;
-}
-
-
-.modal-body::-webkit-scrollbar-thumb {
-
-    background: #454850;
-
-    border-radius: 10px;
-}
-
-
-.modal-body::-webkit-scrollbar-thumb:hover {
-
-    background: #666a73;
 }
 
 
 /* =========================================================
-   LIVE SUMMARY — CARRUSEL
+   SUMMARY WRAPPER
    ========================================================= */
 
-.live-summary-wrapper {
+.nascar-live-full-summary-wrapper {
 
     position: relative;
+
+    flex-shrink: 0;
 
     width: 100%;
 
@@ -273,16 +269,16 @@
 
 
 /* =========================================================
-   ÁREA DESLIZABLE
+   SUMMARY CAROUSEL
    ========================================================= */
 
-.live-summary-full {
+.nascar-live-full-summary {
 
     display: flex;
 
     gap: 10px;
 
-    padding: 13px 42px;
+    padding: 13px;
 
     overflow-x: auto;
 
@@ -298,7 +294,7 @@
 }
 
 
-.live-summary-full::-webkit-scrollbar {
+.nascar-live-full-summary::-webkit-scrollbar {
 
     display: none;
 }
@@ -308,11 +304,17 @@
    SUMMARY CARDS
    ========================================================= */
 
-.live-item-full {
+.nascar-live-full-item {
 
     position: relative;
 
-    flex: 0 0 180px;
+    /*
+       En móvil la regla específica
+       pasa a controlar el ancho.
+    */
+
+    flex:
+        0 0 180px;
 
     min-width: 0;
 
@@ -339,7 +341,8 @@
             #1b1d21
         );
 
-    border: 1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
     border-radius: 16px;
 
@@ -356,11 +359,9 @@
 }
 
 
-/* =========================================================
-   BRILLO SUPERIOR
-   ========================================================= */
+/* Brillo superior */
 
-.live-item-full::before {
+.nascar-live-full-item::before {
 
     content: "";
 
@@ -384,13 +385,12 @@
 }
 
 
-/* =========================================================
-   HOVER
-   ========================================================= */
+/* Hover */
 
-.live-item-full:hover {
+.nascar-live-full-item:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     border-color:
         rgba(255,255,255,.16);
@@ -405,10 +405,10 @@
 
 
 /* =========================================================
-   TEXTO
+   SUMMARY TEXT
    ========================================================= */
 
-.live-item-full span {
+.nascar-live-full-item span {
 
     display: block;
 
@@ -428,7 +428,7 @@
 }
 
 
-.live-item-full strong {
+.nascar-live-full-item strong {
 
     display: block;
 
@@ -446,20 +446,20 @@
 
 
 /* =========================================================
-   COLORES SEMÁNTICOS
+   SUMMARY — COLORES
    ========================================================= */
 
-/* Carrera */
+/* Sesión / carrera */
 
-.live-item-full:nth-child(2) strong {
+.nascar-live-full-item:nth-child(2) strong {
 
     color: #ff5b5b;
 }
 
 
-/* Estado de pista */
+/* Flag */
 
-.live-item-full:nth-child(5) strong {
+.nascar-live-full-item:nth-child(5) strong {
 
     color: #61a8ff;
 }
@@ -467,7 +467,7 @@
 
 /* Restan */
 
-.live-item-full:nth-child(7) strong {
+.nascar-live-full-item:nth-child(7) strong {
 
     color: #ffd84d;
 }
@@ -475,7 +475,7 @@
 
 /* Stage */
 
-.live-item-full:nth-child(8) strong {
+.nascar-live-full-item:nth-child(8) strong {
 
     color: #ffd84d;
 }
@@ -483,7 +483,7 @@
 
 /* Restan Stage */
 
-.live-item-full:nth-child(10) strong {
+.nascar-live-full-item:nth-child(10) strong {
 
     color: #ffd84d;
 }
@@ -491,7 +491,7 @@
 
 /* Líderes */
 
-.live-item-full:nth-child(11) strong {
+.nascar-live-full-item:nth-child(11) strong {
 
     color: #ffd84d;
 }
@@ -499,7 +499,7 @@
 
 /* Lead Changes */
 
-.live-item-full:nth-child(12) strong {
+.nascar-live-full-item:nth-child(12) strong {
 
     color: #ffd84d;
 }
@@ -507,7 +507,7 @@
 
 /* Cautions */
 
-.live-item-full:nth-child(13) strong {
+.nascar-live-full-item:nth-child(13) strong {
 
     color: #ffcf4d;
 }
@@ -515,17 +515,20 @@
 
 /* Caution Laps */
 
-.live-item-full:nth-child(14) strong {
+.nascar-live-full-item:nth-child(14) strong {
 
     color: #ffcf4d;
 }
 
 
 /* =========================================================
-   FLECHAS
+   SUMMARY ARROWS
+   =========================================================
+   Las flechas están SOBRE el carrusel.
+   No reservan espacio.
    ========================================================= */
 
-.summary-arrow {
+.nascar-live-full-summary-arrow {
 
     position: absolute;
 
@@ -543,11 +546,15 @@
 
     justify-content: center;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
+
+    padding: 0;
+
+    border:
+        1px solid rgba(255,255,255,.12);
 
     border-radius: 50%;
-
-    border: 1px solid rgba(255,255,255,.12);
 
     background:
         rgba(20,22,27,.90);
@@ -568,252 +575,59 @@
     transition:
         background .2s ease,
         transform .2s ease,
-        opacity .2s ease;
+        border-color .2s ease;
 }
 
 
-.summary-arrow:hover {
+.nascar-live-full-summary-arrow:hover {
 
     background:
         rgba(255,45,45,.20);
 
+    border-color:
+        rgba(255,70,70,.40);
+
     transform:
-        translateY(-50%) scale(1.08);
+        translateY(-50%)
+        scale(1.08);
 }
 
 
-.summary-arrow-left {
+.nascar-live-full-summary-arrow:active {
+
+    transform:
+        translateY(-50%)
+        scale(.92);
+}
+
+
+.nascar-live-full-summary-arrow-left {
 
     left: 7px;
 }
 
 
-.summary-arrow-right {
+.nascar-live-full-summary-arrow-right {
 
     right: 7px;
 }
 
 
 /* =========================================================
-   TABLET
+   LIVE TABLE
    ========================================================= */
 
-@media (min-width: 601px) and (max-width: 900px) {
+.nascar-live-full-table {
 
-    .live-summary-full {
+    flex: 1;
 
-        padding-left: 38px;
-
-        padding-right: 38px;
-    }
-
-
-    .live-item-full {
-
-        flex: 0 0 170px;
-
-        min-width: 170px;
-    }
-
-}
-
-
-/* =========================================================
-   IPHONE VERTICAL
-   4 TARJETAS VISIBLES
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .live-summary-full {
-
-        gap: 7px;
-
-        padding:
-            9px
-            36px;
-    }
-
-
-    .live-item-full {
-
-        /*
-           Fórmula que ya comprobamos
-           que funciona correctamente
-           en el iPhone.
-        */
-
-        flex:
-            0 0
-            calc(
-                (100% - 60px) / 4
-            );
-
-        min-width: 0;
-
-        min-height: 70px;
-
-        padding:
-            7px 4px;
-
-        border-radius: 13px;
-    }
-
-
-    .live-item-full span {
-
-        font-size: 8px;
-
-        margin-bottom: 4px;
-    }
-
-
-    .live-item-full strong {
-
-        font-size: 12px;
-    }
-
-
-    .summary-arrow {
-
-        width: 30px;
-
-        height: 30px;
-
-        font-size: 22px;
-    }
-
-
-    .summary-arrow-left {
-
-        left: 4px;
-    }
-
-
-    .summary-arrow-right {
-
-        right: 4px;
-    }
-
-}
-
-
-/* =========================================================
-   IPHONE MUY ANGOSTO
-   ========================================================= */
-
-@media (max-width: 390px) {
-
-    .live-summary-full {
-
-        gap: 5px;
-
-        padding:
-            7px
-            32px;
-    }
-
-
-    .live-item-full {
-
-        /*
-           IMPORTANTE:
-           NO establecer flex-basis aquí.
-           Debe conservar el cálculo de 4 tarjetas
-           definido en max-width: 600px.
-        */
-
-        min-height: 63px;
-
-        border-radius: 11px;
-    }
-
-
-    .live-item-full span {
-
-        font-size: 7px;
-    }
-
-
-    .live-item-full strong {
-
-        font-size: 11px;
-    }
-
-
-    .summary-arrow {
-
-        width: 27px;
-
-        height: 27px;
-
-        font-size: 20px;
-    }
-
-}
-
-
-/* =========================================================
-   DESKTOP GRANDE
-   ========================================================= */
-
-@media (min-width: 901px) {
-
-    .live-summary-full {
-
-        /*
-           En desktop dejamos que las tarjetas
-           puedan acomodarse en dos filas.
-        */
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(7, minmax(0, 1fr));
-
-        overflow-x: hidden;
-
-        padding:
-            13px;
-
-        gap: 10px;
-    }
-
-
-    .live-item-full {
-
-        min-width: 0;
-
-        width: auto;
-
-        flex: initial;
-    }
-
-
-    /*
-       En desktop grande no necesitamos
-       flechas del carrusel.
-    */
-
-    .summary-arrow {
-
-        display: none;
-    }
-
-}
-
-
-/* =========================================================
-   TABLA — CONTENEDOR DE SCROLL
-   ========================================================= */
-
-.live-table-full {
+    min-height: 0;
 
     width: 100%;
 
     overflow-x: auto;
 
-    overflow-y: hidden;
+    overflow-y: auto;
 
     -webkit-overflow-scrolling: touch;
 
@@ -825,38 +639,45 @@
 }
 
 
-.live-table-full::-webkit-scrollbar {
+/* Scrollbar horizontal */
+
+.nascar-live-full-table::-webkit-scrollbar {
+
+    width: 7px;
 
     height: 7px;
 }
 
 
-.live-table-full::-webkit-scrollbar-track {
+.nascar-live-full-table::-webkit-scrollbar-track {
 
-    background: #101216;
+    background:
+        #101216;
 }
 
 
-.live-table-full::-webkit-scrollbar-thumb {
+.nascar-live-full-table::-webkit-scrollbar-thumb {
 
-    background: #4a4d55;
+    background:
+        #4a4d55;
 
     border-radius: 10px;
 }
 
 
-.live-table-full::-webkit-scrollbar-thumb:hover {
+.nascar-live-full-table::-webkit-scrollbar-thumb:hover {
 
-    background: #686b74;
+    background:
+        #686b74;
 }
 
 
 /* =========================================================
-   GRID BASE
+   TABLE GRID
    ========================================================= */
 
-.driver-header-full,
-.driver-row-full {
+.nascar-live-full-driver-header,
+.nascar-live-full-driver-row {
 
     display: grid;
 
@@ -884,10 +705,10 @@
 
 
 /* =========================================================
-   HEADER TABLA
+   TABLE HEADER
    ========================================================= */
 
-.driver-header-full {
+.nascar-live-full-driver-header {
 
     position: sticky;
 
@@ -895,7 +716,8 @@
 
     z-index: 5;
 
-    padding: 10px 10px;
+    padding:
+        10px 10px;
 
     background:
         linear-gradient(
@@ -910,15 +732,20 @@
     border-bottom:
         2px solid #444;
 
-    color: #bfc3c9;
+    color:
+        #bfc3c9;
 
-    font-size: 8px;
+    font-size:
+        8px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
-    letter-spacing: .25px;
+    letter-spacing:
+        .25px;
 
     box-shadow:
         0 4px 12px rgba(0,0,0,.35);
@@ -926,10 +753,10 @@
 
 
 /* =========================================================
-   FILAS
+   DRIVER LIST
    ========================================================= */
 
-.driver-list-full {
+.nascar-live-full-driver-list {
 
     display: flex;
 
@@ -937,11 +764,16 @@
 }
 
 
-.driver-row-full {
+/* =========================================================
+   DRIVER ROW
+   ========================================================= */
+
+.nascar-live-full-driver-row {
 
     min-height: auto;
 
-    padding: 9px 10px;
+    padding:
+        9px 10px;
 
     background:
         linear-gradient(
@@ -953,9 +785,11 @@
     border-bottom:
         1px solid rgba(255,255,255,.065);
 
-    color: #e0e2e5;
+    color:
+        #e0e2e5;
 
-    font-size: 10px;
+    font-size:
+        10px;
 
     transition:
         background .15s ease,
@@ -963,14 +797,14 @@
 }
 
 
-.driver-row-full:nth-child(even) {
+.nascar-live-full-driver-row:nth-child(even) {
 
     background:
         #15171c;
 }
 
 
-.driver-row-full:hover {
+.nascar-live-full-driver-row:hover {
 
     background:
         linear-gradient(
@@ -985,34 +819,42 @@
 
 
 /* =========================================================
-   POS
+   POSITION
    ========================================================= */
 
-.driver-row-full span:first-child {
+.nascar-live-full-driver-row span:first-child {
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    text-align: center;
+    text-align:
+        center;
 }
 
 
 /* =========================================================
-   NÚMERO AUTO
+   CAR NUMBER
    ========================================================= */
 
-.driver-row-full span:nth-child(2) {
+.nascar-live-full-driver-row span:nth-child(2) {
 
-    color: #ffd52f;
+    color:
+        #ffd52f;
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    text-align: center;
+    text-align:
+        center;
 
     text-shadow:
         0 0 8px rgba(255,210,40,.18);
@@ -1023,7 +865,7 @@
    DRIVER
    ========================================================= */
 
-.driver-row-full span:nth-child(3) {
+.nascar-live-full-driver-row span:nth-child(3) {
 
     min-width: 0;
 
@@ -1031,7 +873,7 @@
 }
 
 
-.driver-row-full strong {
+.nascar-live-full-driver-row strong {
 
     display: block;
 
@@ -1041,19 +883,23 @@
 
     text-overflow: ellipsis;
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
 
 
-.driver-row-full small {
+.nascar-live-full-driver-row small {
 
     display: block;
 
-    margin-top: 2px;
+    margin-top:
+        2px;
 
     overflow: hidden;
 
@@ -1061,97 +907,86 @@
 
     text-overflow: ellipsis;
 
-    color: #858a92;
+    color:
+        #858a92;
 
-    font-size: 8px;
+    font-size:
+        8px;
 
-    line-height: 1.15;
+    line-height:
+        1.15;
 }
 
 
 /* =========================================================
-   DATOS NUMÉRICOS
+   NUMERIC DATA
    ========================================================= */
 
-.driver-row-full span:nth-child(n+4):nth-child(-n+12) {
+.nascar-live-full-driver-row
+span:nth-child(n+4):nth-child(-n+12) {
 
-    color: #e0e2e5;
+    color:
+        #e0e2e5;
 
-    text-align: center;
+    text-align:
+        center;
 
-    font-variant-numeric: tabular-nums;
-}
-
-
-/* GAP */
-
-.driver-row-full span:nth-child(4) {
-
-    color: #ffffff;
-
-    font-weight: 700;
-}
-
-
-/* LAST */
-
-.driver-row-full span:nth-child(5) {
-
-    color: #d8dbe0;
-}
-
-
-/* BEST */
-
-.driver-row-full span:nth-child(6) {
-
-    color: #d875ff;
-
-    font-weight: 800;
+    font-variant-numeric:
+        tabular-nums;
 }
 
 
 /* =========================================================
-   CLASES SEMÁNTICAS
+   SEMANTIC COLORS
    ========================================================= */
 
-.pur {
+.nascar-live-full-pur {
 
-    color: #c084fc !important;
+    color:
+        #c084fc !important;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
 
 
-.fast {
+.nascar-live-full-gap {
 
-    color: #c084fc !important;
+    color:
+        #ffffff !important;
 
-    font-weight: 800;
+    font-weight:
+        700;
 }
 
 
-.gain {
+.nascar-live-full-best {
 
-    color: #65d6a0 !important;
+    color:
+        #c084fc !important;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
 
 
-.gap {
+.nascar-live-full-fast {
 
-    color: #ffffff !important;
+    color:
+        #c084fc !important;
 
-    font-weight: 700;
+    font-weight:
+        800;
 }
 
 
-.best {
+.nascar-live-full-gain {
 
-    color: #c084fc !important;
+    color:
+        #65d6a0 !important;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
 
 
@@ -1159,9 +994,10 @@
    STATUS
    ========================================================= */
 
-.status-live {
+.nascar-live-full-status-live {
 
-    color: #59e36d;
+    color:
+        #59e36d;
 
     filter:
         drop-shadow(
@@ -1171,9 +1007,10 @@
 }
 
 
-.status-off {
+.nascar-live-full-status-off {
 
-    color: #ff5555;
+    color:
+        #ff5555;
 
     filter:
         drop-shadow(
@@ -1183,7 +1020,7 @@
 }
 
 
-.driver-row-full span:last-child {
+.nascar-live-full-driver-row span:last-child {
 
     display: flex;
 
@@ -1193,7 +1030,8 @@
 
     min-width: 0;
 
-    font-size: 13px;
+    font-size:
+        13px;
 }
 
 
@@ -1201,137 +1039,375 @@
    PITS
    ========================================================= */
 
-.driver-row-full span:nth-child(12) {
+.nascar-live-full-driver-row
+span:nth-child(12) {
 
-    color: #d9dce0;
+    color:
+        #d9dce0;
 
-    text-align: center;
+    text-align:
+        center;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:
+        tabular-nums;
 }
 
 
 /* =========================================================
-   MOBILE — TABLA
+   TABLET / MOBILE HORIZONTAL
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .nascar-live-full-summary {
+
+        padding-left:
+            38px;
+
+        padding-right:
+            38px;
+    }
+
+
+    .nascar-live-full-item {
+
+        flex:
+            0 0 170px;
+
+        min-width:
+            170px;
+    }
+
+}
+
+
+/* =========================================================
+   IPHONE VERTICAL
    ========================================================= */
 
 @media (max-width: 600px) {
 
-    .modal {
+    .nascar-live-full {
 
-        width: 96vw;
+        width:
+            96vw;
 
-        max-height: 86vh;
+        max-height:
+            86vh;
 
-        border-radius: 18px;
+        border-radius:
+            18px;
     }
 
 
-    .modal-header {
+    .nascar-live-full-header {
 
-        min-height: 62px;
+        min-height:
+            62px;
 
-        padding: 0 16px;
+        padding:
+            0 16px;
     }
 
 
-    .modal-header h2 {
+    .nascar-live-full-header h2 {
 
-        font-size: 20px;
+        font-size:
+            20px;
     }
 
 
-    /*
-       La tabla mantiene un ancho mínimo.
-       Si supera el ancho del teléfono,
-       aparece scroll horizontal SOLO aquí.
-    */
+    /* ---------------------------------------------
+       SUMMARY
+       4 tarjetas visibles
+       --------------------------------------------- */
 
-    .driver-header-full,
-    .driver-row-full {
+    .nascar-live-full-summary {
 
-        min-width: fit-content;
+        gap:
+            7px;
+
+        padding:
+            9px 36px;
     }
 
 
-    .driver-header-full {
+    .nascar-live-full-item {
 
-        padding: 9px 7px;
+        /*
+           Fórmula que ya comprobamos
+           que funciona correctamente
+           en iPhone.
 
-        font-size: 7px;
+           4 tarjetas visibles.
+        */
+
+        flex:
+            0 0 calc(
+                (100% - 60px) / 4
+            );
+
+        min-width:
+            0;
+
+        min-height:
+            70px;
+
+        padding:
+            7px 4px;
+
+        border-radius:
+            13px;
     }
 
 
-    .driver-row-full {
+    .nascar-live-full-item span {
 
-        min-height: auto;
+        font-size:
+            8px;
 
-        padding: 8px 7px;
-
-        font-size: 9px;
+        margin-bottom:
+            4px;
     }
 
 
-    .driver-row-full strong {
+    .nascar-live-full-item strong {
 
-        font-size: 10px;
+        font-size:
+            12px;
     }
 
 
-    .driver-row-full small {
+    /* ---------------------------------------------
+       FLECHAS
+       --------------------------------------------- */
 
-        font-size: 7.5px;
+    .nascar-live-full-summary-arrow {
+
+        width:
+            30px;
+
+        height:
+            30px;
+
+        font-size:
+            22px;
     }
 
 
-    .driver-row-full span:first-child {
+    .nascar-live-full-summary-arrow-left {
 
-        font-size: 10px;
+        left:
+            4px;
     }
 
 
-    .driver-row-full span:nth-child(2) {
+    .nascar-live-full-summary-arrow-right {
 
-        font-size: 11px;
+        right:
+            4px;
+    }
+
+
+    /* ---------------------------------------------
+       TABLA
+       --------------------------------------------- */
+
+    .nascar-live-full-driver-header {
+
+        padding:
+            9px 7px;
+
+        font-size:
+            7px;
+    }
+
+
+    .nascar-live-full-driver-row {
+
+        padding:
+            8px 7px;
+
+        font-size:
+            9px;
+    }
+
+
+    .nascar-live-full-driver-row strong {
+
+        font-size:
+            10px;
+    }
+
+
+    .nascar-live-full-driver-row small {
+
+        font-size:
+            7.5px;
+    }
+
+
+    .nascar-live-full-driver-row
+    span:first-child {
+
+        font-size:
+            10px;
+    }
+
+
+    .nascar-live-full-driver-row
+    span:nth-child(2) {
+
+        font-size:
+            11px;
     }
 
 }
 
 
 /* =========================================================
-   VERY SMALL PHONES — TABLA
+   VERY SMALL PHONES
    ========================================================= */
 
 @media (max-width: 390px) {
 
-    .driver-header-full,
-    .driver-row-full {
+    .nascar-live-full-summary {
 
-        min-width: fit-content;
+        gap:
+            5px;
+
+        padding:
+            7px 32px;
     }
 
 
-    .driver-header-full {
+    .nascar-live-full-item {
 
-        font-size: 6.5px;
+        min-height:
+            63px;
+
+        border-radius:
+            11px;
     }
 
 
-    .driver-row-full {
+    .nascar-live-full-item span {
 
-        font-size: 8px;
+        font-size:
+            7px;
     }
 
 
-    .driver-row-full strong {
+    .nascar-live-full-item strong {
 
-        font-size: 9px;
+        font-size:
+            11px;
     }
 
 
-    .driver-row-full small {
+    .nascar-live-full-summary-arrow {
 
-        font-size: 7px;
+        width:
+            27px;
+
+        height:
+            27px;
+
+        font-size:
+            20px;
+    }
+
+
+    .nascar-live-full-summary-arrow-left {
+
+        left:
+            3px;
+    }
+
+
+    .nascar-live-full-summary-arrow-right {
+
+        right:
+            3px;
+    }
+
+
+    .nascar-live-full-driver-header {
+
+        font-size:
+            6.5px;
+    }
+
+
+    .nascar-live-full-driver-row {
+
+        font-size:
+            8px;
+    }
+
+
+    .nascar-live-full-driver-row strong {
+
+        font-size:
+            9px;
+    }
+
+
+    .nascar-live-full-driver-row small {
+
+        font-size:
+            7px;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP GRANDE
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    .nascar-live-full-summary {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+
+        overflow-x:
+            hidden;
+
+        padding:
+            13px;
+
+        gap:
+            10px;
+    }
+
+
+    .nascar-live-full-item {
+
+        min-width:
+            0;
+
+        width:
+            auto;
+
+        flex:
+            initial;
+    }
+
+
+    /*
+       En desktop las flechas no son necesarias.
+    */
+
+    .nascar-live-full-summary-arrow {
+
+        display:
+            none;
     }
 
 }
