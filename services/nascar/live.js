@@ -1,6 +1,7 @@
 import { fetchJSON } from "../shared/fetch.js";
 
-const LIVE_URL = "https://cf.nascar.com/live/feeds/live-feed.json";
+//const LIVE_URL = "https://cf.nascar.com/live/feeds/live-feed.json";
+const LIVE_URL = "https://github.com/RichardBuet/EasySports/data/nascar/live/live-feed.json";
 
 export class NASCARLive {
 
