@@ -40,6 +40,64 @@
     overflow: hidden;
 }
 
+/* =========================================================
+   CIRCUITO
+   ========================================================= */
+
+.race-result-track {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 20px 10px;
+
+    text-align: center;
+
+}
+
+
+.race-result-track span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #9da1a8;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
+
+}
+
+
+.race-result-track strong {
+
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    text-shadow:
+        0 1px 5px rgba(0,0,0,.5);
+
+}
+
+
 
 /* =========================================================
    HEADER
