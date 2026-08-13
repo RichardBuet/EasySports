@@ -15,28 +15,26 @@ export function openModal({
     overlay = document.createElement("div");
 
     overlay.className =
-        modalClass
-            ? `modal-overlay ${modalClass}-overlay`
-            : "modal-overlay";
+        `modal-overlay ${modalClass}-overlay`.trim();
 
     overlay.innerHTML = `
 
-        <div class="${modalClass || "modal"}">
+        <div class="modal ${modalClass}">
 
-            <div class="${modalClass ? `${modalClass}-header` : "modal-header"}">
+            <div class="modal-header ${modalClass}-header">
 
                 <h2>${title}</h2>
 
                 <button
-                    class="${modalClass ? `${modalClass}-close` : "modal-close"}"
-                    type="button">
+                    class="modal-close ${modalClass}-close"
+                    type="button"
+                    aria-label="Cerrar">
                     &times;
                 </button>
 
             </div>
 
-
-            <div class="${modalClass ? `${modalClass}-body` : "modal-body"}">
+            <div class="modal-body ${modalClass}-body">
 
                 ${content}
 
@@ -49,6 +47,10 @@ export function openModal({
     document.body.appendChild(overlay);
 
 
+    /* =========================================
+       CERRAR AL HACER CLICK FUERA
+       ========================================= */
+
     overlay.addEventListener("click", (e) => {
 
         if (e.target === overlay) {
@@ -60,14 +62,23 @@ export function openModal({
     });
 
 
-    overlay
-        .querySelector(
-            `.${modalClass ? `${modalClass}-close` : "modal-close"}`
-        )
-        .addEventListener(
+    /* =========================================
+       CERRAR CON BOTÓN
+       ========================================= */
+
+    const closeButton =
+        overlay.querySelector(
+            ".modal-close"
+        );
+
+    if (closeButton) {
+
+        closeButton.addEventListener(
             "click",
             closeModal
         );
+
+    }
 
 }
 
@@ -76,11 +87,14 @@ export function closeModal() {
 
     if (onClose) {
 
-        onClose();
+        const callback = onClose;
 
         onClose = null;
 
+        callback();
+
     }
+
 
     if (overlay) {
 
