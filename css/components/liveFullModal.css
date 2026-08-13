@@ -1052,8 +1052,8 @@ span:nth-child(12) {
 
 
     .nascar-live-full-item {
-        flex: 0 0 calc((100% - 128px) / 5);
-        min-width: 72px;
+        flex: 0 0 calc((100% - 130px) / 5);
+       min-width: 72px;
     }
 
 }
@@ -1101,7 +1101,7 @@ span:nth-child(12) {
        --------------------------------------------- */
 
     .nascar-live-full-summary {
-        gap: 5px;
+        gap: 7px;
         padding: 0px 0px;
         margin: 7px 36px 7px 36px;
     }
