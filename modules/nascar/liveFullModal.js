@@ -57,6 +57,8 @@ window.openLiveFullModal = async () => {
 
         initSummaryCarousel();
 
+        initLiveFullClose();
+
 
     } catch (error) {
 
@@ -68,6 +70,52 @@ window.openLiveFullModal = async () => {
     }
 
 };
+
+
+
+/* =========================================================
+   CLOSE LIVE FULL
+   ========================================================= */
+
+function initLiveFullClose() {
+
+    const closeButton =
+        document.querySelector(
+            ".nascar-live-full .nascar-live-full-close"
+        );
+
+    if (!closeButton) return;
+
+    closeButton.addEventListener(
+        "click",
+        () => {
+
+            const overlay =
+                document.querySelector(
+                    ".nascar-live-full-overlay"
+                );
+
+            if (overlay) {
+
+                overlay.remove();
+
+            }
+
+            clearInterval(refreshTimer);
+
+            refreshTimer = null;
+
+            stopSummaryCarousel();
+
+        },
+        {
+            once: true
+        }
+    );
+
+}
+
+
 
 
 /* =========================================================
