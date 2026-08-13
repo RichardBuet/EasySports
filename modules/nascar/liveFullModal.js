@@ -651,32 +651,22 @@ function initSummaryCarousel() {
 
 function scrollSummary(direction) {
 
-    if (!summaryCarousel) {
-
-        return;
-
-    }
-
+    if (!summaryCarousel) return;
 
     const card =
         summaryCarousel.querySelector(
             ".nascar-live-full-item"
         );
 
+    if (!card) return;
 
-    if (!card) {
-
-        return;
-
-    }
-
-
-    const gap = 10;
-
+    const gap =
+        parseFloat(
+            getComputedStyle(summaryCarousel).gap
+        ) || 0;
 
     const distance =
-        card.offsetWidth + gap;
-
+        card.getBoundingClientRect().width + gap;
 
     summaryCarousel.scrollBy({
 
