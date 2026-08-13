@@ -827,15 +827,14 @@ span:nth-child(12) {
     }
 
 
-     span {
-        font-size: 8px;
-        margin-bottom: 4px;
-    }
+     .nascar-live-full-item span {
+    font-size: 8px;
+    margin-bottom: 4px;
+}
 
-
-     strong {
-        font-size: 12px;
-    }
+.nascar-live-full-item strong {
+    font-size: 12px;
+}
 
 
     /* ---------------------------------------------
@@ -920,14 +919,13 @@ span:nth-child(12) {
     
 
 
-     span {
-        font-size: 7px;
-    }
+     .nascar-live-full-item span {
+    font-size: 7px;
+}
 
-
-     strong {
-        font-size: 11px;
-    }
+.nascar-live-full-item strong {
+    font-size: 11px;
+}
 
 
     .nascar-live-full-summary-arrow {
@@ -974,29 +972,54 @@ span:nth-child(12) {
    ========================================================= */
 
 @media (min-width: 901px) {
+
     .nascar-live-full-summary {
+
         display: grid;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
+
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+
         overflow-x: hidden;
+
         padding: 13px;
+
         gap: 10px;
     }
 
 
-     {
+    .nascar-live-full-item {
+
         min-width: 0;
+
         width: auto;
+
         flex: initial;
     }
 
-    .nascar-live-full-driver-header, 
+
+    .nascar-live-full-driver-header,
     .nascar-live-full-driver-row {
-    grid-template-columns: 36px 44px minmax(150px, 1fr) 56px 56px 56px 56px 46px 46px 46px 50px 46px 54px;
-    /*
-       En desktop las flechas no son necesarias.
-    */
+
+        grid-template-columns:
+            36px
+            44px
+            minmax(150px, 1fr)
+            56px
+            56px
+            56px
+            56px
+            46px
+            46px
+            46px
+            50px
+            46px
+            54px;
+    }
+
 
     .nascar-live-full-summary-arrow {
+
         display: none;
     }
 
