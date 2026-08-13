@@ -21,65 +21,65 @@ async function createRaceResultContent(race) {
 
     console.log(race.leaderboard[0]);
 
-    return `
+return `
 
-        <div class="race-result-summary">
+    <div class="race-result-track">
 
-            <div class="race-result-item">
+        <span>📍 Circuito</span>
 
-                <span>📍 Circuito</span>
+        <strong>
+            ${race.track}
+        </strong>
 
-                <strong>
-                    ${race.track}
-                </strong>
-
-            </div>
+    </div>
 
 
-            <div class="race-result-item">
+    <div class="race-result-summary">
 
-                <span>🏁 Serie</span>
+        <div class="race-result-item">
 
-                <strong>
-                    ${race.series}
-                </strong>
+            <span>🏁 Serie</span>
 
-            </div>
-
-
-            <div class="race-result-item">
-
-                <span>🟡 Amarillas</span>
-
-                <strong>
-                    ${race.cautions}
-                </strong>
-
-            </div>
-
-
-            <div class="race-result-item">
-
-                <span>⚡ Promedio</span>
-
-                <strong>
-                    ${race.averageSpeed} mph
-                </strong>
-
-            </div>
-
-
-            <div class="race-result-item">
-
-                <span>🏆 Margen</span>
-
-                <strong>
-                    ${race.margin} s
-                </strong>
-
-            </div>
+            <strong>
+                ${race.series}
+            </strong>
 
         </div>
+
+
+        <div class="race-result-item">
+
+            <span>🟡 Amarillas</span>
+
+            <strong>
+                ${race.cautions}
+            </strong>
+
+        </div>
+
+
+        <div class="race-result-item">
+
+            <span>⚡ Promedio</span>
+
+            <strong>
+                ${race.averageSpeed} mph
+            </strong>
+
+        </div>
+
+
+        <div class="race-result-item">
+
+            <span>🏆 Margen</span>
+
+            <strong>
+                ${race.margin} s
+            </strong>
+
+        </div>
+
+    </div>
 
 
         <div class="race-result-driver-header">
