@@ -305,7 +305,7 @@
 .nascar-live-full-item strong {
     display: block;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 0.6em;
     font-weight: 800;
     line-height: 1.15;
     text-shadow:
@@ -513,8 +513,8 @@
         2px solid #444;
     color:
         #bfc3c9;
-    font-size:
-        8px;
+    /* font-size: 8px; */
+    font-size: 0.65em;
     font-weight:
         800;
     text-transform:
@@ -552,8 +552,8 @@
         1px solid rgba(255,255,255,.065);
     color:
         #e0e2e5;
-    font-size:
-        10px;
+    /* font-size: 10px; */
+   font-size: 0.65em;
     transition:
         background .15s ease,
         box-shadow .15s ease;
@@ -584,8 +584,8 @@
 .nascar-live-full-driver-row span:first-child {
     color:
         #ffffff;
-    font-size:
-        11px;
+    /* font-size: 11px; */
+   font-size: 0.67em;
     font-weight:
         800;
     text-align:
@@ -599,8 +599,8 @@
 .nascar-live-full-driver-row span:nth-child(2) {
     color:
         #ffd52f;
-    font-size:
-        12px;
+    /* font-size: 12px; */
+   font-size: 0.68em;
     font-weight:
         900;
     text-align:
@@ -762,7 +762,7 @@ span:nth-child(12) {
 @media (max-width: 900px) {
     .nascar-live-full-summary {
         gap: 7px;
-        padding: 0px;
+        padding: 2px 0px;
         margin: 7px 44px;
     }
 
@@ -806,7 +806,7 @@ span:nth-child(12) {
 
     .nascar-live-full-summary {
         gap: 7px;
-        padding: 0px 0px;
+        padding: 2px 0px;
         margin: 7px 36px 7px 36px;
         box-sizing: border-box;
     }
@@ -820,7 +820,7 @@ span:nth-child(12) {
         */
         flex: 0 0 calc((100% - 21px) / 4);
         min-width: 0;
-        min-height: 70px;
+        /* min-height: 70px; */
         padding: 7px 4px;
         border-radius: 13px;
         
@@ -905,14 +905,14 @@ span:nth-child(12) {
 
 @media (max-width: 390px) {
     .nascar-live-full-summary {
-        gap: 5px;
-        padding: 7px 32px;
+        /* gap: 5px;*/
+        padding: 2px 0px; 
     }
 
 .nascar-live-full-item {
-        flex: 0 0 calc((100% - 15px) / 4);
+        flex: 0 0 calc((100% - 15px) / 3);
         min-width: 0;
-        min-height: 63px;
+        /* min-height: 63px; */
         padding: 7px 4px;
         border-radius: 11px;
         box-sizing: border-box;
@@ -989,7 +989,9 @@ span:nth-child(12) {
         flex: initial;
     }
 
-
+    .nascar-live-full-driver-header, 
+    .nascar-live-full-driver-row {
+    grid-template-columns: 36px 44px minmax(150px, 1fr) 56px 56px 56px 56px 46px 46px 46px 50px 46px 54px;
     /*
        En desktop las flechas no son necesarias.
     */
