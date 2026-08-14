@@ -49,16 +49,16 @@ export async function createCalendarCard() {
                     index === currentIndex
                         ? {
                             icon: "⭐",
-                            title: "Próxima carrera"
+                            label: "Próxima carrera"
                         }
                         : race.completed
                             ? {
                                 icon: "🏁",
-                                title: "Finalizada"
+                                label: "Finalizada"
                             }
                             : {
                                 icon: "📅",
-                                title: "Programada"
+                                label: "Programada"
                             };
 
                 return `
@@ -87,15 +87,18 @@ export async function createCalendarCard() {
                             )}
                         </span>
 
-                        <span>
-                            ${race.name}
-                        </span>
+<span>
+    ${race.name}
 
+    <small class="calendar-status">
+        • ${status.label}
+    </small>
+</span>
                         <span>
                             ${race.track}
                         </span>
 
-                        <strong title="${status.title}">
+                        <strong title="${status.label}">
                             ${status.icon}
                         </strong>
 
