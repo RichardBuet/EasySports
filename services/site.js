@@ -35,6 +35,12 @@ const MANUFACTURER_LOGOS = {
 };
 
 
+console.log(
+    await NASCAR.getWeekend(5622)
+);
+
+
+
 export class NASCAR {
 
     static async getHeroData() {
