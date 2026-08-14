@@ -30,6 +30,20 @@ export function adaptNascarWeekend(data) {
 
         fieldSize: race.number_of_cars_in_field,
 
+        stage1Laps: race.stage_1_laps,
+
+        stage2Laps: race.stage_2_laps,
+
+        stage3Laps: race.stage_3_laps,
+
+        schedule: race.schedule,
+
+        television: race.television_broadcaster,
+
+        radio: race.radio_broadcaster,
+
+        satelliteRadio: race.satellite_radio_broadcaster,
+
         leadChanges: race.number_of_lead_changes,
 
         leaders: race.number_of_leaders,
