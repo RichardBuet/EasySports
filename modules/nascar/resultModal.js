@@ -1,19 +1,18 @@
 import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
 
-window.openRaceResult = async () => {
+window.openRaceResult = async (raceId) => {
 
-    const race = await NASCAR.getCurrentWeekend();
+    const race = await NASCAR.getWeekend(raceId);
 
     openModal({
 
         title: "Resultado de la carrera",
 
-        modalClass: "race-result",
-
         content: await createRaceResultContent(race)
 
     });
+
 };
 
 
