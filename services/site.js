@@ -138,6 +138,34 @@ export class NASCAR {
 
     }
 
+
+    
+
+
+static getSeriesNameById(seriesId) {
+
+    switch (Number(seriesId)) {
+
+        case 1:
+            return "Cup Series";
+
+        case 2:
+            return "O'Reilly Series";
+
+        case 3:
+            return "Craftsman Truck Series";
+
+        default:
+            return "NASCAR";
+
+    }
+
+}
+
+
+    
+
+    
 static async getRaceCenterData() {
 
     const race = await this.getLastRace();
