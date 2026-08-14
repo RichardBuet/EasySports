@@ -19,8 +19,19 @@ requestAnimationFrame(() => {
 
         if (!calendarList || !currentRace) return;
 
+        const listRect =
+            calendarList.getBoundingClientRect();
+
+        const raceRect =
+            currentRace.getBoundingClientRect();
+
+        const racePosition =
+            raceRect.top
+            - listRect.top
+            + calendarList.scrollTop;
+
         calendarList.scrollTop =
-            currentRace.offsetTop
+            racePosition
             - (calendarList.clientHeight / 2)
             + (currentRace.offsetHeight / 2);
 
@@ -33,7 +44,7 @@ requestAnimationFrame(() => {
     <section class="calendarCard">
 
         <h2 class="h2-NSC">
-            Calendario
+            Calendario Nascar
         </h2>
 
         <div class="calendar-header">
