@@ -35,9 +35,6 @@ const MANUFACTURER_LOGOS = {
 };
 
 
-console.log(
-    await NASCAR.getWeekend(5622)
-);
 
 
 
@@ -260,18 +257,32 @@ static async getRaceCenterData() {
 
     }
 
+
+
+
+
+    
     static async getWeekend(raceId) {
 
-        const data = await NASCARWeekend.getWeekend(
-            raceId,
-            2026,
-            state.nascarSeries
-        );
+    const data = await NASCARWeekend.getWeekend(
+        raceId,
+        2026,
+        state.nascarSeries
+    );
 
-        return adaptNascarWeekend(data);
+    const weekend = adaptNascarWeekend(data);
 
+    if (raceId === 5622) {
+        console.log("🏁 RICHMOND 5622");
+        console.log(weekend);
     }
 
+    return weekend;
+
+}
+
+
+    
 
     static async getCurrentWeekend() {
 
