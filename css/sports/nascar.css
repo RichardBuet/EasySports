@@ -238,3 +238,13 @@ background: linear-gradient(180deg, #1f1f1f, #111);
     scrollbar-width: thin;
     scrollbar-color: #50535a transparent;
 }
+
+
+.calendar-status {
+    display: block;
+    margin-top: 3px;
+    color: #999;
+    font-size: 0.65em;
+    font-weight: 500;
+    line-height: 1.2;
+}
