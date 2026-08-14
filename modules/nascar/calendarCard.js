@@ -8,14 +8,14 @@ export async function createCalendarCard() {
     const currentIndex = timeline.currentIndex;
 
     requestAnimationFrame(() => {
-    document
-        .getElementById(`race-${currentIndex}`)
-        ?.scrollIntoView({
-            block: "center",
-            behavior: "auto"
-        });
-});
-    
+        document
+            .getElementById(`race-${currentIndex}`)
+            ?.scrollIntoView({
+                block: "center",
+                behavior: "auto"
+            });
+    });
+
     return `
 
     <section class="calendarCard">
@@ -23,7 +23,6 @@ export async function createCalendarCard() {
         <h2 class="h2-NSC">
             Calendario
         </h2>
-
 
         <div class="calendar-header">
 
@@ -33,7 +32,6 @@ export async function createCalendarCard() {
             <span>ESTADO</span>
 
         </div>
-
 
         <div class="calendar-list">
 
@@ -55,17 +53,20 @@ export async function createCalendarCard() {
                                 title: "Programada"
                             };
 
-
                 return `
 
                     <div
                         class="
                             calendar-row
                             ${index === currentIndex ? "current" : ""}
+                            ${race.completed ? "clickable" : ""}
                         "
                         id="race-${index}"
                         data-race-id="${race.raceId}"
                         data-completed="${race.completed}"
+                        ${race.completed
+                            ? `onclick="window.openRaceResult(${race.raceId})"`
+                            : ""}
                     >
 
                         <span>
@@ -78,19 +79,15 @@ export async function createCalendarCard() {
                             )}
                         </span>
 
-
                         <span>
                             ${race.name}
                         </span>
-
 
                         <span>
                             ${race.track}
                         </span>
 
-
-                        <strong
-                            title="${status.title}">
+                        <strong title="${status.title}">
                             ${status.icon}
                         </strong>
 
@@ -105,5 +102,4 @@ export async function createCalendarCard() {
     </section>
 
     `;
-
 }
