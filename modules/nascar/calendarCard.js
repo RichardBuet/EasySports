@@ -8,13 +8,21 @@ export async function createCalendarCard() {
     const currentIndex = timeline.currentIndex;
 
     requestAnimationFrame(() => {
-        document
-            .getElementById(`race-${currentIndex}`)
-            ?.scrollIntoView({
-                block: "center",
-                behavior: "auto"
-            });
-    });
+
+    const calendarList =
+        document.querySelector(".calendar-list");
+
+    const currentRace =
+        document.getElementById(`race-${currentIndex}`);
+
+    if (!calendarList || !currentRace) return;
+
+    calendarList.scrollTop =
+        currentRace.offsetTop
+        - (calendarList.clientHeight / 2)
+        + (currentRace.offsetHeight / 2);
+
+});
 
     return `
 
