@@ -7,6 +7,15 @@ export async function createCalendarCard() {
     const races = timeline.all;
     const currentIndex = timeline.currentIndex;
 
+    requestAnimationFrame(() => {
+    document
+        .getElementById(`race-${currentIndex}`)
+        ?.scrollIntoView({
+            block: "center",
+            behavior: "auto"
+        });
+});
+    
     return `
 
     <section class="calendarCard">
