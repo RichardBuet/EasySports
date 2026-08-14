@@ -45,19 +45,12 @@
    ========================================================= */
 
 .race-result-track {
-
     display: flex;
-
-    flex-direction: raw;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 14px 20px 10px;
-
+    justify-content: space-evenly;
+    padding: 5px;
+    padding-top: 10px;
     text-align: center;
-
+    align-items: baseline;
 }
 
 
@@ -412,19 +405,10 @@
    ========================================================= */
 
 .race-result-driver-list {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    max-height:
-        62vh;
-
-    overflow-y:
-        auto;
-
+    display: flex;
+    flex-direction: column;
+    max-height: 59vh;
+    overflow-y: auto;
 }
 
 
@@ -617,7 +601,7 @@
         700;
 
     text-align:
-        right;
+        center;
 
 }
 
@@ -632,14 +616,14 @@
         #ffffff;
 
     text-align:
-        right;
+        center;
 
     font-size:
         15px;
 
 }
-
-
+.race-result-driver-header span:nth-child(3) { text-align: center; }
+.race-result-driver-header span:nth-child(4) { text-align: center; }
 /* =========================================================
    MOBILE
    ========================================================= */
@@ -695,16 +679,9 @@
 
 
     .race-result-item {
-
-        min-height:
-            62px;
-
-        padding:
-            7px 4px;
-
-        border-radius:
-            13px;
-
+        min-height: 56px;
+        padding: 7px 4px;
+        border-radius: 13px;
     }
 
 
