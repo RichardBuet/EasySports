@@ -37,10 +37,10 @@ return `
 
         <div class="race-result-item">
 
-            <span>🏁 Serie</span>
+            <span>🏁 Serie:</span>
 
             <strong>
-                ${race.series}
+                ${NASCAR.getSeriesNameById(race.seriesId)}
             </strong>
 
         </div>
