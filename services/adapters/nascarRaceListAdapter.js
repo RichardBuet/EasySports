@@ -12,8 +12,13 @@ export function adaptNascarRaceList(data) {
             name: race.race_name,
             track: race.track_name,
 
-            date: race.race_date,
-            qualifyingDate: race.qualifying_date,
+date: `${race.schedule?.find(
+    event => event.event_name === "Race"
+)?.start_time_utc}Z`,
+
+qualifyingDate: `${race.schedule?.find(
+    event => event.event_name === "Qualifying (Impound)"
+)?.start_time_utc}Z`,
 
             scheduledLaps: race.scheduled_laps,
             actualLaps: race.actual_laps,
