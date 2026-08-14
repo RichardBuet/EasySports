@@ -7,23 +7,27 @@ export async function createCalendarCard() {
     const races = timeline.all;
     const currentIndex = timeline.currentIndex;
 
+requestAnimationFrame(() => {
+
     requestAnimationFrame(() => {
 
-    const calendarList =
-        document.querySelector(".calendar-list");
+        const calendarList =
+            document.querySelector(".calendarCard .calendar-list");
 
-    const currentRace =
-        document.getElementById(`race-${currentIndex}`);
+        const currentRace =
+            document.getElementById(`race-${currentIndex}`);
 
-    if (!calendarList || !currentRace) return;
+        if (!calendarList || !currentRace) return;
 
-    calendarList.scrollTop =
-        currentRace.offsetTop
-        - (calendarList.clientHeight / 2)
-        + (currentRace.offsetHeight / 2);
+        calendarList.scrollTop =
+            currentRace.offsetTop
+            - (calendarList.clientHeight / 2)
+            + (currentRace.offsetHeight / 2);
+
+    });
 
 });
-
+    
     return `
 
     <section class="calendarCard">
