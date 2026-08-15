@@ -7,6 +7,8 @@ window.openRaceInfo = async (raceId) => {
 
         const race = await NASCAR.getWeekend(raceId);
 
+        window.currentRace = race;
+
         openModal({
             title: "Información de la carrera",
             content: createRaceInfoContent(race)
@@ -24,18 +26,22 @@ window.openRaceInfo = async (raceId) => {
 function createRaceInfoContent(race) {
 
     const practice =
-        race.schedule?.find(e =>
-            e.event_name.toLowerCase().includes("practice")
+        race.schedule?.find(event =>
+            event.event_name
+                ?.toLowerCase()
+                .includes("practice")
         );
 
     const qualifying =
-        race.schedule?.find(e =>
-            e.event_name.toLowerCase().includes("qualifying")
+        race.schedule?.find(event =>
+            event.event_name
+                ?.toLowerCase()
+                .includes("qualifying")
         );
 
     const raceEvent =
-        race.schedule?.find(e =>
-            e.event_name === "Race"
+        race.schedule?.find(event =>
+            event.event_name === "Race"
         );
 
 
@@ -98,53 +104,111 @@ function createRaceInfoContent(race) {
             )}
 
 
-            ${
-                race.weekendRuns?.length
-                    ? `
-                        <h3>🏆 CLASIFICACIÓN</h3>
+            <h3>🏆 RESULTADOS</h3>
 
-                        <div class="race-qualifying">
+            <div class="race-tabs">
 
-                            ${race.weekendRuns
-                                .find(run =>
-                                    run.name
-                                        ?.toLowerCase()
-                                        .includes("qualifying")
-                                )
-                                ?.results
-                                ?.slice(0, 10)
-                                .map(driver => `
+                <button
+                    class="race-tab active"
+                    onclick="window.showRaceRun(0, this)">
+                    PRÁCTICA
+                </button>
 
-                                    <div class="qualifying-row">
+                <button
+                    class="race-tab"
+                    onclick="window.showRaceRun(1, this)">
+                    CLASIFICACIÓN
+                </button>
 
-                                        <strong>#${driver.position}</strong>
+            </div>
 
-                                        <span>
-                                            ${driver.driver}
-                                            <small>
-                                                ${driver.manufacturer} · #${driver.number}
-                                            </small>
-                                        </span>
 
-                                        <strong>
-                                            ${driver.bestLapTime ?? "-"}
-                                        </strong>
+            <div id="raceRunResults">
 
-                                    </div>
+                ${createRunResults(
+                    race.weekendRuns?.[0]?.results ?? []
+                )}
 
-                                `)
-                                .join("") ?? ""
-                            }
-
-                        </div>
-                    `
-                    : ""
-            }
+            </div>
 
         </div>
 
     `;
+
 }
+
+
+function createRunResults(results) {
+
+    if (!results.length) {
+
+        return `
+            <div class="race-empty">
+                No hay resultados disponibles.
+            </div>
+        `;
+
+    }
+
+    return `
+
+        <div class="race-run-list">
+
+            ${results.map(driver => `
+
+                <div class="race-run-row">
+
+                    <strong>
+                        #${driver.position}
+                    </strong>
+
+                    <span>
+
+                        ${driver.driver}
+
+                        <small>
+                            ${driver.manufacturer}
+                            · #${driver.number}
+                        </small>
+
+                    </span>
+
+                    <strong>
+                        ${driver.bestLapTime ?? "-"}
+                    </strong>
+
+                </div>
+
+            `).join("")}
+
+        </div>
+
+    `;
+
+}
+
+
+window.showRaceRun = (runIndex, button) => {
+
+    const results =
+        window.currentRace
+            ?.weekendRuns?.[runIndex]
+            ?.results ?? [];
+
+    document.getElementById("raceRunResults").innerHTML =
+        createRunResults(results);
+
+
+    document
+        .querySelectorAll(".race-tab")
+        .forEach(tab =>
+            tab.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+};
 
 
 function createScheduleItem(icon, title, date) {
@@ -162,23 +226,30 @@ function createScheduleItem(icon, title, date) {
             </span>
 
             <span>
+
                 <strong>${title}</strong>
 
                 <small>
+
                     ${d.toLocaleDateString("es-AR", {
                         weekday: "short",
                         day: "numeric",
                         month: "short"
                     })}
+
                     ·
+
                     ${d.toLocaleTimeString("es-AR", {
                         hour: "2-digit",
                         minute: "2-digit"
                     })}
+
                 </small>
+
             </span>
 
         </div>
 
     `;
+
 }
