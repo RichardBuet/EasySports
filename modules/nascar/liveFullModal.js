@@ -1,72 +1,32 @@
 import { NASCAR } from "../../services/site.js";
 import { openModal } from "../components/modal.js";
 
-
 let refreshTimer = null;
-
 let summaryCarousel = null;
-
 let summaryAutoTimer = null;
-
 let summaryPaused = false;
-
 
 /* =========================================================
    OPEN NASCAR LIVE FULL
    ========================================================= */
 
 window.openLiveFullModal = async () => {
-
     try {
-
         const live =
             await NASCAR.getLiveRaceData();
-
-
         openModal({
-
             title: "🏁 NASCAR - En vivo",
-
             modalClass: "nascar-live-full",
-
             content:
                 await createLiveContent(live),
-
-            onClose: () => {
-
-                stopLiveFull();
-
-            }
-
+            onClose: () => { stopLiveFull(); }
         });
-
-
         clearInterval(refreshTimer);
-
-        refreshTimer =
-            setInterval(
-                refreshLiveFullModal,
-                5000
-            );
-
-
+    //    refreshTimer = setInterval(refreshLiveFullModal, 5000);
         initSummaryCarousel();
-
         initLiveFullClose();
-
-
-    } catch (error) {
-
-        console.error(
-            "❌ Error opening NASCAR LIVE:",
-            error
-        );
-
-    }
-
+    } catch (error) { console.error( "❌ Error opening NASCAR LIVE:", error);}
 };
-
-
 
 /* =========================================================
    CLOSE LIVE FULL
@@ -110,9 +70,6 @@ function initLiveFullClose() {
 
 }
 
-
-
-
 /* =========================================================
    CONTENT
    ========================================================= */
@@ -138,8 +95,6 @@ async function createLiveContent(live) {
 
 
             <div class="nascar-live-full-summary">
-
-
                 <div class="nascar-live-full-item">
 
                     <span>🏁 Series</span>
@@ -149,8 +104,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>
@@ -162,8 +115,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>🏟 Circuito</span>
@@ -173,8 +124,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>📏 Longitud</span>
@@ -184,8 +133,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>
@@ -197,8 +144,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>🏁 Vuelta</span>
@@ -206,14 +151,12 @@ async function createLiveContent(live) {
                     <strong data-live="lap">
                         ${
                             Number.isFinite(parseInt(live.summary.lap, 10))
-                                ? parseInt(live.summary.lap, 10) + 1
+                                ? parseInt(live.summary.lap, 10)
                                 : "-"
                         }
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>⏳ Restan</span>
@@ -223,8 +166,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>🏆 Stage</span>
@@ -234,8 +175,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>🏁 Final Stage</span>
@@ -249,8 +188,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>⏳ Restan Stage</span>
@@ -260,8 +197,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>👑 Líderes</span>
@@ -271,8 +206,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>🔄 Lead Changes</span>
@@ -282,8 +215,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>⚠️ Cautions</span>
@@ -293,8 +224,6 @@ async function createLiveContent(live) {
                     </strong>
 
                 </div>
-
-
                 <div class="nascar-live-full-item">
 
                     <span>🟨 Caution Laps</span>
@@ -654,7 +583,7 @@ async function refreshLiveFullModal() {
                 ?.replaceChildren(
                     document.createTextNode(
                       Number.isFinite(parseInt(live.summary.lap, 10))
-                          ? parseInt(live.summary.lap, 10) + 1
+                          ? parseInt(live.summary.lap, 10)
                           : "-"
                   )
                 );
@@ -821,20 +750,12 @@ function initSummaryCarousel() {
     }
 
 
-    /*
-       Click sobre las tarjetas:
-       pausa / reanuda.
-    */
+    /*    Click sobre las tarjetas:  pausa / reanuda.   */
 
     summaryCarousel.onclick = () => {
-
         toggleSummaryCarousel();
-
     };
-
-
     startSummaryCarousel();
-
 }
 
 
@@ -980,18 +901,10 @@ function toggleSummaryCarousel() {
    ========================================================= */
 
 function stopSummaryCarousel() {
-
     clearInterval(refreshTimer);
-
     clearInterval(summaryAutoTimer);
-
-
     refreshTimer = null;
-
     summaryAutoTimer = null;
-
     summaryCarousel = null;
-
     summaryPaused = false;
-
 }
