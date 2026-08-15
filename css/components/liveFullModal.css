@@ -552,8 +552,8 @@
         1px solid rgba(255,255,255,.065);
     color:
         #e0e2e5;
-    /* font-size: 10px; */
-   font-size: 0.65em;
+    /* font-size: 10px; 
+   font-size: 0.65em;*/
     transition:
         background .15s ease,
         box-shadow .15s ease;
@@ -600,7 +600,7 @@
     color:
         #ffd52f;
     /* font-size: 12px; */
-   font-size: 0.68em;
+   font-size: 0.84em;
     font-weight:
         900;
     text-align:
@@ -624,28 +624,21 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color:
-        #ffffff;
-    font-size:
-        11px;
-    font-weight:
-        800;
+    color: #ffffff;
+    /* font-size: 11px; */
+    font-weight: 800;
 }
 
 
 .nascar-live-full-driver-row small {
     display: block;
-    margin-top:
-        2px;
+    margin-top: 2px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color:
-        #858a92;
-    font-size:
-        8px;
-    line-height:
-        1.15;
+    color: #858a92;
+    /* font-size: 8px; */
+    line-height: 1.15;
 }
 
 
@@ -654,12 +647,9 @@
    ========================================================= */
 .nascar-live-full-driver-row
 span:nth-child(n+4):nth-child(-n+12) {
-    color:
-        #e0e2e5;
-    text-align:
-        center;
-    font-variant-numeric:
-        tabular-nums;
+    color: #e0e2e5;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
 }
 
 
@@ -667,42 +657,32 @@ span:nth-child(n+4):nth-child(-n+12) {
    SEMANTIC COLORS
    ========================================================= */
 .nascar-live-full-pur {
-    color:
-        #c084fc !important;
-    font-weight:
-        800;
+    color: #c084fc !important;
+    font-weight: 800;
 }
 
 
 .nascar-live-full-gap {
-    color:
-        #ffffff !important;
-    font-weight:
-        700;
+    color: #ffffff !important;
+    font-weight: 700;
 }
 
 
 .nascar-live-full-best {
-    color:
-        #c084fc !important;
-    font-weight:
-        800;
+    color: #c084fc !important;
+    font-weight: 800;
 }
 
 
 .nascar-live-full-fast {
-    color:
-        #c084fc !important;
-    font-weight:
-        800;
+    color: #c084fc !important;
+    font-weight: 800;
 }
 
 
 .nascar-live-full-gain {
-    color:
-        #65d6a0 !important;
-    font-weight:
-        800;
+    color: #65d6a0 !important;
+    font-weight: 800;
 }
 
 
@@ -710,8 +690,7 @@ span:nth-child(n+4):nth-child(-n+12) {
    STATUS
    ========================================================= */
 .nascar-live-full-status-live {
-    color:
-        #59e36d;
+    color: #59e36d;
     filter:
         drop-shadow(
             0 0 4px
@@ -721,8 +700,7 @@ span:nth-child(n+4):nth-child(-n+12) {
 
 
 .nascar-live-full-status-off {
-    color:
-        #ff5555;
+    color: #ff5555;
     filter:
         drop-shadow(
             0 0 4px
@@ -736,8 +714,7 @@ span:nth-child(n+4):nth-child(-n+12) {
     align-items: center;
     justify-content: center;
     min-width: 0;
-    font-size:
-        13px;
+    font-size: 13px;
 }
 
 
