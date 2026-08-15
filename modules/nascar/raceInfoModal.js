@@ -138,7 +138,11 @@ function createRaceInfoContent(race) {
 
                 <div>
                     <small>ETAPAS</small>
-                    <strong>70 / 230 / 400</strong>
+                    <strong>
+    ${race.stage1Laps} /
+    ${race.stage2Laps} /
+    ${race.stage3Laps}
+</strong>
                 </div>
 
             </div>
