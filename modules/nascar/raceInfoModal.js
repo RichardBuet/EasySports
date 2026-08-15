@@ -16,9 +16,70 @@ window.openRaceInfo = async (raceId) => {
 
     } catch (error) {
 
-        console.error("Error cargando carrera:", error);
+    console.warn(
+        "Información NASCAR todavía no disponible:",
+        raceId
+    );
 
-    }
+    const timeline =
+        await NASCAR.getTimeline();
+
+    const race =
+        timeline.all.find(
+            race => race.raceId === raceId
+        );
+
+    if (!race) return;
+
+    openModal({
+        title: "Información de la carrera",
+        content: `
+
+            <div class="race-info">
+
+                <div class="race-info-title">
+                    🏁 ${race.name}
+                </div>
+
+                <div class="race-info-track">
+                    📍 ${race.track}
+                </div>
+
+                <div class="race-info-date">
+                    📅 ${
+                        race.date
+                            ? new Date(race.date)
+                                .toLocaleDateString(
+                                    "es-AR",
+                                    {
+                                        day: "2-digit",
+                                        month: "long",
+                                        year: "numeric"
+                                    }
+                                )
+                            : ""
+                    }
+                </div>
+
+                <div class="race-empty">
+
+                    <strong>
+                        Información aún no disponible
+                    </strong>
+
+                    <small>
+                        NASCAR todavía no publicó
+                        los datos de este evento.
+                    </small>
+
+                </div>
+
+            </div>
+
+        `
+    });
+
+}
 
 };
 
