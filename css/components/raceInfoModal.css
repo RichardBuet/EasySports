@@ -1,0 +1,189 @@
+/* =========================================================
+   RACE INFO — TABS
+   ========================================================= */
+
+.race-tabs {
+    display: flex;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 4px;
+    background: #111318;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+}
+
+.race-tab {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: transparent;
+    color: #8f949c;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .4px;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+.race-tab:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,.05);
+}
+
+.race-tab.active {
+    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #292c32,
+            #1c1f24
+        );
+    border-color: rgba(255,255,255,.12);
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   RACE INFO — RUN RESULTS
+   ========================================================= */
+
+.race-run-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    overflow: hidden;
+    border:
+        1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+}
+
+.race-run-row {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) 75px;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 6px 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #15171a,
+            #121417
+        );
+
+    border-bottom:
+        1px solid rgba(255,255,255,.055);
+
+    color: #e0e2e5;
+    font-size: 10px;
+}
+
+.race-run-row:last-child {
+    border-bottom: none;
+}
+
+.race-run-row:nth-child(even) {
+    background: #15171c;
+}
+
+.race-run-row:hover {
+    background:
+        linear-gradient(
+            90deg,
+            #202329,
+            #181b20
+        );
+}
+
+.race-run-row > strong:first-child {
+    color: #ffffff;
+    text-align: center;
+    font-size: 10px;
+}
+
+.race-run-row > span {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.race-run-row small {
+    display: block;
+    margin-top: 2px;
+    color: #858a92;
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.race-run-row > strong:last-child {
+    color: #c084fc;
+    text-align: right;
+    font-size: 9px;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   SIN RESULTADOS
+   ========================================================= */
+
+.race-empty {
+    margin-top: 8px;
+    padding: 20px;
+    text-align: center;
+    color: #858a92;
+    font-size: 10px;
+    background: #15171a;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .race-tabs {
+        margin-top: 12px;
+    }
+
+    .race-tab {
+        padding: 7px 6px;
+        font-size: 9px;
+    }
+
+    .race-run-row {
+        grid-template-columns: 30px minmax(0, 1fr) 65px;
+        gap: 6px;
+        padding: 6px 8px;
+        min-height: 38px;
+    }
+
+    .race-run-row > strong:first-child {
+        font-size: 9px;
+    }
+
+    .race-run-row > span {
+        font-size: 9px;
+    }
+
+    .race-run-row small {
+        font-size: 7px;
+    }
+
+    .race-run-row > strong:last-child {
+        font-size: 8px;
+    }
+
+}
