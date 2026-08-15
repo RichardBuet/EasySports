@@ -97,15 +97,19 @@ requestAnimationFrame(() => {
                         }
                     >
 
-                        <span>
-                            ${new Date(race.date).toLocaleDateString(
-                                "en-US",
-                                {
-                                    month: "short",
-                                    day: "2-digit"
-                                }
-                            )}
-                        </span>
+<span>
+    ${
+        race.date
+            ? new Date(race.date).toLocaleDateString(
+                "en-US",
+                {
+                    month: "short",
+                    day: "2-digit"
+                }
+            )
+            : "—"
+    }
+</span>
 
 <span>
     ${race.name}
