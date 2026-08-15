@@ -15,7 +15,8 @@ window.openLiveFullModal = async () => {
         const live =
             await NASCAR.getLiveRaceData();
         openModal({
-            title: "🏁 NASCAR - En vivo",
+            title: ` 🏁 NASCAR
+            <button class="nascar-live-full-header-vivo" type="button"> En Vivo </button>`,
             modalClass: "nascar-live-full",
             content:
                 await createLiveContent(live),
