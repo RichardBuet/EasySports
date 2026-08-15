@@ -119,33 +119,33 @@ function createRaceInfoContent(race) {
             </div>
 
 
-            <div class="race-info-grid">
+<div class="race-info-grid">
 
-                <div>
-                    <small>VUELTAS</small>
-                    <strong>${race.scheduledLaps}</strong>
-                </div>
+    <div>
+        <small>SERIE</small>
+        <strong>${NASCAR.getSeriesName()}</strong>
+    </div>
 
-                <div>
-                    <small>DISTANCIA</small>
-                    <strong>${race.scheduledDistance} mi</strong>
-                </div>
+    <div>
+        <small>DISTANCIA</small>
+        <strong>${race.scheduledDistance} mi</strong>
+    </div>
 
-                <div>
-                    <small>AUTOS</small>
-                    <strong>${race.fieldSize}</strong>
-                </div>
+    <div>
+        <small>ETAPAS</small>
+        <strong>
+            ${race.stage1Laps} /
+            ${race.stage2Laps} /
+            ${race.stage3Laps}
+        </strong>
+    </div>
 
-                <div>
-                    <small>ETAPAS</small>
-                    <strong>
-    ${race.stage1Laps} /
-    ${race.stage2Laps} /
-    ${race.stage3Laps}
-</strong>
-                </div>
+    <div>
+        <small>VUELTAS</small>
+        <strong>${race.scheduledLaps}</strong>
+    </div>
 
-            </div>
+</div>
 
 
             <h3>📅 ACTIVIDAD</h3>
