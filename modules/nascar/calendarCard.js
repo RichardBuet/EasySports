@@ -3,10 +3,14 @@ import { NASCAR } from "../../services/site.js";
 export async function createCalendarCard() {
 
     const timeline = await NASCAR.getTimeline();
-
     const races = timeline.all;
     const currentIndex = timeline.currentIndex;
+    
+    const currentRace = races[currentIndex];
+    const weekend = await NASCAR.getWeekend(currentRace.raceId);
+    console.log("🏁 WEEKEND ACTUAL:", weekend);
 
+    
 requestAnimationFrame(() => {
 
     requestAnimationFrame(() => {
