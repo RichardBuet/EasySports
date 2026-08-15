@@ -1,0 +1,184 @@
+import { NASCAR } from "../../services/site.js";
+import { openModal } from "../components/modal.js";
+
+window.openRaceInfo = async (raceId) => {
+
+    try {
+
+        const race = await NASCAR.getWeekend(raceId);
+
+        openModal({
+            title: "Información de la carrera",
+            content: createRaceInfoContent(race)
+        });
+
+    } catch (error) {
+
+        console.error("Error cargando carrera:", error);
+
+    }
+
+};
+
+
+function createRaceInfoContent(race) {
+
+    const practice =
+        race.schedule?.find(e =>
+            e.event_name.toLowerCase().includes("practice")
+        );
+
+    const qualifying =
+        race.schedule?.find(e =>
+            e.event_name.toLowerCase().includes("qualifying")
+        );
+
+    const raceEvent =
+        race.schedule?.find(e =>
+            e.event_name === "Race"
+        );
+
+
+    return `
+
+        <div class="race-info">
+
+            <div class="race-info-title">
+                🏁 ${race.race}
+            </div>
+
+            <div class="race-info-track">
+                📍 ${race.track}
+            </div>
+
+
+            <div class="race-info-grid">
+
+                <div>
+                    <small>VUELTAS</small>
+                    <strong>${race.scheduledLaps}</strong>
+                </div>
+
+                <div>
+                    <small>DISTANCIA</small>
+                    <strong>${race.scheduledDistance} mi</strong>
+                </div>
+
+                <div>
+                    <small>AUTOS</small>
+                    <strong>${race.fieldSize}</strong>
+                </div>
+
+                <div>
+                    <small>ETAPAS</small>
+                    <strong>70 / 230 / 400</strong>
+                </div>
+
+            </div>
+
+
+            <h3>📅 ACTIVIDAD</h3>
+
+            ${createScheduleItem(
+                "🏎️",
+                "Práctica",
+                practice?.start_time_utc
+            )}
+
+            ${createScheduleItem(
+                "⏱️",
+                "Clasificación",
+                qualifying?.start_time_utc
+            )}
+
+            ${createScheduleItem(
+                "🏁",
+                "Carrera",
+                raceEvent?.start_time_utc
+            )}
+
+
+            ${
+                race.weekendRuns?.length
+                    ? `
+                        <h3>🏆 CLASIFICACIÓN</h3>
+
+                        <div class="race-qualifying">
+
+                            ${race.weekendRuns
+                                .find(run =>
+                                    run.name
+                                        ?.toLowerCase()
+                                        .includes("qualifying")
+                                )
+                                ?.results
+                                ?.slice(0, 10)
+                                .map(driver => `
+
+                                    <div class="qualifying-row">
+
+                                        <strong>#${driver.position}</strong>
+
+                                        <span>
+                                            ${driver.driver}
+                                            <small>
+                                                ${driver.manufacturer} · #${driver.number}
+                                            </small>
+                                        </span>
+
+                                        <strong>
+                                            ${driver.bestLapTime ?? "-"}
+                                        </strong>
+
+                                    </div>
+
+                                `)
+                                .join("") ?? ""
+                            }
+
+                        </div>
+                    `
+                    : ""
+            }
+
+        </div>
+
+    `;
+}
+
+
+function createScheduleItem(icon, title, date) {
+
+    if (!date) return "";
+
+    const d = new Date(date);
+
+    return `
+
+        <div class="race-schedule-item">
+
+            <span class="schedule-icon">
+                ${icon}
+            </span>
+
+            <span>
+                <strong>${title}</strong>
+
+                <small>
+                    ${d.toLocaleDateString("es-AR", {
+                        weekday: "short",
+                        day: "numeric",
+                        month: "short"
+                    })}
+                    ·
+                    ${d.toLocaleTimeString("es-AR", {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    })}
+                </small>
+            </span>
+
+        </div>
+
+    `;
+}
