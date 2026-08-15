@@ -30,7 +30,18 @@ export async function createDrivers() {
                     <div class="driver-row">
                         <span>#${driver.position}</span>
                         
-                        <span>${driver.number}</span>
+ <span class="nascar-driver-number">
+    ${
+        driver.profile?.badge
+            ? `<img
+                src="${driver.profile.badge}"
+                alt="#${driver.number}"
+                loading="lazy"
+            >`
+            : `#${driver.number}`
+    }
+</span>
+
 
                         <span
                             class="driver-link"
