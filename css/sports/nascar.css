@@ -14,8 +14,8 @@ body.nascar{
 }
 
 .nascar-driver-number img {
-    width: 42px;
-    height: 42px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
 }
 
@@ -123,7 +123,7 @@ body.nascar{
    border-color:rgba(22,163,74,.35);
 }
 
-.heroItem .heroLive {
+.heroItem span, .heroItem strong {
     animation: heroLivePulse 1.5s infinite;
     cursor: pointer;
 }
