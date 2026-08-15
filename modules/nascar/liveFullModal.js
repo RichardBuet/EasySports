@@ -204,7 +204,7 @@ async function createLiveContent(live) {
                     <span>🏁 Vuelta</span>
 
                     <strong data-live="lap">
-                        ${live.summary.lap}
+                        ${Number(live.summary.lap) + 1}
                     </strong>
 
                 </div>
@@ -649,7 +649,7 @@ async function refreshLiveFullModal() {
                 .querySelector('[data-live="lap"]')
                 ?.replaceChildren(
                     document.createTextNode(
-                        live.summary.lap ?? "-"
+                        Number(live.summary.lap) + 1
                     )
                 );
 
