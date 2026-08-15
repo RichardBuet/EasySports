@@ -20,7 +20,20 @@ function renderHeader(driver) {
                 class="driver-photo">
             <div class="driver-info">
                 <h2>${driver.driver}</h2>
-                <p>#${driver.number}</p>
+                
+                <p><span class="nascar-driver-number">
+    ${
+        driver.profile?.badge
+            ? `<img
+                src="${driver.profile.badge}"
+                alt="#${driver.number}"
+                loading="lazy"
+            >`
+            : `#${driver.number}`
+    }
+</span>
+</p>
+
                 <p>${driver.profile.team}</p>
                 <p>${driver.manufacturer}</p>
             </div>
