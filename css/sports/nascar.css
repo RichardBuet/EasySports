@@ -7,6 +7,19 @@ body.nascar{
     /* --hero-image:none; */
 }
 
+.nascar-driver-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nascar-driver-number img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+
 /* ========================================
    NASCAR Hero
 ======================================== */
