@@ -32,6 +32,12 @@ export function adaptNascarWeekend(data) {
 
         fieldSize: race.number_of_cars_in_field,
 
+        stage1Laps: race.stage_1_laps,
+       
+        stage2Laps: race.stage_2_laps,
+        
+        stage3Laps: race.stage_3_laps,
+        
         leadChanges: race.number_of_lead_changes,
 
         leaders: race.number_of_leaders,
