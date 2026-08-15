@@ -110,8 +110,8 @@
 
 /* Título */
 .nascar-live-full-header h2 {
-    display: flex;
-    align-items: center;
+ /*   display: flex;
+    align-items: center;*/
     gap: 12px;
     
     margin: 0;
@@ -136,7 +136,8 @@
     
     box-shadow:#73FA79;
     border-left:4px solid var(--color-principal);
-    background: var(--shadow-live-background);
+   /* background: var(--shadow-live-background);
+*/
 }
 
 
