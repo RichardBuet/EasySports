@@ -6,6 +6,7 @@ import "../modules/nascar/calendar.js";
 import "../modules/nascar/resultModal.js";
 import "../modules/nascar/drivers.js";
 import "../modules/nascar/liveRaceModal.js";
+import "../modules/nascar/raceInfoModal.js";
 const app=document.getElementById("app");
 
 export async function refreshNascar(){
