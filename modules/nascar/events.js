@@ -4,6 +4,8 @@ import { refreshNascar } from "../../js/nascar.js";
 import { NASCAR } from "../../services/site.js";
 import { showDriverModal } from "./driverModal.js";
 
+import { centerCalendarCurrentRace } from "./calendarCard.js";
+
 export function initNascarEvents(){
 
     const selector=document.getElementById("nascar-selector");
@@ -19,6 +21,18 @@ export function initNascarEvents(){
             state.nascarSeries=Number(button.dataset.series);
 
             await refreshNascar();
+
+requestAnimationFrame(() => {
+    requestAnimationFrame(async () => {
+
+        const timeline = await NASCAR.getTimeline();
+
+        centerCalendarCurrentRace(
+            timeline.currentIndex
+        );
+
+    });
+});
 
         });
 
