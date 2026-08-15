@@ -127,14 +127,14 @@
 .nascar-live-full-header-vivo{
     padding: 5px 10px;
     background: chartreuse;
-    color: black;
-    border: none;
+    color: #73FA79;
+    border: #73FABC;
     border-radius: 9px;
     font-weight: bold;
     font-size:  clamp(19px, 3vw, 25px);
     cursor: default;
     
-    box-shadow:var(--shadow-live-border);
+    box-shadow:#73FA79;
     border-left:4px solid var(--color-principal);
     background: var(--shadow-live-background);
 }
