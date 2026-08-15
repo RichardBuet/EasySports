@@ -625,7 +625,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     color: #ffffff;
-    /* font-size: 11px; */
+    font-size: 0.8em;
     font-weight: 800;
 }
 
@@ -650,6 +650,7 @@ span:nth-child(n+4):nth-child(-n+12) {
     color: #e0e2e5;
     text-align: center;
     font-variant-numeric: tabular-nums;
+    font-size: 0.7em;
 }
 
 
@@ -758,22 +759,22 @@ span:nth-child(12) {
    ========================================================= */
 
 @media (max-width: 600px) {
-    .nascar-live-full {
+    /* .nascar-live-full {
         width: 96vw;
         max-height: 86vh;
         border-radius: 18px;
-    }
+    } */
 
 
     .nascar-live-full-header {
-        min-height: 62px;
+        min-height: 60px;
         padding: 0 16px;
     }
 
-
+/* 
     .nascar-live-full-header h2 {
         font-size: 20px;
-    }
+    } */
 
 
     /* ---------------------------------------------
@@ -789,12 +790,7 @@ span:nth-child(12) {
     }
 
     .nascar-live-full-item {
-        /*
-           Fórmula que ya comprobamos
-           que funciona correctamente
-           en iPhone.
-           4 tarjetas visibles.
-        */
+        /*Fórmula que ya comprobamos que funciona correctamente en iPhone. 4 tarjetas visibles.*/
         flex: 0 0 calc((100% - 21px) / 4);
         min-width: 0;
         /* min-height: 70px; */
@@ -803,15 +799,15 @@ span:nth-child(12) {
         
     }
 
-
-     .nascar-live-full-item span {
-    font-size: 8px;
-    margin-bottom: 4px;
-}
-
-.nascar-live-full-item strong {
-    font-size: 12px;
-}
+        
+    .nascar-live-full-item span {
+        font-size: 8px;
+        margin-bottom: 4px;
+    }
+    
+    .nascar-live-full-item strong {
+        font-size: 0.6em;
+    }
 
 
     /* ---------------------------------------------
