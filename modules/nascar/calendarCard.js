@@ -1,5 +1,35 @@
 import { NASCAR } from "../../services/site.js";
 
+
+export function centerCalendarCurrentRace(currentIndex) {
+
+    const calendarList =
+        document.querySelector(".calendarCard .calendar-list");
+
+    const currentRace =
+        document.getElementById(`race-${currentIndex}`);
+
+    if (!calendarList || !currentRace) return;
+
+    const listRect =
+        calendarList.getBoundingClientRect();
+
+    const raceRect =
+        currentRace.getBoundingClientRect();
+
+    const racePosition =
+        raceRect.top
+        - listRect.top
+        + calendarList.scrollTop;
+
+    calendarList.scrollTop =
+        racePosition
+        - (calendarList.clientHeight / 2)
+        + (currentRace.offsetHeight / 2);
+}
+
+
+
 export async function createCalendarCard() {
 
     const timeline = await NASCAR.getTimeline();
@@ -11,37 +41,7 @@ export async function createCalendarCard() {
     console.log("🏁 WEEKEND ACTUAL:", weekend);
 
     
-requestAnimationFrame(() => {
 
-    requestAnimationFrame(() => {
-
-        const calendarList =
-            document.querySelector(".calendarCard .calendar-list");
-
-        const currentRace =
-            document.getElementById(`race-${currentIndex}`);
-
-        if (!calendarList || !currentRace) return;
-
-        const listRect =
-            calendarList.getBoundingClientRect();
-
-        const raceRect =
-            currentRace.getBoundingClientRect();
-
-        const racePosition =
-            raceRect.top
-            - listRect.top
-            + calendarList.scrollTop;
-
-        calendarList.scrollTop =
-            racePosition
-            - (calendarList.clientHeight / 2)
-            + (currentRace.offsetHeight / 2);
-
-    });
-
-});
     
     return `
 
