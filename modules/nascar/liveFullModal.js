@@ -25,7 +25,7 @@ window.openLiveFullModal = async () => {
 
         openModal({
 
-            title: "🏁 NASCAR En vivo",
+            title: "🏁 NASCAR - En vivo",
 
             modalClass: "nascar-live-full",
 
@@ -204,7 +204,11 @@ async function createLiveContent(live) {
                     <span>🏁 Vuelta</span>
 
                     <strong data-live="lap">
-                        ${Number(live.summary.lap) + 1}
+                        ${
+                            Number.isFinite(parseInt(live.summary.lap, 10))
+                                ? parseInt(live.summary.lap, 10) + 1
+                                : "-"
+                        }
                     </strong>
 
                 </div>
@@ -649,8 +653,10 @@ async function refreshLiveFullModal() {
                 .querySelector('[data-live="lap"]')
                 ?.replaceChildren(
                     document.createTextNode(
-                        Number(live.summary.lap) + 1
-                    )
+                      Number.isFinite(parseInt(live.summary.lap, 10))
+                          ? parseInt(live.summary.lap, 10) + 1
+                          : "-"
+                  )
                 );
 
 
