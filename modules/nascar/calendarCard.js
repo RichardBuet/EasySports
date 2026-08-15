@@ -93,7 +93,8 @@ requestAnimationFrame(() => {
                         data-completed="${race.completed}"
                         ${race.completed
                             ? `onclick="window.openRaceResult(${race.raceId})"`
-                            : ""}
+                            : `onclick="window.openRaceInfo(${race.raceId})"`
+                        }
                     >
 
                         <span>
