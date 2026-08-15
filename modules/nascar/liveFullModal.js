@@ -25,7 +25,7 @@ window.openLiveFullModal = async () => {
 
         openModal({
 
-            title: "🏁 NASCAR LIVE",
+            title: "🏁 NASCAR En vivo",
 
             modalClass: "nascar-live-full",
 
@@ -49,11 +49,6 @@ window.openLiveFullModal = async () => {
                 5000
             );
 
-
-        /*
-           El DOM ya existe porque openModal()
-           acaba de insertar el contenido.
-        */
 
         initSummaryCarousel();
 
@@ -149,7 +144,7 @@ async function createLiveContent(live) {
 
                     <span>🏁 Series</span>
 
-                    <strong>
+                    <strong data-live="series">
                         ${live.summary.series}
                     </strong>
 
@@ -162,7 +157,7 @@ async function createLiveContent(live) {
                         ${live.summary.session.icon}
                     </span>
 
-                    <strong>
+                    <strong data-live="session">
                         ${live.summary.session.name}
                     </strong>
 
@@ -173,7 +168,7 @@ async function createLiveContent(live) {
 
                     <span>🏟 Circuito</span>
 
-                    <strong>
+                    <strong data-live="track">
                         ${live.summary.track}
                     </strong>
 
@@ -184,7 +179,7 @@ async function createLiveContent(live) {
 
                     <span>📏 Longitud</span>
 
-                    <strong>
+                    <strong data-live="trackLength">
                         ${live.summary.trackLength} mi
                     </strong>
 
@@ -197,7 +192,7 @@ async function createLiveContent(live) {
                         ${live.summary.flag.icon}
                     </span>
 
-                    <strong>
+                    <strong data-live="flag">
                         ${live.summary.flag.name}
                     </strong>
 
@@ -208,7 +203,7 @@ async function createLiveContent(live) {
 
                     <span>🏁 Vuelta</span>
 
-                    <strong>
+                    <strong data-live="lap">
                         ${live.summary.lap}
                     </strong>
 
@@ -219,7 +214,7 @@ async function createLiveContent(live) {
 
                     <span>⏳ Restan</span>
 
-                    <strong>
+                    <strong data-live="lapsToGo">
                         ${live.summary.lapsToGo}
                     </strong>
 
@@ -230,7 +225,7 @@ async function createLiveContent(live) {
 
                     <span>🏆 Stage</span>
 
-                    <strong>
+                    <strong data-live="stage">
                         ${live.summary.stage?.number ?? "-"}
                     </strong>
 
@@ -241,7 +236,7 @@ async function createLiveContent(live) {
 
                     <span>🏁 Final Stage</span>
 
-                    <strong>
+                    <strong data-live="finishLap">
                         ${
                             live.summary.stage?.finishLap
                                 ? `V${live.summary.stage.finishLap}`
@@ -256,7 +251,7 @@ async function createLiveContent(live) {
 
                     <span>⏳ Restan Stage</span>
 
-                    <strong>
+                    <strong data-live="stageLapsRemaining">
                         ${live.summary.stage?.lapsRemaining ?? "-"}
                     </strong>
 
@@ -267,7 +262,7 @@ async function createLiveContent(live) {
 
                     <span>👑 Líderes</span>
 
-                    <strong>
+                    <strong data-live="leaders">
                         ${live.summary.leaders}
                     </strong>
 
@@ -278,7 +273,7 @@ async function createLiveContent(live) {
 
                     <span>🔄 Lead Changes</span>
 
-                    <strong>
+                    <strong data-live="leadChanges">
                         ${live.summary.leadChanges}
                     </strong>
 
@@ -289,7 +284,7 @@ async function createLiveContent(live) {
 
                     <span>⚠️ Cautions</span>
 
-                    <strong>
+                    <strong data-live="cautions">
                         ${live.summary.cautions}
                     </strong>
 
@@ -300,7 +295,7 @@ async function createLiveContent(live) {
 
                     <span>🟨 Caution Laps</span>
 
-                    <strong>
+                    <strong data-live="cautionLaps">
                         ${live.summary.cautionLaps}
                     </strong>
 
@@ -565,6 +560,12 @@ async function refreshLiveFullModal() {
             );
 
 
+        const summary =
+            modal.querySelector(
+                ".nascar-live-full-summary"
+            );
+
+
         if (!driverList || !table) {
 
             return;
@@ -589,6 +590,144 @@ async function refreshLiveFullModal() {
             createDriverRows(
                 live.leaderboard
             );
+
+
+        /*
+           Actualizamos las tarjetas
+           superiores sin reconstruir
+           el carrusel.
+        */
+
+        if (summary) {
+
+            summary
+                .querySelector('[data-live="series"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.series ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="session"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.session?.name ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="track"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.track ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="trackLength"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        `${live.summary.trackLength ?? "-"} mi`
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="flag"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.flag?.name ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="lap"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.lap ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="lapsToGo"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.lapsToGo ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="stage"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.stage?.number ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="finishLap"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.stage?.finishLap
+                            ? `V${live.summary.stage.finishLap}`
+                            : "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="stageLapsRemaining"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.stage?.lapsRemaining ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="leaders"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.leaders ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="leadChanges"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.leadChanges ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="cautions"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.cautions ?? "-"
+                    )
+                );
+
+
+            summary
+                .querySelector('[data-live="cautionLaps"]')
+                ?.replaceChildren(
+                    document.createTextNode(
+                        live.summary.cautionLaps ?? "-"
+                    )
+                );
+
+        }
 
 
         /*
