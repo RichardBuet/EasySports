@@ -5,6 +5,7 @@ let refreshTimer = null;
 let summaryCarousel = null;
 let summaryAutoTimer = null;
 let summaryPaused = false;
+let driverBadgeCache = new Map();
 
 /* =========================================================
    OPEN NASCAR LIVE FULL
@@ -68,6 +69,45 @@ function initLiveFullClose() {
             once: true
         }
     );
+
+}
+/* =========================================================
+   NUMEROS DE DRIVER
+   ========================================================= */
+async function getDriverBadge(driverId) {
+
+    if (!driverId) return null;
+
+    if (driverBadgeCache.has(driverId)) {
+        return driverBadgeCache.get(driverId);
+    }
+
+    try {
+
+        const driver =
+            await NASCAR.getDriver(driverId);
+
+        const badge =
+            driver?.badge ??
+            driver?.profile?.badge ??
+            null;
+
+        driverBadgeCache.set(driverId, badge);
+
+        return badge;
+
+    } catch (error) {
+
+        console.warn(
+            "No se pudo obtener badge del piloto:",
+            driverId
+        );
+
+        driverBadgeCache.set(driverId, null);
+
+        return null;
+
+    }
 
 }
 
@@ -295,7 +335,7 @@ async function createLiveContent(live) {
 
             <div class="nascar-live-full-driver-list">
 
-                ${createDriverRows(live.leaderboard)}
+                ${await createDriverRows(live.leaderboard)}
 
             </div>
 
@@ -311,9 +351,24 @@ async function createLiveContent(live) {
    DRIVER ROWS
    ========================================================= */
 
-function createDriverRows(leaderboard = []) {
+async function createDriverRows(leaderboard = []) {
 
-    return leaderboard.map(driver => {
+   const drivers = await Promise.all(
+   
+       leaderboard.map(async driver => ({
+   
+           ...driver,
+   
+           badge:
+               await getDriverBadge(
+                   driver.driverId
+               )
+   
+       }))
+   
+   );
+   
+    return drivers.map(driver => {
 
 
         const statusClass =
@@ -344,9 +399,19 @@ function createDriverRows(leaderboard = []) {
                 </span>
 
 
-                <span>
-                    ${driver.number}
-                </span>
+               <span class="nascar-live-number">
+               
+                   ${
+                       driver.badge
+                           ? `<img
+                               src="${driver.badge}"
+                               alt="#${driver.number}"
+                               loading="lazy"
+                           >`
+                           : `#${driver.number}`
+                   }
+               
+               </span>
 
 
                 <span>
@@ -519,9 +584,9 @@ async function refreshLiveFullModal() {
         const verticalScroll =
             table.scrollTop;
 
-
+        
         driverList.innerHTML =
-            createDriverRows(
+            await createDriverRows(
                 live.leaderboard
             );
 
