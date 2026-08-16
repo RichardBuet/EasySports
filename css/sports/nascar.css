@@ -37,14 +37,15 @@ body.nascar{
 .nascarHeroOverlay{
     position: absolute;
     inset: 0;
-    /* background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .80)), url(../../assets/images/NASCAR_FullColor_onBlack_CMYK-6.svg); */
-    background: url(../../assets/images/NASCAR_FullColor_onBlack_CMYK-6.svg);
+    background: linear-gradient(rgb(14 14 14 / 42%), rgb(0 0 0 / 40%)), url(../../assets/images/NASCAR_FullColor_onBlack_CMYK-6.svg);
+    /* background: url(../../assets/images/NASCAR_FullColor_onBlack_CMYK-6.svg); */
     background-repeat: no-repeat;
-    background-position: right 0px center;
+    background-position: right center;
     background-size: contain;
     margin: 55px 20px 55px 20px;
-    opacity: 0.3;
+    opacity: 0.4;
     pointer-events: none;
+    margin-left: 28vw;
     width: inherit;
 }
 
@@ -123,14 +124,14 @@ body.nascar{
    border-color:rgba(22,163,74,.35);
 }
 
-.heroItem span, .heroItem strong {
+.heroItem .heroLive span, .heroItem .heroLive strong {
     /* animation: heroLivePulse 1.5s infinite; */
     animation: heroLivePulse 1.5s ease-in-out infinite;
     cursor: pointer;
 }
 @keyframes heroLivePulse {
     0%, 100% {transform: scale(1);}
-    50% {transform: scale(1.04);}
+    50% {transform: scale(0.9);}
 }
 /* 
 @keyframes heroLivePulse {
@@ -138,9 +139,6 @@ body.nascar{
     50% { opacity: 0.65;transform: scale(1.03); }
     100% { opacity: 1;transform: scale(1); }
 } */
-
-
-
 
 .container{
    padding:20px 20px 5px 20px;
