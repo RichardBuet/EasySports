@@ -1,15 +1,20 @@
 import { NASCAR } from "../../services/site.js";
 
 
-export function centerCalendarCurrentRace(currentIndex) {
+export function centerCalendarCurrentRace() {
 
     const calendarList =
-        document.querySelector(".calendarCard .calendar-list");
+        document.querySelector(
+            ".calendarCard .calendar-list"
+        );
 
     const currentRace =
-        document.getElementById(`race-${currentIndex}`);
+        calendarList?.querySelector(
+            ".calendar-row.current"
+        );
 
     if (!calendarList || !currentRace) return;
+
 
     const listRect =
         calendarList.getBoundingClientRect();
@@ -17,15 +22,18 @@ export function centerCalendarCurrentRace(currentIndex) {
     const raceRect =
         currentRace.getBoundingClientRect();
 
+
     const racePosition =
         raceRect.top
         - listRect.top
         + calendarList.scrollTop;
 
+
     calendarList.scrollTop =
         racePosition
         - (calendarList.clientHeight / 2)
         + (currentRace.offsetHeight / 2);
+
 }
 
 
@@ -35,11 +43,14 @@ export async function createCalendarCard() {
     const timeline =
         await NASCAR.getTimeline();
 
+
     const races =
         timeline.all;
 
+
     const currentIndex =
         timeline.currentIndex;
+
 
     const currentRace =
         races[currentIndex];
@@ -48,28 +59,35 @@ export async function createCalendarCard() {
     /* =====================================================
        CARRERAS A MOSTRAR
 
-       2 finalizadas
-       + carrera actual
-       + 2 posteriores
+       2 FINALIZADAS
+       + ACTUAL
+       + 2 POSTERIORES
        ===================================================== */
 
     const previousRaces =
         races
             .slice(0, currentIndex)
-            .filter(race => race.completed)
+            .filter(
+                race => race.completed
+            )
             .slice(-2);
 
 
     const nextRaces =
         races
             .slice(currentIndex)
-            .filter(race => !race.completed)
+            .filter(
+                race => !race.completed
+            )
             .slice(0, 3);
 
 
     const calendarRaces = [
+
         ...previousRaces,
+
         ...nextRaces
+
     ];
 
 
@@ -87,103 +105,159 @@ export async function createCalendarCard() {
             Calendario Nascar
         </h2>
 
+
         <div class="calendar-header">
 
             <span></span>
-            <span>CARRERA</span>
-            <span>CIRCUITO</span>
-            <span>ESTADO</span>
+
+            <span>
+                CARRERA
+            </span>
+
+            <span>
+                CIRCUITO
+            </span>
+
+            <span>
+                ESTADO
+            </span>
 
         </div>
 
+
         <div class="calendar-list">
 
-            ${calendarRaces.map((race, index) => {
-
-                const isCurrent =
-                    race.raceId === currentRace?.raceId;
+            ${calendarRaces.map(
+                (race, index) => {
 
 
-                const status =
-                    isCurrent
-                        ? {
-                            icon: "⭐",
-                            label: "Próxima carrera"
-                        }
-                        : race.completed
+                    const isCurrent =
+                        race.raceId ===
+                        currentRace?.raceId;
+
+
+                    const status =
+                        isCurrent
+
                             ? {
-                                icon: "🏁",
-                                label: "Finalizada"
+                                icon: "⭐",
+                                label:
+                                    "Próxima carrera"
                             }
-                            : {
-                                icon: "📅",
-                                label: "Programada"
-                            };
+
+                            : race.completed
+
+                                ? {
+                                    icon: "🏁",
+                                    label:
+                                        "Finalizada"
+                                }
+
+                                : {
+                                    icon: "📅",
+                                    label:
+                                        "Programada"
+                                };
 
 
-                return `
+                    return `
 
-                    <div
-                        class="
-                            calendar-row
-                            ${isCurrent ? "current" : ""}
-                            ${race.completed ? "clickable" : ""}
-                        "
-                        id="race-${race.raceId}"
-                        data-race-id="${race.raceId}"
-                        data-completed="${race.completed}"
+                        <div
 
-                        ${
-                            race.completed
-                                ? `onclick="window.openRaceResult(${race.raceId})"`
-                                : `onclick="window.openRaceInfo(${race.raceId})"`
-                        }
-                    >
+                            class="
+                                calendar-row
+                                ${isCurrent
+                                    ? "current"
+                                    : ""
+                                }
+                                ${race.completed
+                                    ? "clickable"
+                                    : ""
+                                }
+                            "
 
-                        <span>
+                            id="race-${index}"
+
+                            data-race-id="${race.raceId}"
+
+                            data-completed="${race.completed}"
 
                             ${
-                                race.date
-                                    ? new Date(
-                                        race.date
-                                    ).toLocaleDateString(
-                                        "en-US",
-                                        {
-                                            month: "short",
-                                            day: "2-digit"
-                                        }
-                                    )
-                                    : "—"
+                                race.completed
+
+                                    ? `onclick="
+                                        window.openRaceResult(
+                                            ${race.raceId}
+                                        )
+                                    "`
+
+                                    : `onclick="
+                                        window.openRaceInfo(
+                                            ${race.raceId}
+                                        )
+                                    "`
                             }
 
-                        </span>
+                        >
 
 
-                        <span>
+                            <span>
 
-                            ${race.name}
+                                ${
+                                    race.date
 
-                            <small class="calendar-status">
-                                • ${status.label}
-                            </small>
+                                        ? new Date(
+                                            race.date
+                                        ).toLocaleDateString(
+                                            "en-US",
+                                            {
+                                                month:
+                                                    "short",
 
-                        </span>
+                                                day:
+                                                    "2-digit"
+                                            }
+                                        )
+
+                                        : "—"
+                                }
+
+                            </span>
 
 
-                        <span>
-                            ${race.track}
-                        </span>
+                            <span>
+
+                                ${race.name}
+
+                                <small
+                                    class="calendar-status"
+                                >
+                                    • ${status.label}
+                                </small>
+
+                            </span>
 
 
-                        <strong title="${status.label}">
-                            ${status.icon}
-                        </strong>
+                            <span>
 
-                    </div>
+                                ${race.track}
 
-                `;
+                            </span>
 
-            }).join("")}
+
+                            <strong
+                                title="${status.label}"
+                            >
+                                ${status.icon}
+                            </strong>
+
+
+                        </div>
+
+                    `;
+
+                }
+            ).join("")}
 
         </div>
 
