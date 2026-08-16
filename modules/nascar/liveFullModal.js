@@ -5,7 +5,7 @@ let refreshTimer = null;
 let summaryCarousel = null;
 let summaryAutoTimer = null;
 let summaryPaused = false;
-let driverBadgeCache = new Map();
+let nascarDrivers = null;
 
 /* =========================================================
    OPEN NASCAR LIVE FULL
@@ -74,40 +74,16 @@ function initLiveFullClose() {
 /* =========================================================
    NUMEROS DE DRIVER
    ========================================================= */
-async function getDriverBadge(driverId) {
+async function getNascarDrivers() {
 
-    if (!driverId) return null;
+    if (!nascarDrivers) {
 
-    if (driverBadgeCache.has(driverId)) {
-        return driverBadgeCache.get(driverId);
-    }
-
-    try {
-
-        const driver =
-            await NASCAR.getDriver(driverId);
-
-        const badge =
-            driver?.badge ??
-            driver?.profile?.badge ??
-            null;
-
-        driverBadgeCache.set(driverId, badge);
-
-        return badge;
-
-    } catch (error) {
-
-        console.warn(
-            "No se pudo obtener badge del piloto:",
-            driverId
-        );
-
-        driverBadgeCache.set(driverId, null);
-
-        return null;
+        nascarDrivers =
+            await NASCAR.getDrivers();
 
     }
+
+    return nascarDrivers;
 
 }
 
@@ -353,22 +329,20 @@ async function createLiveContent(live) {
 
 async function createDriverRows(leaderboard = []) {
 
-   const drivers = await Promise.all(
-   
-       leaderboard.map(async driver => ({
-   
-           ...driver,
-   
-           badge:
-               await getDriverBadge(
-                   driver.driverId
-               )
-   
-       }))
-   
-   );
-   
-    return drivers.map(driver => {
+    const nascarDrivers =
+        await getNascarDrivers();
+
+    return leaderboard.map(driver => {
+
+        const profile =
+            nascarDrivers.find(
+                d =>
+                    Number(d.driverId) ===
+                    Number(driver.driverId)
+            );
+
+        const badge =
+            profile?.badge ?? null;
 
 
         const statusClass =
@@ -402,9 +376,9 @@ async function createDriverRows(leaderboard = []) {
                <span class="nascar-live-number">
                
                    ${
-                       driver.badge
+                       badge
                            ? `<img
-                               src="${driver.badge}"
+                               src="${badge}"
                                alt="#${driver.number}"
                                loading="lazy"
                            >`
