@@ -518,13 +518,11 @@
 
 .nascar-live-full-driver-row .nascar-live-number img {
     display: block;
-
-    width: 30px;
-    height: 30px;
-
-    max-width: 30px;
-    max-height: 30px;
-
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+    max-width: 34px;
+    max-height: 34px;
     object-fit: contain;
 }
 
@@ -711,6 +709,7 @@
 .nascar-live-full-driver-row span:nth-child(3) {
     min-width: 0;
     overflow: hidden;
+	cursor: pointer;
 }
 
 
