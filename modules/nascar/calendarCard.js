@@ -53,7 +53,7 @@ export async function createCalendarCard() {
 
         <div class="calendar-header">
 
-            <span>FECHA</span>
+            <span></span>
             <span>CARRERA</span>
             <span>CIRCUITO</span>
             <span>ESTADO</span>
