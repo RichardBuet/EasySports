@@ -245,7 +245,8 @@ background: linear-gradient(180deg, #1f1f1f, #111);
 }
 
 .calendar-list {
-    max-height: 420px;
+    max-height: 400px;
+    font-size: 0.8em;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #50535a transparent;
