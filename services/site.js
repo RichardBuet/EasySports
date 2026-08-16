@@ -484,6 +484,28 @@ static async getRaceCenterData() {
                 flagData
             );
 
+
+            const drivers = await this.getDrivers();
+
+data.leaderboard = data.leaderboard.map(driver => {
+
+    const profile = drivers.find(
+        d => d.driverId === driver.driverId
+    );
+
+    return {
+        ...driver,
+        badge: profile?.badge ?? null
+    };
+
+});
+
+return data;
+
+            
+
+
+            
             data.summary.series = this.getSeriesName();
             
             console.log(data);
