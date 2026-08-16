@@ -64,32 +64,15 @@ export async function createCalendarCard() {
        + 2 POSTERIORES
        ===================================================== */
 
-    const previousRaces =
-        races
-            .slice(0, currentIndex)
-            .filter(
-                race => race.completed
-            )
-            .slice(-2);
+    /* =====================================================
+   CARRERAS DEL CALENDARIO
 
+   Se renderizan todas las carreras.
+   El CSS limita el área visible y permite
+   desplazarse mediante scroll.
+   ===================================================== */
 
-    const nextRaces =
-        races
-            .slice(currentIndex)
-            .filter(
-                race => !race.completed
-            )
-            .slice(0, 3);
-
-
-    const calendarRaces = [
-
-        ...previousRaces,
-
-        ...nextRaces
-
-    ];
-
+const calendarRaces = races;
 
     console.log(
         "🏁 CALENDARIO TARJETA:",
