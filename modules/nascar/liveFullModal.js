@@ -24,7 +24,7 @@ window.openLiveFullModal = async () => {
             onClose: () => { stopLiveFull(); }
         });
         clearInterval(refreshTimer);
-    //    refreshTimer = setInterval(refreshLiveFullModal, 5000);
+        refreshTimer = setInterval(refreshLiveFullModal, 5000);
         initSummaryCarousel();
         initLiveFullClose();
     } catch (error) { console.error( "❌ Error opening NASCAR LIVE:", error);}
