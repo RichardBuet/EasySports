@@ -19,21 +19,16 @@ function renderHeader(driver) {
                 alt="${driver.driver}"
                 class="driver-photo">
             <div class="driver-info">
-                <h2>${driver.driver}</h2>
-                
-                <p><span class="nascar-driver-number">
-    ${
-        driver.profile?.badge
-            ? `<img
-                src="${driver.profile.badge}"
-                alt="#${driver.number}"
-                loading="lazy"
-            >`
-            : `#${driver.number}`
-    }
-</span>
-</p>
-
+                <div class="driver-info-titulo">
+                    <span class="nascar-driver-number">
+                        ${driver.profile?.badge? `<img
+                        src="${driver.profile.badge}"
+                        alt="#${driver.number}"
+                        loading="lazy" >`
+                        : `#${driver.number}`}
+                    </span>
+                    <h2>${driver.driver}</h2>
+                 </div>
                 <p>${driver.profile.team}</p>
                 <p>${driver.manufacturer}</p>
             </div>
