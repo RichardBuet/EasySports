@@ -243,11 +243,27 @@ background: linear-gradient(180deg, #1f1f1f, #111);
 }
 
 .calendar-list {
+    height: 400px;
     max-height: 400px;
+
     font-size: 0.8em;
+
     overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Scroll táctil en iPhone/iPad */
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+
+    /* Evita que el scroll interno se bloquee */
+    overscroll-behavior-y: contain;
+
     scrollbar-width: thin;
     scrollbar-color: #50535a transparent;
+}
+
+.calendar-row {
+    flex-shrink: 0;
 }
 
 
