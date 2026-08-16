@@ -473,6 +473,31 @@
 
 
 /* =========================================================
+   NUMERO DEL AUTO - NASCAR LIVE
+   ========================================================= */
+
+.nascar-live-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    overflow: hidden;
+}
+
+.nascar-live-number img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: block;
+}
+
+
+
+
+
+/* =========================================================
    LIVE TABLE
    ========================================================= */
 .nascar-live-full-table {
