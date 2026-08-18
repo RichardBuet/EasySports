@@ -12,38 +12,42 @@ import { createQualifying } from "../f1/qualifying.js";
 import { createDrivers } from "../f1/drivers.js";
 import { createCalendar } from "../f1/calendar.js";
 
-export async function renderF1() {
 
+export async function renderF1() {
     setSportTheme("f1");
+    const [
+        hero,
+        raceCenter,
+        standings,
+        constructorStandings,
+        results,
+        qualifying,
+        drivers,
+        calendar
+    ] = await Promise.all([
+        createHero(),
+        createRaceCenter(),
+        createStandings(),
+        createConstructorStandings(),
+        createResults(),
+        createQualifying(),
+        createDrivers(),
+        createCalendar()
+    ]);
 
     return createLayout(`
-
-        ${await createHero()}
-
+        ${hero}
         ${createSelector()}
-
         <section class="dashboard">
-
             <div class="dashboard-grid">
-
-                ${await createRaceCenter()}
-
-                ${await createStandings()}
-
-                ${await createConstructorStandings()}
-
-                ${await createResults()}
-
-                ${await createQualifying()}
-
-                ${await createDrivers()}
-
-                ${await createCalendar()}
-
+                ${raceCenter}
+                ${standings}
+                ${constructorStandings}
+                ${results}
+                ${qualifying}
+                ${drivers}
+                ${calendar}
             </div>
-
         </section>
-
     `);
-
 }
