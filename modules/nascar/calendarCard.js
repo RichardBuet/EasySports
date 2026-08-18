@@ -208,17 +208,17 @@ const calendarRaces = races;
                             </span>
 
 
-                            <span>
+<span>
 
-                                ${race.name}
+    <span class="calendar-name">
+        ${race.name}
+    </span>
 
-                                <small
-                                    class="calendar-status"
-                                >
-                                    • ${status.label}
-                                </small>
+    <small class="calendar-status">
+        • ${status.label}
+    </small>
 
-                            </span>
+</span>
 
 
                             <span>
