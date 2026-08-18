@@ -9,13 +9,36 @@ import { createCalendarCard } from "../nascar/calendarCard.js";
 import { createSchedule } from "../nascar/schedule.js";
 import { createDrivers } from "../nascar/drivers.js";
 
+
 export async function renderNascar() {
 
     setSportTheme("nascar");
 
+
+    const [
+        hero,
+        raceCenter,
+        calendar,
+        schedule,
+        drivers
+    ] = await Promise.all([
+
+        createNascarHero(),
+
+        createRaceCenter(),
+
+        createCalendarCard(),
+
+        createSchedule(),
+
+        createDrivers()
+
+    ]);
+
+
     return createLayout(`
 
-        ${await createNascarHero()}
+        ${hero}
 
         ${createNascarSelector()}
 
@@ -23,13 +46,13 @@ export async function renderNascar() {
 
             <div class="dashboard-grid">
 
-                ${await createRaceCenter()}
+                ${raceCenter}
 
-                ${await createCalendarCard()}
+                ${calendar}
 
-                ${await createSchedule()}
+                ${schedule}
 
-                ${await createDrivers()}
+                ${drivers}
 
             </div>
 
