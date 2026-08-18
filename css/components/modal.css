@@ -479,15 +479,27 @@
     gap:10px;
 }
 
-.calendar-header,
+.calendar-header {
+    display: grid;
+    grid-template-columns: 30px 1fr 1.2fr 46px;
+    align-items: center;
+    gap: 8px;
+}
+
+.calendarCard .calendar-list{ 
+    max-height: 20em!Important;
+    font-size: 0.8em!Important;
+}
+
 .calendar-row{
     display: grid;
     grid-template-columns: 30px 1fr 1.3fr 20px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     padding: 4px 20px;
     border-bottom: 1px solid #333;
+    height: calc(4em - 4px);
 }
 
 .calendar-row.current, .driver-row.current {
