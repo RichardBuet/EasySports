@@ -1,3 +1,10 @@
+/* ===================================
+   CONTENIDO
+=================================== */
+
+@import "css/container/liveFullModal.css";
+
+
 body.nascar{
     --sport-primary:#ffd100;
     /* >>> estas configuraciones funcionan pero no se usará por el momento <<< */
