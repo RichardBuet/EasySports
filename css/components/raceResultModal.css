@@ -406,8 +406,7 @@
 
 .race-result-driver-header span:nth-child(3) { 
    text-align: left; 
-   color: blue;
-   justify-items: left;
+   justify-self: start;
 }
 /* =========================================================
    MOBILE
