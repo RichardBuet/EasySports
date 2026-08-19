@@ -107,9 +107,17 @@ return `
                     </span>
 
 
-                    <span>
-                        ${driver.number}
-                    </span>
+<span class="nascar-live-number">
+    ${
+        driver.badge
+            ? `<img
+                src="${driver.badge}"
+                alt="#${driver.number}"
+                loading="lazy"
+            >`
+            : `#${driver.number}`
+    }
+</span>
 
 
                     <span
