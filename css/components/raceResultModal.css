@@ -237,8 +237,8 @@
 
 .race-result-driver-header {
     display: grid;
-    grid-template-columns: 38px 28px minmax(150px, 1fr) 56px 78px;
-    gap: 12px;
+    grid-template-columns: 35px 50px minmax(150px, 1fr) 80px 60px;
+    gap: 10px;
     align-items: center;
     padding: 10px 20px;
     background: linear-gradient(180deg, #292c31, #202328);
@@ -270,7 +270,7 @@
 
 .race-result-driver-row {
     display: grid;
-    grid-template-columns: 23px 45px minmax(150px, 1fr) 80px 50px;
+    grid-template-columns: 35px 50px minmax(150px, 1fr) 80px 60px;
     gap: 10px;
     align-items: center;
     padding: 9px 20px;
@@ -306,6 +306,7 @@
 .race-result-driver-row > span:first-child {
     color: #ffd52f;
     font-weight: 900;
+    text-align: center;
 }
 
 
@@ -400,8 +401,8 @@
 
 /* .race-result-driver-header span:nth-child(4) { text-align: center; } */
 
-.race-result-driver-header span:nth-child(4) { text-align: center; }
-.race-result-driver-header span:nth-child(5) { text-align: center; }
+.race-result-driver-header span:nth-child(1) { text-align: center; }
+.race-result-driver-header span:nth-child(2) { text-align: center; }
 /* =========================================================
    MOBILE
    ========================================================= */
