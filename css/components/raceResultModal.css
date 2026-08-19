@@ -237,6 +237,7 @@
 
 .race-result-driver-header {
     display: grid;
+    justify-items: center;
     grid-template-columns: 35px 50px minmax(150px, 1fr) 80px 60px;
     gap: 10px;
     align-items: center;
@@ -399,10 +400,11 @@
     font-size: 15px;
 }
 
-/* .race-result-driver-header span:nth-child(4) { text-align: center; } */
+/* .race-result-driver-header span:nth-child(4) { text-align: center; } 
 
-.race-result-driver-header span:nth-child(1) { text-align: center; }
-.race-result-driver-header span:nth-child(2) { text-align: center; }
+.race-result-driver-header span:nth-child(1) { text-align: center; } */
+
+.race-result-driver-header span:nth-child(3) { text-align: left; }
 /* =========================================================
    MOBILE
    ========================================================= */
