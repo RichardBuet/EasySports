@@ -28,9 +28,21 @@ return `
         data-driver-id="${raceCenter.winner.driverId}">
 
         <strong>
-            ${raceCenter.winner.number ? `#${raceCenter.winner.number}` : ""}
-            ${raceCenter.winner.name}
-        </strong>
+
+    ${
+        raceCenter.winner.badge
+            ? `<img
+                class="race-winner-number"
+                src="${raceCenter.winner.badge}"
+                alt="#${raceCenter.winner.number}"
+                loading="lazy"
+            >`
+            : `#${raceCenter.winner.number ?? ""}`
+    }
+
+    ${raceCenter.winner.name}
+
+</strong>
 
  ${raceCenter.winner.team? `<small>${raceCenter.winner.team}</small>` : ""}
  
