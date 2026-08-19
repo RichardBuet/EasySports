@@ -5,6 +5,26 @@ window.openRaceResult = async (raceId) => {
 
     const race = await NASCAR.getWeekend(raceId);
 
+    const drivers = await NASCAR.getDrivers();
+
+    race.leaderboard = race.leaderboard.map(driver => {
+
+        const profile = drivers.find(
+
+            d => d.driverId === driver.driverId
+
+        );
+
+        return {
+
+            ...driver,
+
+            badge: profile?.badge ?? null
+
+        };
+
+    });
+
     openModal({
 
         title: "Resultado de la carrera",
