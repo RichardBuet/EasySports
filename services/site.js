@@ -271,12 +271,37 @@ export class NASCAR {
         const race =
             await this.getLastRace();
 
+    const [
 
-        const weekend =
-            await this.getWeekend(
-                race.raceId
-            );
+        weekend,
 
+        drivers
+
+    ] = await Promise.all([
+
+        this.getWeekend(
+
+            race.raceId
+
+        ),
+
+        this.getDrivers()
+
+    ]);
+
+    const winnerProfile =
+
+        drivers.find(
+
+            driver =>
+
+                driver.driverId ===
+
+                weekend.winner?.driverId
+
+        );
+
+ 
 
         return {
 
@@ -309,6 +334,9 @@ export class NASCAR {
             winner: {
 
                 ...weekend.winner,
+              
+               badge:
+                winnerProfile?.badge ?? null,
 
                 manufacturerLogo:
                     MANUFACTURER_LOGOS[
