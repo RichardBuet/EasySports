@@ -404,7 +404,11 @@
 
 .race-result-driver-header span:nth-child(1) { text-align: center; } */
 
-.race-result-driver-header span:nth-child(3) { text-align: left; }
+.race-result-driver-header span:nth-child(3) { 
+   text-align: left; 
+   color: blue;
+   justify-items: left;
+}
 /* =========================================================
    MOBILE
    ========================================================= */
