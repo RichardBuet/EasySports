@@ -494,8 +494,6 @@
 
 .race-result-driver-row > span:nth-child(2) {
 
-    width: 55px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -511,6 +509,16 @@
 
 }
 
+@media (max-width: 600px) {
+
+    .race-result-driver-row > span:nth-child(2) img {
+
+        width: 45px;
+        height: 30px;
+
+    }
+
+}
 
 
 /* =========================================================
