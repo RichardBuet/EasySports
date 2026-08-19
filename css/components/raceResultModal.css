@@ -494,13 +494,23 @@
 
 .race-result-driver-row > span:nth-child(2) {
 
-    color:
-        #e0e2e5;
+    width: 55px;
 
-    font-weight:
-        700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+.race-result-driver-row > span:nth-child(2) img {
+
+    width: 50px;
+    height: 32px;
+
+    object-fit: contain;
+
+}
+
 
 
 /* =========================================================
