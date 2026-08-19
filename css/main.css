@@ -9,9 +9,9 @@
    LAYOUTS
 =================================== */
 
-@import "layouts/container.css";
-@import "layouts/grid.css";
-@import "./components/modal.css";
+/* @import "layouts/container.css";
+@import "layouts/grid.css"; */
+/* @import "./components/modal.css"; */
 
 /* ===================================
    COMPONENTES GENERALES
@@ -27,7 +27,7 @@
 /* @import "components/sidebar.css"; */
 /* @import "components/nascar.css"; */
 @import "components/raceTimeline.css";
-/* @import "./components/modal.css";*/
+@import "./components/modal.css";
 /* @import "./components/liveFullModal.css"; */
 @import "./components/raceResultModal.css";
 
