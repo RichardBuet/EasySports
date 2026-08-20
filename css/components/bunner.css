@@ -9,14 +9,13 @@
 
 .hero-bunner{
     /* width: calc(100vw - 40px); */
-    width: inherit;
-    max-width: 1400px;
-    height: auto;
+    /* max-width: 1400px; */
     /* calc(100dvw * 0.26); */
-    border-radius:12px;
+    /* border-radius:12px; */
+    width: inherit;
+    height: auto;
     display:block;
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.45);
+    box-shadow: 0 10px 35px rgba(0,0,0,.45);
     transition:.35s ease;
 }
 
