@@ -6,6 +6,7 @@ export { getSchedule } from "./schedule.js";
 export { getRaceResults } from "./results.js";
 export { getQualifying } from "./qualifying.js";
 export { getSprintResults } from "./sprint.js";
+export { getSessionResults } from "./sessions.js";
 export { getDrivers } from "./drivers.js";
 export { getCircuits } from "./circuits.js";
 export { getLaps } from "./laps.js";
