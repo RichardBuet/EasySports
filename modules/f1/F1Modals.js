@@ -1,6 +1,5 @@
 /* MODALS F1 ALL INCLUSIVE */
 
-
 let modalStack = [];
 
 function createModal(content) {
@@ -17,11 +16,7 @@ function createModal(content) {
 }
 
 function renderModal(content) {
-    const existing = document.querySelector(".f1-modal-overlay");
-
-    if (existing) {
-        existing.remove();
-    }
+    document.querySelector(".f1-modal-overlay")?.remove();
 
     document.body.insertAdjacentHTML(
         "beforeend",
@@ -38,6 +33,7 @@ function renderModal(content) {
 }
 
 function initModalEvents() {
+
     const overlay = document.querySelector(".f1-modal-overlay");
     const close = document.querySelector(".f1-modal-close");
 
@@ -46,25 +42,31 @@ function initModalEvents() {
     close.addEventListener("click", closeF1Modal);
 
     overlay.addEventListener("click", event => {
+
         if (event.target === overlay) {
             closeF1Modal();
         }
+
     });
+
 }
 
 export function openF1Modal(type, data = null) {
+
     modalStack.push({
         type,
         data
     });
 
     renderModal(`
-        <h2>F1 Modal</h2>
-        <p>${type}</p>
+        <h2>🏎️ F1 Modal</h2>
+        <p>Modal: ${type}</p>
     `);
+
 }
 
 export function closeF1Modal() {
+
     const overlay = document.querySelector(".f1-modal-overlay");
 
     if (!overlay) return;
@@ -72,15 +74,21 @@ export function closeF1Modal() {
     overlay.classList.remove("show");
 
     setTimeout(() => {
+
         overlay.remove();
         modalStack.pop();
-    }, 200);
+
+    }, 250);
+
 }
 
 export function backF1Modal() {
+
     if (modalStack.length <= 1) {
+
         closeF1Modal();
         return;
+
     }
 
     modalStack.pop();
@@ -88,13 +96,16 @@ export function backF1Modal() {
     const previous = modalStack[modalStack.length - 1];
 
     renderModal(`
-        <h2>F1 Modal</h2>
-        <p>${previous.type}</p>
+        <h2>🏎️ F1 Modal</h2>
+        <p>Modal: ${previous.type}</p>
     `);
+
 }
 
 document.addEventListener("keydown", event => {
+
     if (event.key === "Escape") {
         closeF1Modal();
     }
+
 });
