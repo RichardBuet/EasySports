@@ -784,8 +784,7 @@ function renderSessionResults(data) {
                 const fullName =
                     driver.fullName ??
                     driver.full_name ??
-                    `${driver.givenName ?? driver.given_name ?? ""} ${driver.familyName ?? driver.family_name ?? ""}`
-                        .trim() ||
+                    `${driver.givenName ?? driver.given_name ?? ""} ${driver.familyName ?? driver.family_name ?? ""}`.trim() ??
                     "—";
 
 
