@@ -5,6 +5,8 @@ import {
     getRaceResults as fetchRaceResults,
     getQualifying as fetchQualifying,
     getSprintResults as fetchSprintResults,
+    getSessionResults,
+    getAlphaSchedule,
     getDrivers as fetchDrivers,
     getCircuits as fetchCircuits,
     getLaps as fetchLaps,
@@ -31,6 +33,14 @@ import {
 } from "./adapters/f1Adapter.js";
 
 export class F1 {
+
+    
+
+static async getAlphaSchedule(season = "current") {
+    return await getAlphaSchedule(season);
+}
+
+    
 
     static async getStandings(season = "current") {
         const data = await getDriverStandings(season);
