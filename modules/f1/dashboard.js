@@ -1,19 +1,29 @@
 import { F1 } from "../../services/siteF1.js";
+import { openF1Modal } from "./F1Modals.js";
 
-function createDashboardCard(title, value, subtitle, icon) {
+function createDashboardCard(title, value, subtitle, icon, modalType, modalData = null) {
     return `
-        <article class="f1-dashboard-card">
+        <article
+            class="f1-dashboard-card"
+            data-f1-modal="${modalType}"
+            data-f1-modal-data="${modalData ?? ""}"
+        >
             <span class="f1-dashboard-card__icon">${icon}</span>
-            <span class="f1-dashboard-card__title">${title}</span>
-            <h3 class="f1-dashboard-card__value">${value}</h3>
-            <span class="f1-dashboard-card__subtitle">${subtitle}</span>
+            <span class="f1-dashboard-card__title">
+                ${title}
+            </span>
+            <h3 class="f1-dashboard-card__value">
+                ${value}
+            </h3>
+            <span class="f1-dashboard-card__subtitle">
+                ${subtitle}
+            </span>
         </article>
     `;
 }
 
 function getNextRace(schedule) {
     const now = new Date();
-
     return schedule
         .filter(race => {
             const raceDate = new Date(`${race.date}T${race.time || "00:00:00"}`);
@@ -28,7 +38,6 @@ function getNextRace(schedule) {
 
 function getLastRace(schedule) {
     const now = new Date();
-
     return schedule
         .filter(race => {
             const raceDate = new Date(`${race.date}T${race.time || "00:00:00"}`);
@@ -59,39 +68,53 @@ export async function createDashboard() {
 
     return `
         <section class="section f1-dashboard">
-
             <div class="f1-dashboard-grid">
-
                 ${createDashboardCard(
                     "Driver Leader",
                     driverLeader?.driver.fullName ?? "—",
                     `${driverLeader?.points ?? "—"} pts`,
-                    "🏎️"
+                    "🏎️",
+                    "championship",
+                    "drivers"
                 )}
 
                 ${createDashboardCard(
                     "Constructor Leader",
                     constructorLeader?.constructor.name ?? "—",
                     `${constructorLeader?.points ?? "—"} pts`,
-                    "🏆"
+                    "🏆",
+                    "championship",
+                    "constructors"
                 )}
 
                 ${createDashboardCard(
                     "Next Race",
                     nextRace?.raceName ?? "—",
                     nextRace ? `Round ${nextRace.round}` : "—",
-                    "📅"
+                    "📅",
+                    "next-race"
                 )}
 
                 ${createDashboardCard(
                     "Last Race",
                     lastRace?.raceName ?? "—",
                     lastRace ? `Round ${lastRace.round}` : "—",
-                    "🏁"
+                    "🏁",
+                    "last-race"
                 )}
-
             </div>
-
         </section>
     `;
+}
+
+export function initF1DashboardModals() {
+    document
+        .querySelectorAll("[data-f1-modal]")
+        .forEach(card => {
+            card.addEventListener("click", () => {
+                const type = card.dataset.f1Modal;
+                const data = card.dataset.f1ModalData || null;
+                openF1Modal(type, data);
+            });
+        });
 }
