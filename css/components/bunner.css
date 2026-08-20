@@ -20,8 +20,78 @@
     transition:.35s ease;
 }
 
-.hero-bunner:hover{
-
-    transform:scale(1.01);
-
+@property --angulo {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
+
+/* 1. Contenedor principal de tu imagen */
+.bunner {
+  position: relative;
+  display: inline-block; /* Hace que el cuadro mida lo mismo que la imagen */
+  padding: 3px;          /* Este es el grosor exacto del borde brillante */
+  border-radius: 20px;   /* Esquinas redondeadas para el contorno */
+  background: transparent;
+  transition: box-shadow 0.4s ease;
+}
+
+/* 2. El pseudo-elemento que creará el borde mágico al hacer hover */
+.bunner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  padding: 3px; 
+  
+  /* El degradado de Gemini escondido por defecto (opacidad 0) */
+  background: conic-gradient(
+    from var(--angulo), 
+    #4285f4, #9b51e0, #e91e63, #fbbc05, #4285f4
+  );
+  
+  /* Máscara webkit: oculta el centro del fondo para dejar SOLO el borde visible */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* 3. Tu clase de la imagen */
+.hero-bunner {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 17px; /* Un poco menor para que no muerda el borde */
+  transition: transform 0.4s ease;
+}
+
+/* ==========================================
+   EFECTOS HOVER (Al pasar el ratón)
+   ========================================== */
+
+.bunner:hover::before {
+  opacity: 1; /* Aparece el borde de colores */
+  animation: girarBorde 3s linear infinite; /* Empieza a girar */
+}
+
+.bunner:hover {
+  /* Añade el halo/brillo de neón difuminado hacia afuera */
+  box-shadow: 0 0 25px 6px rgba(155, 81, 224, 0.5);
+}
+
+.bunner:hover .hero-bunner {
+  transform: scale(1.01); /* Mini zoom opcional para dar dinamismo */
+}
+
+/* Animación del ángulo para el giro */
+@keyframes girarBorde {
+  to {
+    --angulo: 360deg;
+  }
+}
+
