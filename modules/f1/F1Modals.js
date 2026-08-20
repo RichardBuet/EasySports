@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE */
+/* MODALS F1 ALL INCLUSIVE  19:49 20/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -431,82 +431,122 @@ function createNextRace(race) {
 
 async function findAlphaRace(race) {
 
+    if (!race) return null;
+
     const alpha =
         await F1.getAlphaSchedule(
             race.season
         );
 
-
-    const possibleArrays = [
-
-        alpha?.rounds,
-
-        alpha?.schedule,
-
-        alpha?.races,
-
-        alpha?.data?.rounds,
-
-        alpha?.data?.schedule,
-
-        alpha?.data?.races,
-
-        alpha?.MRData?.RaceTable?.Races
-
-    ];
+    console.log(
+        "ALPHA SCHEDULE:",
+        alpha
+    );
 
 
-    for (const list of possibleArrays) {
+    function search(node) {
 
-        if (!Array.isArray(list)) continue;
-
-
-        const found =
-            list.find(item => {
-
-                const round =
-                    Number(
-                        item.round ??
-                        item.round_number ??
-                        item.roundNumber ??
-                        item.race?.round
-                    );
+        if (!node) {
+            return null;
+        }
 
 
-                return (
-                    round ===
-                    Number(race.round)
-                );
+        if (Array.isArray(node)) {
 
-            });
+            for (const item of node) {
 
+                const result =
+                    search(item);
 
-        if (found) {
+                if (result) {
+                    return result;
+                }
 
-            const roundId =
-                found.round_id ??
-                found.roundId ??
-                found.api_id ??
-                found.id ??
-                found.race?.round_id ??
-                found.race?.roundId;
+            }
+
+            return null;
+        }
 
 
-            if (roundId) {
+        if (
+            typeof node !== "object"
+        ) {
 
-                return {
-                    ...found,
-                    roundId
-                };
+            return null;
 
+        }
+
+
+        /*
+         * Buscamos el número de ronda
+         */
+        const round =
+            Number(
+                node.round ??
+                node.round_number ??
+                node.roundNumber ??
+                node.race?.round ??
+                node.race?.round_number
+            );
+
+
+        /*
+         * Buscamos el ID interno Alpha
+         */
+        const roundId =
+            node.round_id ??
+            node.roundId ??
+            node.roundID ??
+            node.id ??
+            node.race?.round_id ??
+            node.race?.roundId ??
+            node.race?.id;
+
+
+        /*
+         * Encontramos la ronda correcta
+         */
+        if (
+            round === Number(race.round) &&
+            typeof roundId === "string" &&
+            roundId.startsWith("round_")
+        ) {
+
+            console.log(
+                "ALPHA ROUND ENCONTRADO:",
+                roundId
+            );
+
+            return {
+                roundId
+            };
+
+        }
+
+
+        /*
+         * Seguimos recorriendo
+         * todos los objetos internos
+         */
+        for (
+            const value of Object.values(node)
+        ) {
+
+            const result =
+                search(value);
+
+            if (result) {
+                return result;
             }
 
         }
 
+
+        return null;
     }
 
 
-    return null;
+    return search(alpha);
 }
 
 
@@ -928,42 +968,47 @@ async function loadSession(
         /*
          * PRACTICE / SPRINT QUALY
          */
-        else {
-
-            if (!currentRoundId) {
-
-                throw new Error(
-                    "No se encontró round_id de Alpha."
-                );
-
-            }
-
-
-            const code =
-                document
-                    .querySelector(
-                        `[data-f1-session="${session}"]`
-                    )
-                    ?.dataset
-                    .f1Code;
-
-
-            if (!code) {
-
-                throw new Error(
-                    "Código de sesión no encontrado."
-                );
-
-            }
-
-
-            data =
-                await F1.getSessionResults(
-                    currentRoundId,
-                    code
-                );
-
-        }
+         else {
+         
+             if (!currentRoundId) {
+         
+                 throw new Error(
+                     "No se encontró round_id de Alpha."
+                 );
+         
+             }
+         
+         
+             const alphaSessionMap = {
+         
+                 fp1: "FP1",
+                 fp2: "FP2",
+                 fp3: "FP3",
+                 sq: "SQ"
+         
+             };
+         
+         
+             const code =
+                 alphaSessionMap[session];
+         
+         
+             if (!code) {
+         
+                 throw new Error(
+                     `Código Alpha desconocido: ${session}`
+                 );
+         
+             }
+         
+         
+             data =
+                 await F1.getSessionResults(
+                     currentRoundId,
+                     code
+                 );
+         
+         }
 
 
         const sessions =
