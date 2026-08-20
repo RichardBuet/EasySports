@@ -56,7 +56,10 @@ static async getAlphaSchedule(season = "current") {
         const data = await fetchSchedule(season);
         return adaptSchedule(data);
     }
-
+static async getSessionResults(roundId, sessionFilter) {
+    const data = await getSessionResults(roundId, sessionFilter);
+    return data;
+}
     static async getNextRace(season = "current") {
         const schedule = await this.getSchedule(season);
         const now = new Date();
