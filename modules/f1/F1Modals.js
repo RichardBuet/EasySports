@@ -1,6 +1,5 @@
 /* MODALS F1 ALL INCLUSIVE */
 
-
 import { F1 } from "../../services/siteF1.js";
 
 let modalStack = [];
@@ -60,7 +59,7 @@ function renderModal(content) {
 
 
 /* =========================================================
-   EVENTOS DEL MODAL
+   EVENTOS
 ========================================================= */
 
 function initModalEvents() {
@@ -103,14 +102,14 @@ function initModalEvents() {
                     const session =
                         button.dataset.f1Session;
 
-                    const raceRound =
+                    const round =
                         button.dataset.f1Round;
 
                     const roundId =
                         button.dataset.f1RoundId;
 
                     await loadSession(
-                        raceRound,
+                        round,
                         roundId,
                         session
                     );
@@ -119,6 +118,7 @@ function initModalEvents() {
             );
 
         });
+
 }
 
 
@@ -206,7 +206,7 @@ async function createChampionship(type) {
 
 
 /* =========================================================
-   HELPERS
+   FORMATO
 ========================================================= */
 
 function formatTime(time) {
@@ -238,7 +238,7 @@ function formatDay(date) {
 
 
 /* =========================================================
-   HEADER DE CARRERA
+   HEADER
 ========================================================= */
 
 function createRaceHeader(race) {
@@ -361,12 +361,10 @@ function createNextRace(race) {
 
 
     sessions.push({
-
         date: race.date,
         time: race.time,
         icon: "🏁",
         label: "Race"
-
     });
 
 
@@ -428,7 +426,7 @@ function createNextRace(race) {
 
 
 /* =========================================================
-   ALPHA: BUSCAR ROUND ID
+   BUSCAR CARRERA ALPHA
 ========================================================= */
 
 async function findAlphaRace(race) {
@@ -439,31 +437,81 @@ async function findAlphaRace(race) {
         );
 
 
-    const races =
-        alpha?.MRData?.RaceTable?.Races ??
-        alpha?.races ??
-        alpha?.schedule ??
-        [];
+    const possibleArrays = [
+
+        alpha?.rounds,
+
+        alpha?.schedule,
+
+        alpha?.races,
+
+        alpha?.data?.rounds,
+
+        alpha?.data?.schedule,
+
+        alpha?.data?.races,
+
+        alpha?.MRData?.RaceTable?.Races
+
+    ];
 
 
-    return races.find(item => {
+    for (const list of possibleArrays) {
 
-        const round =
-            Number(
-                item.round ??
-                item.Round ??
-                item.race?.round
-            );
+        if (!Array.isArray(list)) continue;
 
-        return round === Number(race.round);
 
-    }) ?? null;
+        const found =
+            list.find(item => {
 
+                const round =
+                    Number(
+                        item.round ??
+                        item.round_number ??
+                        item.roundNumber ??
+                        item.race?.round
+                    );
+
+
+                return (
+                    round ===
+                    Number(race.round)
+                );
+
+            });
+
+
+        if (found) {
+
+            const roundId =
+                found.round_id ??
+                found.roundId ??
+                found.api_id ??
+                found.id ??
+                found.race?.round_id ??
+                found.race?.roundId;
+
+
+            if (roundId) {
+
+                return {
+                    ...found,
+                    roundId
+                };
+
+            }
+
+        }
+
+    }
+
+
+    return null;
 }
 
 
 /* =========================================================
-   SESIONES DISPONIBLES
+   SESIONES DEL FIN DE SEMANA
 ========================================================= */
 
 function getSessionMap(race) {
@@ -475,6 +523,7 @@ function getSessionMap(race) {
 
         sessions.push({
             key: "fp1",
+            code: "FP1",
             label: "FP1",
             date: race.firstPractice.date,
             time: race.firstPractice.time
@@ -487,6 +536,7 @@ function getSessionMap(race) {
 
         sessions.push({
             key: "fp2",
+            code: "FP2",
             label: "FP2",
             date: race.secondPractice.date,
             time: race.secondPractice.time
@@ -499,6 +549,7 @@ function getSessionMap(race) {
 
         sessions.push({
             key: "fp3",
+            code: "FP3",
             label: "FP3",
             date: race.thirdPractice.date,
             time: race.thirdPractice.time
@@ -511,6 +562,7 @@ function getSessionMap(race) {
 
         sessions.push({
             key: "sq",
+            code: "SQ",
             label: "SPRINT QUALY",
             date: race.sprintQualifying.date,
             time: race.sprintQualifying.time
@@ -523,6 +575,7 @@ function getSessionMap(race) {
 
         sessions.push({
             key: "sprint",
+            code: "S",
             label: "SPRINT",
             date: race.sprint.date,
             time: race.sprint.time
@@ -535,6 +588,7 @@ function getSessionMap(race) {
 
         sessions.push({
             key: "qualifying",
+            code: "Q",
             label: "QUALY",
             date: race.qualifying.date,
             time: race.qualifying.time
@@ -544,17 +598,15 @@ function getSessionMap(race) {
 
 
     sessions.push({
-
         key: "race",
+        code: "R",
         label: "RACE",
         date: race.date,
         time: race.time
-
     });
 
 
     return sessions;
-
 }
 
 
@@ -581,11 +633,13 @@ function getLastFinishedSession(sessions) {
 
 
     if (!finished.length) {
+
         return sessions[0];
+
     }
 
 
-    return finished.sort((a, b) => {
+    finished.sort((a, b) => {
 
         const dateA =
             new Date(
@@ -599,13 +653,15 @@ function getLastFinishedSession(sessions) {
 
         return dateB - dateA;
 
-    })[0];
+    });
 
+
+    return finished[0];
 }
 
 
 /* =========================================================
-   BOTONES DE SESIONES
+   BOTONES
 ========================================================= */
 
 function createSessionButtons(
@@ -625,6 +681,7 @@ function createSessionButtons(
                     type="button"
                     class="${session.key === activeSession ? "active" : ""}"
                     data-f1-session="${session.key}"
+                    data-f1-code="${session.code}"
                     data-f1-round="${round}"
                     data-f1-round-id="${roundId ?? ""}"
                 >
@@ -636,7 +693,43 @@ function createSessionButtons(
         </div>
 
     `;
+}
 
+
+/* =========================================================
+   NORMALIZAR RESULTADOS
+========================================================= */
+
+function normalizeResults(data) {
+
+    if (!data) {
+        return [];
+    }
+
+
+    /*
+     * Nuestros adaptadores Ergast
+     * ya devuelven arrays.
+     */
+    if (Array.isArray(data)) {
+
+        return data;
+
+    }
+
+
+    /*
+     * Alpha
+     */
+    return (
+        data.results ??
+        data.Results ??
+        data.items ??
+        data.data?.results ??
+        data.data?.items ??
+        data.result ??
+        []
+    );
 }
 
 
@@ -644,26 +737,10 @@ function createSessionButtons(
    RESULTADOS
 ========================================================= */
 
-function normalizeSessionResults(data) {
-
-    const results =
-        data?.MRData?.RaceTable?.Races?.[0]?.Results ??
-        data?.MRData?.RaceTable?.Races?.[0]?.QualifyingResults ??
-        data?.MRData?.RaceTable?.Races?.[0]?.SprintResults ??
-        data?.results ??
-        data?.Results ??
-        [];
-
-
-    return results;
-
-}
-
-
 function renderSessionResults(data) {
 
     const results =
-        normalizeSessionResults(data);
+        normalizeResults(data);
 
 
     if (!results.length) {
@@ -685,24 +762,43 @@ function renderSessionResults(data) {
 
                 const position =
                     result.position ??
-                    result.Position ??
+                    result.position_number ??
+                    result.positionNumber ??
                     index + 1;
 
+
                 const driver =
-                    result.Driver ??
                     result.driver ??
+                    result.Driver ??
                     {};
 
+
                 const constructor =
-                    result.Constructor ??
                     result.constructor ??
+                    result.Constructor ??
+                    result.team ??
+                    result.Team ??
                     {};
 
 
                 const fullName =
                     driver.fullName ??
-                    `${driver.givenName ?? ""} ${driver.familyName ?? ""}`.trim() ??
+                    driver.full_name ??
+                    `${driver.givenName ?? driver.given_name ?? ""} ${driver.familyName ?? driver.family_name ?? ""}`
+                        .trim() ||
                     "—";
+
+
+                const teamName =
+                    constructor.name ??
+                    constructor.team_name ??
+                    constructor.full_name ??
+                    "—";
+
+
+                const points =
+                    result.points ??
+                    result.points_earned;
 
 
                 return `
@@ -718,13 +814,15 @@ function renderSessionResults(data) {
                         </span>
 
                         <span>
-                            ${constructor.name ?? "—"}
+                            ${teamName}
                         </span>
 
-                        <strong>
-                            ${result.points ?? ""}
-                            ${result.points != null ? " pts" : ""}
-                        </strong>
+                        ${
+                            points !== undefined &&
+                            points !== null
+                                ? `<strong>${points} pts</strong>`
+                                : ""
+                        }
 
                     </div>
 
@@ -735,7 +833,6 @@ function renderSessionResults(data) {
         </div>
 
     `;
-
 }
 
 
@@ -764,11 +861,32 @@ async function loadSession(
     `;
 
 
-    let data = null;
-
-
     try {
 
+        const race =
+            await getRaceFromRound(
+                round
+            );
+
+
+        const alphaRace =
+            await findAlphaRace(
+                race
+            );
+
+
+        const currentRoundId =
+            alphaRace?.roundId ??
+            roundId ??
+            null;
+
+
+        let data;
+
+
+        /*
+         * RACE
+         */
         if (session === "race") {
 
             data =
@@ -779,6 +897,10 @@ async function loadSession(
 
         }
 
+
+        /*
+         * QUALY
+         */
         else if (session === "qualifying") {
 
             data =
@@ -789,6 +911,10 @@ async function loadSession(
 
         }
 
+
+        /*
+         * SPRINT
+         */
         else if (session === "sprint") {
 
             data =
@@ -799,23 +925,46 @@ async function loadSession(
 
         }
 
+
+        /*
+         * PRACTICE / SPRINT QUALY
+         */
         else {
+
+            if (!currentRoundId) {
+
+                throw new Error(
+                    "No se encontró round_id de Alpha."
+                );
+
+            }
+
+
+            const code =
+                document
+                    .querySelector(
+                        `[data-f1-session="${session}"]`
+                    )
+                    ?.dataset
+                    .f1Code;
+
+
+            if (!code) {
+
+                throw new Error(
+                    "Código de sesión no encontrado."
+                );
+
+            }
+
 
             data =
                 await F1.getSessionResults(
-                    roundId,
-                    session
+                    currentRoundId,
+                    code
                 );
 
         }
-
-
-        const race =
-            await getRaceFromRound(round);
-
-
-        const alphaRace =
-            await findAlphaRace(race);
 
 
         const sessions =
@@ -830,9 +979,7 @@ async function loadSession(
                 sessions,
                 session,
                 round,
-                alphaRace?.round_id ??
-                alphaRace?.roundId ??
-                alphaRace?.id
+                currentRoundId
             )}
 
             ${renderSessionResults(data)}
@@ -847,18 +994,27 @@ async function loadSession(
     catch (error) {
 
         console.error(
-            "Error cargando sesión F1:",
+            "F1 session error:",
             error
         );
 
 
+        const race =
+            await getRaceFromRound(
+                round
+            );
+
+
         content.innerHTML = `
 
-            <h2>⚠️ Error</h2>
+            ${createRaceHeader(race)}
 
-            <p>
-                No se pudieron cargar los resultados.
-            </p>
+            <div class="f1-no-results">
+
+                No se pudieron cargar
+                los resultados de esta sesión.
+
+            </div>
 
         `;
 
@@ -879,14 +1035,15 @@ async function getRaceFromRound(round) {
 
     return schedule.find(
         race =>
-            Number(race.round) === Number(round)
+            Number(race.round) ===
+            Number(round)
     );
 
 }
 
 
 /* =========================================================
-   LAST RACE
+   ÚLTIMA CARRERA
 ========================================================= */
 
 async function createLastRace(race) {
@@ -895,7 +1052,10 @@ async function createLastRace(race) {
 
         return `
             <h2>🏁 Último Gran Premio</h2>
-            <p>No hay información disponible.</p>
+
+            <p>
+                No hay información disponible.
+            </p>
         `;
 
     }
@@ -905,6 +1065,10 @@ async function createLastRace(race) {
         getSessionMap(race);
 
 
+    /*
+     * Predeterminado:
+     * última sesión finalizada.
+     */
     const selected =
         getLastFinishedSession(
             sessions
@@ -912,17 +1076,17 @@ async function createLastRace(race) {
 
 
     const alphaRace =
-        await findAlphaRace(race);
+        await findAlphaRace(
+            race
+        );
 
 
     const roundId =
-        alphaRace?.round_id ??
         alphaRace?.roundId ??
-        alphaRace?.id ??
         null;
 
 
-    let data;
+    let data = null;
 
 
     try {
@@ -937,7 +1101,10 @@ async function createLastRace(race) {
 
         }
 
-        else if (selected.key === "qualifying") {
+        else if (
+            selected.key ===
+            "qualifying"
+        ) {
 
             data =
                 await F1.getQualifying(
@@ -947,7 +1114,10 @@ async function createLastRace(race) {
 
         }
 
-        else if (selected.key === "sprint") {
+        else if (
+            selected.key ===
+            "sprint"
+        ) {
 
             data =
                 await F1.getSprint(
@@ -959,11 +1129,15 @@ async function createLastRace(race) {
 
         else {
 
-            data =
-                await F1.getSessionResults(
-                    roundId,
-                    selected.key
-                );
+            if (roundId) {
+
+                data =
+                    await F1.getSessionResults(
+                        roundId,
+                        selected.code
+                    );
+
+            }
 
         }
 
@@ -972,11 +1146,9 @@ async function createLastRace(race) {
     catch (error) {
 
         console.error(
-            "Error cargando sesión:",
+            "Last race session error:",
             error
         );
-
-        data = null;
 
     }
 
@@ -1003,25 +1175,34 @@ async function createLastRace(race) {
    MODAL CONTENT
 ========================================================= */
 
-async function getModalContent(type, data) {
+async function getModalContent(
+    type,
+    data
+) {
 
     if (type === "championship") {
 
-        return await createChampionship(data);
+        return await createChampionship(
+            data
+        );
 
     }
 
 
     if (type === "next-race") {
 
-        return createNextRace(data);
+        return createNextRace(
+            data
+        );
 
     }
 
 
     if (type === "last-race") {
 
-        return await createLastRace(data);
+        return await createLastRace(
+            data
+        );
 
     }
 
@@ -1055,7 +1236,9 @@ export async function openF1Modal(
         );
 
 
-    renderModal(content);
+    renderModal(
+        content
+    );
 
 }
 
@@ -1074,7 +1257,9 @@ export function closeF1Modal() {
     if (!overlay) return;
 
 
-    overlay.classList.remove("show");
+    overlay.classList.remove(
+        "show"
+    );
 
 
     setTimeout(() => {
@@ -1097,7 +1282,9 @@ document.addEventListener(
     event => {
 
         if (event.key === "Escape") {
+
             closeF1Modal();
+
         }
 
     }
