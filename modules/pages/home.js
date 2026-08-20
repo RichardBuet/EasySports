@@ -17,32 +17,32 @@ export async function renderHome() {
 
             <div class="cards-grid">
 
-                ${createCard(
-                    "🏁 NASCAR",
-                    "Cup, O'Reilly y Craftsman Truck Series.",
-                    ROUTES.NASCAR,
-                    "./assets/images/nascar-card.png"
-                )}
-
-                ${createCard(
-                    "🏎 Formula 1",
-                    "Calendario, pilotos y clasificación.",
-                    ROUTES.FORMULA1,
-                    "./assets/images/f1-card.png"
-                )}
-
-                ${createCard(
-                    "🏍 MotoGP",
-                    "MotoGP, Moto2 y Moto3.",
-                    ROUTES.MOTOGP,
-                    "./assets/images/motogp-card.png"
-                )}
-
-                ${createCard(
-                    "⚽ World Cup",
-                    "Fixture, grupos y estadísticas.",
-                    ROUTES.WORLDCUP,
-                    "./assets/images/futbol-card.png"
+            ${createCard(
+                "🏁 NASCAR",
+                "Cup, O'Reilly y Craftsman Truck Series.",
+                ROUTES.NASCAR,
+                "/EasySports/assets/images/nascar-card.png"
+            )}
+            
+            ${createCard(
+                "🏎 Formula 1",
+                "Calendario, pilotos y clasificación.",
+                ROUTES.FORMULA1,
+                "/EasySports/assets/images/f1-card.png"
+            )}
+            
+            ${createCard(
+                "🏍 MotoGP",
+                "MotoGP, Moto2 y Moto3.",
+                ROUTES.MOTOGP,
+                "/EasySports/assets/images/motogp-card.png"
+            )}
+            
+            ${createCard(
+                "⚽ World Cup",
+                "Fixture, grupos y estadísticas.",
+                ROUTES.WORLDCUP,
+                "/EasySports/assets/images/futbol-card.png"
                 )}
 
             </div>
