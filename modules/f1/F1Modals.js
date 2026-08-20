@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  19:49 20/08/26  */
+/* MODALS F1 ALL INCLUSIVE  20:11 20/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -443,111 +443,49 @@ async function findAlphaRace(race) {
         alpha
     );
 
+    const events =
+        alpha?.data?.events ?? [];
 
-    function search(node) {
+    const event =
+        events.find(item =>
+            Number(item?.round?.number) ===
+            Number(race.round)
+        );
 
-        if (!node) {
-            return null;
-        }
+    if (!event) {
 
-
-        if (Array.isArray(node)) {
-
-            for (const item of node) {
-
-                const result =
-                    search(item);
-
-                if (result) {
-                    return result;
-                }
-
-            }
-
-            return null;
-        }
-
-
-        if (
-            typeof node !== "object"
-        ) {
-
-            return null;
-
-        }
-
-
-        /*
-         * Buscamos el número de ronda
-         */
-        const round =
-            Number(
-                node.round ??
-                node.round_number ??
-                node.roundNumber ??
-                node.race?.round ??
-                node.race?.round_number
-            );
-
-
-        /*
-         * Buscamos el ID interno Alpha
-         */
-        const roundId =
-            node.round_id ??
-            node.roundId ??
-            node.roundID ??
-            node.id ??
-            node.race?.round_id ??
-            node.race?.roundId ??
-            node.race?.id;
-
-
-        /*
-         * Encontramos la ronda correcta
-         */
-        if (
-            round === Number(race.round) &&
-            typeof roundId === "string" &&
-            roundId.startsWith("round_")
-        ) {
-
-            console.log(
-                "ALPHA ROUND ENCONTRADO:",
-                roundId
-            );
-
-            return {
-                roundId
-            };
-
-        }
-
-
-        /*
-         * Seguimos recorriendo
-         * todos los objetos internos
-         */
-        for (
-            const value of Object.values(node)
-        ) {
-
-            const result =
-                search(value);
-
-            if (result) {
-                return result;
-            }
-
-        }
-
+        console.error(
+            "No se encontró la ronda en Alpha:",
+            race.round
+        );
 
         return null;
     }
 
+    const roundId =
+        event?.round?.id;
 
-    return search(alpha);
+    if (!roundId) {
+
+        console.error(
+            "La ronda existe pero no tiene ID Alpha:",
+            event
+        );
+
+        return null;
+    }
+
+    console.log(
+        "ALPHA ROUND ENCONTRADO:",
+        roundId
+    );
+
+    return {
+        roundId,
+        event
+    };
 }
+
 
 
 /* =========================================================
@@ -908,19 +846,10 @@ async function loadSession(
             );
 
 
-        const alphaRace =
-            await findAlphaRace(
-                race
-            );
+        let data = null;
 
-
-        const currentRoundId =
-            alphaRace?.roundId ??
-            roundId ??
-            null;
-
-
-        let data;
+        let currentRoundId =
+            roundId ?? null;
 
 
         /*
@@ -966,58 +895,83 @@ async function loadSession(
 
 
         /*
-         * PRACTICE / SPRINT QUALY
+         * PRACTICE / SPRINT QUALIFYING
          */
-         else {
-         
-             if (!currentRoundId) {
-         
-                 throw new Error(
-                     "No se encontró round_id de Alpha."
-                 );
-         
-             }
-         
-         
-             const alphaSessionMap = {
-         
-                 fp1: "FP1",
-                 fp2: "FP2",
-                 fp3: "FP3",
-                 sq: "SQ"
-         
-             };
-         
-         
-             const code =
-                 alphaSessionMap[session];
-         
-         
-             if (!code) {
-         
-                 throw new Error(
-                     `Código Alpha desconocido: ${session}`
-                 );
-         
-             }
-         
-         
-             data =
-                 await F1.getSessionResults(
-                     currentRoundId,
-                     code
-                 );
-         
-         }
+        else {
+
+            /*
+             * Buscar el round_id de Alpha
+             */
+            const alphaRace =
+                await findAlphaRace(
+                    race
+                );
+
+
+            currentRoundId =
+                alphaRace?.roundId ??
+                currentRoundId ??
+                null;
+
+
+            if (!currentRoundId) {
+
+                throw new Error(
+                    "No se encontró round_id de Alpha."
+                );
+
+            }
+
+
+            /*
+             * Código de sesión Alpha
+             */
+            const alphaSessionMap = {
+
+                fp1: "FP1",
+                fp2: "FP2",
+                fp3: "FP3",
+                sq: "SQ"
+
+            };
+
+
+            const code =
+                alphaSessionMap[session];
+
+
+            if (!code) {
+
+                throw new Error(
+                    `Código Alpha desconocido: ${session}`
+                );
+
+            }
+
+
+            /*
+             * Obtener resultados desde Alpha
+             */
+            data =
+                await F1.getSessionResults(
+                    currentRoundId,
+                    code
+                );
+
+        }
 
 
         const sessions =
-            getSessionMap(race);
+            getSessionMap(
+                race
+            );
 
 
         content.innerHTML = `
 
-            ${createRaceHeader(race)}
+            ${createRaceHeader(
+                race
+            )}
 
             ${createSessionButtons(
                 sessions,
@@ -1026,7 +980,9 @@ async function loadSession(
                 currentRoundId
             )}
 
-            ${renderSessionResults(data)}
+            ${renderSessionResults(
+                data
+            )}
 
         `;
 
@@ -1051,7 +1007,9 @@ async function loadSession(
 
         content.innerHTML = `
 
-            ${createRaceHeader(race)}
+            ${createRaceHeader(
+                race
+            )}
 
             <div class="f1-no-results">
 
