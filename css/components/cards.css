@@ -24,7 +24,7 @@
     background-image: var(--card-bg);
     background-size: cover;
     background-position: center;
-    opacity: 0.35;
+    opacity: 0.55;
     z-index: 0;
 }
 
@@ -34,7 +34,7 @@
     inset: 0;
     background: linear-gradient(
         rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.85)
+        rgba(0, 0, 0, 0.05)
     );
     z-index: 0;
 }
@@ -52,4 +52,24 @@
 
 .card p {
     color: var(--text-secondary);
+}
+
+/* Edition limited */
+
+.card a:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,.05);
+}
+
+.card a.active {
+    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #292c32,
+            #1c1f24
+        );
+    border-color: rgba(255,255,255,.12);
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.25);
 }
