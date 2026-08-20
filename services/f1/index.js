@@ -14,3 +14,4 @@ export { getPitStops } from "./pitStops.js";
 export { getFastestLaps } from "./fastestLaps.js";
 export { getSeasons } from "./seasons.js";
 export { getRounds } from "./rounds.js";
+export { getAlphaSchedule } from "./alphaSchedule.js";
