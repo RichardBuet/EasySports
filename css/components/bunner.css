@@ -1,24 +1,3 @@
-.bunner{
-    width: 100%;
-    padding-top: 5px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:transparent;
-}
-
-.hero-bunner{
-    /* width: calc(100vw - 40px); */
-    /* max-width: 1400px; */
-    /* calc(100dvw * 0.26); */
-    /* border-radius:12px; */
-    width: inherit;
-    height: auto;
-    display:block;
-    box-shadow: 0 10px 35px rgba(0,0,0,.45);
-    transition:.35s ease;
-}
-
 @property --angulo {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -29,8 +8,9 @@
 .bunner {
   position: relative;
   display: inline-block; /* Hace que el cuadro mida lo mismo que la imagen */
-  padding: 3px;          /* Este es el grosor exacto del borde brillante */
-  border-radius: 20px;   /* Esquinas redondeadas para el contorno */
+  margin: 0 20px;
+  padding: 0px;          /* Este es el grosor exacto del borde brillante */
+  border-radius: 3px;   /* Esquinas redondeadas para el contorno */
   background: transparent;
   transition: box-shadow 0.4s ease;
 }
@@ -39,8 +19,8 @@
 .bunner::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 20px;
+  top: -1px; left: 0; right: 0; bottom: 0;
+  border-radius: 6px;
   padding: 3px; 
   
   /* El degradado de Gemini escondido por defecto (opacidad 0) */
@@ -65,7 +45,8 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 17px; /* Un poco menor para que no muerda el borde */
+  border-radius: 3px; /* Un poco menor para que no muerda el borde */
+  box-shadow: 0 10px 35px rgba(0, 0, 0, .45);
   transition: transform 0.4s ease;
 }
 
@@ -84,7 +65,7 @@
 }
 
 .bunner:hover .hero-bunner {
-  transform: scale(1.01); /* Mini zoom opcional para dar dinamismo */
+  transform: scale(0.99); /* Mini zoom opcional para dar dinamismo */
 }
 
 /* Animación del ángulo para el giro */
