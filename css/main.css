@@ -1,58 +1,34 @@
 /* ===================================
    TEMAS
 =================================== */
-
 @import "themes/variables.css";
 @import "themes/dark.css";
 
 /* ===================================
-   LAYOUTS
-=================================== */
-
-/* @import "layouts/container.css";
-@import "layouts/grid.css"; */
-/* @import "./components/modal.css"; */
-
-/* ===================================
    COMPONENTES GENERALES
 =================================== */
-
 @import "components/header.css";
 @import "components/footer.css";
 @import "components/buttons.css";
 @import "components/cards.css";
-/* @import "components/loader.css"; */
-/* @import "components/sportsMenu.css"; */
-/* @import "components/navbar.css"; */
-/* @import "components/sidebar.css"; */
-/* @import "components/nascar.css"; */
-@import "components/raceTimeline.css";
-@import "./components/modal.css";
-/* @import "./components/liveFullModal.css"; */
-@import "./components/raceResultModal.css";
+@import "components/modal.css";
 
 /* ===================================
    DASHBOARD
 =================================== */
-
 @import "components/dashboard.css";
 @import "components/bunner.css";
 @import "components/raceCenter.css";
-@import "./components/nascarDriverModal.css";
-@import "./components/raceInfoModal.css";
+
 
 /* ===================================
    WIDGETS DEL DASHBOARD
 =================================== */
-
 @import "components/live.css";
 @import "components/today.css";
-/* @import "components/formula1.css"; */
 @import "components/news.css";
 @import "components/widget.css";
-/* @import "components/worldcup.css";
-@import "components/motogp.css"; */
-/* @import "components/sports.css"; */
+
 /* ===================================
    RESPONSIVE
 =================================== */
@@ -66,3 +42,17 @@
 =================================== */
 
 
+/* ===================================
+   LAYOUTS
+=================================== */
+
+/* @import "layouts/container.css"; */
+/* @import "layouts/grid.css"; */
+/* @import "./components/modal.css"; */
+
+
+/* @import "components/loader.css"; */
+/* @import "components/sportsMenu.css"; */
+/* @import "components/navbar.css"; */
+/* @import "components/sidebar.css"; */
+/* @import "components/nascar.css"; */
