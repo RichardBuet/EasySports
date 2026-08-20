@@ -16,10 +16,7 @@ import { createCalendar } from "../f1/calendar.js";
 export async function renderF1() {
 
 
-    const alpha = await F1.getAlphaSchedule();
-
-console.log("ALPHA SCHEDULE:", alpha);
-
+    
 
 
 
