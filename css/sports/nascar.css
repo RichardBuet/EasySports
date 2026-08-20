@@ -1,17 +1,17 @@
 /* ===================================
    CONTENIDO
 =================================== */
-
 @import "../container/liveFullModal.css";
+@import "../container/nascarDriverModal.css";
+@import "../container/raceInfoModal.css";
+@import "../container/raceResultModal.css";
+/* @import "../container/raceTimeline.css"; */
 
-
+/* ===================================
+   MAIN
+=================================== */
 body.nascar{
     --sport-primary:#ffd100;
-    /* >>> estas configuraciones funcionan pero no se usará por el momento <<< */
-    /* --sport-secondary:#ff9800; */
-    /* --hero-image:url("../../assets/img/nascar/hero.jpg"); */
-    /* --hero-image:url("https://www.nascar.com/wp-content/uploads/sites/7/2024/11/19/NASCAR_FullColor_onBlack_CMYK-6.svg"); */
-    /* --hero-image:none; */
 }
 
 .nascar-driver-number {
@@ -30,7 +30,6 @@ body.nascar{
 /* ========================================
    NASCAR Hero
 ======================================== */
-
 .nascarHero{
     position: relative;
     overflow: hidden;
@@ -57,37 +56,37 @@ body.nascar{
 }
 
 .nascarHeroContent{
-   position: relative;
-   z-index: 2;
-   width: clamp(400px, 90vw, 1200px); 
+    position: relative;
+    z-index: 2;
+    width: clamp(400px, 90vw, 1200px); 
 }
   
 .heroCategory{
-   display: inline-block;
-   margin-bottom: 12px;
-   color: var(--text-color);
-   font-weight: 700;
-   text-transform: uppercase;
-   padding: 6px 10px;
-   background: rgba(255, 255, 255, .08);
-   border: 1px solid rgba(255, 255, 255, .12);
-   border-radius: 999px;
-   backdrop-filter: blur(10px);
-   font-size: clamp(0.76rem, 1vw, 3rem);
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--text-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    font-size: clamp(0.76rem, 1vw, 3rem);
 }
 
 .heroRaceCenter { cursor: pointer;}
 
 .nascarHero h1{
-   margin: 0 0 12px;
-   font-size: clamp(1.5rem, 4.6vw, 2.6rem);
-   line-height: 1.1;
+    margin: 0 0 12px;
+    font-size: clamp(1.5rem, 4.6vw, 2.6rem);
+    line-height: 1.1;
 }
 
 .nascarHero p{
-   margin: 0 0 20px;
-   color: var(--text-secondary);
-   font-size: 1.2rem;
+    margin: 0 0 20px;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
 }
 
 .heroMeta{
@@ -140,12 +139,6 @@ body.nascar{
     0%, 100% {transform: scale(1);}
     50% {transform: scale(0.9);}
 }
-/* 
-@keyframes heroLivePulse {
-    0% { opacity: 1;transform: scale(1); }
-    50% { opacity: 0.65;transform: scale(1.03); }
-    100% { opacity: 1;transform: scale(1); }
-} */
 
 .container{
    padding:20px 20px 5px 20px;
@@ -161,7 +154,6 @@ button {
 /* ========================================
    NASCAR Selector
 ======================================== */
-
 .nascar-selector{
     display: flex;
     justify-content: space-between;
@@ -174,10 +166,10 @@ button {
 
 .nascar-selector button img{
     display: block;
-   height: clamp(34px, 5vw, 72px);
+    height: clamp(34px, 5vw, 72px);
     width: auto;
     object-fit: contain;
-background: linear-gradient(180deg, #1f1f1f, #111);
+    background: linear-gradient(180deg, #1f1f1f, #111);
 }
 
 #btn-nsc-01, #btn-nsc-02, #btn-nsc-03 {
@@ -200,7 +192,6 @@ background: linear-gradient(180deg, #1f1f1f, #111);
 /* ========================================
    NASCAR Tarjetas  , .driverCard
 ======================================== */
-
 .raceCenter, .calendarCard, .driversCard{
     display: flex;
     flex-direction: column;
@@ -242,7 +233,7 @@ background: linear-gradient(180deg, #1f1f1f, #111);
     font-weight: 400;
 }
 
-#calendarCurrent {background: rgb(237 20 61 / 44%);}
+#calendarCurrent { background: rgb(237 20 61 / 44%);}
 
 .calendarItem {
     border-bottom: 1px solid #333;
@@ -250,9 +241,7 @@ background: linear-gradient(180deg, #1f1f1f, #111);
 }
 
 .calendar-list {
-    
     max-height: 400px;
-
     font-size: 0.8em;
 
     overflow-y: auto;
@@ -264,7 +253,6 @@ background: linear-gradient(180deg, #1f1f1f, #111);
 
     /* Evita que el scroll interno se bloquee */
     overscroll-behavior-y: contain;
-
     scrollbar-width: thin;
     scrollbar-color: #50535a transparent;
 }
