@@ -717,33 +717,20 @@ function normalizeResults(data) {
 
 function renderSessionResults(data) {
 
-    const results =
-        normalizeResults(data);
-
-
-    if (!results.length) {
+    if (!data || !Array.isArray(data) || data.length === 0) {
 
         return `
-            <p class="f1-no-results">
+            <div class="f1-no-results">
                 No hay resultados disponibles.
-            </p>
+            </div>
         `;
-
     }
 
 
     return `
+        <div class="f1-session-results">
 
-        <div class="f1-session-content">
-
-            ${results.map((result, index) => {
-
-                const position =
-                    result.position ??
-                    result.position_number ??
-                    result.positionNumber ??
-                    index + 1;
-
+            ${data.map((result, index) => {
 
                 const driver =
                     result.driver ??
@@ -762,20 +749,74 @@ function renderSessionResults(data) {
                 const fullName =
                     driver.fullName ??
                     driver.full_name ??
-                    `${driver.givenName ?? driver.given_name ?? ""} ${driver.familyName ?? driver.family_name ?? ""}`.trim() ??
-                    "—";
+                    `${driver.givenName ?? driver.given_name ?? ""} ${driver.familyName ?? driver.family_name ?? ""}`
+                        .trim();
 
 
                 const teamName =
                     constructor.name ??
                     constructor.team_name ??
+                    constructor.teamName ??
                     constructor.full_name ??
                     "—";
 
 
+                const position =
+                    result.position ??
+                    result.position_number ??
+                    result.positionNumber ??
+                    index + 1;
+
+
+                /*
+                 * Tiempo de vuelta
+                 */
+                const fastestLap =
+                    result.fastestLap ??
+                    result.FastestLap ??
+                    result.fastest_lap ??
+                    null;
+
+
+                const fastestTime =
+                    fastestLap?.time ??
+                    fastestLap?.Time?.time ??
+                    fastestLap?.fastest_time ??
+                    result.fastestTime ??
+                    result.fastest_time ??
+                    null;
+
+
+                /*
+                 * Tiempos de Qualy
+                 */
+                const q1 =
+                    result.q1 ??
+                    result.Q1 ??
+                    result.q1_time ??
+                    null;
+
+
+                const q2 =
+                    result.q2 ??
+                    result.Q2 ??
+                    result.q2_time ??
+                    null;
+
+
+                const q3 =
+                    result.q3 ??
+                    result.Q3 ??
+                    result.q3_time ??
+                    null;
+
+
+                /*
+                 * Puntos
+                 */
                 const points =
                     result.points ??
-                    result.points_earned;
+                    null;
 
 
                 return `
@@ -786,19 +827,55 @@ function renderSessionResults(data) {
                             ${position}
                         </strong>
 
+
                         <span>
-                            ${fullName}
+                            ${fullName || "—"}
                         </span>
+
 
                         <span>
                             ${teamName}
                         </span>
 
+
                         ${
-                            points !== undefined &&
-                            points !== null
-                                ? `<strong>${points} pts</strong>`
-                                : ""
+                            q1 || q2 || q3
+
+                            ? `
+
+                                <span class="f1-session-times">
+
+                                    ${q1 ? `Q1 ${q1}` : ""}
+
+                                    ${q2 ? `Q2 ${q2}` : ""}
+
+                                    ${q3 ? `Q3 ${q3}` : ""}
+
+                                </span>
+
+                            `
+
+                            : fastestTime
+
+                                ? `
+
+                                    <span>
+                                        ⚡ ${fastestTime}
+                                    </span>
+
+                                `
+
+                                : points !== null
+
+                                    ? `
+
+                                        <strong>
+                                            ${points} pts
+                                        </strong>
+
+                                    `
+
+                                    : ""
                         }
 
                     </div>
@@ -808,9 +885,9 @@ function renderSessionResults(data) {
             }).join("")}
 
         </div>
-
     `;
 }
+
 
 
 /* =========================================================
