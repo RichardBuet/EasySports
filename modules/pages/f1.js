@@ -1,3 +1,5 @@
+import { F1 } from "../../services/siteF1.js";
+
 import { createLayout } from "../core/layout.js";
 import { setSportTheme } from "../utils/theme.js";
 import { createHero } from "../f1/hero.js";
@@ -12,6 +14,16 @@ import { createDrivers } from "../f1/drivers.js";
 import { createCalendar } from "../f1/calendar.js";
 
 export async function renderF1() {
+
+
+    const alpha = await F1.getAlphaSchedule();
+
+console.log("ALPHA SCHEDULE:", alpha);
+
+
+
+
+    
     setSportTheme("f1");
     const [
         hero,
