@@ -111,40 +111,106 @@ function createNextRace(race) {
         `;
     }
 
+    const sessions = [];
+
+    if (race.firstPractice) {
+        sessions.push({
+            date: race.firstPractice.date,
+            time: race.firstPractice.time,
+            icon: "📅",
+            label: "FP1"
+        });
+    }
+
+    if (race.secondPractice) {
+        sessions.push({
+            date: race.secondPractice.date,
+            time: race.secondPractice.time,
+            icon: "📅",
+            label: "FP2"
+        });
+    }
+
+    if (race.thirdPractice) {
+        sessions.push({
+            date: race.thirdPractice.date,
+            time: race.thirdPractice.time,
+            icon: "📅",
+            label: "FP3"
+        });
+    }
+
+    if (race.sprintQualifying) {
+        sessions.push({
+            date: race.sprintQualifying.date,
+            time: race.sprintQualifying.time,
+            icon: "⚡",
+            label: "Sprint Qualifying"
+        });
+    }
+
+    if (race.sprint) {
+        sessions.push({
+            date: race.sprint.date,
+            time: race.sprint.time,
+            icon: "🏁",
+            label: "Sprint"
+        });
+    }
+
+    if (race.qualifying) {
+        sessions.push({
+            date: race.qualifying.date,
+            time: race.qualifying.time,
+            icon: "⚡",
+            label: "Qualifying"
+        });
+    }
+
+    sessions.push({
+        date: race.date,
+        time: race.time,
+        icon: "🏁",
+        label: "Race"
+    });
+
+    sessions.sort((a, b) => {
+        const dateA = new Date(`${a.date}T${a.time || "00:00:00"}`);
+        const dateB = new Date(`${b.date}T${b.time || "00:00:00"}`);
+        return dateA - dateB;
+    });
+
     return `
         ${createRaceHeader(race)}
+
         <div class="f1-race-schedule">
-            ${race.firstPractice ? `
+
+            ${sessions.map(session => `
                 <div class="f1-session">
-                    <span>📅</span>
+
+                    <span>${session.icon}</span>
+
                     <div>
-                        <strong>${formatDay(race.firstPractice.date)}</strong>
-                        <span>FP1</span>
+                        <strong>
+                            ${formatDay(session.date)}
+                        </strong>
+
+                        <span>
+                            ${session.label}
+                        </span>
                     </div>
-                    <time>${formatTime(race.firstPractice.time)}</time>
+
+                    <time>
+                        ${formatTime(session.time)}
+                    </time>
+
                 </div>
-            ` : ""}
-            ${race.qualifying ? `
-                <div class="f1-session">
-                    <span>⚡</span>
-                    <div>
-                        <strong>${formatDay(race.qualifying.date)}</strong>
-                        <span>Qualifying</span>
-                    </div>
-                    <time>${formatTime(race.qualifying.time)}</time>
-                </div>
-            ` : ""}
-            <div class="f1-session">
-                <span>🏁</span>
-                <div>
-                    <strong>${formatDay(race.date)}</strong>
-                    <span>Race</span>
-                </div>
-                <time>${formatTime(race.time)}</time>
-            </div>
+            `).join("")}
+
         </div>
     `;
 }
+
 
 async function createLastRace(race) {
     if (!race) {
