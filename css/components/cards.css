@@ -24,7 +24,7 @@
     background-image: var(--card-bg);
     background-size: cover;
     background-position: center;
-    opacity: 0.55;
+    opacity: 0.45;
     z-index: 0;
 }
 
@@ -50,13 +50,13 @@
     margin-top: 0;
 }
 
-.card p {
+.card a {
     color: var(--text-secondary); 
     background:
         linear-gradient(
             135deg,
             #292c32,
-            #1c1f24
+            #1c1f24,.10
         );
     border-color: rgba(255,255,255,.12);
     box-shadow: 0 2px 8px rgba(0,0,0,.25);
