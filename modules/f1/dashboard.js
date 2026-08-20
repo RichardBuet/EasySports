@@ -2,22 +2,21 @@ import { F1 } from "../../services/siteF1.js";
 import { openF1Modal } from "./F1Modals.js";
 
 function createDashboardCard(title, value, subtitle, icon, modalType, modalData = null) {
+    const modalId = modalData ? `f1-modal-${modalType}` : "";
+    if (modalData) {
+        window.f1ModalData = window.f1ModalData || {};
+        window.f1ModalData[modalId] = modalData;
+    }
     return `
         <article
             class="f1-dashboard-card"
             data-f1-modal="${modalType}"
-            data-f1-modal-data="${modalData ?? ""}"
+            data-f1-modal-id="${modalId}"
         >
             <span class="f1-dashboard-card__icon">${icon}</span>
-            <span class="f1-dashboard-card__title">
-                ${title}
-            </span>
-            <h3 class="f1-dashboard-card__value">
-                ${value}
-            </h3>
-            <span class="f1-dashboard-card__subtitle">
-                ${subtitle}
-            </span>
+            <span class="f1-dashboard-card__title">${title}</span>
+            <h3 class="f1-dashboard-card__value">${value}</h3>
+            <span class="f1-dashboard-card__subtitle">${subtitle}</span>
         </article>
     `;
 }
@@ -77,7 +76,6 @@ export async function createDashboard() {
                     "championship",
                     "drivers"
                 )}
-
                 ${createDashboardCard(
                     "Constructor Leader",
                     constructorLeader?.constructor.name ?? "—",
@@ -86,21 +84,21 @@ export async function createDashboard() {
                     "championship",
                     "constructors"
                 )}
-
                 ${createDashboardCard(
                     "Next Race",
                     nextRace?.raceName ?? "—",
                     nextRace ? `Round ${nextRace.round}` : "—",
                     "📅",
-                    "next-race"
+                    "next-race",
+                    nextRace
                 )}
-
                 ${createDashboardCard(
                     "Last Race",
                     lastRace?.raceName ?? "—",
                     lastRace ? `Round ${lastRace.round}` : "—",
                     "🏁",
-                    "last-race"
+                    "last-race",
+                    lastRace
                 )}
             </div>
         </section>
@@ -113,7 +111,10 @@ export function initF1DashboardModals() {
         .forEach(card => {
             card.addEventListener("click", () => {
                 const type = card.dataset.f1Modal;
-                const data = card.dataset.f1ModalData || null;
+                const modalId = card.dataset.f1ModalId;
+                const data = modalId
+                    ? window.f1ModalData?.[modalId]
+                    : null;
                 openF1Modal(type, data);
             });
         });
