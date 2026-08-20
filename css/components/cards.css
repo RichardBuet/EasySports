@@ -51,18 +51,7 @@
 }
 
 .card p {
-    color: var(--text-secondary);
-}
-
-/* Edition limited */
-
-.card a:hover {
-    color: #ffffff;
-    background: rgba(255,255,255,.05);
-}
-
-.card a.active {
-    color: #ffffff;
+    color: var(--text-secondary); 
     background:
         linear-gradient(
             135deg,
@@ -70,6 +59,27 @@
             #1c1f24
         );
     border-color: rgba(255,255,255,.12);
-    box-shadow:
-        0 2px 8px rgba(0,0,0,.25);
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+/* Edition limited */
+
+.card a:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,.25);
+}
+
+.card a.active {
+    color: #ffffff;
+    background:
+        linear-gradient(
+            315deg,
+            #292c32,
+            #1c1f24
+        );
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+
 }
