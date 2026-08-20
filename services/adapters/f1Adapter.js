@@ -39,10 +39,12 @@ export function adaptConstructorStandings(data) {
 export function adaptSchedule(data) {
     const races =
         data?.MRData?.RaceTable?.Races ?? [];
+
     return races.map(race => ({
         season: Number(race.season),
         round: Number(race.round),
         raceName: race.raceName,
+
         circuit: {
             id: race.Circuit.circuitId,
             name: race.Circuit.circuitName,
@@ -53,10 +55,54 @@ export function adaptSchedule(data) {
                 long: Number(race.Circuit.Location.long)
             }
         },
+
         date: race.date,
-        time: race.time
+        time: race.time,
+
+        firstPractice: race.FirstPractice
+            ? {
+                date: race.FirstPractice.date,
+                time: race.FirstPractice.time
+            }
+            : null,
+
+        secondPractice: race.SecondPractice
+            ? {
+                date: race.SecondPractice.date,
+                time: race.SecondPractice.time
+            }
+            : null,
+
+        thirdPractice: race.ThirdPractice
+            ? {
+                date: race.ThirdPractice.date,
+                time: race.ThirdPractice.time
+            }
+            : null,
+
+        qualifying: race.Qualifying
+            ? {
+                date: race.Qualifying.date,
+                time: race.Qualifying.time
+            }
+            : null,
+
+        sprint: race.Sprint
+            ? {
+                date: race.Sprint.date,
+                time: race.Sprint.time
+            }
+            : null,
+
+        sprintQualifying: race.SprintQualifying
+            ? {
+                date: race.SprintQualifying.date,
+                time: race.SprintQualifying.time
+            }
+            : null
     }));
 }
+
 
 export function adaptResults(data) {
     const results =
