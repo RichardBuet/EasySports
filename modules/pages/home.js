@@ -42,7 +42,7 @@ export async function renderHome() {
                     "⚽ World Cup",
                     "Fixture, grupos y estadísticas.",
                     ROUTES.WORLDCUP,
-                    "./assets/images/worldcup-card.png"
+                    "./assets/images/futbol-card.png"
                 )}
 
             </div>
