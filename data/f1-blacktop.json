@@ -1,0 +1,1210 @@
+{
+  "data": [
+    {
+      "id": "5df7b804-f7bd-48d5-9bbe-07db372ed72f",
+      "name": "Abu Dhabi Grand Prix",
+      "dateStart": "2026-12-04",
+      "dateEnd": "2026-12-06",
+      "status": "scheduled",
+      "location": {
+        "id": "10358903-f251-4a40-8301-8966c208d860",
+        "name": "Yas Marina Circuit",
+        "city": "Yas Island",
+        "country": {
+          "name": "United Arab Emirates",
+          "twoCode": "AE",
+          "threeCode": "ARE"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "cfb05997-ba80-4d6b-bf04-bcd5ebf3d9f9",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-12-04T09:30:00.000Z",
+          "endTime": "2026-12-04T10:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "3f88f172-20df-4d23-9dee-8d18718747e6",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-12-04T13:00:00.000Z",
+          "endTime": "2026-12-04T14:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "442b969d-e32c-4e76-8e0a-5c86b1ad86ff",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-12-05T10:30:00.000Z",
+          "endTime": "2026-12-05T11:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "3c56d900-ec40-450e-b8ac-bb11b7bf7a71",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-12-05T14:00:00.000Z",
+          "endTime": "2026-12-05T15:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "2c54fa38-a48f-4b12-8f62-af26244226ae",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-12-06T13:00:00.000Z",
+          "endTime": "2026-12-06T15:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "73e2b761-88bc-45be-ad35-c399edfbff6c",
+      "name": "Qatar Grand Prix",
+      "dateStart": "2026-11-27",
+      "dateEnd": "2026-11-29",
+      "status": "scheduled",
+      "location": {
+        "id": "616f8178-869c-41d0-8314-8fcd0640d1b6",
+        "name": "Lusail International Circuit",
+        "city": "Doha",
+        "country": {
+          "name": "Qatar",
+          "twoCode": "QA",
+          "threeCode": "QAT"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "e80bfb45-3684-4fa4-9ca6-a60dc5888b03",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-11-27T13:30:00.000Z",
+          "endTime": "2026-11-27T14:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "68579e16-41f5-466b-8063-e21588748506",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-11-27T17:00:00.000Z",
+          "endTime": "2026-11-27T18:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "c8337f64-2cac-4d39-921a-e443731d112d",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-11-28T14:30:00.000Z",
+          "endTime": "2026-11-28T15:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "15445c80-8267-44b0-baec-83107607c7db",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-11-28T18:00:00.000Z",
+          "endTime": "2026-11-28T19:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "0d2fff3e-d190-4825-9718-0b466f7df047",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-11-29T16:00:00.000Z",
+          "endTime": "2026-11-29T18:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "9d61f4a9-94fb-455b-aba0-b9a6725292e4",
+      "name": "Las Vegas Grand Prix",
+      "dateStart": "2026-11-19",
+      "dateEnd": "2026-11-21",
+      "status": "scheduled",
+      "location": {
+        "id": "aa8b99bd-aa81-4ee5-afa3-ba2db4ba9e39",
+        "name": "Las Vegas Strip Circuit",
+        "city": "Las Vegas",
+        "country": {
+          "name": "United States",
+          "twoCode": "US",
+          "threeCode": "USA"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "6c5ffb79-960c-4a06-b016-eb01db19fb1b",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-11-20T00:30:00.000Z",
+          "endTime": "2026-11-20T01:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "6ff7a23a-539f-472a-a4fe-72375c4f6212",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-11-20T04:00:00.000Z",
+          "endTime": "2026-11-20T05:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "50f43e05-0abd-4ec6-97cb-15d82686bec3",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-11-21T00:30:00.000Z",
+          "endTime": "2026-11-21T01:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "39a8aa50-2338-4011-87de-c9ca53271e0b",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-11-21T04:00:00.000Z",
+          "endTime": "2026-11-21T05:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "d531cb39-745b-452a-ab8b-e205c60c5976",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-11-22T04:00:00.000Z",
+          "endTime": "2026-11-22T06:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "798ed655-9bf0-46bf-9094-e0dd6bb7e89d",
+      "name": "São Paulo Grand Prix",
+      "dateStart": "2026-11-06",
+      "dateEnd": "2026-11-08",
+      "status": "scheduled",
+      "location": {
+        "id": "2d74a24b-77da-4676-97b9-6afa9008acd4",
+        "name": "Autódromo José Carlos Pace",
+        "city": "São Paulo",
+        "country": {
+          "name": "Brazil",
+          "twoCode": "BR",
+          "threeCode": "BRA"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "f1fead1a-54b4-4150-b652-af1165df130b",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-11-06T15:30:00.000Z",
+          "endTime": "2026-11-06T16:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "6c95862c-3f69-4950-978c-865fc5386f3d",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-11-06T19:00:00.000Z",
+          "endTime": "2026-11-06T20:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "65edc7a6-68fe-471b-a852-b2ce21176a03",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-11-07T14:30:00.000Z",
+          "endTime": "2026-11-07T15:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "946d2562-6ebf-4b51-8e61-7806c085ed4a",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-11-07T18:00:00.000Z",
+          "endTime": "2026-11-07T19:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "4e485141-75d6-45ba-9e01-b3cf0ba61a89",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-11-08T17:00:00.000Z",
+          "endTime": "2026-11-08T19:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "723f663b-d7c2-4f4e-9de7-736901c10f09",
+      "name": "Mexico City Grand Prix",
+      "dateStart": "2026-10-30",
+      "dateEnd": "2026-11-01",
+      "status": "scheduled",
+      "location": {
+        "id": "1502f15b-4727-403f-a656-e74c46b13b73",
+        "name": "Autódromo Hermanos Rodríguez",
+        "city": null,
+        "country": {
+          "name": "Mexico",
+          "twoCode": "MX",
+          "threeCode": "MEX"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "5df792c8-a4b5-45b4-9e97-356b86b91541",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-10-30T18:30:00.000Z",
+          "endTime": "2026-10-30T19:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "d7039557-e2a0-4574-af60-bac57b9af0dc",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-10-30T22:00:00.000Z",
+          "endTime": "2026-10-30T23:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "50f5f8dc-68bc-4e8f-9c42-3958e7caf091",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-10-31T17:30:00.000Z",
+          "endTime": "2026-10-31T18:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "8b7365cb-a2c3-4ace-8fe2-6aab0c32d099",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-10-31T21:00:00.000Z",
+          "endTime": "2026-10-31T22:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "7fcde9d3-9da2-4c6e-919b-50ecc9996ee3",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-11-01T20:00:00.000Z",
+          "endTime": "2026-11-01T22:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "1a722267-d1bf-4d7a-99fc-18df7a6e56d5",
+      "name": "United States Grand Prix",
+      "dateStart": "2026-10-23",
+      "dateEnd": "2026-10-25",
+      "status": "scheduled",
+      "location": {
+        "id": "cc1d44ca-c761-48d5-8f2f-fe826c86483c",
+        "name": "Circuit of The Americas",
+        "city": "Austin",
+        "country": {
+          "name": "United States",
+          "twoCode": "US",
+          "threeCode": "USA"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "7332a5e5-2902-4c83-b9a2-12c257bfac93",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-10-23T17:30:00.000Z",
+          "endTime": "2026-10-23T18:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "f8a02159-97cb-422a-907b-4b6dfb894a14",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-10-23T21:00:00.000Z",
+          "endTime": "2026-10-23T22:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "6ada972d-e564-47ee-8d39-c1a9cd0f938b",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-10-24T17:30:00.000Z",
+          "endTime": "2026-10-24T18:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "6719780d-282a-4b05-8403-b5bc7208b195",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-10-24T21:00:00.000Z",
+          "endTime": "2026-10-24T22:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "a072ff62-6c8c-4c97-83ad-6f4c23b3a627",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-10-25T20:00:00.000Z",
+          "endTime": "2026-10-25T22:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "dac7e556-67b7-4dca-a78a-e0da2cbd3537",
+      "name": "Singapore Grand Prix",
+      "dateStart": "2026-10-09",
+      "dateEnd": "2026-10-11",
+      "status": "scheduled",
+      "location": {
+        "id": "cde038bc-78bf-41e1-a395-b6fd7d7d0d1e",
+        "name": "Marina Bay Street Circuit",
+        "city": "Marina Bay",
+        "country": {
+          "name": "Singapore",
+          "twoCode": "SG",
+          "threeCode": "SGP"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "19d00c6c-39e6-40c2-aaee-2d2fc70f3488",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-10-09T08:30:00.000Z",
+          "endTime": "2026-10-09T09:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "02833f2a-7d80-4697-8fc2-f34aeee5929e",
+          "name": "Sprint Q",
+          "type": "sprint_qualifying",
+          "startTime": "2026-10-09T12:30:00.000Z",
+          "endTime": "2026-10-09T13:14:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "e29ac4e1-b252-4540-acd0-5b584b9ecbe1",
+          "name": "Sprint",
+          "type": "sprint",
+          "startTime": "2026-10-10T09:00:00.000Z",
+          "endTime": "2026-10-10T10:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "c80fdf2e-a9fe-48c9-9f2f-ed9757b6668f",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-10-10T13:00:00.000Z",
+          "endTime": "2026-10-10T14:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "62630b5f-d323-48fd-91b6-0d8e9f5425c7",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-10-11T12:00:00.000Z",
+          "endTime": "2026-10-11T14:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "01eec57a-8269-4dfa-b6b4-1be19354b7e3",
+      "name": "Bahrain Grand Prix",
+      "dateStart": "2026-10-02",
+      "dateEnd": "2026-10-04",
+      "status": "scheduled",
+      "location": {
+        "id": "e1f7b92f-1920-4561-9a62-870cf7c5f8fe",
+        "name": "Sepang International Circuit",
+        "city": "Malaysia",
+        "country": {
+          "name": "Bahrain",
+          "twoCode": "BH",
+          "threeCode": "BRN"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "6449dab8-46c6-40a1-afc5-db23d18ed509",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-10-02T04:30:00.000Z",
+          "endTime": "2026-10-02T05:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "d25a9d2b-ab44-4513-9e5c-ae6135420eb2",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-10-02T08:00:00.000Z",
+          "endTime": "2026-10-02T09:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "ba06d065-07ae-417c-846a-ae08250a9515",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-10-03T04:30:00.000Z",
+          "endTime": "2026-10-03T05:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "5bfe9a8f-2b18-44a3-a5e5-9acd32a697a0",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-10-03T08:00:00.000Z",
+          "endTime": "2026-10-03T09:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "7dcb96fc-7408-4806-a1db-5ffee243ea39",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-10-04T07:00:00.000Z",
+          "endTime": "2026-10-04T09:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "ad0fdc72-8e34-4e25-82ff-256c46ab43a1",
+      "name": "Azerbaijan Grand Prix",
+      "dateStart": "2026-09-24",
+      "dateEnd": "2026-09-26",
+      "status": "scheduled",
+      "location": {
+        "id": "2daab29a-f4c4-483a-bd24-4d01123da25f",
+        "name": "Baku City Circuit",
+        "city": "Baku",
+        "country": {
+          "name": "Azerbaijan",
+          "twoCode": "AZ",
+          "threeCode": "AZE"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "fc06a197-f595-4057-acba-46c5374dfe29",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-09-24T08:30:00.000Z",
+          "endTime": "2026-09-24T09:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "6e5be7fa-6d39-423f-b73a-4f2cea044323",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-09-24T12:00:00.000Z",
+          "endTime": "2026-09-24T13:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "8b8feb97-c11d-4e6f-abd3-6d34e2f797bc",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-09-25T08:30:00.000Z",
+          "endTime": "2026-09-25T09:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "b19b53bc-fb85-41a3-9485-41cff5238980",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-09-25T12:00:00.000Z",
+          "endTime": "2026-09-25T13:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "b033e6a1-d601-4a33-81ea-148d7d084d4a",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-09-26T11:00:00.000Z",
+          "endTime": "2026-09-26T13:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "c4608821-8a20-488d-b99b-bef8a515be81",
+      "name": "Spanish Grand Prix",
+      "dateStart": "2026-09-11",
+      "dateEnd": "2026-09-13",
+      "status": "scheduled",
+      "location": {
+        "id": "261acf15-a4a0-4047-a4ce-626c01c5c403",
+        "name": "Madring",
+        "city": "Madrid",
+        "country": {
+          "name": "Spain",
+          "twoCode": "ES",
+          "threeCode": "ESP"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "66ad65e3-dd9c-4c37-8111-fe26755ce0f9",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-09-11T11:30:00.000Z",
+          "endTime": "2026-09-11T12:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "7ef0bdab-3d19-4492-8021-0946a5e3ee13",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-09-11T15:00:00.000Z",
+          "endTime": "2026-09-11T16:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "26dad685-93e4-4895-903e-e959ee14549a",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-09-12T10:30:00.000Z",
+          "endTime": "2026-09-12T11:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "dbec8296-cfe2-4516-b11f-746c2d4725e2",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-09-12T14:00:00.000Z",
+          "endTime": "2026-09-12T15:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "934051c0-f471-4168-8919-3c0810d3d938",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-09-13T13:00:00.000Z",
+          "endTime": "2026-09-13T15:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "08a0f685-fb4b-4749-8c6f-16981ef62b55",
+      "name": "Italian Grand Prix",
+      "dateStart": "2026-09-04",
+      "dateEnd": "2026-09-06",
+      "status": "scheduled",
+      "location": {
+        "id": "6c6c3380-e4f0-4b5d-b84d-47bf8e50c324",
+        "name": "Autodromo Nazionale Monza",
+        "city": "Monza",
+        "country": {
+          "name": "Italy",
+          "twoCode": "IT",
+          "threeCode": "ITA"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "e5b4550a-0366-4916-9df3-70a3cbcb92b0",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-09-04T10:30:00.000Z",
+          "endTime": "2026-09-04T11:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "a5108383-da59-4718-9393-10dbdf2bc412",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-09-04T14:00:00.000Z",
+          "endTime": "2026-09-04T15:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "4f06c623-df81-4778-9925-0b2233e086c1",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-09-05T10:30:00.000Z",
+          "endTime": "2026-09-05T11:30:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "471c1986-8f7e-4edb-bbb2-c8791488414d",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-09-05T14:00:00.000Z",
+          "endTime": "2026-09-05T15:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "7ab5539d-31b1-4a06-bf29-a4ddd69c2af3",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-09-06T13:00:00.000Z",
+          "endTime": "2026-09-06T15:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "45231ac5-926f-4e14-8f14-6888292f4a3b",
+      "name": "Dutch Grand Prix",
+      "dateStart": "2026-08-21",
+      "dateEnd": "2026-08-23",
+      "status": "ongoing",
+      "location": {
+        "id": "c838f6ac-ccc4-40f0-9b7f-55b75dcdd8cd",
+        "name": "Circuit Zandvoort",
+        "city": "Zandvoort",
+        "country": {
+          "name": "Netherlands",
+          "twoCode": null,
+          "threeCode": "NED"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "e38aa5bb-c377-408f-bb4c-5a07b643edd3",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-08-21T10:30:00.000Z",
+          "endTime": "2026-08-21T11:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "2e349080-ccac-4047-bfb5-c2c512cdc5ec",
+          "name": "Sprint Q",
+          "type": "sprint_qualifying",
+          "startTime": "2026-08-21T14:30:00.000Z",
+          "endTime": "2026-08-21T15:14:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "25a77bec-a67e-4e79-800d-c52c877452a9",
+          "name": "Sprint",
+          "type": "sprint",
+          "startTime": "2026-08-22T10:00:00.000Z",
+          "endTime": "2026-08-22T11:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "7cf3302f-69f2-448d-b513-10d24b8b7c39",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-08-22T14:00:00.000Z",
+          "endTime": "2026-08-22T15:00:00.000Z",
+          "status": "scheduled"
+        },
+        {
+          "id": "9a943d97-a8e8-4992-aafe-3c74885f4734",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-08-23T13:00:00.000Z",
+          "endTime": "2026-08-23T15:00:00.000Z",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "093e56b6-70b0-49ae-be1d-fe7c92b9afd8",
+      "name": "Hungarian Grand Prix",
+      "dateStart": "2026-07-24",
+      "dateEnd": "2026-07-26",
+      "status": "completed",
+      "location": {
+        "id": "350f8d21-eaaa-4e52-ad56-195bd9074f76",
+        "name": "Hungaroring",
+        "city": "Budapest",
+        "country": {
+          "name": "Hungary",
+          "twoCode": "HU",
+          "threeCode": "HUN"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "d42c0cfc-d9ef-4728-9fd0-ffac541a6931",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-07-24T11:30:00.000Z",
+          "endTime": "2026-07-24T12:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "5b2084d5-f522-4588-a5a2-329708550efd",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-07-24T15:00:00.000Z",
+          "endTime": "2026-07-24T16:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "11edab23-af01-4ac0-b658-a8aa95c30732",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-07-25T10:30:00.000Z",
+          "endTime": "2026-07-25T11:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "16746c67-c0ab-4274-838f-be6e1206fdb2",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-07-25T14:00:00.000Z",
+          "endTime": "2026-07-25T15:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "53e72dd9-8177-41d9-b23e-5d5e2c94b5e9",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-07-26T13:00:00.000Z",
+          "endTime": "2026-07-26T15:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "74409172-bf8f-40dd-9ccc-9c60a9c26ed1",
+      "name": "Belgian Grand Prix",
+      "dateStart": "2026-07-17",
+      "dateEnd": "2026-07-19",
+      "status": "completed",
+      "location": {
+        "id": "8abb72e4-b770-4adf-a9a5-99e02294ca91",
+        "name": "Circuit de Spa-Francorchamps",
+        "city": "Spa",
+        "country": {
+          "name": "Belgium",
+          "twoCode": "BE",
+          "threeCode": "BEL"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "c76fce09-0e53-464c-9a03-f494a10be40a",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-07-17T11:30:00.000Z",
+          "endTime": "2026-07-17T12:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "a3d92009-233c-4c34-b3e6-d601ea8066b6",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-07-17T15:00:00.000Z",
+          "endTime": "2026-07-17T16:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "3f1bb767-9f9d-4bc2-84a4-79768384da8c",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-07-18T10:30:00.000Z",
+          "endTime": "2026-07-18T11:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "6ed7f98a-3739-486a-a29a-0d21ce7f9441",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-07-18T14:00:00.000Z",
+          "endTime": "2026-07-18T15:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "ded1cb5a-a007-4ce2-a358-60043f2e0279",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-07-19T13:00:00.000Z",
+          "endTime": "2026-07-19T15:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "d9ee2184-aa8e-4faa-b10a-97ccf3182f8d",
+      "name": "British Grand Prix",
+      "dateStart": "2026-07-03",
+      "dateEnd": "2026-07-05",
+      "status": "completed",
+      "location": {
+        "id": "2d8e0ba8-2e48-4914-88cf-8025661b3b47",
+        "name": "Silverstone Circuit",
+        "city": "Milton Keynes",
+        "country": {
+          "name": "United Kingdom",
+          "twoCode": "GB",
+          "threeCode": "GBR"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "4c719c39-2836-42e3-8471-a25ca6055316",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-07-03T11:30:00.000Z",
+          "endTime": "2026-07-03T12:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "17e89ad1-5482-4f78-84f9-a828f64b23d4",
+          "name": "Sprint Q",
+          "type": "sprint_qualifying",
+          "startTime": "2026-07-03T15:30:00.000Z",
+          "endTime": "2026-07-03T16:14:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "6f2f73bc-654d-4f85-a372-a050c23a4958",
+          "name": "Sprint",
+          "type": "sprint",
+          "startTime": "2026-07-04T11:00:00.000Z",
+          "endTime": "2026-07-04T12:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "d055057e-8a84-486d-900c-a11a97239ede",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-07-04T15:00:00.000Z",
+          "endTime": "2026-07-04T16:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "2e362209-6a8c-4daf-8a2d-a0a596cb30a4",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-07-05T14:00:00.000Z",
+          "endTime": "2026-07-05T16:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "fabc5a6d-8da4-4549-a038-204a02c6a425",
+      "name": "Austrian Grand Prix",
+      "dateStart": "2026-06-26",
+      "dateEnd": "2026-06-28",
+      "status": "completed",
+      "location": {
+        "id": "2d4d69b8-f6c5-4638-b6ce-1162ff0cad12",
+        "name": "Red Bull Ring",
+        "city": "Spielberg",
+        "country": {
+          "name": "Austria",
+          "twoCode": "AT",
+          "threeCode": "AUT"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "50fc63e9-fa98-4e37-87c0-d2cf2fcf19a1",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-06-26T11:30:00.000Z",
+          "endTime": "2026-06-26T12:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "71f9bc67-4c4e-409f-9646-e2d3921b3804",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-06-26T15:00:00.000Z",
+          "endTime": "2026-06-26T16:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "6895c468-036f-4e50-b4c2-c19be7db868a",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-06-27T10:30:00.000Z",
+          "endTime": "2026-06-27T11:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "608994a9-d291-490d-a5da-061d4a39da7e",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-06-27T14:00:00.000Z",
+          "endTime": "2026-06-27T15:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "b7a75618-06a3-4c36-a172-d05f08c7f62b",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-06-28T13:00:00.000Z",
+          "endTime": "2026-06-28T15:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "fdc20deb-2806-4863-9afb-e22e2d841424",
+      "name": "Barcelona Grand Prix",
+      "dateStart": "2026-06-12",
+      "dateEnd": "2026-06-14",
+      "status": "completed",
+      "location": {
+        "id": "4e1b4663-483d-4f80-a103-caf0a75e593f",
+        "name": "Circuit de Barcelona-Catalunya",
+        "city": "Barcelona",
+        "country": {
+          "name": "Spain",
+          "twoCode": "ES",
+          "threeCode": "ESP"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "45defb47-0f1a-4693-914a-d7f7a519982b",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-06-12T11:30:00.000Z",
+          "endTime": "2026-06-12T12:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "efa2ff19-5dcf-4eae-9ca5-e5088b4ffe1c",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-06-12T15:00:00.000Z",
+          "endTime": "2026-06-12T16:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "e4aad737-9b11-42ea-8928-0418c824a009",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-06-13T10:30:00.000Z",
+          "endTime": "2026-06-13T11:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "fedd32ed-3f63-431d-a060-94a9c6270ae5",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-06-13T14:00:00.000Z",
+          "endTime": "2026-06-13T15:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "eb0ee0c5-9304-454f-986a-3424128542a7",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-06-14T13:00:00.000Z",
+          "endTime": "2026-06-14T15:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "2d368909-5069-46c1-b0d4-b02bfc56975b",
+      "name": "Monaco Grand Prix",
+      "dateStart": "2026-06-05",
+      "dateEnd": "2026-06-07",
+      "status": "completed",
+      "location": {
+        "id": "889198ad-0100-4208-baec-790e6b41cd8e",
+        "name": "Circuit de Monaco",
+        "city": "Monte Carlo",
+        "country": {
+          "name": "Monaco",
+          "twoCode": "MC",
+          "threeCode": "MCO"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "91d357a6-124d-4908-aea5-dda24bf7e32f",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-06-05T11:30:00.000Z",
+          "endTime": "2026-06-05T12:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "de54ad0d-bad2-49fa-84f2-6cfaa1e9efb2",
+          "name": "FP2",
+          "type": "practice",
+          "startTime": "2026-06-05T15:00:00.000Z",
+          "endTime": "2026-06-05T16:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "b1178421-d4df-450e-9573-6b69c3693ccf",
+          "name": "FP3",
+          "type": "practice",
+          "startTime": "2026-06-06T10:30:00.000Z",
+          "endTime": "2026-06-06T11:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "2efdd162-56bb-4141-b5bc-5cc391c2edc9",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-06-06T14:00:00.000Z",
+          "endTime": "2026-06-06T15:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "1185f529-ae7c-4ed1-a3ac-5d4c352d2329",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-06-07T13:00:00.000Z",
+          "endTime": "2026-06-07T15:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "30c1d094-0734-4416-93e1-c16b8fe6061e",
+      "name": "Canadian Grand Prix",
+      "dateStart": "2026-05-22",
+      "dateEnd": "2026-05-24",
+      "status": "completed",
+      "location": {
+        "id": "b20483fa-8c38-4b2e-a432-552c0a54ba94",
+        "name": "Circuit Gilles-Villeneuve",
+        "city": "Montréal",
+        "country": {
+          "name": "Canada",
+          "twoCode": "CA",
+          "threeCode": "CAN"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "579b96ed-c6a4-4235-a633-0b525dc22c8d",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-05-22T16:30:00.000Z",
+          "endTime": "2026-05-22T17:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "3f3c545f-ab05-43d7-92ee-b4801db1c211",
+          "name": "Sprint Q",
+          "type": "sprint_qualifying",
+          "startTime": "2026-05-22T20:30:00.000Z",
+          "endTime": "2026-05-22T21:14:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "2fc41ccc-12a6-46d2-9887-e2bbcc117000",
+          "name": "Sprint",
+          "type": "sprint",
+          "startTime": "2026-05-23T16:00:00.000Z",
+          "endTime": "2026-05-23T17:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "172a6dac-f9db-4a0a-99f9-67bc6b01c1da",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-05-23T20:00:00.000Z",
+          "endTime": "2026-05-23T21:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "e8ee0116-3ea3-4681-a77a-5b050ed85eff",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-05-24T20:00:00.000Z",
+          "endTime": "2026-05-24T22:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "a83455fb-04ba-47a7-a714-3880c98a72cf",
+      "name": "Miami Grand Prix",
+      "dateStart": "2026-05-01",
+      "dateEnd": "2026-05-03",
+      "status": "completed",
+      "location": {
+        "id": "f9394af6-ba14-48a9-9612-527ec11781af",
+        "name": "Miami International Autodrome",
+        "city": "Miami",
+        "country": {
+          "name": "United States",
+          "twoCode": "US",
+          "threeCode": "USA"
+        }
+      },
+      "sportId": "formula-1",
+      "schedule": [
+        {
+          "id": "237199e4-0c57-4d00-9ecd-8d0ae755db6b",
+          "name": "FP1",
+          "type": "practice",
+          "startTime": "2026-05-01T16:00:00.000Z",
+          "endTime": "2026-05-01T17:30:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "96c44c0a-34ec-481c-8362-f0a4989b1210",
+          "name": "Sprint Q",
+          "type": "sprint_qualifying",
+          "startTime": "2026-05-01T20:30:00.000Z",
+          "endTime": "2026-05-01T21:14:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "59cbd36b-adb4-4065-b1c6-27a6a90eedd8",
+          "name": "Sprint",
+          "type": "sprint",
+          "startTime": "2026-05-02T16:00:00.000Z",
+          "endTime": "2026-05-02T17:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "3d641092-8475-4d6e-905d-979e316784b1",
+          "name": "Qualifying",
+          "type": "qualifying",
+          "startTime": "2026-05-02T20:00:00.000Z",
+          "endTime": "2026-05-02T21:00:00.000Z",
+          "status": "completed"
+        },
+        {
+          "id": "00c40ec1-7b76-4f1d-8ddf-f87c7de475ef",
+          "name": "Race",
+          "type": "race",
+          "startTime": "2026-05-03T17:00:00.000Z",
+          "endTime": "2026-05-03T19:00:00.000Z",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "limit": 20,
+    "total": 1185,
+    "totalPages": 60
+  }
+}
