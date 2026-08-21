@@ -147,41 +147,41 @@ export class F1 {
          */
     
         const liveEvent =
-            events.find(
-                event =>
-                    event.status === "ongoing"
-            ) ?? null;
-    
-    
-        /*
-         * Próximo evento programado
-         */
-    
+            Array.isArray(alphaSchedule)
+                ? alphaSchedule.find(
+                    event =>
+                        event.status === "ongoing"
+                )
+                : null;
+        
+        console.log("🏎️ Blacktop alphaSchedule:", alphaSchedule);
+        console.log("🔴 Blacktop liveEvent:", liveEvent);
+        
+        
         const nextEvent =
-            events.find(
-                event =>
-                    event.status === "scheduled"
-            ) ?? null;
-    
-    
-        /*
-         * =====================================================
-         * ESTADO DEL HERO
-         * =====================================================
-         */
-    
+            Array.isArray(alphaSchedule)
+                ? alphaSchedule.find(
+                    event =>
+                        event.status === "scheduled"
+                )
+                : null;
+        
+        
         let state = "NEXT";
-    
-        let currentEvent = nextEvent;
-    
-    
+        
+        
         if (liveEvent) {
-    
+        
             state = "LIVE";
-    
-            currentEvent = liveEvent;
-    
+        
         }
+        
+        
+        const currentEvent =
+            liveEvent ??
+            nextEvent;
+        
+        console.log("🎯 Hero currentEvent:", currentEvent);
     
     
         /*
