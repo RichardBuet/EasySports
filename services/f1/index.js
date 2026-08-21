@@ -1,4 +1,4 @@
-// services/f1/index.js
+// services/f1/index.js 21/08/26
 
 export { getDriverStandings } from "./standings.js";
 export { getConstructorStandings } from "./constructors.js";
@@ -15,3 +15,4 @@ export { getFastestLaps } from "./fastestLaps.js";
 export { getSeasons } from "./seasons.js";
 export { getRounds } from "./rounds.js";
 export { getAlphaSchedule } from "./alphaSchedule.js";
+export { getBlacktopEvents } from "./blacktop.js";
