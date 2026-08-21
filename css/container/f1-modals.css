@@ -1,142 +1,152 @@
 /* =========================================================
-   FORMULA 1 — MODAL COMPLETO
-   EasySports
-========================================================= */
+   EASYSPORTS — F1 MODALS
+   Visual system inspired by the NASCAR Live references
+   ========================================================= */
 
 
 /* =========================================================
-   OVERLAY
-========================================================= */
+   1. MODAL PRINCIPAL
+   ========================================================= */
 
-.f1-modal-overlay {
+.f1-modal {
     position: fixed;
     inset: 0;
 
-    z-index: 99999;
+    z-index: 9999;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 24px;
+    padding: 20px;
 
     background: rgba(0, 0, 0, 0.78);
 
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 0.22s ease,
-        visibility 0.22s ease;
+    animation: f1ModalFadeIn 0.2s ease-out;
 }
 
 
-.f1-modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.f1-modal {
-    position: relative;
-
-    width: min(1100px, 100%);
-    max-height: min(90vh, 900px);
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            #202020 0%,
-            #181818 100%
-        );
-
-    border: 1px solid rgba(255, 255, 255, 0.13);
-
-    border-radius: 22px;
-
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(255, 255, 255, 0.025);
-
-    transform: translateY(20px) scale(0.98);
-
-    transition:
-        transform 0.22s ease;
-}
-
-
-.f1-modal-overlay.show .f1-modal {
-    transform: translateY(0) scale(1);
-}
-
-
-/* =========================================================
-   CONTENIDO
-========================================================= */
+/* Contenedor */
 
 .f1-modal-content {
     position: relative;
 
-    max-height: min(90vh, 900px);
+    width: min(100%, 920px);
+    max-height: calc(100vh - 40px);
 
-    overflow-y: auto;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 
-    padding: 32px 34px 34px;
+    overflow: hidden;
 
-    color: #f4f4f4;
+    color: #f5f5f5;
 
-    scrollbar-width: thin;
-    scrollbar-color:
-        rgba(255,255,255,0.25)
-        transparent;
-}
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(255, 255, 255, 0.035),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #1d1e20,
+            #17181a
+        );
 
+    border: 1px solid rgba(255, 255, 255, 0.16);
 
-.f1-modal-content::-webkit-scrollbar {
-    width: 7px;
-}
+    border-radius: 24px;
 
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
-.f1-modal-content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-
-.f1-modal-content::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.22);
-    border-radius: 10px;
-}
-
-
-.f1-modal-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.35);
+    animation: f1ModalScaleIn 0.22s ease-out;
 }
 
 
 /* =========================================================
-   BOTÓN CERRAR
-========================================================= */
+   2. HEADER
+   ========================================================= */
+
+.f1-modal-header {
+    position: relative;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 82px;
+
+    padding: 20px 70px 18px 28px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.025),
+            transparent
+        );
+}
+
+
+/* Línea deportiva */
+
+.f1-modal-header::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #e10600 0%,
+        #ff3b30 35%,
+        transparent 100%
+    );
+
+    opacity: 0.9;
+}
+
+
+/* Título */
+
+.f1-modal-title {
+    margin: 0;
+
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.5px;
+
+    color: #f7f7f7;
+}
+
+
+/* =========================================================
+   3. BOTÓN CERRAR
+   ========================================================= */
 
 .f1-modal-close {
     position: absolute;
 
-    top: 14px;
-    right: 14px;
+    top: 18px;
+    right: 18px;
 
-    z-index: 20;
-
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
 
     display: flex;
     align-items: center;
@@ -144,704 +154,953 @@
 
     border-radius: 50%;
 
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 
-    background: rgba(255,255,255,0.07);
+    background: rgba(255, 255, 255, 0.045);
 
-    color: #fff;
+    color: #ffffff;
 
     font-size: 28px;
     font-weight: 300;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition:
-        background 0.18s ease,
-        transform 0.18s ease,
-        border-color 0.18s ease;
-}
-
-
-.f1-modal-close:hover {
-    background: rgba(255,255,255,0.14);
-
-    border-color:
-        rgba(255,255,255,0.35);
-
-    transform: rotate(90deg);
-}
-
-
-.f1-modal-close:active {
-    transform: scale(0.92);
-}
-
-
-/* =========================================================
-   CABECERA DEL GP
-========================================================= */
-
-.f1-modal-content h1 {
-    margin: 0 55px 12px 0;
-
-    font-size: clamp(24px, 4vw, 38px);
-
-    line-height: 1.15;
-
-    font-weight: 800;
-
-    letter-spacing: -0.5px;
-}
-
-
-.f1-modal-content h2 {
-    margin: 0 0 18px;
-
-    font-size: clamp(22px, 3vw, 30px);
-
-    line-height: 1.2;
-
-    font-weight: 800;
-}
-
-
-.f1-modal-content p {
-    margin: 8px 0;
-
-    color: rgba(255,255,255,0.78);
-
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   ROUND
-========================================================= */
-
-.f1-round {
-    margin-top: 22px;
-    margin-bottom: 8px;
-
-    font-size: 18px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.4px;
-}
-
-
-/* =========================================================
-   BOTONES DE SESIONES
-========================================================= */
-
-.f1-session-buttons {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin: 8px 0 18px;
-}
-
-
-.f1-session-button {
-    appearance: none;
-
-    min-width: 62px;
-
-    padding: 8px 14px;
-
-    border: 1px solid
-        rgba(255,255,255,0.20);
-
-    border-radius: 999px;
-
-    background:
-        rgba(255,255,255,0.08);
-
-    color: #f2f2f2;
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.2px;
 
     cursor: pointer;
 
     transition:
         background 0.18s ease,
         border-color 0.18s ease,
-        transform 0.18s ease,
-        color 0.18s ease;
+        transform 0.18s ease;
 }
 
 
-.f1-session-button:hover {
+.f1-modal-close:hover {
+    background: rgba(255, 255, 255, 0.11);
+
+    border-color: rgba(255, 255, 255, 0.28);
+
+    transform: scale(1.05);
+}
+
+
+.f1-modal-close:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================================================
+   4. INFORMACIÓN DEL GRAND PRIX
+   ========================================================= */
+
+.f1-modal-info {
+    flex-shrink: 0;
+
+    padding: 18px 28px 8px;
+}
+
+
+.f1-modal-circuit {
+    margin-bottom: 10px;
+
+    color: #d0d0d0;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.f1-modal-country {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #d8d8d8;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   5. ROUND
+   ========================================================= */
+
+.f1-modal-round {
+    padding: 6px 28px 12px;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   6. BOTONES DE SESIONES
+   ========================================================= */
+
+.f1-session-tabs {
+    display: flex;
+    gap: 10px;
+
+    padding: 0 28px 16px;
+
+    flex-shrink: 0;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.f1-session-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+
+.f1-session-tab {
+    flex-shrink: 0;
+
+    min-width: 72px;
+    height: 42px;
+
+    padding: 0 17px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
     background:
-        rgba(255,255,255,0.16);
+        linear-gradient(
+            180deg,
+            #f3f3f3,
+            #d9d9d9
+        );
 
-    border-color:
-        rgba(255,255,255,0.35);
+    color: #161616;
 
-    transform: translateY(-1px);
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
 }
 
 
-.f1-session-button:active {
+.f1-session-tab:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+
+.f1-session-tab:active {
     transform: scale(0.96);
 }
 
 
-/* BOTÓN ACTIVO */
+/* Activo */
 
-.f1-session-button.active,
-.f1-session-button[data-active="true"] {
-    background: #ffffff;
-
-    color: #151515;
-
-    border-color: #ffffff;
+.f1-session-tab.active,
+.f1-session-tab.selected,
+.f1-session-tab[aria-selected="true"] {
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #dddddd
+        );
 
     box-shadow:
-        0 3px 12px rgba(0,0,0,0.25);
+        0 0 0 2px rgba(255, 255, 255, 0.12),
+        0 5px 16px rgba(0, 0, 0, 0.30);
 }
 
 
 /* =========================================================
-   LISTA DE RESULTADOS
-========================================================= */
+   7. CONTENEDOR DE RESULTADOS
+   ========================================================= */
 
 .f1-session-results {
-    display: flex;
+    flex: 1;
 
-    flex-direction: column;
+    min-height: 0;
 
-    gap: 3px;
+    overflow-y: auto;
 
-    margin-top: 4px;
+    padding: 4px 20px 22px;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgba(255, 255, 255, 0.22)
+        transparent;
+}
+
+
+.f1-session-results::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.f1-session-results::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.f1-session-results::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.20);
+
+    border-radius: 10px;
 }
 
 
 /* =========================================================
-   FILA GENERAL
-========================================================= */
+   8. FILA GENERAL
+   ========================================================= */
 
 .f1-modal-row {
+    position: relative;
+
+    min-height: 72px;
+
     display: grid;
 
-    /*
-       POS | PILOTO | EQUIPO | INFORMACIÓN
-    */
     grid-template-columns:
-        42px
-        minmax(180px, 1.5fr)
-        minmax(130px, 1fr)
-        minmax(180px, auto);
+        52px
+        minmax(150px, 1fr)
+        minmax(100px, 0.65fr)
+        auto;
 
     align-items: center;
 
-    column-gap: 14px;
+    column-gap: 18px;
 
-    min-height: 38px;
+    padding: 10px 14px;
 
-    padding: 7px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
 
-    border-radius: 8px;
-
-    color: #f0f0f0;
-
-    font-size: 14px;
-
-    line-height: 1.25;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.018),
+            transparent
+        );
 
     transition:
-        background 0.15s ease;
+        background 0.16s ease;
 }
 
 
 .f1-modal-row:hover {
     background:
-        rgba(255,255,255,0.055);
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.015)
+        );
 }
 
 
 /* =========================================================
-   POSICIÓN
-========================================================= */
+   9. POSICIÓN
+   ========================================================= */
 
 .f1-modal-row > strong:first-child {
+    width: 44px;
+    height: 44px;
+
     display: flex;
-
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    width: 30px;
-    height: 30px;
-
-    border-radius: 7px;
+    border-radius: 11px;
 
     background:
-        rgba(255,255,255,0.07);
+        linear-gradient(
+            145deg,
+            #303133,
+            #262729
+        );
 
-    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.045);
 
+    color: #f4f4f4;
+
+    font-size: 16px;
     font-weight: 800;
 }
 
 
 /* =========================================================
-   PILOTO
-========================================================= */
+   10. PILOTO
+   ========================================================= */
 
 .f1-modal-row > span:nth-child(2) {
     min-width: 0;
 
+    overflow: hidden;
+
+    color: #f1f1f1;
+
+    font-size: 16px;
     font-weight: 700;
 
     white-space: nowrap;
-
-    overflow: hidden;
-
     text-overflow: ellipsis;
 }
 
 
 /* =========================================================
-   EQUIPO
-========================================================= */
+   11. EQUIPO
+   ========================================================= */
 
 .f1-modal-row > span:nth-child(3) {
     min-width: 0;
 
-    color:
-        rgba(255,255,255,0.62);
-
-    white-space: nowrap;
-
     overflow: hidden;
 
+    color: #a8a8a8;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 
 /* =========================================================
-   INFORMACIÓN FINAL
-========================================================= */
+   12. DATO FINAL
+   ========================================================= */
 
 .f1-modal-row > span:last-child,
 .f1-modal-row > strong:last-child {
     justify-self: end;
 
-    text-align: right;
-
     white-space: nowrap;
+
+    color: #eeeeee;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-align: right;
 }
 
 
 /* =========================================================
-   TIEMPOS DE QUALY
-========================================================= */
+   13. TIEMPOS DE QUALY
+   ========================================================= */
 
 .f1-session-times {
     display: flex;
 
+    align-items: center;
     justify-content: flex-end;
 
-    align-items: center;
+    gap: 12px;
 
-    gap: 10px;
+    color: #bcbcbc !important;
 
-    color:
-        rgba(255,255,255,0.78);
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
 
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
 
-    font-size: 13px;
-
-    white-space: nowrap;
+.f1-session-times::first-letter {
+    color: #eeeeee;
 }
 
 
 /* =========================================================
-   PRÁCTICAS
-========================================================= */
+   14. PUNTOS
+   ========================================================= */
 
-.f1-modal-row span:last-child {
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-variant-numeric:
-        tabular-nums;
-}
-
-
-/* =========================================================
-   RACE — DIFERENCIA
-========================================================= */
-
-.f1-modal-row .f1-race-time {
-    color:
-        rgba(255,255,255,0.82);
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-variant-numeric:
-        tabular-nums;
-}
-
-
-/* =========================================================
-   PUNTOS
-========================================================= */
-
-.f1-modal-row strong:last-child {
-    font-weight: 800;
-
+.f1-modal-row > strong:last-child {
     color: #ffffff;
+
+    font-weight: 800;
 }
 
 
 /* =========================================================
-   DNF
-========================================================= */
+   15. DNF
+   ========================================================= */
 
 .f1-dnf {
     color: #ff6b6b !important;
 
-    font-weight: 800;
+    font-weight: 800 !important;
 
-    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   NO RESULTADOS
-========================================================= */
+   16. NO RESULTADOS
+   ========================================================= */
 
 .f1-no-results {
-    display: flex;
+    min-height: 180px;
 
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    min-height: 90px;
+    padding: 30px;
 
-    padding: 20px;
+    color: #8e8e8e;
 
-    margin-top: 10px;
-
-    border-radius: 12px;
-
-    background:
-        rgba(255,255,255,0.035);
-
-    border: 1px solid
-        rgba(255,255,255,0.08);
-
-    color:
-        rgba(255,255,255,0.55);
+    font-size: 16px;
+    font-weight: 500;
 
     text-align: center;
+}
+
+
+/* =========================================================
+   17. LOADING
+   ========================================================= */
+
+.f1-loading {
+    min-height: 260px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #bdbdbd;
+
+    font-size: 18px;
+}
+
+
+.f1-loading-spinner {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(255, 255, 255, 0.16);
+
+    border-top-color: #ffffff;
+
+    animation: f1Spinner 0.8s linear infinite;
+}
+
+
+/* =========================================================
+   18. CAMPEONATO DE PILOTOS / CONSTRUCTORES
+   ========================================================= */
+
+.f1-standings-list {
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px 20px 24px;
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+}
+
+
+.f1-standing-row {
+    min-height: 76px;
+
+    display: grid;
+
+    grid-template-columns:
+        52px
+        minmax(0, 1fr)
+        minmax(100px, 0.55fr)
+        auto;
+
+    align-items: center;
+
+    column-gap: 16px;
+
+    padding: 8px 14px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.f1-standing-position {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #303133,
+            #262729
+        );
+
+    color: #ffffff;
+
+    font-weight: 800;
+}
+
+
+.f1-standing-driver {
+    color: #f2f2f2;
+
+    font-size: 17px;
+    font-weight: 750;
+}
+
+
+.f1-standing-team {
+    color: #a4a4a4;
 
     font-size: 15px;
 }
 
 
-/* =========================================================
-   LOADING
-========================================================= */
-
-.f1-loading {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 180px;
-
-    color:
-        rgba(255,255,255,0.65);
+.f1-standing-points {
+    color: #ffffff;
 
     font-size: 16px;
+    font-weight: 800;
+
+    white-space: nowrap;
 }
 
 
 /* =========================================================
-   ANIMACIÓN LOADING
-========================================================= */
+   19. TOP 3
+   ========================================================= */
 
-.f1-loading::after {
-    content: "";
-
-    width: 16px;
-    height: 16px;
-
-    margin-left: 10px;
-
-    border: 2px solid
-        rgba(255,255,255,0.2);
-
-    border-top-color:
-        rgba(255,255,255,0.9);
-
-    border-radius: 50%;
-
-    animation:
-        f1-spin 0.75s linear infinite;
-}
-
-
-@keyframes f1-spin {
-
-    to {
-        transform: rotate(360deg);
-    }
-
+.f1-standing-row:nth-child(1) .f1-standing-position,
+.f1-standing-row:nth-child(2) .f1-standing-position,
+.f1-standing-row:nth-child(3) .f1-standing-position {
+    background:
+        linear-gradient(
+            145deg,
+            #38393b,
+            #292a2c
+        );
 }
 
 
 /* =========================================================
-   LISTAS DE CAMPEONATO
-========================================================= */
+   20. RESPONSIVE — TABLET / DESKTOP
+   ========================================================= */
 
-.f1-modal-list {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 3px;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .f1-modal-overlay {
-        align-items: flex-end;
-
-        padding: 0;
-    }
-
+@media (min-width: 768px) {
 
     .f1-modal {
-        width: 100%;
+        padding: 32px;
+    }
 
-        max-height: 92vh;
+    .f1-modal-content {
+        width: min(920px, 92vw);
 
-        border-radius:
-            22px 22px 0 0;
+        max-height: 88vh;
 
-        border-bottom: none;
+        border-radius: 26px;
+    }
 
-        transform:
-            translateY(40px);
+    .f1-modal-row {
+        min-height: 78px;
+
+        padding: 10px 18px;
+    }
+
+    .f1-modal-row > span:nth-child(2) {
+        font-size: 17px;
+    }
+
+    .f1-modal-row > span:nth-child(3) {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   21. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .f1-modal {
+        align-items: center;
+
+        padding: 12px;
     }
 
 
     .f1-modal-content {
-        max-height: 92vh;
+        width: 100%;
+
+        max-width: none;
+
+        max-height: calc(100dvh - 24px);
+
+        border-radius: 22px;
+    }
+
+
+    .f1-modal-header {
+        min-height: 76px;
 
         padding:
-            28px 16px 28px;
+            18px
+            64px
+            16px
+            20px;
     }
 
 
-    .f1-modal-close {
-        top: 12px;
-        right: 12px;
-
-        width: 40px;
-        height: 40px;
-    }
-
-
-    .f1-modal-content h1 {
-        margin-right: 48px;
-
+    .f1-modal-title {
         font-size: 25px;
     }
 
 
-    .f1-modal-content h2 {
-        font-size: 23px;
+    .f1-modal-close {
+        top: 14px;
+        right: 14px;
+
+        width: 46px;
+        height: 46px;
     }
 
 
-    .f1-session-buttons {
-        gap: 6px;
-
-        margin-bottom: 14px;
+    .f1-modal-info {
+        padding:
+            16px
+            20px
+            6px;
     }
 
 
-    .f1-session-button {
-        min-width: 55px;
+    .f1-modal-circuit {
+        font-size: 17px;
+    }
+
+
+    .f1-modal-country {
+        font-size: 16px;
+    }
+
+
+    .f1-modal-round {
+        padding:
+            6px
+            20px
+            10px;
+
+        font-size: 18px;
+    }
+
+
+    .f1-session-tabs {
+        gap: 8px;
 
         padding:
-            7px 11px;
+            0
+            20px
+            14px;
+    }
+
+
+    .f1-session-tab {
+        min-width: 66px;
+
+        height: 40px;
+
+        padding: 0 15px;
 
         font-size: 12px;
     }
 
 
-    /*
-       En móvil hacemos la fila
-       más compacta.
-    */
+    .f1-session-results {
+        padding:
+            0
+            10px
+            18px;
+    }
+
 
     .f1-modal-row {
+        min-height: 72px;
 
         grid-template-columns:
-            28px
-            minmax(120px, 1fr)
-            minmax(75px, auto)
+            48px
+            minmax(0, 1fr)
             auto;
 
-        column-gap: 7px;
-
-        min-height: 34px;
+        column-gap: 10px;
 
         padding:
-            5px 4px;
-
-        font-size: 12px;
+            9px
+            8px;
     }
 
 
     .f1-modal-row > strong:first-child {
+        width: 42px;
+        height: 42px;
 
-        width: 25px;
-        height: 25px;
-
-        font-size: 11px;
+        border-radius: 10px;
     }
 
 
     .f1-modal-row > span:nth-child(2) {
-        font-size: 12px;
+        font-size: 15px;
     }
 
 
     .f1-modal-row > span:nth-child(3) {
-        font-size: 11px;
-    }
+        grid-column: 2;
 
+        grid-row: 2;
 
-    .f1-session-times {
+        font-size: 13px;
 
-        justify-content: flex-end;
-
-        gap: 5px;
-
-        font-size: 10px;
+        margin-top: -5px;
     }
 
 
     .f1-modal-row > span:last-child,
     .f1-modal-row > strong:last-child {
+        grid-column: 3;
 
-        font-size: 11px;
+        grid-row: 1 / span 2;
+
+        font-size: 14px;
     }
 
+
+    .f1-session-times {
+        grid-column: 3 !important;
+        grid-row: 1 / span 2 !important;
+
+        display: block;
+
+        max-width: 190px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+
+        font-size: 12px !important;
+    }
+
+
+    .f1-standing-row {
+        min-height: 74px;
+
+        grid-template-columns:
+            48px
+            minmax(0, 1fr)
+            auto;
+
+        column-gap: 10px;
+
+        padding:
+            8px 6px;
+    }
+
+
+    .f1-standing-position {
+        width: 42px;
+        height: 42px;
+    }
+
+
+    .f1-standing-driver {
+        font-size: 16px;
+    }
+
+
+    .f1-standing-team {
+        font-size: 13px;
+    }
+
+
+    .f1-standing-points {
+        font-size: 15px;
+    }
 }
 
 
 /* =========================================================
-   MOBILE MUY PEQUEÑO
-========================================================= */
+   22. QUALY MOBILE
+   ========================================================= */
 
-@media (max-width: 430px) {
+@media (max-width: 767px) {
+
+    .f1-session-times {
+        max-width: 215px;
+
+        overflow-x: auto;
+
+        scrollbar-width: none;
+    }
+
+    .f1-session-times::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   23. MUY PEQUEÑO — iPHONE SE / SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .f1-modal {
+        padding: 8px;
+    }
+
 
     .f1-modal-content {
-        padding-left: 12px;
-        padding-right: 12px;
+        max-height: calc(100dvh - 16px);
+
+        border-radius: 18px;
+    }
+
+
+    .f1-modal-title {
+        font-size: 22px;
+    }
+
+
+    .f1-modal-header {
+        padding-left: 16px;
+    }
+
+
+    .f1-session-tabs {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+
+    .f1-session-results {
+        padding-left: 6px;
+        padding-right: 6px;
     }
 
 
     .f1-modal-row {
-
         grid-template-columns:
-            24px
-            minmax(105px, 1fr)
-            minmax(65px, auto)
+            42px
+            minmax(0, 1fr)
             auto;
 
-        column-gap: 5px;
-
-        font-size: 11px;
+        column-gap: 8px;
     }
 
 
     .f1-modal-row > strong:first-child {
+        width: 38px;
+        height: 38px;
 
-        width: 23px;
-        height: 23px;
-
-        font-size: 10px;
+        font-size: 14px;
     }
 
 
     .f1-modal-row > span:nth-child(2) {
-        font-size: 11px;
+        font-size: 14px;
     }
 
 
     .f1-modal-row > span:nth-child(3) {
-        font-size: 10px;
-    }
-
-
-    .f1-session-times {
-        font-size: 9px;
-
-        gap: 3px;
+        font-size: 12px;
     }
 
 
     .f1-modal-row > span:last-child,
     .f1-modal-row > strong:last-child {
-        font-size: 10px;
+        font-size: 13px;
     }
-
 }
 
 
 /* =========================================================
-   REDUCIR MOVIMIENTO
-========================================================= */
+   24. ANIMACIONES
+   ========================================================= */
+
+@keyframes f1ModalFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes f1ModalScaleIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.97)
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+@keyframes f1Spinner {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   25. REDUCIR MOVIMIENTO
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .f1-modal-overlay,
     .f1-modal,
-    .f1-session-button,
+    .f1-modal-content,
+    .f1-session-tab,
     .f1-modal-close {
+        animation: none;
         transition: none;
     }
 
-
-    .f1-loading::after {
+    .f1-loading-spinner {
         animation: none;
     }
-
 }
