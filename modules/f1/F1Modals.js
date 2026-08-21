@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  21:41 20/08/26  */
+/* MODALS F1 ALL INCLUSIVE  21:46 20/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -1131,9 +1131,7 @@ async function loadSession(
                 currentRoundId
             )}
 
-            ${renderSessionResults(
-                data
-            )}
+            ${renderSessionResults(data, session)}
 
         `;
 
@@ -1317,7 +1315,7 @@ async function createLastRace(race) {
             roundId
         )}
 
-        ${renderSessionResults(data, session)}
+        ${renderSessionResults(data, selected.key)}
 
     `;
 
