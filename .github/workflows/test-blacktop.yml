@@ -15,4 +15,4 @@ jobs:
       - name: Test Blacktop API
         env:
           BLACKTOP_API_KEY: ${{ secrets.BLACKTOP_API_KEY }}
-        run: node scripts/test-blacktop.js
+        run: node js/test-blacktop.js
