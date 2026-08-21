@@ -758,14 +758,14 @@ function renderSessionResults(data, session) {
                     {};
 
 
+                const alphaName =
+                    `${driver.given_name ?? driver.givenName ?? ""} ${driver.family_name ?? driver.familyName ?? ""}`
+                        .trim();
+                
                 const fullName =
                     driver.fullName ??
                     driver.full_name ??
-                    `${driver.given_name ?? driver.givenName ?? ""} ${driver.family_name ?? driver.familyName ?? ""}`
-                        .trim() ||
-                    driver.abbreviation ??
-                    driver.code ??
-                    "—";
+                    (alphaName || driver.abbreviation || driver.code || "—");
 
 
                 /* =========================
