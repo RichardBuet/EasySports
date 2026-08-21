@@ -9,24 +9,31 @@ function formatWeekend(race) {
         race.qualifying?.date ??
         race.date;
 
+
     const end =
         race.date;
+
+
+    if (!start || !end) {
+        return "—";
+    }
+
 
     const startDate =
         new Date(start);
 
+
     const endDate =
         new Date(end);
 
+
     const month =
-        endDate
-            .toLocaleDateString(
-                "es-AR",
-                {
-                    month: "short"
-                }
-            )
-            .toUpperCase();
+        endDate.toLocaleDateString(
+            "es-AR",
+            {
+                month: "short"
+            }
+        ).toUpperCase();
 
 
     if (
@@ -44,6 +51,30 @@ function formatWeekend(race) {
 }
 
 
+function getCategory(state) {
+
+    switch (state) {
+
+        case "LIVE":
+
+            return "🔴 Formula 1 · EN VIVO";
+
+
+        case "FINISHED":
+
+            return "🏆 Formula 1 · GRAN PREMIO FINALIZADO";
+
+
+        case "NEXT":
+        default:
+
+            return "🟢 Formula 1 · PRÓXIMO GRAN PREMIO";
+
+    }
+
+}
+
+
 export async function createHero() {
 
     const heroData =
@@ -54,106 +85,33 @@ export async function createHero() {
         heroData.race;
 
 
-    const driverLeader =
-        heroData.leaders.driver;
+    const category =
+        getCategory(heroData.state);
 
 
-    const constructorLeader =
-        heroData.leaders.constructor;
+    const meta = [
+
+        {
+            icon: "📍",
+            value:
+                `Round ${race.round ?? "—"}`
+        },
 
 
-    let category =
-        "🟢 Formula 1 · Próximo Gran Premio";
+        {
+            icon: "📅",
+            value:
+                formatWeekend(race)
+        },
 
 
-    switch (heroData.state) {
+        {
+            icon: "🏁",
+            value:
+                `${race.laps ?? "—"} vueltas`
+        }
 
-        case "LIVE":
-
-            category =
-                "🔴 Formula 1 · EN VIVO";
-
-            break;
-
-
-        case "NEXT":
-
-            category =
-                "🟢 Formula 1 · PRÓXIMO GRAN PREMIO";
-
-            break;
-
-
-        case "FINISHED":
-
-            category =
-                "🏆 Formula 1 · GRAN PREMIO FINALIZADO";
-
-            break;
-
-    }
-
-
-    const hero = {
-
-        state:
-            heroData.state,
-
-        category,
-
-        title:
-            heroData.title,
-
-        subtitle:
-            heroData.subtitle,
-
-        meta: [
-
-            {
-                icon: "📍",
-                value:
-                    `Round ${race.round ?? "—"}`
-            },
-
-            {
-                icon: "📅",
-                value:
-                    formatWeekend(race)
-            },
-
-            {
-                icon: "🏁",
-                value:
-                    `${race.laps ?? "—"} vueltas`
-            }
-
-        ],
-
-        leaders: [
-
-            {
-                icon: "👤",
-                label:
-                    "Driver Leader",
-
-                value:
-                    driverLeader?.driver?.fullName ??
-                    "—"
-            },
-
-            {
-                icon: "🏆",
-                label:
-                    "Team Leader",
-
-                value:
-                    constructorLeader?.constructor?.name ??
-                    "—"
-            }
-
-        ]
-
-    };
+    ];
 
 
     return `
@@ -162,25 +120,26 @@ export async function createHero() {
 
             <div class="f1HeroOverlay"></div>
 
+
             <div class="hero__content">
 
                 <span class="hero__category">
 
-                    ${hero.category}
+                    ${category}
 
                 </span>
 
 
                 <h1 class="hero__title">
 
-                    ${hero.title}
+                    ${heroData.title}
 
                 </h1>
 
 
                 <p class="hero__subtitle">
 
-                    ${hero.subtitle}
+                    ${heroData.subtitle}
 
                 </p>
 
@@ -189,7 +148,7 @@ export async function createHero() {
 
                     <div class="hero__meta">
 
-                        ${hero.meta.map(item => `
+                        ${meta.map(item => `
 
                             <div class="hero__meta-item">
 
@@ -204,35 +163,6 @@ export async function createHero() {
                             </div>
 
                         `).join("")}
-
-                    </div>
-
-
-                    <div class="hero__championship">
-
-                        <span class="hero__championship-title">
-
-                            🏆 Puntero del campeonato:
-
-                        </span>
-
-
-                        <div class="hero__championship-driver-driver">
-
-                            <strong>
-
-                                ${driverLeader?.driver?.fullName ?? "—"}
-
-                            </strong>
-
-
-                            <span class="hero__championship-team">
-
-                                ${constructorLeader?.constructor?.name ?? "—"}
-
-                            </span>
-
-                        </div>
 
                     </div>
 
