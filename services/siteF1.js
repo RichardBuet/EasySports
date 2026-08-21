@@ -109,7 +109,7 @@ export class F1 {
    static async getHeroState(
         season = "current"
     ) {
-
+    
         const [
             nextRace,
             standings,
@@ -121,126 +121,179 @@ export class F1 {
             this.getConstructorStandings(season),
             this.getAlphaSchedule(season)
         ]);
-
-
+    
+    
         /*
-         * Buscar evento F1 actualmente activo
-         * según Blacktop.
+         * =====================================================
+         * BLACKTOP
+         * =====================================================
+         *
+         * Blacktop contiene los eventos F1 y su estado:
+         *
+         * ongoing   → evento actualmente activo
+         * scheduled → evento próximo
+         * completed → evento finalizado
          */
-
+    
+    
+        const events =
+            Array.isArray(alphaSchedule)
+                ? alphaSchedule
+                : [];
+    
+    
+        /*
+         * Evento actualmente activo
+         */
+    
         const liveEvent =
-            Array.isArray(alphaSchedule)
-                ? alphaSchedule.find(
-                    event =>
-                        event.status === "ongoing"
-                )
-                : null;
-
-
+            events.find(
+                event =>
+                    event.status === "ongoing"
+            ) ?? null;
+    
+    
         /*
-         * Si no hay evento LIVE,
-         * buscamos el próximo evento programado.
+         * Próximo evento programado
          */
-
+    
         const nextEvent =
-            Array.isArray(alphaSchedule)
-                ? alphaSchedule.find(
-                    event =>
-                        event.status === "scheduled"
-                )
-                : null;
-
-
+            events.find(
+                event =>
+                    event.status === "scheduled"
+            ) ?? null;
+    
+    
+        /*
+         * =====================================================
+         * ESTADO DEL HERO
+         * =====================================================
+         */
+    
         let state = "NEXT";
-
-
+    
+        let currentEvent = nextEvent;
+    
+    
         if (liveEvent) {
-
+    
             state = "LIVE";
-
+    
+            currentEvent = liveEvent;
+    
         }
-
-
+    
+    
         /*
-         * Evento que utilizaremos para
-         * mostrar información en el Hero.
+         * =====================================================
+         * BUSCAR CARRERA EQUIVALENTE EN JOLPICA
+         * =====================================================
+         *
+         * Blacktop nos da el evento.
+         *
+         * Jolpica nos da la información histórica
+         * que ya utiliza EasySports.
          */
-
-        const currentEvent =
-            liveEvent ??
-            nextEvent;
-
-
-        /*
-         * Si Blacktop tiene evento,
-         * intentamos encontrar la carrera
-         * equivalente en nuestro calendario Jolpica.
-         */
-
+    
+    
         let heroRace = nextRace;
-
-
+    
+    
         if (currentEvent) {
-
+    
+            const eventName =
+                currentEvent.name
+                    ?.replace(
+                        " Grand Prix",
+                        ""
+                    )
+                    .trim()
+                    .toLowerCase();
+    
+    
+            const schedule =
+                await this.getSchedule(season);
+    
+    
             const matchingRace =
-                (await this.getSchedule(season))
-                    .find(
-                        race =>
+                schedule.find(
+                    race => {
+    
+                        const raceName =
                             race.raceName
-                                ?.toLowerCase()
-                                .includes(
-                                    currentEvent.name
-                                        ?.replace(
-                                            " Grand Prix",
-                                            ""
-                                        )
-                                        .toLowerCase()
+                                ?.replace(
+                                    " Grand Prix",
+                                    ""
                                 )
-                    );
-
-
+                                .trim()
+                                .toLowerCase();
+    
+    
+                        return (
+                            raceName === eventName
+                        );
+    
+                    }
+                );
+    
+    
             if (matchingRace) {
-
+    
                 heroRace = matchingRace;
-
+    
             }
-
+    
         }
-
-
+    
+    
+        /*
+         * =====================================================
+         * RESULTADO PARA EL HERO
+         * =====================================================
+         */
+    
         return {
-
+    
             state,
-
+    
             category:
                 state === "LIVE"
                     ? "🔴 Formula 1 · En Vivo"
                     : "🟢 Formula 1 · Próximo Gran Premio",
-
+    
+    
             title:
                 currentEvent?.name ??
-                heroRace.raceName,
-
+                heroRace?.raceName ??
+                "Formula 1",
+    
+    
             subtitle:
                 currentEvent?.location?.name ??
-                heroRace.circuit?.name,
-
-            race: heroRace,
-
-            event: currentEvent,
-
+                heroRace?.circuit?.name ??
+                "—",
+    
+    
+            race:
+                heroRace,
+    
+    
+            event:
+                currentEvent,
+    
+    
             leaders: {
-
+    
                 driver:
-                    standings[0],
-
+                    standings?.[0] ?? null,
+    
                 constructor:
-                    constructors[0]
-
+                    constructors?.[0] ?? null
+    
             }
-
+    
         };
-
+    
     }
 
 
