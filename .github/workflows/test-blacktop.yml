@@ -21,3 +21,8 @@ jobs:
         env:
           BLACKTOP_API_KEY: ${{ secrets.BLACKTOP_API_KEY }}
         run: node js/test-blacktop-location.js
+
+      - name: Test Blacktop Event
+        env:
+          BLACKTOP_API_KEY: ${{ secrets.BLACKTOP_API_KEY }}
+        run: node js/test-blacktop-event.js
