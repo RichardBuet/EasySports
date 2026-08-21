@@ -212,7 +212,7 @@ export async function createHero() {
 
                         <span class="hero__championship-title">
 
-                            🏆 Puntero del campeonato
+                            🏆 Puntero del campeonato:
 
                         </span>
 
