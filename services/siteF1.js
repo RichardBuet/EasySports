@@ -102,199 +102,255 @@ export class F1 {
 
     /*
      * =====================================================
-     * HERO STATE
+     * HERO STATE 19:14 21-08-26
      * =====================================================
      */
-
-   static async getHeroState(
-        season = "current"
-    ) {
-    
-        const [
-            nextRace,
-            standings,
-            constructors,
-            alphaSchedule
-        ] = await Promise.all([
-            this.getNextRace(season),
-            this.getStandings(season),
-            this.getConstructorStandings(season),
-            this.getAlphaSchedule(season)
-        ]);
-    
-    
-        /*
-         * =====================================================
-         * BLACKTOP
-         * =====================================================
-         *
-         * Blacktop contiene los eventos F1 y su estado:
-         *
-         * ongoing   → evento actualmente activo
-         * scheduled → evento próximo
-         * completed → evento finalizado
-         */
-    
-    
-        const events =
-            Array.isArray(alphaSchedule)
-                ? alphaSchedule
-                : [];
-    
-    
-        /*
-         * Evento actualmente activo
-         */
-    
-        const liveEvent =
-            Array.isArray(alphaSchedule)
-                ? alphaSchedule.find(
+        static async getHeroState(
+            season = "current"
+        ) {
+        
+            /*
+             * =====================================================
+             * OBTENER DATOS
+             * =====================================================
+             *
+             * Usamos:
+             *
+             * - schedule       → calendario Jolpica
+             * - standings      → campeonato de pilotos
+             * - constructors   → campeonato de constructores
+             * - alphaSchedule  → eventos Blacktop
+             */
+        
+            const [
+                schedule,
+                standings,
+                constructors,
+                alphaSchedule
+            ] = await Promise.all([
+                this.getSchedule(season),
+                this.getStandings(season),
+                this.getConstructorStandings(season),
+                this.getAlphaSchedule(season)
+            ]);
+        
+        
+            /*
+             * =====================================================
+             * PRÓXIMA CARRERA SEGÚN JOLPICA
+             * =====================================================
+             */
+        
+            const now =
+                new Date();
+        
+        
+            const nextRace =
+                schedule.find(
+                    race =>
+                        new Date(
+                            `${race.date}T${race.time}`
+                        ) > now
+                ) ??
+                schedule[schedule.length - 1];
+        
+        
+            /*
+             * =====================================================
+             * BLACKTOP
+             * =====================================================
+             *
+             * Blacktop devuelve:
+             *
+             * {
+             *     metadata: {...},
+             *     data: {
+             *         events: [...]
+             *     }
+             * }
+             *
+             * Por eso debemos acceder a:
+             *
+             * alphaSchedule.data.events
+             */
+        
+        
+            const events =
+                Array.isArray(
+                    alphaSchedule?.data?.events
+                )
+                    ? alphaSchedule.data.events
+                    : [];
+        
+        
+            /*
+             * =====================================================
+             * EVENTO LIVE
+             * =====================================================
+             */
+        
+            const liveEvent =
+                events.find(
                     event =>
                         event.status === "ongoing"
-                )
-                : null;
-        
-        console.log("🏎️ Blacktop alphaSchedule:", alphaSchedule);
-        console.log("🔴 Blacktop liveEvent:", liveEvent);
+                ) ?? null;
         
         
-        const nextEvent =
-            Array.isArray(alphaSchedule)
-                ? alphaSchedule.find(
+            /*
+             * =====================================================
+             * PRÓXIMO EVENTO
+             * =====================================================
+             */
+        
+            const nextEvent =
+                events.find(
                     event =>
                         event.status === "scheduled"
-                )
-                : null;
+                ) ?? null;
         
         
-        let state = "NEXT";
+            /*
+             * =====================================================
+             * ESTADO DEL HERO
+             * =====================================================
+             */
+        
+            let state =
+                "NEXT";
         
         
-        if (liveEvent) {
+            let currentEvent =
+                nextEvent;
         
-            state = "LIVE";
+        
+            if (liveEvent) {
+        
+                state =
+                    "LIVE";
+        
+                currentEvent =
+                    liveEvent;
+        
+            }
+        
+        
+            /*
+             * =====================================================
+             * BUSCAR CARRERA EQUIVALENTE EN JOLPICA
+             * =====================================================
+             *
+             * Blacktop nos indica qué evento está activo.
+             *
+             * Jolpica contiene el calendario F1 que ya utiliza
+             * EasySports.
+             *
+             * Ejemplo:
+             *
+             * Blacktop → Dutch Grand Prix
+             * Jolpica  → Dutch Grand Prix
+             */
+        
+        
+            let heroRace =
+                nextRace;
+        
+        
+            if (currentEvent) {
+        
+                const eventName =
+                    currentEvent.name
+                        ?.replace(
+                            " Grand Prix",
+                            ""
+                        )
+                        .trim()
+                        .toLowerCase();
+        
+        
+                const matchingRace =
+                    schedule.find(
+                        race => {
+        
+                            const raceName =
+                                race.raceName
+                                    ?.replace(
+                                        " Grand Prix",
+                                        ""
+                                    )
+                                    .trim()
+                                    .toLowerCase();
+        
+        
+                            return (
+                                raceName === eventName
+                            );
+        
+                        }
+                    );
+        
+        
+                if (matchingRace) {
+        
+                    heroRace =
+                        matchingRace;
+        
+                }
+        
+            }
+        
+        
+            /*
+             * =====================================================
+             * RESULTADO PARA EL HERO
+             * =====================================================
+             */
+        
+            return {
+        
+                state,
+        
+        
+                category:
+                    state === "LIVE"
+                        ? "🔴 Formula 1 · En Vivo"
+                        : "🟢 Formula 1 · Próximo Gran Premio",
+        
+        
+                title:
+                    currentEvent?.name ??
+                    heroRace?.raceName ??
+                    "Formula 1",
+        
+        
+                subtitle:
+                    currentEvent?.location?.name ??
+                    heroRace?.circuit?.name ??
+                    "—",
+        
+        
+                race:
+                    heroRace,
+        
+        
+                event:
+                    currentEvent,
+        
+        
+                leaders: {
+        
+                    driver:
+                        standings?.[0] ??
+                        null,
+        
+                    constructor:
+                        constructors?.[0] ??
+                        null
+        
+                }
+        
+            };
         
         }
-        
-        
-        const currentEvent =
-            liveEvent ??
-            nextEvent;
-        
-        console.log("🎯 Hero currentEvent:", currentEvent);
-    
-    
-        /*
-         * =====================================================
-         * BUSCAR CARRERA EQUIVALENTE EN JOLPICA
-         * =====================================================
-         *
-         * Blacktop nos da el evento.
-         *
-         * Jolpica nos da la información histórica
-         * que ya utiliza EasySports.
-         */
-    
-    
-        let heroRace = nextRace;
-    
-    
-        if (currentEvent) {
-    
-            const eventName =
-                currentEvent.name
-                    ?.replace(
-                        " Grand Prix",
-                        ""
-                    )
-                    .trim()
-                    .toLowerCase();
-    
-    
-            const schedule =
-                await this.getSchedule(season);
-    
-    
-            const matchingRace =
-                schedule.find(
-                    race => {
-    
-                        const raceName =
-                            race.raceName
-                                ?.replace(
-                                    " Grand Prix",
-                                    ""
-                                )
-                                .trim()
-                                .toLowerCase();
-    
-    
-                        return (
-                            raceName === eventName
-                        );
-    
-                    }
-                );
-    
-    
-            if (matchingRace) {
-    
-                heroRace = matchingRace;
-    
-            }
-    
-        }
-    
-    
-        /*
-         * =====================================================
-         * RESULTADO PARA EL HERO
-         * =====================================================
-         */
-    
-        return {
-    
-            state,
-    
-            category:
-                state === "LIVE"
-                    ? "🔴 Formula 1 · En Vivo"
-                    : "🟢 Formula 1 · Próximo Gran Premio",
-    
-    
-            title:
-                currentEvent?.name ??
-                heroRace?.raceName ??
-                "Formula 1",
-    
-    
-            subtitle:
-                currentEvent?.location?.name ??
-                heroRace?.circuit?.name ??
-                "—",
-    
-    
-            race:
-                heroRace,
-    
-    
-            event:
-                currentEvent,
-    
-    
-            leaders: {
-    
-                driver:
-                    standings?.[0] ?? null,
-    
-                constructor:
-                    constructors?.[0] ?? null
-    
-            }
-    
-        };
-    
-    }
 
 
     static async getLastRace(
