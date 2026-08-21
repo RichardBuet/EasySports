@@ -106,7 +106,7 @@ export class F1 {
      * =====================================================
      */
 
-    static async getHeroState(
+   static async getHeroState(
         season = "current"
     ) {
 
