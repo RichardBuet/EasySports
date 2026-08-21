@@ -3,6 +3,9 @@ name: Update Blacktop F1
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-blacktop:
     runs-on: ubuntu-latest
