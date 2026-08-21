@@ -715,14 +715,14 @@ function normalizeResults(data) {
    RESULTADOS
 ========================================================= */
 
-function renderSessionResults(data) {
+function renderSessionResults(data, session) {
 
     const results =
         data?.data?.results ||
         data?.results ||
         data;
 
-    if (!Array.isArray(results) || !results.length) {
+    if (!Array.isArray(results) || results.length === 0) {
 
         return `
             <div class="f1-no-results">
@@ -734,97 +734,223 @@ function renderSessionResults(data) {
     return `
         <div class="f1-session-results">
 
-            ${results.map(result => {
+            ${results.map((result, index) => {
+
+                /* =========================
+                   POSICIÓN
+                ========================= */
 
                 const position =
-                    result.position ||
-                    result.position_text ||
-                    "-";
+                    result.position ??
+                    result.position_number ??
+                    result.positionNumber ??
+                    result.position_text ??
+                    index + 1;
+
+
+                /* =========================
+                   PILOTO
+                ========================= */
+
+                const driver =
+                    result.driver ??
+                    result.Driver ??
+                    {};
+
 
                 const fullName =
-
-                    result.driver
-
-                        ? `${result.driver.given_name} ${result.driver.family_name}`
-
-                        : result.Driver
-
-                            ? `${result.Driver.givenName} ${result.Driver.familyName}`
-
-                            : "—";
-
-                const teamName =
-
-                    result.team?.name ||
-
-                    result.Constructor?.name ||
-
+                    driver.fullName ??
+                    driver.full_name ??
+                    `${driver.given_name ?? driver.givenName ?? ""} ${driver.family_name ?? driver.familyName ?? ""}`
+                        .trim() ||
+                    driver.abbreviation ??
+                    driver.code ??
                     "—";
 
-                const time =
 
-                    result.time ||
+                /* =========================
+                   EQUIPO
+                ========================= */
 
-                    result.Time?.time ||
+                const team =
+                    result.team ??
+                    result.Team ??
+                    result.constructor ??
+                    result.Constructor ??
+                    {};
 
+
+                const teamName =
+                    team.name ??
+                    team.team_name ??
+                    team.teamName ??
+                    team.constructor_name ??
+                    "—";
+
+
+                /* =========================
+                   QUALIFYING
+                ========================= */
+
+                const q1 =
+                    result.q1 ??
+                    result.Q1 ??
+                    result.q1_time ??
                     null;
+
+                const q2 =
+                    result.q2 ??
+                    result.Q2 ??
+                    result.q2_time ??
+                    null;
+
+                const q3 =
+                    result.q3 ??
+                    result.Q3 ??
+                    result.q3_time ??
+                    null;
+
+
+                /* =========================
+                   TIEMPO DE SESIÓN
+                ========================= */
+
+                const sessionTime =
+                    result.time ??
+                    result.Time?.time ??
+                    null;
+
+
+                /* =========================
+                   PUNTOS
+                ========================= */
 
                 const points =
                     result.points;
 
-                const q1 =
-                    result.q1 ||
-                    result.Q1;
 
-                const q2 =
-                    result.q2 ||
-                    result.Q2;
+                /*
+                 * Lo que mostramos depende
+                 * de la sesión.
+                 */
 
-                const q3 =
-                    result.q3 ||
-                    result.Q3;
+                let extra = "";
+
+
+                /* QUALY */
+
+                if (
+                    session === "qualifying" ||
+                    q1 ||
+                    q2 ||
+                    q3
+                ) {
+
+                    extra = `
+                        <span class="f1-session-times">
+
+                            ${q1 ? `Q1 ${q1}` : ""}
+
+                            ${q2 ? `Q2 ${q2}` : ""}
+
+                            ${q3 ? `Q3 ${q3}` : ""}
+
+                        </span>
+                    `;
+
+                }
+
+
+                /* PRACTICE */
+
+                else if (
+                    session === "fp1" ||
+                    session === "fp2" ||
+                    session === "fp3"
+                ) {
+
+                    extra = `
+                        <span>
+                            ${sessionTime ?? "—"}
+                        </span>
+                    `;
+
+                }
+
+
+               /* RACE / SPRINT */
+
+               else {
+               
+                   if (session === "race") {
+               
+                       const status =
+                           result.status ??
+                           "";
+               
+                       const raceTime =
+                           result.time ??
+                           result.Time?.time ??
+                           null;
+               
+                       const isDNF =
+                           status &&
+                           ![
+                               "Finished",
+                               "Lapped",
+                               "+1 Lap",
+                               "+2 Laps",
+                               "+3 Laps",
+                               "+4 Laps",
+                               "+5 Laps"
+                           ].includes(status);
+               
+                       extra = `
+               
+                           <span>
+                               ${
+                                   isDNF
+                                       ? "DNF"
+                                       : raceTime ?? "—"
+                               }
+                           </span>
+               
+                           <strong>
+                               ${points ?? 0} pts
+                           </strong>
+               
+                       `;
+               
+                   } else {
+               
+                       extra = `
+                           <strong>
+                               ${points ?? 0} pts
+                           </strong>
+                       `;
+               
+                   }
+               
+               }
+
 
                 return `
 
                     <div class="f1-modal-row">
 
-                        <strong>${position}</strong>
+                        <strong>
+                            ${position}
+                        </strong>
 
-                        <span>${fullName}</span>
+                        <span>
+                            ${fullName}
+                        </span>
 
-                        <span>${teamName}</span>
+                        <span>
+                            ${teamName}
+                        </span>
 
-                        ${
-
-                            q1 || q2 || q3
-
-                                ? `
-                                    <span class="f1-session-times">
-                                        ${q1 ? `Q1 ${q1}` : ""}
-                                        ${q2 ? `Q2 ${q2}` : ""}
-                                        ${q3 ? `Q3 ${q3}` : ""}
-                                    </span>
-                                `
-
-                                : time
-
-                                    ? `
-                                        <span>
-                                            ⚡ ${time}
-                                        </span>
-                                    `
-
-                                    : points !== undefined
-
-                                        ? `
-                                            <strong>
-                                                ${points} pts
-                                            </strong>
-                                        `
-
-                                        : ""
-
-                        }
+                        ${extra}
 
                     </div>
 
@@ -1191,7 +1317,7 @@ async function createLastRace(race) {
             roundId
         )}
 
-        ${renderSessionResults(data)}
+        ${renderSessionResults(data, session)}
 
     `;
 
