@@ -9,9 +9,7 @@ if (!API_KEY) {
 const API_URL =
     "https://api.ocblacktop.com/v1/formula1/events";
 
-async function main() {
-
-    console.log("🏎️ Consultando Blacktop API...");
+async function consultarBlacktop() {
 
     const response = await fetch(API_URL, {
         headers: {
@@ -24,27 +22,90 @@ async function main() {
         const errorText = await response.text();
 
         throw new Error(
-            `Blacktop API respondió ${response.status}: ${errorText}`
+            `HTTP ${response.status}: ${errorText}`
         );
     }
 
-    const data = await response.json();
+    return await response.json();
+}
 
-    console.log("✅ Datos recibidos");
+
+async function main() {
+
+    console.log("🏎️ Consultando Blacktop API...");
+
+    let data = null;
+    let ultimoError = null;
+
+    for (let intento = 1; intento <= 3; intento++) {
+
+        try {
+
+            console.log(`🔄 Intento ${intento}/3...`);
+
+            data = await consultarBlacktop();
+
+            console.log("✅ Datos recibidos");
+
+            break;
+
+        } catch (error) {
+
+            ultimoError = error;
+
+            console.log(
+                `⚠️ Intento ${intento} falló: ${error.message}`
+            );
+
+            if (intento < 3) {
+                console.log("⏳ Esperando 3 segundos...");
+                await new Promise(
+                    resolve => setTimeout(resolve, 3000)
+                );
+            }
+        }
+    }
+
+    if (!data) {
+
+        console.error("❌ No fue posible consultar Blacktop.");
+
+        console.error(
+            "Último error:",
+            ultimoError?.message
+        );
+
+        process.exit(1);
+    }
+
 
     fs.mkdirSync("data", {
         recursive: true
     });
+
 
     fs.writeFileSync(
         "data/f1-blacktop.json",
         JSON.stringify(data, null, 2)
     );
 
-    console.log("💾 Guardado: data/f1-blacktop.json");
+
+    console.log(
+        "💾 Guardado: data/f1-blacktop.json"
+    );
+
+    console.log(
+        `📊 Eventos recibidos: ${data.data?.length ?? "?"}`
+    );
 }
 
+
 main().catch(error => {
-    console.error("❌ Error:", error.message);
+
+    console.error(
+        "❌ Error inesperado:",
+        error.message
+    );
+
     process.exit(1);
 });
