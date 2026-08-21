@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  20:11 20/08/26  */
+/* MODALS F1 ALL INCLUSIVE  21:21 20/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -717,7 +717,12 @@ function normalizeResults(data) {
 
 function renderSessionResults(data) {
 
-    if (!data || !Array.isArray(data) || data.length === 0) {
+    const results =
+        data?.data?.results ||
+        data?.results ||
+        data;
+
+    if (!Array.isArray(results) || !results.length) {
 
         return `
             <div class="f1-no-results">
@@ -726,156 +731,99 @@ function renderSessionResults(data) {
         `;
     }
 
-
     return `
         <div class="f1-session-results">
 
-            ${data.map((result, index) => {
-
-                const driver =
-                    result.driver ??
-                    result.Driver ??
-                    {};
-
-
-                const constructor =
-                    result.constructor ??
-                    result.Constructor ??
-                    result.team ??
-                    result.Team ??
-                    {};
-
-
-                const fullName =
-                    driver.fullName ??
-                    driver.full_name ??
-                    `${driver.givenName ?? driver.given_name ?? ""} ${driver.familyName ?? driver.family_name ?? ""}`
-                        .trim();
-
-
-                const teamName =
-                    constructor.name ??
-                    constructor.team_name ??
-                    constructor.teamName ??
-                    constructor.full_name ??
-                    "—";
-
+            ${results.map(result => {
 
                 const position =
-                    result.position ??
-                    result.position_number ??
-                    result.positionNumber ??
-                    index + 1;
+                    result.position ||
+                    result.position_text ||
+                    "-";
 
+                const fullName =
 
-                /*
-                 * Tiempo de vuelta
-                 */
-                const fastestLap =
-                    result.fastestLap ??
-                    result.FastestLap ??
-                    result.fastest_lap ??
+                    result.driver
+
+                        ? `${result.driver.given_name} ${result.driver.family_name}`
+
+                        : result.Driver
+
+                            ? `${result.Driver.givenName} ${result.Driver.familyName}`
+
+                            : "—";
+
+                const teamName =
+
+                    result.team?.name ||
+
+                    result.Constructor?.name ||
+
+                    "—";
+
+                const time =
+
+                    result.time ||
+
+                    result.Time?.time ||
+
                     null;
 
+                const points =
+                    result.points;
 
-                const fastestTime =
-                    fastestLap?.time ??
-                    fastestLap?.Time?.time ??
-                    fastestLap?.fastest_time ??
-                    result.fastestTime ??
-                    result.fastest_time ??
-                    null;
-
-
-                /*
-                 * Tiempos de Qualy
-                 */
                 const q1 =
-                    result.q1 ??
-                    result.Q1 ??
-                    result.q1_time ??
-                    null;
-
+                    result.q1 ||
+                    result.Q1;
 
                 const q2 =
-                    result.q2 ??
-                    result.Q2 ??
-                    result.q2_time ??
-                    null;
-
+                    result.q2 ||
+                    result.Q2;
 
                 const q3 =
-                    result.q3 ??
-                    result.Q3 ??
-                    result.q3_time ??
-                    null;
-
-
-                /*
-                 * Puntos
-                 */
-                const points =
-                    result.points ??
-                    null;
-
+                    result.q3 ||
+                    result.Q3;
 
                 return `
 
                     <div class="f1-modal-row">
 
-                        <strong>
-                            ${position}
-                        </strong>
+                        <strong>${position}</strong>
 
+                        <span>${fullName}</span>
 
-                        <span>
-                            ${fullName || "—"}
-                        </span>
-
-
-                        <span>
-                            ${teamName}
-                        </span>
-
+                        <span>${teamName}</span>
 
                         ${
+
                             q1 || q2 || q3
 
-                            ? `
-
-                                <span class="f1-session-times">
-
-                                    ${q1 ? `Q1 ${q1}` : ""}
-
-                                    ${q2 ? `Q2 ${q2}` : ""}
-
-                                    ${q3 ? `Q3 ${q3}` : ""}
-
-                                </span>
-
-                            `
-
-                            : fastestTime
-
                                 ? `
-
-                                    <span>
-                                        ⚡ ${fastestTime}
+                                    <span class="f1-session-times">
+                                        ${q1 ? `Q1 ${q1}` : ""}
+                                        ${q2 ? `Q2 ${q2}` : ""}
+                                        ${q3 ? `Q3 ${q3}` : ""}
                                     </span>
-
                                 `
 
-                                : points !== null
+                                : time
 
                                     ? `
-
-                                        <strong>
-                                            ${points} pts
-                                        </strong>
-
+                                        <span>
+                                            ⚡ ${time}
+                                        </span>
                                     `
 
-                                    : ""
+                                    : points !== undefined
+
+                                        ? `
+                                            <strong>
+                                                ${points} pts
+                                            </strong>
+                                        `
+
+                                        : ""
+
                         }
 
                     </div>
