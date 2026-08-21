@@ -717,8 +717,8 @@
     font-size: 18px;
 
     font-weight: 750;
-
-    white-space: nowrap;
+/* Desactivado para que se vea en 2 columnas si es necesario
+    white-space: nowrap; */
 
     text-overflow: ellipsis;
 }
