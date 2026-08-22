@@ -1321,6 +1321,108 @@ async function createLastRace(race) {
 
 }
 
+/* =========================================================
+   MODAL FUNCION DE FIN DE SEMANA PARA HERO
+========================================================= */
+
+async function createRaceWeekend(race) {
+
+    if (!race) {
+
+        return `
+            <h2>🏁 Fin de semana</h2>
+            <p>No hay información disponible.</p>
+        `;
+
+    }
+
+    const sessions =
+        getSessionMap(race);
+
+    const selected =
+        getLastFinishedSession(sessions);
+
+    const alphaRace =
+        await findAlphaRace(race);
+
+    const roundId =
+        alphaRace?.roundId ?? null;
+
+    let data = null;
+
+    try {
+
+        if (selected.key === "race") {
+
+            data =
+                await F1.getResults(
+                    "current",
+                    race.round
+                );
+
+        }
+
+        else if (selected.key === "qualifying") {
+
+            data =
+                await F1.getQualifying(
+                    "current",
+                    race.round
+                );
+
+        }
+
+        else if (selected.key === "sprint") {
+
+            data =
+                await F1.getSprint(
+                    "current",
+                    race.round
+                );
+
+        }
+
+        else if (roundId) {
+
+            data =
+                await F1.getSessionResults(
+                    roundId,
+                    selected.code
+                );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Weekend session error:",
+            error
+        );
+
+    }
+
+    return `
+
+        ${createRaceHeader(race)}
+
+        ${createSessionButtons(
+            sessions,
+            selected.key,
+            race.round,
+            roundId
+        )}
+
+        ${renderSessionResults(
+            data,
+            selected.key
+        )}
+
+    `;
+
+}
+
 
 /* =========================================================
    MODAL CONTENT
@@ -1348,7 +1450,14 @@ async function getModalContent(
 
     }
 
-
+    if (type === "weekend") {
+    
+        return await createRaceWeekend(
+            data
+        );
+    
+    }
+    
     if (type === "last-race") {
 
         return await createLastRace(
