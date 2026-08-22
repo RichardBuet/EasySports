@@ -9,6 +9,6 @@ export async function getBlacktopEvents() {
     const data =
         await fetchJSON(BASE_URL);
 
-    return data;
+    return data?.data ?? [];
 
 }
