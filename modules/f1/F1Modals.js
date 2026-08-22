@@ -932,29 +932,16 @@ function renderSessionResults(data, session) {
                
                }
 
-
                 return `
-
-                    <div class="f1-modal-row">
-
-                        <strong>
-                            ${position}
-                        </strong>
-
-                        <span>
-                            ${fullName}
-                        </span>
-
-                        <span>
-                            ${teamName}
-                        </span>
-
-                        ${extra}
-
+                <div class="f1-modal-row">
+                    <strong> ${position}  </strong>
+                    <div class="f1-result-driver">
+                        <strong> ${fullName} </strong>
+                        <small>  ${teamName} </small>
                     </div>
-
+                     ${extra}
+                </div>
                 `;
-
             }).join("")}
 
         </div>
