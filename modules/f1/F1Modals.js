@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  v2 18:01 22/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 18:35 22/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -734,6 +734,16 @@ function renderSessionResults(data, session) {
     return `
         <div class="f1-session-results">
 
+            ${session === "qualifying" ? `
+                <div class="f1-qualy-header">
+                    <div>Pos.</div>
+                    <div>Piloto</div>
+                    <div>Q1</div>
+                    <div>Q2</div>
+                    <div>Q3</div>
+                </div>
+            ` : ""}
+
             ${results.map((result, index) => {
 
                 /* =========================
@@ -792,23 +802,10 @@ function renderSessionResults(data, session) {
                    QUALIFYING
                 ========================= */
 
-                const q1 =
-                    result.q1 ??
-                    result.Q1 ??
-                    result.q1_time ??
-                    null;
-
-                const q2 =
-                    result.q2 ??
-                    result.Q2 ??
-                    result.q2_time ??
-                    null;
-
-                const q3 =
-                    result.q3 ??
-                    result.Q3 ??
-                    result.q3_time ??
-                    null;
+                const components = result.components ?? {};
+                const q1 = session === "qualifying" ? components.Q1 : result.q1 ?? result.Q1 ?? result.q1_time ?? null;
+                const q2 = session === "qualifying" ? components.Q2 : result.q2 ?? result.Q2 ?? result.q2_time ?? null;
+                const q3 = session === "qualifying" ? components.Q3 : result.q3 ?? result.Q3 ?? result.q3_time ?? null;
 
 
                 /* =========================
@@ -839,25 +836,16 @@ function renderSessionResults(data, session) {
 
                 /* QUALY */
 
-                if (
-                    session === "qualifying" ||
-                    q1 ||
-                    q2 ||
-                    q3
-                ) {
-
+                if (session === "qualifying") {
+                    const cell = q => q
+                        ? `<strong>${q.position}º</strong><small>${q.time ?? "—"}</small>`
+                        : `<strong>—</strong><small>—</small>`;
+                
                     extra = `
-                        <span class="f1-session-times">
-
-                            ${q1 ? `Q1 ${q1}` : ""}
-
-                            ${q2 ? `Q2 ${q2}` : ""}
-
-                            ${q3 ? `Q3 ${q3}` : ""}
-
-                        </span>
+                        <div class="f1-qualy-cell">${cell(q1)}</div>
+                        <div class="f1-qualy-cell">${cell(q2)}</div>
+                        <div class="f1-qualy-cell">${cell(q3)}</div>
                     `;
-
                 }
 
 
