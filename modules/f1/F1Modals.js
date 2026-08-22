@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  21:46 20/08/26  */
+/* MODALS F1 ALL INCLUSIVE  15:35 22/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -973,6 +973,7 @@ function renderSessionResults(
                 const fullName =
                     driver.fullName ??
                     driver.full_name ??
+                    driver.name ??
                     (alphaName ||
                     driver.abbreviation ||
                     driver.code ||
@@ -996,6 +997,9 @@ function renderSessionResults(
                     team.team_name ??
                     team.teamName ??
                     team.constructor_name ??
+                    result.team_name ??
+                    result.teamName ??
+                    driver.team ??
                     "—";
 
 
@@ -1079,7 +1083,7 @@ function renderSessionResults(
 
 
                 /* =================================================
-                   QUALY
+                   QUALY / SPRINT QUALY
                 ================================================= */
 
                 else if (
@@ -1165,10 +1169,19 @@ function renderSessionResults(
                  * =================================================
                  * CORTE QUALY
                  * =================================================
+                 *
+                 * Línea después de:
+                 * P10 → corte Q1
+                 * P16 → corte Q2
+                 *
+                 * Aplica tanto a QUALY como a SPRINT QUALY.
                  */
 
                 const cutAfter =
-                    session === "qualifying"
+                    (
+                        session === "qualifying" ||
+                        session === "sq"
+                    )
                         ? (
                             position === 10 ||
                             position === 16
@@ -1176,31 +1189,43 @@ function renderSessionResults(
                         : false;
 
 
-return `
-    <div class="f1-result-row">
+                return `
+                    <div class="f1-result-row">
 
-        <div class="f1-result-position">
-            ${position}
-        </div>
+                        <div class="f1-result-position">
+                            ${position}
+                        </div>
 
-        <div class="f1-result-driver">
 
-            <strong>
-                ${driver.name}
-            </strong>
+                        <div class="f1-result-driver">
 
-            <small>
-                ${driver.team}
-            </small>
+                            <div>
+                                <strong>
+                                    ${fullName}
+                                </strong>
+                            </div>
 
-        </div>
+                            <small>
+                                ${teamName}
+                            </small>
 
-        <div class="f1-result-value">
-            ${value}
-        </div>
+                        </div>
 
-    </div>
-`;
+
+                        <div class="f1-result-value">
+                            ${extra}
+                        </div>
+
+                    </div>
+
+                    ${
+                        cutAfter
+                            ? `
+                                <div class="f1-qualy-cut"></div>
+                            `
+                            : ""
+                    }
+                `;
 
             }).join("")}
 
