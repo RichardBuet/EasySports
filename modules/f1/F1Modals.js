@@ -1,11 +1,11 @@
-/* MODALS F1 ALL INCLUSIVE  v2 17:51 22/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 18:01 22/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
 let modalStack = [];
 
 
-/* =========================================================
+/* =========================================================f
    MODAL BASE
 ========================================================= */
 
@@ -862,9 +862,7 @@ function renderSessionResults(data, session) {
 
 
                 /* PRACTICE */
-
-                /* PRACTICE */
-                else if (session === "fp1" || session === "fp2" || session === "fp3" || session === "sq") {
+                else if (session === "fp1" || session === "fp2" || session === "fp3") {
                     const toMs = t => {
                         if (!t) return null;
                         const p = t.split(":");
@@ -872,8 +870,22 @@ function renderSessionResults(data, session) {
                         return (Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2])) * 1000;
                     };
                     const leaderTime = results[0]?.time;
-                    const gap = index === 0 ? sessionTime : `+${((toMs(sessionTime) - toMs(leaderTime)) / 1000).toFixed(3)}`;
+                    const gap = index === 0 ? result.time : `+${((toMs(result.time) - toMs(leaderTime)) / 1000).toFixed(3)}`;
                     extra = `<span>${gap ?? "—"}</span>`;
+                }
+                else if (session === "sq") {
+                    const toMs = t => {
+                        if (!t) return null;
+                        const p = t.split(":");
+                        if (p.length === 2) return (Number(p[0]) * 60 + Number(p[1])) * 1000;
+                        return (Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2])) * 1000;
+                    };
+                    const leaderTime = results[0]?.time;
+                    const gap = index === 0 ? "+0.000" : `+${((toMs(result.time) - toMs(leaderTime)) / 1000).toFixed(3)}`;
+                    const sq1 = result.components?.SQ1?.time || "—";
+                    const sq2 = result.components?.SQ2?.time || "—";
+                    const sq3 = result.components?.SQ3?.time || "—";
+                    extra = `<span>${result.time || "—"}</span><small>${gap}</small><small>SQ1 ${sq1} &nbsp; SQ2 ${sq2} &nbsp; SQ3 ${sq3}</small>`;
                 }
 
 
