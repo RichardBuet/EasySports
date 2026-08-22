@@ -1041,7 +1041,12 @@ async function loadSession(
                      currentRoundId,
                      "Q"
                  );
-         
+
+                console.log(
+                    "🔥 QUALY ALPHA DATA:",
+                    data
+                );
+                        
          }
 
 
