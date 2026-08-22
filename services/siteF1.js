@@ -114,127 +114,151 @@ export class F1 {
 
     /*
      * =====================================================
-     * HERO STATE version 2.0.1
+     * HERO STATE version 2.1.0
      * =====================================================
      */
-
-    static async getHeroState(
-        season = "current"
-    ) {
-    
-        const [
-            nextRace,
-            standings,
-            constructors,
-            blacktopEvents
-        ] = await Promise.all([
-            this.getNextRace(season),
-            this.getStandings(season),
-            this.getConstructorStandings(season),
-            this.getBlacktopEvents()
-        ]);
-    
-    
-        const liveEvent =
-            Array.isArray(blacktopEvents)
-                ? blacktopEvents.find(
-                    event =>
-                        event.status === "ongoing"
-                )
-                : null;
-    
-    
-        const nextEvent =
-            Array.isArray(blacktopEvents)
-                ? blacktopEvents.find(
-                    event =>
-                        event.status === "scheduled"
-                )
-                : null;
-    
-    
-        let state = "NEXT";
-    
-    
-        if (liveEvent) {
-    
-            state = "LIVE";
-    
-        }
-    
-    
-        const currentEvent =
-            liveEvent ??
-            nextEvent;
-    
-    
-        let heroRace = nextRace;
-    
-    
-        if (currentEvent) {
-    
-            const matchingRace =
-                (await this.getSchedule(season))
-                    .find(
-                        race =>
-                            race.raceName
-                                ?.toLowerCase()
-                                .includes(
-                                    currentEvent.name
-                                        ?.replace(
-                                            " Grand Prix",
-                                            ""
-                                        )
-                                        .toLowerCase()
-                                )
-                    );
-    
-    
-            if (matchingRace) {
-    
-                heroRace = matchingRace;
-    
+        static async getHeroState(
+            season = "current"
+        ) {
+        
+            const [
+                nextRace,
+                standings,
+                constructors,
+                alphaSchedule
+            ] = await Promise.all([
+                this.getNextRace(season),
+                this.getStandings(season),
+                this.getConstructorStandings(season),
+                this.getAlphaSchedule(season)
+            ]);
+        
+            /*
+             * =====================================================
+             * BLACKTOP EVENTS
+             * =====================================================
+             */
+        
+            const events =
+                Array.isArray(alphaSchedule)
+                    ? alphaSchedule
+                    : alphaSchedule?.data ?? [];
+        
+            /*
+             * Evento actualmente activo
+             */
+        
+            const liveEvent =
+                events.find(event => event.status === "ongoing") ?? null;
+        
+            /*
+             * Próximo evento programado
+             */
+        
+            const nextEvent =
+                events.find(event => event.status === "scheduled") ?? null;
+        
+            /*
+             * Estado general del Hero
+             */
+        
+            let state = "NEXT";
+            if (liveEvent) { state = "LIVE"; }
+        
+            /*
+             * Evento que representa el Hero
+             */
+        
+            const currentEvent = liveEvent ?? nextEvent;
+        
+        
+            /*
+             * =====================================================
+             * SESIONES DEL EVENTO
+             * =====================================================
+             */
+        
+            const sessions =
+                Array.isArray(currentEvent?.schedule)
+                    ? currentEvent.schedule
+                    : [];
+        
+        
+            /*
+             * Sesión actualmente en curso
+             */
+        
+            const currentSession =
+                sessions.find( session => session.status === "ongoing" ) ?? null;
+        
+        
+            /*
+             * Próxima sesión
+             */
+        
+            const nextSession =
+                sessions.find( session => session.status === "scheduled" ) ?? null;
+        
+        
+            /*
+             * =====================================================
+             * MATCH CON CALENDARIO JOLPICA
+             * =====================================================
+             */
+        
+            let heroRace = nextRace;
+        
+        
+            if (currentEvent) {
+                const schedule =
+                    await this.getSchedule(season);
+        
+                const eventName =
+                    currentEvent.name
+                        ?.replace( " Grand Prix",  "" )
+                        .toLowerCase();
+        
+                const matchingRace =
+                    schedule.find( race => race.raceName ?.toLowerCase() .includes(eventName) );
+        
+                if (matchingRace) { heroRace = matchingRace; }
             }
-    
+        
+        
+            /*
+             * =====================================================
+             * RESULTADO
+             * =====================================================
+             */
+        
+            return {
+                state,
+                category:
+                    state === "LIVE"
+                        ? "🔴 Formula 1 · En Vivo"
+                        : "🟢 Formula 1 · Próximo Gran Premio",
+                title:
+                    currentEvent?.name ??
+                    heroRace?.raceName ??
+                    "Formula 1",
+                subtitle:
+                    currentEvent?.location?.name ??
+                    heroRace?.circuit?.name ??
+                    "—",
+                race: heroRace,
+                event: currentEvent,
+                session: {
+                    current: currentSession,
+                    next: nextSession
+                },
+                leaders: {
+                    driver: standings[0],
+                    constructor: constructors[0]
+                }
+        
+            };
+        
         }
-    
-    
-        return {
-    
-            state,
-    
-            category:
-                state === "LIVE"
-                    ? "🔴 Formula 1 · En Vivo:"
-                    : "🟢 Formula 1 · Próximo Gran Premio:",
-    
-            title:
-                currentEvent?.name ??
-                heroRace.raceName,
-    
-            subtitle:
-                currentEvent?.location?.name ??
-                heroRace.circuit?.name,
-    
-            race:
-                heroRace,
-    
-            event:
-                currentEvent,
-    
-            leaders: {
-    
-                driver:
-                    standings[0],
-    
-                constructor:
-                    constructors[0]
-    
-            }
-    
-        };
-    
-    }
 
 
     static async getLastRace(
