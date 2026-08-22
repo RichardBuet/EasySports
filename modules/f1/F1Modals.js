@@ -541,7 +541,7 @@ function getSessionMap(race) {
         sessions.push({
             key: "sq",
             code: "SQ",
-            label: "SPRINT QUALY",
+            label: "S.QUALY",
             date: race.sprintQualifying.date,
             time: race.sprintQualifying.time
         });
@@ -868,6 +868,7 @@ function renderSessionResults(data, session) {
                     const toMs = t => {
                         if (!t) return null;
                         const p = t.split(":");
+                        if (p.length === 2) return (Number(p[0]) * 60 + Number(p[1])) * 1000;
                         return (Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2])) * 1000;
                     };
                     const leaderTime = results[0]?.time;
