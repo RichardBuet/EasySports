@@ -32,12 +32,13 @@ import {
     adaptRounds
 } from "./adapters/f1Adapter.js";
 
-
 export class F1 {
 
-    static async getBlacktopEvents() {
+    static async getAlphaSchedule(
+        season = "current"
+    ) {
 
-        return await getBlacktopEvents();
+        return await getAlphaSchedule(season);
 
     }
 
