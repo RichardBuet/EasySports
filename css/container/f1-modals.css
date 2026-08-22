@@ -282,9 +282,10 @@
    SELECTOR DE SESIONES
    ========================================================= */
 .f1-session-selector {
+    /* top: -35px; */
     display: flex;
     position: sticky;
-    top: -35px;
+    top: -9px;
     z-index: 50;
     display: flex;
     gap: 9px;
@@ -392,12 +393,12 @@
    ========================================================= */
 .f1-modal-row {
     position: relative;
-    min-height: 82px;
+    min-height: 63px;
     box-sizing: border-box;
     display: grid;
     align-items: center;
     column-gap: 16px;
-    padding: 15px 18px;
+    padding: 9px 18px;
     margin: 0;
     border-bottom:
         1px solid var(--f1-border-soft);
@@ -854,8 +855,7 @@
     }
     .f1-modal-row {
         column-gap: 12px;
-        padding:
-            14px 12px;
+        padding: 6px 9px;
     }
     .f1-modal-row > strong:first-child {
         width: 52px;
@@ -897,11 +897,11 @@
         border-radius: 18px;
     }
     .f1-modal-close {
-        width: 46px;
-        height: 46px;
+        width: 36px;
+        height: 36px;
         top: 12px;
         right: 12px;
-        font-size: 30px;
+        font-size: 28px;
     }
     .f1-race-info {
         padding:
@@ -946,9 +946,8 @@
             0 6px;
     }
     .f1-modal-row {
-        min-height: 72px;
-        padding:
-            12px 9px;
+        min-height: 63px;
+        padding: 8px 9px;
         column-gap: 9px;
     }
     .f1-modal-row > strong:first-child {
