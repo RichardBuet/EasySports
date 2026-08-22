@@ -1020,15 +1020,29 @@ async function loadSession(
         /*
          * QUALY
          */
-        else if (session === "qualifying") {
-
-            data =
-                await F1.getQualifying(
-                    "current",
-                    round
-                );
-
-        }
+         else if (session === "qualifying") {
+         
+             const alphaRace =
+                 await findAlphaRace(race);
+         
+             currentRoundId =
+                 alphaRace?.roundId ??
+                 currentRoundId ??
+                 null;
+         
+             if (!currentRoundId) {
+                 throw new Error(
+                     "No se encontró round_id de Alpha."
+                 );
+             }
+         
+             data =
+                 await F1.getSessionResults(
+                     currentRoundId,
+                     "Q"
+                 );
+         
+         }
 
 
         /*
