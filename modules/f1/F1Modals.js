@@ -1176,38 +1176,31 @@ function renderSessionResults(
                         : false;
 
 
-                return `
+return `
+    <div class="f1-result-row">
 
-                    <div
-                        class="
-                            f1-modal-row
-                            ${
-                                cutAfter
-                                    ? "f1-qualy-cut"
-                                    : ""
-                            }
-                        "
-                    >
+        <div class="f1-result-position">
+            ${position}
+        </div>
 
-                        <strong>
-                            ${position}
-                        </strong>
+        <div class="f1-result-driver">
 
-                        <span>
+            <strong>
+                ${driver.name}
+            </strong>
 
-                            ${fullName}
+            <small>
+                ${driver.team}
+            </small>
 
-                            <small>
-                                ${teamName}
-                            </small>
+        </div>
 
-                        </span>
+        <div class="f1-result-value">
+            ${value}
+        </div>
 
-                        ${extra}
-
-                    </div>
-
-                `;
+    </div>
+`;
 
             }).join("")}
 
