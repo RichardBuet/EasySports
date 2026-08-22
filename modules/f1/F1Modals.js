@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  v2 17:20 22/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 17:51 22/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -864,7 +864,7 @@ function renderSessionResults(data, session) {
                 /* PRACTICE */
 
                 /* PRACTICE */
-                else if (session === "fp1" || session === "fp2" || session === "fp3") {
+                else if (session === "fp1" || session === "fp2" || session === "fp3" || session === "sq") {
                     const toMs = t => {
                         if (!t) return null;
                         const p = t.split(":");
