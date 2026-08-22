@@ -712,26 +712,233 @@ function normalizeResults(data) {
 
 
 /* =========================================================
+   GAP ENTRE PILOTOS
+========================================================= */
+
+function timeToSeconds(time) {
+
+    if (!time) return null;
+
+    const value = String(time).trim();
+
+    // 1:12.345
+    if (value.includes(":")) {
+
+        const [minutes, seconds] =
+            value.split(":");
+
+        return (
+            Number(minutes) * 60 +
+            Number(seconds)
+        );
+    }
+
+    // 72.345
+    const seconds = Number(value);
+
+    return Number.isFinite(seconds)
+        ? seconds
+        : null;
+}
+
+
+function formatGap(seconds) {
+
+    if (
+        seconds === null ||
+        !Number.isFinite(seconds)
+    ) {
+        return "—";
+    }
+
+    return `+${seconds.toFixed(3)}`;
+}
+
+
+function getSessionTime(result) {
+
+    return (
+        result.time ??
+        result.Time?.time ??
+        result.fastestLap?.Time?.time ??
+        result.FastestLap?.Time?.time ??
+        null
+    );
+}
+
+
+/*
+ * GAP calculado contra el líder.
+ *
+ * Para FP:
+ * usa el tiempo de sesión.
+ *
+ * Para Qualy:
+ * usa Q3, luego Q2, luego Q1.
+ */
+function getQualifyingTime(result) {
+
+    return (
+        result.q3 ??
+        result.Q3 ??
+        result.q3_time ??
+        result.q2 ??
+        result.Q2 ??
+        result.q2_time ??
+        result.q1 ??
+        result.Q1 ??
+        result.q1_time ??
+        null
+    );
+}
+
+
+function getGapValue(
+    result,
+    leader,
+    session
+) {
+
+    if (result === leader) {
+        return null;
+    }
+
+    let driverTime = null;
+    let leaderTime = null;
+
+
+    /*
+     * FP
+     */
+    if (
+        session === "fp1" ||
+        session === "fp2" ||
+        session === "fp3"
+    ) {
+
+        driverTime =
+            getSessionTime(result);
+
+        leaderTime =
+            getSessionTime(leader);
+
+    }
+
+
+    /*
+     * QUALY / SPRINT QUALY
+     */
+    else if (
+        session === "qualifying" ||
+        session === "sq"
+    ) {
+
+        driverTime =
+            getQualifyingTime(result);
+
+        leaderTime =
+            getQualifyingTime(leader);
+
+    }
+
+
+    /*
+     * SPRINT / RACE
+     *
+     * Para estas sesiones la API normalmente
+     * ya entrega el gap como texto.
+     */
+    else {
+
+        const time =
+            getSessionTime(result);
+
+        if (
+            typeof time === "string" &&
+            time.trim().startsWith("+")
+        ) {
+
+            return time.trim();
+
+        }
+
+        driverTime = time;
+        leaderTime = getSessionTime(leader);
+
+    }
+
+
+    const driverSeconds =
+        timeToSeconds(driverTime);
+
+    const leaderSeconds =
+        timeToSeconds(leaderTime);
+
+
+    if (
+        driverSeconds === null ||
+        leaderSeconds === null
+    ) {
+
+        return null;
+
+    }
+
+
+    return formatGap(
+        driverSeconds - leaderSeconds
+    );
+
+}
+
+
+/* =========================================================
    RESULTADOS
 ========================================================= */
 
-function renderSessionResults(data, session) {
+function renderSessionResults(
+    data,
+    session
+) {
 
     const results =
         data?.data?.results ||
         data?.results ||
         data;
 
-    if (!Array.isArray(results) || results.length === 0) {
+
+    if (
+        !Array.isArray(results) ||
+        results.length === 0
+    ) {
 
         return `
             <div class="f1-no-results">
                 No hay resultados disponibles.
             </div>
         `;
+
     }
 
+
+    /*
+     * =====================================================
+     * LÍDER
+     * =====================================================
+     */
+
+    const leader =
+        results[0];
+
+
+    /*
+     * =====================================================
+     * RENDER
+     * =====================================================
+     */
+
     return `
+
         <div class="f1-session-results">
 
             ${results.map((result, index) => {
@@ -761,11 +968,15 @@ function renderSessionResults(data, session) {
                 const alphaName =
                     `${driver.given_name ?? driver.givenName ?? ""} ${driver.family_name ?? driver.familyName ?? ""}`
                         .trim();
-                
+
+
                 const fullName =
                     driver.fullName ??
                     driver.full_name ??
-                    (alphaName || driver.abbreviation || driver.code || "—");
+                    (alphaName ||
+                    driver.abbreviation ||
+                    driver.code ||
+                    "—");
 
 
                 /* =========================
@@ -789,7 +1000,7 @@ function renderSessionResults(data, session) {
 
 
                 /* =========================
-                   QUALIFYING
+                   QUALY
                 ========================= */
 
                 const q1 =
@@ -798,26 +1009,18 @@ function renderSessionResults(data, session) {
                     result.q1_time ??
                     null;
 
+
                 const q2 =
                     result.q2 ??
                     result.Q2 ??
                     result.q2_time ??
                     null;
 
+
                 const q3 =
                     result.q3 ??
                     result.Q3 ??
                     result.q3_time ??
-                    null;
-
-
-                /* =========================
-                   TIEMPO DE SESIÓN
-                ========================= */
-
-                const sessionTime =
-                    result.time ??
-                    result.Time?.time ??
                     null;
 
 
@@ -829,24 +1032,63 @@ function renderSessionResults(data, session) {
                     result.points;
 
 
-                /*
-                 * Lo que mostramos depende
-                 * de la sesión.
-                 */
+                /* =========================
+                   GAP
+                ========================= */
+
+                const gap =
+                    getGapValue(
+                        result,
+                        leader,
+                        session
+                    );
+
 
                 let extra = "";
 
 
-                /* QUALY */
+                /* =================================================
+                   FP
+                ================================================= */
 
                 if (
+                    session === "fp1" ||
+                    session === "fp2" ||
+                    session === "fp3"
+                ) {
+
+                    const time =
+                        getSessionTime(result);
+
+
+                    extra = `
+
+                        <span class="f1-session-gap">
+
+                            ${
+                                index === 0
+                                    ? time ?? "—"
+                                    : gap ?? "—"
+                            }
+
+                        </span>
+
+                    `;
+
+                }
+
+
+                /* =================================================
+                   QUALY
+                ================================================= */
+
+                else if (
                     session === "qualifying" ||
-                    q1 ||
-                    q2 ||
-                    q3
+                    session === "sq"
                 ) {
 
                     extra = `
+
                         <span class="f1-session-times">
 
                             ${q1 ? `Q1 ${q1}` : ""}
@@ -856,98 +1098,109 @@ function renderSessionResults(data, session) {
                             ${q3 ? `Q3 ${q3}` : ""}
 
                         </span>
+
                     `;
 
                 }
 
 
-                /* PRACTICE */
+                /* =================================================
+                   SPRINT / RACE
+                ================================================= */
 
-                else if (
-                    session === "fp1" ||
-                    session === "fp2" ||
-                    session === "fp3"
-                ) {
+                else {
+
+                    const time =
+                        getSessionTime(result);
+
+
+                    const status =
+                        result.status ??
+                        "";
+
+
+                    const isDNF =
+                        status &&
+                        ![
+                            "Finished",
+                            "Lapped",
+                            "+1 Lap",
+                            "+2 Laps",
+                            "+3 Laps",
+                            "+4 Laps",
+                            "+5 Laps"
+                        ].includes(status);
+
 
                     extra = `
-                        <span>
-                            ${sessionTime ?? "—"}
-                        </span>
+
+                        <div class="f1-result-extra">
+
+                            <span>
+
+                                ${
+                                    isDNF
+                                        ? "DNF"
+                                        : (
+                                            index === 0
+                                                ? time ?? "—"
+                                                : gap ?? "—"
+                                        )
+                                }
+
+                            </span>
+
+                            <strong>
+                                ${points ?? 0} pts
+                            </strong>
+
+                        </div>
+
                     `;
 
                 }
 
 
-               /* RACE / SPRINT */
+                /*
+                 * =================================================
+                 * CORTE QUALY
+                 * =================================================
+                 */
 
-               else {
-               
-                   if (session === "race") {
-               
-                       const status =
-                           result.status ??
-                           "";
-               
-                       const raceTime =
-                           result.time ??
-                           result.Time?.time ??
-                           null;
-               
-                       const isDNF =
-                           status &&
-                           ![
-                               "Finished",
-                               "Lapped",
-                               "+1 Lap",
-                               "+2 Laps",
-                               "+3 Laps",
-                               "+4 Laps",
-                               "+5 Laps"
-                           ].includes(status);
-               
-                       extra = `
-               
-                           <span>
-                               ${
-                                   isDNF
-                                       ? "DNF"
-                                       : raceTime ?? "—"
-                               }
-                           </span>
-               
-                           <strong>
-                               ${points ?? 0} pts
-                           </strong>
-               
-                       `;
-               
-                   } else {
-               
-                       extra = `
-                           <strong>
-                               ${points ?? 0} pts
-                           </strong>
-                       `;
-               
-                   }
-               
-               }
+                const cutAfter =
+                    session === "qualifying"
+                        ? (
+                            position === 10 ||
+                            position === 16
+                        )
+                        : false;
 
 
                 return `
 
-                    <div class="f1-modal-row">
+                    <div
+                        class="
+                            f1-modal-row
+                            ${
+                                cutAfter
+                                    ? "f1-qualy-cut"
+                                    : ""
+                            }
+                        "
+                    >
 
                         <strong>
                             ${position}
                         </strong>
 
                         <span>
-                            ${fullName}
-                        </span>
 
-                        <span>
-                            ${teamName}
+                            ${fullName}
+
+                            <small>
+                                ${teamName}
+                            </small>
+
                         </span>
 
                         ${extra}
@@ -959,7 +1212,9 @@ function renderSessionResults(data, session) {
             }).join("")}
 
         </div>
+
     `;
+
 }
 
 
