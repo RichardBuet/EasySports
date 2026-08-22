@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  15:35 22/08/26  */
+/* MODALS F1 ALL INCLUSIVE  15:45 22/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -1199,11 +1199,9 @@ function renderSessionResults(
 
                         <div class="f1-result-driver">
 
-                            <div>
                                 <strong>
                                     ${fullName}
                                 </strong>
-                            </div>
 
                             <small>
                                 ${teamName}
