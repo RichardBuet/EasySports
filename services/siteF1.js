@@ -6,6 +6,7 @@ import {
     getQualifying as fetchQualifying,
     getSprintResults as fetchSprintResults,
     getSessionResults,
+    getAlphaSchedule,
     getBlacktopEvents,
     getDrivers as fetchDrivers,
     getCircuits as fetchCircuits,
@@ -34,92 +35,50 @@ import {
 
 export class F1 {
 
+    static async getAlphaSchedule(season = "current") {
+        return await getAlphaSchedule(season);
+    }
+    
     static async getBlacktopEvents() {
-    
         return await getBlacktopEvents();
+    }
     
+    static async getSessionResults( roundId, sessionFilter ) {
+        return await getSessionResults( roundId, sessionFilter );
     }
 
-
-    static async getSessionResults(
-        roundId,
-        sessionFilter
-    ) {
-
-        return await getSessionResults(
-            roundId,
-            sessionFilter
-        );
-
-    }
-
-
-    static async getStandings(
-        season = "current"
-    ) {
-
-        const data =
-            await getDriverStandings(season);
-
+    static async getStandings( season = "current") {
+        const data = await getDriverStandings(season);
         return adaptStandings(data);
-
     }
 
-
-    static async getConstructorStandings(
-        season = "current"
-    ) {
-
-        const data =
-            await fetchConstructorStandings(season);
-
+    static async getConstructorStandings( season = "current") {
+        const data = await fetchConstructorStandings(season);
         return adaptConstructorStandings(data);
-
     }
 
 
-    static async getSchedule(
-        season = "current"
-    ) {
-
-        const data =
-            await fetchSchedule(season);
-
+    static async getSchedule( season = "current" ) {
+        const data = await fetchSchedule(season);
         return adaptSchedule(data);
-
     }
 
 
-    static async getNextRace(
-        season = "current"
-    ) {
-
-        const schedule =
-            await this.getSchedule(season);
-
-        const now =
-            new Date();
-
-        return schedule.find(
-            race =>
-                new Date(
-                    `${race.date}T${race.time}`
-                ) > now
-        ) ??
+    static async getNextRace( season = "current" ) {
+        const schedule = await this.getSchedule(season);
+        const now = new Date();
+        return schedule.find( race => new Date(
+        `${race.date}T${race.time}`) > now) ??
         schedule[schedule.length - 1];
-
     }
 
 
     /*
      * =====================================================
-     * HERO STATE version 2.1.0
+     * HERO STATE version 2.1.1
      * =====================================================
      */
-        static async getHeroState(
-            season = "current"
-        ) {
-        
+        static async getHeroState( season = "current" ) {
             const [
                 nextRace,
                 standings,
