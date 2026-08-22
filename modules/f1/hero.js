@@ -1,5 +1,5 @@
 import { F1 } from "../../services/siteF1.js";
-    
+import { openF1Modal } from "./F1Modals.js";
 /*
  * =====================================================
  * FORMATO DE FECHA DEL FIN DE SEMANA
@@ -166,20 +166,12 @@ function getCategory(
  * =====================================================
  */
 export async function createHero() {
-    const heroData =
-        await F1.getHeroState();
-    const race =
-        heroData.race;
-    const event =
-        heroData.event;
-    const category =
-        getCategory(
-            heroData.state
-        );
-    const currentSession =
-        heroData.session?.current;
-    const nextSession =
-        heroData.session?.next;
+    const heroData = await F1.getHeroState();
+    const race = heroData.race;
+    const event = heroData.event;
+    const category = getCategory( heroData.state );
+    const currentSession = heroData.session?.current;
+    const nextSession = heroData.session?.next;
     /*
      * =================================================
      * META
@@ -188,8 +180,7 @@ export async function createHero() {
     const meta = [
         {
             icon: "📍",
-            value:
-                `Round ${race?.round ?? "—"}`
+            value: `Round ${race?.round ?? "—"}`
         },
         {
             icon: "📅",
@@ -226,6 +217,10 @@ export async function createHero() {
                 `${getSessionLabel(nextSession)} · ${formatSessionDate(nextSession.startTime)}`
         });
     }
+
+        const weekendButton = `
+            <button type="button" class="hero__action" data-f1-weekend
+            >🏁 Ver fin de semana</button>`;
     /*
      * =================================================
      * HTML
@@ -280,8 +275,20 @@ export async function createHero() {
                             `
                             : ""
                     }
+                    ${weekendButton}
                 </div>
             </div>
         </section>
     `;
 }
+
+document.addEventListener("click",
+    event => { const button = event.target.closest("[data-f1-weekend]");
+        if (!button) return;
+        F1.getHeroState().then(heroData => {
+        if (!heroData?.race) return;
+        openF1Modal("weekend",heroData.race);
+        })
+        .catch(error => {console.error("Error abriendo fin de semana:",error);});
+    }
+);
