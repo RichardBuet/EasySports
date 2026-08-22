@@ -34,12 +34,10 @@ import {
 
 export class F1 {
 
-    static async getAlphaSchedule(
-        season = "current"
-    ) {
-
-        return await getAlphaSchedule(season);
-
+    static async getBlacktopEvents() {
+    
+        return await getBlacktopEvents();
+    
     }
 
 
@@ -126,12 +124,12 @@ export class F1 {
                 nextRace,
                 standings,
                 constructors,
-                alphaSchedule
+                blacktopEvents
             ] = await Promise.all([
                 this.getNextRace(season),
                 this.getStandings(season),
                 this.getConstructorStandings(season),
-                this.getAlphaSchedule(season)
+                this.getBlacktopEvents()
             ]);
         
             /*
@@ -141,9 +139,9 @@ export class F1 {
              */
         
             const events =
-                Array.isArray(alphaSchedule)
-                    ? alphaSchedule
-                    : alphaSchedule?.data ?? [];
+                Array.isArray(blacktopEvents)
+                    ? blacktopEvents
+                    : blacktopEvents?.data ?? [];
         
             /*
              * Evento actualmente activo
