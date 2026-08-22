@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  10:46 22/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 17:20 22/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -863,18 +863,16 @@ function renderSessionResults(data, session) {
 
                 /* PRACTICE */
 
-                else if (
-                    session === "fp1" ||
-                    session === "fp2" ||
-                    session === "fp3"
-                ) {
-
-                    extra = `
-                        <span>
-                            ${sessionTime ?? "—"}
-                        </span>
-                    `;
-
+                /* PRACTICE */
+                else if (session === "fp1" || session === "fp2" || session === "fp3") {
+                    const toMs = t => {
+                        if (!t) return null;
+                        const p = t.split(":");
+                        return (Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2])) * 1000;
+                    };
+                    const leaderTime = results[0]?.time;
+                    const gap = index === 0 ? sessionTime : `+${((toMs(sessionTime) - toMs(leaderTime)) / 1000).toFixed(3)}`;
+                    extra = `<span>${gap ?? "—"}</span>`;
                 }
 
 
