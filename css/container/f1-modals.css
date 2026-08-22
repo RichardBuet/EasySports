@@ -1,59 +1,40 @@
 /* =========================================================
    F1 MODALS — EASYSPORTS
-   Diseño completo / responsive
+   Diseño completo / responsive 22/08/26 01:02
    ========================================================= */
-
-
 /* =========================================================
    VARIABLES
    ========================================================= */
-
 :root {
     --f1-bg: #080a0f;
     --f1-panel: #10131a;
     --f1-panel-2: #151922;
     --f1-panel-3: #1b202a;
-
     --f1-border: rgba(255, 255, 255, .12);
     --f1-border-soft: rgba(255, 255, 255, .07);
-
     --f1-text: #f5f7fa;
     --f1-text-soft: #a9afb9;
     --f1-text-muted: #737985;
-
     --f1-red: #ff3048;
     --f1-red-dark: #a90f23;
-
     --f1-blue: #2196ff;
     --f1-purple: #b46cff;
     --f1-green: #32e875;
     --f1-yellow: #ffc928;
-
     --f1-radius: 22px;
 }
-
-
 /* =========================================================
    OVERLAY
    ========================================================= */
-
 .f1-modal-overlay {
-
     position: fixed;
-
     inset: 0;
-
     z-index: 99999;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     padding: 55px 20px;
-
     box-sizing: border-box;
-
     background:
         radial-gradient(
             circle at 50% 10%,
@@ -61,34 +42,22 @@
             transparent 45%
         ),
         rgba(0, 0, 0, .78);
-
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-
     opacity: 0;
-
     transition:
         opacity .22s ease;
-
     overscroll-behavior: contain;
 }
-
-
 .f1-modal-overlay.show {
     opacity: 1;
 }
-
-
 /* =========================================================
    MODAL PRINCIPAL
    ========================================================= */
-
 .f1-modal {
-
     position: relative;
-
     width: min(900px, 100%);
-
     /*
      * ALTURA CONTROLADA
      * Nunca ocupa toda la pantalla.
@@ -97,18 +66,12 @@
         760px,
         calc(100dvh - 110px)
     );
-
     min-height: 360px;
-
     box-sizing: border-box;
-
     display: flex;
     flex-direction: column;
-
     overflow: hidden;
-
     color: var(--f1-text);
-
     background:
         radial-gradient(
             circle at 85% 5%,
@@ -121,51 +84,34 @@
             #0d1016 55%,
             #090b10 100%
         );
-
     border: 1px solid rgba(255, 255, 255, .14);
-
     border-radius: var(--f1-radius);
-
     box-shadow:
         0 30px 80px rgba(0, 0, 0, .65),
         0 0 0 1px rgba(255, 255, 255, .025) inset,
         0 0 50px rgba(30, 100, 180, .08);
-
     transform:
         translateY(12px)
         scale(.985);
-
     transition:
         transform .25s ease;
 }
-
-
 .f1-modal-overlay.show .f1-modal {
-
     transform:
         translateY(0)
         scale(1);
 }
-
-
 /* =========================================================
    LÍNEA DE ACENTO
    ========================================================= */
-
 .f1-modal::before {
-
     content: "";
-
     position: absolute;
-
     top: 0;
     left: 0;
     right: 0;
-
     height: 3px;
-
     z-index: 20;
-
     background:
         linear-gradient(
             90deg,
@@ -174,136 +120,89 @@
             var(--f1-purple) 68%,
             var(--f1-blue) 100%
         );
-
     box-shadow:
         0 0 18px rgba(255, 48, 72, .3);
 }
-
-
 /* =========================================================
    BOTÓN CERRAR
    ========================================================= */
-
 .f1-modal-close {
-
     position: absolute;
-
-    top: 18px;
-    right: 18px;
-
+    top: 16px;
+    right: 22px;
     z-index: 100;
-
-    width: 52px;
-    height: 52px;
-
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 0;
-
     border-radius: 50%;
-
     border: 1px solid rgba(255, 255, 255, .18);
-
     background:
         linear-gradient(
             145deg,
             rgba(255, 255, 255, .09),
             rgba(255, 255, 255, .035)
         );
-
     color: #fff;
-
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 300;
-
     line-height: 1;
-
     cursor: pointer;
-
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-
     transition:
         background .18s ease,
         border-color .18s ease,
         transform .18s ease,
         box-shadow .18s ease;
 }
-
-
 .f1-modal-close:hover {
-
     background:
         rgba(255, 48, 72, .18);
-
     border-color:
         rgba(255, 48, 72, .55);
-
     box-shadow:
         0 0 22px rgba(255, 48, 72, .18);
-
     transform: rotate(90deg);
 }
-
-
 .f1-modal-close:active {
     transform: scale(.92);
 }
-
-
 /* =========================================================
    CONTENIDO GENERAL
    ========================================================= */
-
 .f1-modal-content {
-
     flex: 1;
-
     min-height: 0;
-
     width: 100%;
-
     box-sizing: border-box;
-
     overflow-y: auto;
     overflow-x: hidden;
-
-    padding: 38px 0 24px;
-
+    padding: 12px 0 24px;
     overscroll-behavior: contain;
-
     scrollbar-width: thin;
-
     scrollbar-color:
         rgba(255, 255, 255, .20)
         transparent;
 }
-
-
 /* WebKit scrollbar */
-
 .f1-modal-content::-webkit-scrollbar {
     width: 7px;
 }
-
 .f1-modal-content::-webkit-scrollbar-track {
     background: transparent;
 }
-
 .f1-modal-content::-webkit-scrollbar-thumb {
-
     background:
         linear-gradient(
             180deg,
             rgba(255, 48, 72, .65),
             rgba(125, 91, 255, .55)
         );
-
     border-radius: 20px;
 }
-
 .f1-modal-content::-webkit-scrollbar-thumb:hover {
     background:
         linear-gradient(
@@ -312,262 +211,167 @@
             var(--f1-purple)
         );
 }
-
-
 /* =========================================================
    TIPOGRAFÍA GENERAL
    ========================================================= */
-
 .f1-modal-content h2 {
-
     margin: 0;
-
     padding: 0 72px 0 26px;
-
     color: var(--f1-text);
-
     font-size: clamp(
         24px,
         3vw,
         38px
     );
-
     font-weight: 800;
-
     letter-spacing: -.6px;
-
     line-height: 1.15;
 }
-
-
 .f1-modal-content p {
     color: var(--f1-text-soft);
 }
-
-
 /* =========================================================
    HEADER DE GP
    ========================================================= */
-
 .f1-race-info {
-
     position: relative;
-
     padding:
         4px 72px 18px 26px;
-
     margin-bottom: 4px;
 }
-
-
 /*
  * Título
  */
-
 .f1-race-info h2 {
-
     padding: 0;
-
     margin-bottom: 24px;
-
     font-size: clamp(
         25px,
         4vw,
         39px
     );
 }
-
-
 /*
  * Circuito
  */
-
 .f1-race-info p {
-
     margin: 0 0 18px;
-
     font-size: 20px;
-
     line-height: 1.35;
-
     color: #d0d4db;
 }
-
-
 /*
  * País
  */
-
 .f1-race-info p:nth-of-type(2) {
-
     margin-bottom: 24px;
-
     color: #e3e6eb;
-
     font-size: 20px;
 }
-
-
 /*
  * ROUND
  */
-
 .f1-race-info > strong {
-
     display: block;
-
     color: #f7f8fa;
-
     font-size: 21px;
-
     letter-spacing: .8px;
-
     text-transform: uppercase;
 }
-
-
 /* =========================================================
    SELECTOR DE SESIONES
    ========================================================= */
-
 .f1-session-selector {
-
-    position: sticky;
-
-    top: -35px;
-
-    z-index: 50;
-
     display: flex;
-
+    position: sticky;
+    top: -35px;
+    z-index: 50;
+    display: flex;
     gap: 9px;
-
     flex-wrap: wrap;
-
     padding:
         12px 26px 13px;
-
     margin: 0 0 8px;
-
     background:
         linear-gradient(
             180deg,
             rgba(15, 18, 25, .98),
             rgba(15, 18, 25, .91)
         );
-
     border-top:
         1px solid rgba(255,255,255,.035);
-
     border-bottom:
         1px solid rgba(255,255,255,.09);
-
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 }
-
-
 /* =========================================================
    BOTONES DE SESIÓN
    ========================================================= */
-
 .f1-session-selector button {
-
     appearance: none;
-
     min-width: 66px;
     height: 40px;
-
     padding: 0 15px;
-
     border-radius: 12px;
-
     border:
         1px solid rgba(255,255,255,.14);
-
     background:
         linear-gradient(
             145deg,
             #20242d,
             #151820
         );
-
     color: #c4c9d1;
-
     font-family: inherit;
-
     font-size: 13px;
-
     font-weight: 800;
-
     letter-spacing: .7px;
-
     cursor: pointer;
-
     box-shadow:
         0 3px 8px rgba(0,0,0,.25),
         inset 0 1px 0 rgba(255,255,255,.05);
-
     transition:
         all .18s ease;
 }
-
-
 /*
  * Hover
  */
-
 .f1-session-selector button:hover {
-
     color: #fff;
-
     border-color:
         rgba(255, 255, 255, .32);
-
     background:
         linear-gradient(
             145deg,
             #2b303b,
             #1b1f27
         );
-
     transform:
         translateY(-1px);
-
     box-shadow:
         0 5px 14px rgba(0,0,0,.3);
 }
-
-
 /*
  * ACTIVE
  */
-
 .f1-session-selector button.active {
-
     color: #fff;
-
     border-color:
         rgba(255, 48, 72, .75);
-
     background:
         linear-gradient(
             145deg,
             #ff3048,
             #c8182d
         );
-
     box-shadow:
         0 0 18px rgba(255,48,72,.24),
         inset 0 1px 0 rgba(255,255,255,.2);
-
     text-shadow:
         0 1px 2px rgba(0,0,0,.35);
 }
-
-
 .f1-session-selector button.active:hover {
-
     background:
         linear-gradient(
             145deg,
@@ -575,83 +379,52 @@
             #d51c32
         );
 }
-
-
 /* =========================================================
    RESULTADOS
    ========================================================= */
-
 .f1-session-results {
-
     width: 100%;
-
     box-sizing: border-box;
-
     padding: 0 14px;
 }
-
-
 /* =========================================================
    FILA BASE
    ========================================================= */
-
 .f1-modal-row {
-
     position: relative;
-
     min-height: 82px;
-
     box-sizing: border-box;
-
     display: grid;
-
     align-items: center;
-
     column-gap: 16px;
-
     padding: 15px 18px;
-
     margin: 0;
-
     border-bottom:
         1px solid var(--f1-border-soft);
-
     background:
         linear-gradient(
             110deg,
             rgba(255,255,255,.015),
             rgba(255,255,255,.005)
         );
-
     transition:
         background .18s ease,
         transform .18s ease;
 }
-
-
 .f1-modal-row:first-child {
-
     border-top:
         1px solid var(--f1-border-soft);
-
     border-radius:
         16px 16px 0 0;
 }
-
-
 .f1-modal-row:last-child {
-
     border-radius:
         0 0 16px 16px;
 }
-
-
 /*
  * Hover de fila
  */
-
 .f1-modal-row:hover {
-
     background:
         linear-gradient(
             110deg,
@@ -659,96 +432,61 @@
             rgba(255,255,255,.018)
         );
 }
-
-
 /* =========================================================
    BADGE DE POSICIÓN
    ========================================================= */
-
 .f1-modal-row > strong:first-child {
-
     width: 54px;
     height: 54px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     box-sizing: border-box;
-
     border-radius: 14px;
-
     border:
         1px solid rgba(255,255,255,.10);
-
     background:
         linear-gradient(
             145deg,
             #292d35,
             #1a1d23
         );
-
     color: #f2f4f7;
-
     font-size: 18px;
-
     font-weight: 800;
-
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.06),
         0 4px 10px rgba(0,0,0,.18);
 }
-
-
 /* =========================================================
    PILOTO
    ========================================================= */
-
 .f1-session-results
 .f1-modal-row > span:nth-of-type(1) {
-
     min-width: 0;
-
     overflow: hidden;
-
     color: #f5f6f8;
-
     font-size: 18px;
-
     font-weight: 750;
 /* Desactivado para que se vea en 2 columnas si es necesario
     white-space: nowrap; */
-
     text-overflow: ellipsis;
 }
-
-
 /* =========================================================
    EQUIPO
    ========================================================= */
-
 .f1-session-results
 .f1-modal-row > span:nth-of-type(2) {
-
     min-width: 0;
-
     overflow: hidden;
-
     color: var(--f1-text-soft);
-
     font-size: 14px;
-
     white-space: nowrap;
-
     text-overflow: ellipsis;
 }
-
-
 /* =========================================================
    RACE
    ========================================================= */
-
 /*
  * Race tiene:
  *
@@ -758,18 +496,14 @@
  * TIEMPO / GAP
  * PUNTOS
  */
-
 .f1-session-results
 .f1-modal-row {
-
     grid-template-columns:
         54px
         minmax(0, 1fr)
         minmax(100px, auto)
         max-content;
 }
-
-
 /*
  * En Race:
  *
@@ -779,174 +513,108 @@
  * tiempo = columna 3
  * puntos = columna 4
  */
-
 .f1-session-results
 .f1-modal-row > strong:first-child {
-
     grid-column: 1;
     grid-row: 1 / span 2;
 }
-
-
 .f1-session-results
 .f1-modal-row > span:nth-of-type(1) {
-
     grid-column: 2;
     grid-row: 1;
-
     align-self: end;
 }
-
-
 .f1-session-results
 .f1-modal-row > span:nth-of-type(2) {
-
     grid-column: 2;
     grid-row: 2;
-
     align-self: start;
-
     margin-top: 3px;
 }
-
-
 /*
  * El tercer span aparece en QUALY
  * y el tiempo en Race.
  */
-
 .f1-session-results
 .f1-modal-row > span:nth-of-type(3) {
-
     grid-column: 3;
     grid-row: 1 / span 2;
-
     justify-self: end;
-
     color: #dce0e6;
-
     font-size: 16px;
-
     font-weight: 650;
-
     white-space: nowrap;
 }
-
-
 /*
  * Puntos de Race
  */
-
 .f1-session-results
 .f1-modal-row > strong:last-child {
-
     grid-column: 4;
     grid-row: 1 / span 2;
-
     justify-self: end;
-
     color: #fff;
-
     font-size: 16px;
-
     font-weight: 800;
-
     white-space: nowrap;
 }
-
-
 /* =========================================================
    IMPORTANTE:
    Race realmente tiene solamente 2 spans antes
    del extra. Por eso el tiempo es el último span
    cuando existe.
    ========================================================= */
-
 .f1-session-results
 .f1-modal-row > span:nth-of-type(3):last-of-type {
-
     color: #e5e8ed;
 }
-
-
 /* =========================================================
    QUALY
    ========================================================= */
-
 .f1-session-times {
-
     display: flex;
-
     align-items: center;
-
     justify-content: flex-end;
-
     gap: 10px;
-
     color: #cdd2da;
-
     font-size: 14px;
-
     font-variant-numeric: tabular-nums;
-
     white-space: nowrap;
 }
-
-
 /* =========================================================
    PRACTICE
    ========================================================= */
-
 .f1-session-results
 .f1-modal-row > span:last-of-type {
-
     font-variant-numeric:
         tabular-nums;
 }
-
-
 /* =========================================================
    DNF
    ========================================================= */
-
 .f1-session-results
 .f1-modal-row span {
-
     font-variant-numeric:
         tabular-nums;
 }
-
-
 /*
  * Cuando el contenido sea DNF
  * lo hacemos visualmente destacado.
  */
-
 .f1-session-results
 .f1-modal-row span {
-
     letter-spacing: .1px;
 }
-
-
 /* =========================================================
    CAMPEONATOS
    ========================================================= */
-
 .f1-modal-list {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 0;
-
     margin-top: 18px;
-
     padding: 0 14px 12px;
 }
-
-
 /*
  * Campeonato de pilotos
  *
@@ -957,103 +625,65 @@
  * span = equipo
  * strong = puntos
  */
-
 .f1-modal-list
 .f1-modal-row {
-
     min-height: 76px;
-
     grid-template-columns:
         54px
         minmax(0, 1fr)
         max-content;
-
     grid-template-rows:
         auto
         auto;
-
     padding:
         12px 18px;
-
     border:
         1px solid transparent;
-
     border-bottom:
         1px solid var(--f1-border-soft);
 }
-
-
 /* posición */
-
 .f1-modal-list
 .f1-modal-row > strong:first-child {
-
     grid-column: 1;
     grid-row: 1 / span 2;
 }
-
-
 /* nombre */
-
 .f1-modal-list
 .f1-modal-row > span:nth-of-type(1) {
-
     grid-column: 2;
     grid-row: 1;
-
     align-self: end;
-
     font-size: 17px;
-
     font-weight: 750;
 }
-
-
 /* equipo */
-
 .f1-modal-list
 .f1-modal-row > span:nth-of-type(2) {
-
     grid-column: 2;
     grid-row: 2;
-
     align-self: start;
-
     margin-top: 3px;
 }
-
-
 /* puntos */
-
 .f1-modal-list
 .f1-modal-row > strong:last-child {
-
     grid-column: 3;
     grid-row: 1 / span 2;
-
     justify-self: end;
-
     color: #fff;
-
     font-size: 17px;
-
     font-weight: 800;
 }
-
-
 /* =========================================================
    TOP 3 CAMPEONATO
    ========================================================= */
-
 .f1-modal-list
 .f1-modal-row:nth-child(1)
 > strong:first-child {
-
     color: #ffd84a;
-
     border-color:
         rgba(255,216,74,.25);
-
     background:
         linear-gradient(
             145deg,
@@ -1061,14 +691,10 @@
             rgba(255,255,255,.035)
         );
 }
-
-
 .f1-modal-list
 .f1-modal-row:nth-child(2)
 > strong:first-child {
-
     color: #d9e1eb;
-
     background:
         linear-gradient(
             145deg,
@@ -1076,14 +702,10 @@
             rgba(255,255,255,.035)
         );
 }
-
-
 .f1-modal-list
 .f1-modal-row:nth-child(3)
 > strong:first-child {
-
     color: #d9915c;
-
     background:
         linear-gradient(
             145deg,
@@ -1091,718 +713,418 @@
             rgba(255,255,255,.035)
         );
 }
-
-
 /* =========================================================
    PRÓXIMO GRAN PREMIO
    ========================================================= */
-
 .f1-race-schedule {
-
     margin-top: 18px;
-
     padding: 0 26px 20px;
 }
-
-
 .f1-session {
-
     min-height: 68px;
-
     display: grid;
-
     grid-template-columns:
         34px
         minmax(0,1fr)
         max-content;
-
     align-items: center;
-
     gap: 14px;
-
     padding: 10px 0;
-
     border-bottom:
         1px solid var(--f1-border-soft);
 }
-
-
 .f1-session > span:first-child {
-
     font-size: 22px;
-
     text-align: center;
 }
-
-
 .f1-session > div {
-
     min-width: 0;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 3px;
 }
-
-
 .f1-session > div strong {
-
     color: #f4f6f8;
-
     font-size: 16px;
 }
-
-
 .f1-session > div span {
-
     color: var(--f1-text-soft);
-
     font-size: 15px;
 }
-
-
 .f1-session time {
-
     color: #fff;
-
     font-size: 17px;
-
     font-weight: 800;
-
     font-variant-numeric:
         tabular-nums;
 }
-
-
 /* =========================================================
    LOADING
    ========================================================= */
-
 .f1-loading {
-
     min-height:
         calc(100% - 10px);
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     gap: 14px;
-
     color: #c9ced6;
-
     font-size: 18px;
-
     font-weight: 600;
 }
-
-
 /*
  * Spinner
  */
-
 .f1-loading::after {
-
     content: "";
-
     width: 22px;
     height: 22px;
-
     border-radius: 50%;
-
     border:
         3px solid rgba(255,255,255,.16);
-
     border-top-color:
         var(--f1-red);
-
     border-right-color:
         var(--f1-purple);
-
     animation:
         f1-spin .75s linear infinite;
 }
-
-
 @keyframes f1-spin {
-
     to {
         transform: rotate(360deg);
     }
-
 }
-
-
 /* =========================================================
    SIN RESULTADOS
    ========================================================= */
-
 .f1-no-results {
-
     min-height: 180px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     padding: 30px;
-
     box-sizing: border-box;
-
     color: var(--f1-text-soft);
-
     text-align: center;
-
     font-size: 16px;
-
     background:
         rgba(255,255,255,.025);
-
     border:
         1px dashed rgba(255,255,255,.10);
-
     border-radius: 16px;
-
     margin: 18px 26px;
 }
-
-
 /* =========================================================
    RESPONSIVE — TABLET
    ========================================================= */
-
 @media (max-width: 700px) {
-
     .f1-modal-overlay {
-
         padding:
             48px 14px;
     }
-
-
     .f1-modal {
-
         width: 100%;
-
         height:
             min(
                 760px,
                 calc(100dvh - 96px)
             );
-
         border-radius: 20px;
     }
-
-
     .f1-modal-close {
-
         top: 14px;
         right: 14px;
-
         width: 50px;
         height: 50px;
     }
-
-
     .f1-modal-content {
-
-        padding-top: 34px;
+        padding-top: 20px;
     }
-
-
     .f1-race-info {
-
         padding-left: 20px;
         padding-right: 70px;
     }
-
-
     .f1-session-selector {
-
         padding-left: 20px;
         padding-right: 20px;
     }
-
-
     .f1-session-results {
-
         padding:
             0 10px;
     }
-
-
     .f1-modal-row {
-
         column-gap: 12px;
-
         padding:
             14px 12px;
     }
-
-
     .f1-modal-row > strong:first-child {
-
         width: 52px;
         height: 52px;
     }
-
-
     .f1-session-results
     .f1-modal-row {
-
         grid-template-columns:
             52px
             minmax(0,1fr)
             max-content
             max-content;
     }
-
-
     .f1-session-results
     .f1-modal-row > span:nth-of-type(3) {
-
         font-size: 15px;
     }
-
-
     .f1-session-results
     .f1-modal-row > strong:last-child {
-
         font-size: 15px;
     }
-
-
     .f1-modal-list {
-
         padding-left: 10px;
         padding-right: 10px;
     }
-
 }
-
-
 /* =========================================================
    RESPONSIVE — MÓVIL
    ========================================================= */
-
 @media (max-width: 480px) {
-
     .f1-modal-overlay {
-
         padding:
             42px 10px;
     }
-
-
     .f1-modal {
-
         height:
             calc(100dvh - 84px);
-
         min-height: 340px;
-
         border-radius: 18px;
     }
-
-
     .f1-modal-close {
-
         width: 46px;
         height: 46px;
-
         top: 12px;
         right: 12px;
-
         font-size: 30px;
     }
-
-
     .f1-race-info {
-
         padding:
             5px 64px 14px 16px;
     }
-
-
     .f1-race-info h2 {
-
         font-size: 25px;
-
         margin-bottom: 20px;
     }
-
-
     .f1-race-info p {
-
         font-size: 17px;
-
         margin-bottom: 14px;
     }
-
-
     .f1-race-info p:nth-of-type(2) {
-
         font-size: 17px;
-
         margin-bottom: 18px;
     }
-
-
     .f1-race-info > strong {
-
         font-size: 18px;
     }
-
-
     .f1-session-selector {
-
         gap: 6px;
-
         padding:
             9px 12px 10px;
-
         overflow-x: auto;
-
         flex-wrap: nowrap;
-
         scrollbar-width: none;
     }
-
-
     .f1-session-selector::-webkit-scrollbar {
         display: none;
     }
-
-
     .f1-session-selector button {
-
         flex: 0 0 auto;
-
         min-width: 58px;
-
         height: 36px;
-
         padding: 0 12px;
-
         border-radius: 10px;
-
         font-size: 12px;
     }
-
-
     .f1-session-results {
-
         padding:
             0 6px;
     }
-
-
     .f1-modal-row {
-
         min-height: 72px;
-
         padding:
             12px 9px;
-
         column-gap: 9px;
     }
-
-
     .f1-modal-row > strong:first-child {
-
         width: 46px;
         height: 46px;
-
         border-radius: 12px;
-
         font-size: 16px;
     }
-
-
     /*
      * Race en móvil:
      *
      * POS | PILOTO       TIEMPO
      *     | EQUIPO       PUNTOS
      */
-
     .f1-session-results
     .f1-modal-row {
-
         grid-template-columns:
             46px
             minmax(0,1fr)
             max-content;
     }
-
-
     .f1-session-results
     .f1-modal-row > span:nth-of-type(1) {
-
         font-size: 16px;
-
         max-width: 100%;
     }
-
-
     .f1-session-results
     .f1-modal-row > span:nth-of-type(2) {
-
         font-size: 13px;
     }
-
-
     /*
      * Tiempo
      */
-
     .f1-session-results
     .f1-modal-row > span:nth-of-type(3) {
-
         grid-column: 3;
-
         grid-row: 1;
-
         font-size: 13px;
     }
-
-
     /*
      * Puntos
      */
-
     .f1-session-results
     .f1-modal-row > strong:last-child {
-
         grid-column: 3;
-
         grid-row: 2;
-
         font-size: 14px;
     }
-
-
     /*
      * Qualy
      */
-
     .f1-session-times {
-
         gap: 6px;
-
         font-size: 12px;
     }
-
-
     /*
      * Campeonato
      */
-
     .f1-modal-list {
-
         padding:
             0 6px 10px;
-
         margin-top: 12px;
     }
-
-
     .f1-modal-list
     .f1-modal-row {
-
         min-height: 70px;
-
         grid-template-columns:
             46px
             minmax(0,1fr)
             max-content;
-
         padding:
             11px 9px;
     }
-
-
     .f1-modal-list
     .f1-modal-row > strong:first-child {
-
         width: 46px;
         height: 46px;
     }
-
-
     .f1-modal-list
     .f1-modal-row > span:nth-of-type(1) {
-
         font-size: 16px;
     }
-
-
     .f1-modal-list
     .f1-modal-row > span:nth-of-type(2) {
-
         font-size: 13px;
     }
-
-
     .f1-modal-list
     .f1-modal-row > strong:last-child {
-
         font-size: 15px;
     }
-
-
     /*
      * Próximo GP
      */
-
     .f1-race-schedule {
-
         padding:
             0 16px 18px;
     }
-
-
     .f1-session {
-
         grid-template-columns:
             28px
             minmax(0,1fr)
             max-content;
-
         gap: 9px;
-
         min-height: 62px;
     }
-
-
     .f1-session > span:first-child {
-
         font-size: 19px;
     }
-
-
     .f1-session > div strong {
-
         font-size: 14px;
     }
-
-
     .f1-session > div span {
-
         font-size: 13px;
     }
-
-
     .f1-session time {
-
         font-size: 15px;
     }
-
-
     .f1-no-results {
-
         margin:
             16px;
-
         min-height: 150px;
     }
-
 }
-
-
 /* =========================================================
    MÓVIL MUY ANGOSTO
    ========================================================= */
-
 @media (max-width: 360px) {
-
     .f1-modal-overlay {
         padding-left: 6px;
         padding-right: 6px;
     }
-
-
     .f1-modal {
-
         border-radius: 16px;
     }
-
-
     .f1-race-info h2 {
-
         font-size: 22px;
     }
-
-
     .f1-session-selector button {
-
         min-width: 54px;
-
         padding:
             0 9px;
     }
-
-
     .f1-session-results
     .f1-modal-row > span:nth-of-type(1) {
-
         font-size: 15px;
     }
-
-
     .f1-session-results
     .f1-modal-row > span:nth-of-type(3) {
-
         font-size: 12px;
     }
-
-
     .f1-session-results
     .f1-modal-row > strong:last-child {
-
         font-size: 13px;
     }
-
 }
-
-
 /* =========================================================
    ACCESIBILIDAD
    ========================================================= */
-
 .f1-modal-close:focus-visible,
 .f1-session-selector button:focus-visible {
-
     outline:
         2px solid var(--f1-blue);
-
     outline-offset: 3px;
 }
-
-
 /* =========================================================
    REDUCE MOTION
    ========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
-
     .f1-modal,
     .f1-modal-overlay,
     .f1-modal-close,
     .f1-session-selector button,
     .f1-modal-row {
-
         transition: none !important;
     }
-
-
     .f1-loading::after {
-
         animation: none;
     }
-
 }
