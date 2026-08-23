@@ -1257,17 +1257,16 @@ async function createLastRace(race) {
 
         }
 
-        else if (
-            selected.key ===
-            "qualifying"
-        ) {
-
-            data =
-                await F1.getQualifying(
-                    "current",
-                    race.round
-                );
-
+        else if (selected.key === "qualifying") {
+        
+            if (roundId) {
+                data =
+                    await F1.getSessionResults(
+                        roundId,
+                        "Q"
+                    );
+            }
+        
         }
 
         else if (
@@ -1367,15 +1366,17 @@ async function createRaceWeekend(race) {
 
         }
 
-        else if (selected.key === "qualifying") {
-
-            data =
-                await F1.getQualifying(
-                    "current",
-                    race.round
-                );
-
-        }
+         else if (selected.key === "qualifying") {
+         
+             if (roundId) {
+                 data =
+                     await F1.getSessionResults(
+                         roundId,
+                         "Q"
+                     );
+             }
+         
+         }
 
         else if (selected.key === "sprint") {
 
