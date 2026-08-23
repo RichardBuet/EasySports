@@ -15,6 +15,7 @@
     box-shadow: var(--shadow);
     display: grid;
     isolation: isolate;
+    cursor: pointer;
 }
 
 .card::before {
@@ -39,6 +40,9 @@
     z-index: 0;
 }
 
+.card::hover {
+    opacity: 0.75;
+}
 .card h3,
 .card p,
 .card a {
