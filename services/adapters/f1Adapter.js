@@ -160,7 +160,8 @@ export function adaptSprint(data) {
             id: result.Constructor.constructorId,
             name: result.Constructor.name
         },
-        points: Number(result.points)
+        points: Number(result.points),
+        time: result.Time?.time
     }));
 }
 
