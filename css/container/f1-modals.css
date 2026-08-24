@@ -397,7 +397,7 @@
     box-sizing: border-box;
     display: grid;
     align-items: center;
-    column-gap: 16px;
+    column-gap: 2em;
     padding: 9px 18px;
     margin: 0;
     border-bottom:
@@ -468,7 +468,7 @@
     overflow: hidden;
     color: #f5f6f8;
     font-size: 18px;
-    font-weight: 750;
+    /* font-weight: 750; */
 /* Desactivado para que se vea en 2 columnas si es necesario
     white-space: nowrap; */
     text-overflow: ellipsis;
@@ -953,9 +953,7 @@ margin-top:2px;
         width: 50px;
         height: 50px;
     }
-    .f1-modal-content {
-        padding-top: 20px;
-    }
+
     .f1-race-info {
         padding-left: 20px;
         padding-right: 70px;
@@ -1039,8 +1037,8 @@ margin-top:2px;
     }
     .f1-session-selector {
         gap: 6px;
-        padding:
-            9px 12px 10px;
+        top: -17px;
+        padding: 9px 12px 10px;
         overflow-x: auto;
         flex-wrap: nowrap;
         scrollbar-width: none;
@@ -1063,7 +1061,7 @@ margin-top:2px;
     .f1-modal-row {
         min-height: 63px;
         padding: 8px 9px;
-        column-gap: 9px;
+        /* column-gap: 9px; */
     }
     .f1-modal-row > strong:first-child {
         width: 46px;
@@ -1107,8 +1105,8 @@ margin-top:2px;
      */
     .f1-session-results
     .f1-modal-row > strong:last-child {
-        grid-column: 3;
-        grid-row: 2;
+        /* grid-column: 3;
+        grid-row: 2; */
         font-size: 14px;
     }
     /*
