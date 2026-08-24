@@ -939,6 +939,8 @@ function renderSessionResults(data, session) {
                
                }
 
+               console.log("RESULTADO", session, result);
+
                 return `
                 <div class="f1-modal-row">
                     <strong> ${position}  </strong>
