@@ -675,19 +675,47 @@ function renderSessionResults(data, session) {
         `;
     }
 
+
+    const isQualy =
+        session === "qualifying" ||
+        session === "sq";
+
+
     return `
         <div class="f1-session-results">
-            ${session === "qualifying" || session === "sq" ? `
+
+            ${isQualy ? `
+
                 <div class="f1-qualy-header">
-                    <div>Pos.</div>
-                    <div>Piloto</div>
-                    <div class="f1-qualy-header-sessions">
-                        <span>${session === "qualifying" ? "Q1" : "SQ1"}</span>
-                        <span>${session === "qualifying" ? "Q2" : "SQ2"}</span>
-                        <span>${session === "qualifying" ? "Q3" : "SQ3"}</span>
+
+                    <div>
+                        Pos.
                     </div>
+
+                    <div>
+                        Piloto
+                    </div>
+
+                    <div class="f1-qualy-header-sessions">
+
+                        <span>
+                            ${session === "qualifying" ? "Q1" : "SQ1"}
+                        </span>
+
+                        <span>
+                            ${session === "qualifying" ? "Q2" : "SQ2"}
+                        </span>
+
+                        <span>
+                            ${session === "qualifying" ? "Q3" : "SQ3"}
+                        </span>
+
+                    </div>
+
                 </div>
+
             ` : ""}
+
 
             ${results.map((result, index) => {
 
@@ -716,11 +744,15 @@ function renderSessionResults(data, session) {
                 const alphaName =
                     `${driver.given_name ?? driver.givenName ?? ""} ${driver.family_name ?? driver.familyName ?? ""}`
                         .trim();
-                
+
+
                 const fullName =
                     driver.fullName ??
                     driver.full_name ??
-                    (alphaName || driver.abbreviation || driver.code || "—");
+                    (alphaName ||
+                     driver.abbreviation ||
+                     driver.code ||
+                     "—");
 
 
                 /* =========================
@@ -734,6 +766,7 @@ function renderSessionResults(data, session) {
                     result.Constructor ??
                     {};
 
+
                 const teamName =
                     team.name ??
                     team.team_name ??
@@ -743,17 +776,15 @@ function renderSessionResults(data, session) {
 
 
                 /* =========================
-                   QUALIFYING
+                   COMPONENTES
                 ========================= */
 
-                const components = result.components ?? {};
-                const q1 = session === "qualifying" ? components.Q1 : result.q1 ?? result.Q1 ?? result.q1_time ?? null;
-                const q2 = session === "qualifying" ? components.Q2 : result.q2 ?? result.Q2 ?? result.q2_time ?? null;
-                const q3 = session === "qualifying" ? components.Q3 : result.q3 ?? result.Q3 ?? result.q3_time ?? null;
+                const components =
+                    result.components ?? {};
 
 
                 /* =========================
-                   TIEMPO DE SESIÓN
+                   TIEMPO
                 ========================= */
 
                 const sessionTime =
@@ -767,106 +798,285 @@ function renderSessionResults(data, session) {
                 /* =========================
                    PUNTOS
                 ========================= */
-                const points =  result.points;
-                /** Lo que mostramos depende de la sesión.*/
+
+                const points =
+                    result.points;
+
+
+                /* =========================
+                   EXTRA
+                ========================= */
+
                 let extra = "";
-                /* QUALY / S.QUALY */
-                if (session === "qualifying" || session === "sq") {
-                    const prefix = session === "qualifying" ? "Q" : "SQ";
-                    const q1 = components[`${prefix}1`] ?? null;
-                    const q2 = components[`${prefix}2`] ?? null;
-                    const q3 = components[`${prefix}3`] ?? null;
-                    const cell = q => q ? `<strong>${q.position}º</strong><small>${q.time ?? "—"}</small>` : `<strong>—</strong><small>—</small>`;
+
+
+                /* =====================================================
+                   QUALY / S.QUALY
+                   ===================================================== */
+
+                if (isQualy) {
+
+                    const prefix =
+                        session === "qualifying"
+                            ? "Q"
+                            : "SQ";
+
+
+                    const q1 =
+                        components[`${prefix}1`] ??
+                        null;
+
+
+                    const q2 =
+                        components[`${prefix}2`] ??
+                        null;
+
+
+                    const q3 =
+                        components[`${prefix}3`] ??
+                        null;
+
+
+                    const cell = q => {
+
+                        if (!q) {
+
+                            return `
+                                <strong>—</strong>
+                                <small>—</small>
+                            `;
+
+                        }
+
+
+                        return `
+                            <strong>
+                                ${q.position ?? "—"}º
+                            </strong>
+
+                            <small>
+                                ${q.time ?? "—"}
+                            </small>
+                        `;
+
+                    };
+
+
                     extra = `
-                        <div class="f1-qualy-sessions">
-                            <div class="f1-qualy-cell">${cell(q1)}</div>
-                            <div class="f1-qualy-cell">${cell(q2)}</div>
-                            <div class="f1-qualy-cell">${cell(q3)}</div>
+
+                        <div class="f1-result-extra">
+
+                            <div class="f1-qualy-cell">
+                                ${cell(q1)}
+                            </div>
+
+                            <div class="f1-qualy-cell">
+                                ${cell(q2)}
+                            </div>
+
+                            <div class="f1-qualy-cell">
+                                ${cell(q3)}
+                            </div>
+
                         </div>
+
                     `;
+
                 }
 
 
-                /* PRACTICE */
-                else if (session === "fp1" || session === "fp2" || session === "fp3") {
+                /* =====================================================
+                   PRACTICE
+                   ===================================================== */
+
+                else if (
+                    session === "fp1" ||
+                    session === "fp2" ||
+                    session === "fp3"
+                ) {
+
                     const toMs = t => {
+
                         if (!t) return null;
-                        const p = t.split(":");
-                        if (p.length === 2) return (Number(p[0]) * 60 + Number(p[1])) * 1000;
-                        return (Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2])) * 1000;
+
+                        const p =
+                            t.split(":");
+
+
+                        if (p.length === 2) {
+
+                            return (
+                                Number(p[0]) * 60 +
+                                Number(p[1])
+                            ) * 1000;
+
+                        }
+
+
+                        return (
+                            Number(p[0]) * 3600 +
+                            Number(p[1]) * 60 +
+                            Number(p[2])
+                        ) * 1000;
+
                     };
-                    const leaderTime = results[0]?.time;
-                    const gap = index === 0 ? result.time : `+${((toMs(result.time) - toMs(leaderTime)) / 1000).toFixed(3)}`;
-                    extra = `<span>${gap ?? "—"}</span>`;
+
+
+                    const leaderTime =
+                        results[0]?.time;
+
+
+                    const currentMs =
+                        toMs(result.time);
+
+
+                    const leaderMs =
+                        toMs(leaderTime);
+
+
+                    const gap =
+                        index === 0
+                            ? result.time
+                            : (
+                                currentMs != null &&
+                                leaderMs != null
+                            )
+                                ? `+${(
+                                    (currentMs - leaderMs) /
+                                    1000
+                                ).toFixed(3)}`
+                                : "—";
+
+
+                    extra = `
+
+                        <span>
+                            ${gap ?? "—"}
+                        </span>
+
+                    `;
+
                 }
-                else if (session === "sq") {
-                    const toMs = t => {
-                        if (!t) return null;
-                        const p = t.split(":");
-                        if (p.length === 2) return (Number(p[0]) * 60 + Number(p[1])) * 1000;
-                        return (Number(p[0]) * 3600 + Number(p[1]) * 60 + Number(p[2])) * 1000;
-                    };
-                    const leaderTime = results[0]?.time;
-                    const gap = index === 0 ? "+0.000" : `+${((toMs(result.time) - toMs(leaderTime)) / 1000).toFixed(3)}`;
-                    const sq1 = result.components?.SQ1?.time || "—";
-                    const sq2 = result.components?.SQ2?.time || "—";
-                    const sq3 = result.components?.SQ3?.time || "—";
-                    extra = `<span>${result.time || "—"}</span><small>${gap}</small><small>SQ1 ${sq1} &nbsp; SQ2 ${sq2} &nbsp; SQ3 ${sq3}</small>`;
+
+
+                /* =====================================================
+                   SPRINT
+                   ===================================================== */
+
+                else if (session === "sprint") {
+
+                    extra = `
+
+                        <span>
+                            ${sessionTime ?? "—"}
+                        </span>
+
+                        <strong>
+                            ${points ?? 0} pts
+                        </strong>
+
+                    `;
+
                 }
 
 
-               /* RACE / SPRINT */
+                /* =====================================================
+                   RACE
+                   ===================================================== */
 
-               else {
-                   if (session === "race") {
-                       const status =
-                           result.status ??
-                           "";
-                       const raceTime =
-                           result.time ??
-                           result.Time?.time ??
-                           null;
-                       const isDNF = status &&
-                           ![
-                               "Finished",
-                               "Lapped",
-                               "+1 Lap",
-                               "+2 Laps",
-                               "+3 Laps",
-                               "+4 Laps",
-                               "+5 Laps"
-                           ].includes(status);
-                       extra = `
-                           <span> ${ isDNF ? "DNF" : raceTime ?? "—" } </span>
-                           <strong> ${points ?? 0} pts </strong>
-                       `;
-                   } else {
-                       extra = `
-                           <span> ${sessionTime ?? "—"} </span>
-                           <strong> ${points ?? 0} pts </strong>
-                       `;
-                   }
-               }
+                else if (session === "race") {
 
-               console.log("RESULTADO", session, result);
+                    const status =
+                        result.status ??
+                        "";
+
+
+                    const raceTime =
+                        result.time ??
+                        result.Time?.time ??
+                        null;
+
+
+                    const isDNF =
+                        status &&
+                        ![
+                            "Finished",
+                            "Lapped",
+                            "+1 Lap",
+                            "+2 Laps",
+                            "+3 Laps",
+                            "+4 Laps",
+                            "+5 Laps"
+                        ].includes(status);
+
+
+                    extra = `
+
+                        <span>
+                            ${
+                                isDNF
+                                    ? "DNF"
+                                    : raceTime ?? "—"
+                            }
+                        </span>
+
+                        <strong>
+                            ${points ?? 0} pts
+                        </strong>
+
+                    `;
+
+                }
+
+
+                /* =====================================================
+                   FILA
+                   ===================================================== */
+
+                console.log(
+                    "RESULTADO",
+                    session,
+                    result
+                );
+
 
                 return `
-                <div class="f1-modal-row">
-                    <strong> ${position}  </strong>
-                    <div class="f1-result-driver">
-                        <strong> ${fullName} </strong>
-                        <small>  ${teamName} </small>
+
+                    <div class="f1-modal-row">
+
+                        <strong>
+                            ${position}
+                        </strong>
+
+
+                        <div class="f1-result-driver">
+
+                            <strong>
+                                ${fullName}
+                            </strong>
+
+                            <small>
+                                ${teamName}
+                            </small>
+
+                        </div>
+
+
+                        ${
+                            isQualy
+                                ? extra
+                                : `<div class="f1-result-extra">${extra}</div>`
+                        }
+
                     </div>
-                    <div class="f1-result-extra"${extra}</div>
-                </div>
+
                 `;
+
             }).join("")}
 
         </div>
     `;
 }
-
-
 
 /* =========================================================
    CARGAR SESIÓN
