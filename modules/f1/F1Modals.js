@@ -1,42 +1,27 @@
-/* MODALS F1 ALL INCLUSIVE  v2 23:50 23/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 00:50 24/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
-
 let modalStack = [];
-
 
 /* =========================================================f
    MODAL BASE
 ========================================================= */
 
 function createModal(content) {
-
     return `
         <div class="f1-modal-overlay">
-
             <div class="f1-modal">
-
-                <button
-                    class="f1-modal-close"
-                    type="button"
-                    aria-label="Cerrar"
-                >
-                    ×
-                </button>
-
+                <button class="f1-modal-close" type="button" aria-label="Cerrar" >×</button>
                 <div class="f1-modal-content">
                     ${content}
                 </div>
-
             </div>
-
         </div>
     `;
 }
 
 
 function renderModal(content) {
-
     document
         .querySelector(".f1-modal-overlay")
         ?.remove();
@@ -51,7 +36,6 @@ function renderModal(content) {
         document
             .querySelector(".f1-modal-overlay")
             ?.classList.add("show");
-
     });
 
     initModalEvents();
@@ -90,35 +74,23 @@ function initModalEvents() {
         }
     );
 
-
     document
         .querySelectorAll("[data-f1-session]")
         .forEach(button => {
-
             button.addEventListener(
                 "click",
                 async () => {
-
-                    const session =
-                        button.dataset.f1Session;
-
-                    const round =
-                        button.dataset.f1Round;
-
-                    const roundId =
-                        button.dataset.f1RoundId;
-
+                    const session = button.dataset.f1Session;
+                    const round = button.dataset.f1Round;
+                    const roundId = button.dataset.f1RoundId;
                     await loadSession(
                         round,
                         roundId,
                         session
                     );
-
                 }
             );
-
         });
-
 }
 
 
@@ -143,20 +115,13 @@ async function createChampionship(type) {
 
                     <div class="f1-modal-row">
 
-                        <strong>
-                            ${driver.position}
-                        </strong>
+                        <strong> ${driver.position} </strong>
 
-                        <span>
-                            ${driver.driver.fullName}
-                        </span>
+                        <span> ${driver.driver.fullName} </span>
 
-                        <span>
-                            ${driver.constructor.name}
-                        </span>
+                        <span> ${driver.constructor.name} </span>
 
-                        <strong>
-                            ${driver.points} pts
+                        <strong> ${driver.points} pts
                         </strong>
 
                     </div>
@@ -401,13 +366,9 @@ function createNextRace(race) {
 
                     <div>
 
-                        <strong>
-                            ${formatDay(session.date)}
-                        </strong>
+                        <strong> ${formatDay(session.date)} </strong>
 
-                        <span>
-                            ${session.label}
-                        </span>
+                        <span> ${session.label} </span>
 
                     </div>
 
@@ -648,13 +609,9 @@ function createSessionButtons(
     round,
     roundId
 ) {
-
     return `
-
         <div class="f1-session-selector">
-
             ${sessions.map(session => `
-
                 <button
                     type="button"
                     class="${session.key === activeSession ? "active" : ""}"
@@ -680,25 +637,12 @@ function createSessionButtons(
 
 function normalizeResults(data) {
 
-    if (!data) {
-        return [];
-    }
+    if (!data) {return [];}
 
+    /*Nuestros adaptadores Ergast ya devuelven arrays.*/
+    if (Array.isArray(data)) {return data;}
 
-    /*
-     * Nuestros adaptadores Ergast
-     * ya devuelven arrays.
-     */
-    if (Array.isArray(data)) {
-
-        return data;
-
-    }
-
-
-    /*
-     * Alpha
-     */
+    /*Alpha*/
     return (
         data.results ??
         data.Results ??
@@ -733,17 +677,16 @@ function renderSessionResults(data, session) {
 
     return `
         <div class="f1-session-results">
-
             ${session === "qualifying" ? `
                 <div class="f1-qualy-header">
                     <div>Pos.</div>
                     <div>Piloto</div>
-        <div class="f1-qualy-header-sessions">
-            <span>Q1</span>
-            <span>Q2</span>
-            <span>Q3</span>
-        </div>
-        </div>
+                    <div class="f1-qualy-header-sessions">
+                        <span>Q1</span>
+                        <span>Q2</span>
+                        <span>Q3</span>
+                    </div>
+                </div>
             ` : ""}
 
             ${results.map((result, index) => {
@@ -791,7 +734,6 @@ function renderSessionResults(data, session) {
                     result.Constructor ??
                     {};
 
-
                 const teamName =
                     team.name ??
                     team.team_name ??
@@ -825,19 +767,9 @@ function renderSessionResults(data, session) {
                 /* =========================
                    PUNTOS
                 ========================= */
-
-                const points =
-                    result.points;
-
-
-                /*
-                 * Lo que mostramos depende
-                 * de la sesión.
-                 */
-
+                const points =  result.points;
+                /** Lo que mostramos depende de la sesión.*/
                 let extra = "";
-
-
                 /* QUALY */
 
                 if (session === "qualifying") {
@@ -846,9 +778,11 @@ function renderSessionResults(data, session) {
                         : `<strong>—</strong><small>—</small>`;
                 
                     extra = `
+                    <div class="f1-qualy-sessions">
                         <div class="f1-qualy-cell">${cell(q1)}</div>
                         <div class="f1-qualy-cell">${cell(q2)}</div>
                         <div class="f1-qualy-cell">${cell(q3)}</div>
+                    </div>
                     `;
                 }
 
@@ -884,20 +818,15 @@ function renderSessionResults(data, session) {
                /* RACE / SPRINT */
 
                else {
-               
                    if (session === "race") {
-               
                        const status =
                            result.status ??
                            "";
-               
                        const raceTime =
                            result.time ??
                            result.Time?.time ??
                            null;
-               
-                       const isDNF =
-                           status &&
+                       const isDNF = status &&
                            ![
                                "Finished",
                                "Lapped",
@@ -907,36 +836,16 @@ function renderSessionResults(data, session) {
                                "+4 Laps",
                                "+5 Laps"
                            ].includes(status);
-               
                        extra = `
-               
-                           <span>
-                               ${
-                                   isDNF
-                                       ? "DNF"
-                                       : raceTime ?? "—"
-                               }
-                           </span>
-               
-                           <strong>
-                               ${points ?? 0} pts
-                           </strong>
-               
+                           <span> ${ isDNF ? "DNF" : raceTime ?? "—" } </span>
+                           <strong> ${points ?? 0} pts </strong>
                        `;
-               
                    } else {
-               
                        extra = `
-                           <span>
-                               ${sessionTime ?? "—"}
-                           </span>
-                           <strong>
-                               ${points ?? 0} pts
-                           </strong>
+                           <span> ${sessionTime ?? "—"} </span>
+                           <strong> ${points ?? 0} pts </strong>
                        `;
-               
                    }
-               
                }
 
                console.log("RESULTADO", session, result);
