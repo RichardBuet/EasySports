@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  v2 18:35 23/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 23:04 23/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -738,10 +738,12 @@ function renderSessionResults(data, session) {
                 <div class="f1-qualy-header">
                     <div>Pos.</div>
                     <div>Piloto</div>
-                    <div>Q1</div>
-                    <div>Q2</div>
-                    <div>Q3</div>
-                </div>
+        <div class="f1-qualy-header-sessions">
+            <span>Q1</span>
+            <span>Q2</span>
+            <span>Q3</span>
+        </div>
+        </div>
             ` : ""}
 
             ${results.map((result, index) => {
@@ -923,6 +925,9 @@ function renderSessionResults(data, session) {
                    } else {
                
                        extra = `
+                           <span>
+                               ${sessionTime ?? "—"}
+                           </span>
                            <strong>
                                ${points ?? 0} pts
                            </strong>
@@ -939,7 +944,7 @@ function renderSessionResults(data, session) {
                         <strong> ${fullName} </strong>
                         <small>  ${teamName} </small>
                     </div>
-                     ${extra}
+                    <div class="f1-result-extra"${extra}</div>
                 </div>
                 `;
             }).join("")}
