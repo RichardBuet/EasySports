@@ -582,106 +582,75 @@
 
 /* =========================================================
    QUALY / S.QUALY
-   ========================================================= */
-.f1-qualy-header{
-display:grid;
-grid-template-columns:56px 1fr repeat(3,110px);
-align-items:center;
-padding:0 16px 8px;
-font-size:.8rem;
-font-weight:700;
-color:var(--f1-accent,#c8ff00);
-}
-
-.f1-qualy-header span:nth-child(1){text-align:center;}
-.f1-qualy-header span:nth-child(n+3){text-align:center;}
-
-.f1-modal-row:has(.f1-session-times){
-display:grid;
-grid-template-columns:56px 1fr 330px;
-align-items:center;
-gap:12px;
-}
-
-.f1-modal-row:has(.f1-session-times) .f1-session-times{
-display:grid;
-grid-template-columns:repeat(3,110px);
-align-items:center;
-gap:10px;
-color:#cdd2da;
-font-size:14px;
-font-variant-numeric:tabular-nums;
-white-space:nowrap;
-}
-
-.f1-modal-row:has(.f1-session-times) .f1-session-times span{
-display:block;
-text-align:center;
-}
-
-.f1-modal-row:has(.f1-session-times) .f1-result-driver{
-min-width:0;
-}
-
-.f1-modal-row:has(.f1-session-times) .f1-result-driver strong{
-display:block;
-}
-
-.f1-modal-row:has(.f1-session-times) .f1-result-driver small{
-display:block;
-margin-top:2px;
-}
-
-/* =========================================================
-   QUALY / S.QUALY
 ========================================================= */
-/* 
+
 .f1-qualy-header{
-display:grid;
-grid-template-columns:56px 1fr repeat(3,110px);
-align-items:center;
-padding:0 16px 8px;
-font-size:.8rem;
-font-weight:700;
-color:var(--f1-accent,#c8ff00);
+    display:grid;
+    grid-template-columns:56px 1fr 330px;
+    align-items:center;
+    padding:0 16px 8px;
+    font-size:.8rem;
+    font-weight:700;
+    color:var(--f1-accent,#c8ff00);
 }
 
-.f1-qualy-header span:nth-child(1){text-align:center;}
-.f1-qualy-header span:nth-child(n+3){text-align:center;}
-
-.f1-modal-row:has(.f1-session-times){
-display:grid;
-grid-template-columns:56px 1fr 330px;
-align-items:center;
-gap:12px;
+.f1-qualy-header > div:nth-child(1){
+    text-align:center;
 }
 
-.f1-modal-row:has(.f1-session-times) .f1-session-times{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-align-items:center;
-gap:8px;
-font-size:.82rem;
-font-weight:700;
-text-align:center;
+.f1-qualy-header > div:nth-child(2){
+    text-align:left;
 }
 
-.f1-modal-row:has(.f1-session-times) .f1-session-times span{
-display:block;
+.f1-qualy-header-sessions{
+    display:grid;
+    grid-template-columns:repeat(3,110px);
+    align-items:center;
 }
 
-.f1-modal-row:has(.f1-session-times) .f1-result-driver{
-min-width:0;
+.f1-qualy-header-sessions span{
+    text-align:center;
 }
 
-.f1-modal-row:has(.f1-session-times) .f1-result-driver strong{
-display:block;
+.f1-modal-row:has(.f1-qualy-sessions){
+    display:grid;
+    grid-template-columns:56px 1fr 330px;
+    align-items:center;
+    gap:12px;
 }
 
-.f1-modal-row:has(.f1-session-times) .f1-result-driver small{
-display:block;
-margin-top:2px;
-} */
+.f1-modal-row:has(.f1-qualy-sessions) .f1-result-driver{
+    min-width:0;
+}
+
+.f1-modal-row:has(.f1-qualy-sessions) .f1-result-driver strong{
+    display:block;
+}
+
+.f1-modal-row:has(.f1-qualy-sessions) .f1-result-driver small{
+    display:block;
+    margin-top:2px;
+}
+
+.f1-qualy-sessions{
+    display:grid;
+    grid-template-columns:repeat(3,110px);
+    align-items:center;
+}
+
+.f1-qualy-cell{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.f1-qualy-cell strong,
+.f1-qualy-cell small{
+    display:block;
+}
+
 
 /* =========================================================
    PRACTICE
