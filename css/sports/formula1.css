@@ -58,77 +58,332 @@
     font-size: clamp(0.8rem, 2.9vw, 2rem);
 }
 
+/* ==========================================================
+   HERO — INFORMACIÓN INFERIOR
+========================================================== */
+
 .hero__info {
-    display: flex;
-    align-content: center;
-    align-items: flex-end;
-    font-size: clamp(0.8rem, 2.6dvw, 1.4rem);
-    flex-wrap: wrap;
-    justify-content: space-between;
-    column-gap: 0px;
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+    align-items: end;
+    gap: 20px;
     width: 100%;
-    height: auto;
-    flex-direction: row;
+    box-sizing: border-box;
+    font-size:
+        clamp(.8rem, 2.6dvw, 1.4rem);
 }
+
+
+/* ==========================================================
+   META — ROUND / FECHA
+========================================================== */
 
 .hero--f1 .hero__meta {
-    color: var(--text);
     display: flex;
-    gap: 0.3vw;
     flex-direction: column;
+    gap: 4px;
+    color:
+        var(--text);
+    white-space:
+        nowrap;
 }
 
-.hero__championship {
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-    margin-right: 10px;
-    /* max-width: 58vw; */
+.hero--f1 .hero__meta-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
 }
 
-.hero__championship-title {
-    color: var(--danger);
-    font-weight: bolder;
-    text-align: center;
+.hero--f1 .hero__meta-item span {
+    flex:
+        0 0 auto;
 }
 
-.hero__championship-driver{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
+.hero--f1 .hero__meta-item strong {
+    font-weight:
+        700;
+
+    white-space:
+        nowrap;
 }
 
-.hero__championship-team{
-    color: var(--border-color);
+
+/* ==========================================================
+   PRÓXIMA SESIÓN
+========================================================== */
+
+.hero--f1 .hero__sessions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    min-width: 0;
 }
 
-@media (min-width:900px){
-    .hero__championship{
-        flex-direction:row;
-        align-items:center;
-        gap:15px;
-        align-items: flex-end;
+.hero--f1 .hero__session {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 8px;
+
+    min-width: 0;
+}
+
+.hero--f1 .hero__session > span {
+    flex:
+        0 0 auto;
+
+    font-size:
+        1.05em;
+}
+
+.hero--f1 .hero__session > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    min-width: 0;
+}
+
+.hero--f1 .hero__session small {
+    color:
+        var(--text-secondary);
+
+    font-size:
+        .72em;
+
+    line-height:
+        1.1;
+
+    white-space:
+        nowrap;
+}
+
+.hero--f1 .hero__session strong {
+    color:
+        var(--text);
+
+    font-size:
+        .9em;
+
+    line-height:
+        1.15;
+
+    white-space:
+        nowrap;
+}
+
+
+/* ==========================================================
+   BOTÓN — VER FIN DE SEMANA
+========================================================== */
+
+.hero--f1 .hero__action {
+    appearance: none;
+
+    align-self:
+        end;
+
+    justify-self:
+        end;
+
+    padding:
+        8px 16px;
+
+    border:
+        1px solid rgba(255,255,255,.35);
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(225,228,233,.92)
+        );
+
+    color:
+        #17191e;
+
+    font-family:
+        inherit;
+
+    font-size:
+        .72em;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .15px;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.9);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
+}
+
+.hero--f1 .hero__action:hover {
+    background:
+        #ffffff;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 6px 16px rgba(0,0,0,.35),
+        0 0 12px rgba(255,255,255,.12);
+}
+
+.hero--f1 .hero__action:active {
+    transform:
+        translateY(0)
+        scale(.97);
+}
+
+
+/* ==========================================================
+   HERO F1 — TABLET / MÓVIL
+========================================================== */
+
+@media (max-width: 700px) {
+
+    .hero__info {
+        grid-template-columns:
+            minmax(0, auto)
+            minmax(0, 1fr);
+
+        align-items:
+            end;
+
+        column-gap:
+            12px;
+
+        row-gap:
+            9px;
+    }
+
+    .hero--f1 .hero__meta {
+        justify-self:
+            start;
+    }
+
+    .hero--f1 .hero__sessions {
+        justify-self:
+            end;
+
+        justify-content:
+            flex-end;
+    }
+
+    .hero--f1 .hero__session {
+        justify-content:
+            flex-end;
+    }
+
+    .hero--f1 .hero__action {
+        grid-column:
+            1 / -1;
+
+        justify-self:
+            start;
+
+        align-self:
+            start;
     }
 }
-/* 
-.hero--f1 .hero__leaders {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+
+
+/* ==========================================================
+   HERO F1 — MÓVIL
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .hero__info {
+        column-gap:
+            8px;
+
+        row-gap:
+            8px;
+
+        font-size:
+            clamp(.78rem, 3.4vw, 1rem);
+    }
+
+    .hero--f1 .hero__session {
+        gap:
+            5px;
+    }
+
+    .hero--f1 .hero__session small {
+        font-size:
+            .68em;
+    }
+
+    .hero--f1 .hero__session strong {
+        font-size:
+            .82em;
+    }
+
+    .hero--f1 .hero__action {
+        padding:
+            7px 14px;
+
+        font-size:
+            .72em;
+    }
 }
 
-.hero--f1 .hero__leader {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1rem;
-}
 
-.hero--f1 .hero__leader strong {
-    color: var(--text);
-    font-weight: 700;
-} */
+/* ==========================================================
+   HERO F1 — MÓVIL MUY ANGOSTO
+========================================================== */
+
+@media (max-width: 360px) {
+
+    .hero__info {
+        grid-template-columns:
+            1fr;
+    }
+
+    .hero--f1 .hero__meta,
+    .hero--f1 .hero__sessions,
+    .hero--f1 .hero__action {
+        justify-self:
+            start;
+    }
+
+    .hero--f1 .hero__session {
+        justify-content:
+            flex-start;
+    }
+
+}
 
 
 /* ==========================================================
