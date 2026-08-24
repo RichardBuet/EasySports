@@ -73,151 +73,323 @@ export class F1 {
     }
 
 
+/*
+ * =====================================================
+ * HERO STATE version 2.2
+ * =====================================================
+ *
+ * El calendario F1 determina cuál es la carrera
+ * correspondiente al Hero.
+ *
+ * Blacktop se utiliza únicamente para:
+ * - detectar LIVE
+ * - obtener sesiones
+ * - obtener información adicional del evento
+ *
+ * De esta manera, una carrera "scheduled" en Blacktop
+ * no puede hacer que el Hero salte a otra ronda futura.
+ */
+static async getHeroState(season = "current") {
+
+    const [
+        schedule,
+        standings,
+        constructors,
+        blacktopEvents
+    ] = await Promise.all([
+        this.getSchedule(season),
+        this.getStandings(season),
+        this.getConstructorStandings(season),
+        this.getBlacktopEvents()
+    ]);
+
+
     /*
      * =====================================================
-     * HERO STATE version 2.1.1
+     * CARRERA ACTUAL / PRÓXIMA
      * =====================================================
      */
-        static async getHeroState( season = "current" ) {
-            const [
-                nextRace,
-                standings,
-                constructors,
-                blacktopEvents
-            ] = await Promise.all([
-                this.getNextRace(season),
-                this.getStandings(season),
-                this.getConstructorStandings(season),
-                this.getBlacktopEvents()
-            ]);
-        
-            /*
-             * =====================================================
-             * BLACKTOP EVENTS
-             * =====================================================
-             */
-        
-            const events =
-                Array.isArray(blacktopEvents)
-                    ? blacktopEvents
-                    : blacktopEvents?.data ?? [];
-        
-            /*
-             * Evento actualmente activo
-             */
-        
-            const liveEvent =
-                events.find(event => event.status === "ongoing") ?? null;
-        
-            /*
-             * Próximo evento programado
-             */
-        
-            const nextEvent =
-                events.find(event => event.status === "scheduled") ?? null;
-        
-            /*
-             * Estado general del Hero
-             */
-        
-            let state = "NEXT";
-            if (liveEvent) { state = "LIVE"; }
-        
-            /*
-             * Evento que representa el Hero
-             */
-        
-            const currentEvent = liveEvent ?? nextEvent;
-        
-        
-            /*
-             * =====================================================
-             * SESIONES DEL EVENTO
-             * =====================================================
-             */
-        
-            const sessions =
-                Array.isArray(currentEvent?.schedule)
-                    ? currentEvent.schedule
-                    : [];
-        
-        
-            /*
-             * Sesión actualmente en curso
-             */
-        
-            const currentSession =
-                sessions.find( session => session.status === "ongoing" ) ?? null;
-        
-        
-            /*
-             * Próxima sesión
-             */
-        
-            const nextSession =
-                sessions.find( session => session.status === "scheduled" ) ?? null;
-        
-        
-            /*
-             * =====================================================
-             * MATCH CON CALENDARIO JOLPICA
-             * =====================================================
-             */
-        
-            let heroRace = nextRace;
-        
-        
-            if (currentEvent) {
-                const schedule =
-                    await this.getSchedule(season);
-        
-                const eventName =
-                    currentEvent.name
-                        ?.replace( " Grand Prix",  "" )
-                        .toLowerCase();
-        
-                const matchingRace =
-                    schedule.find( race => race.raceName ?.toLowerCase() .includes(eventName) );
-        
-                if (matchingRace) { heroRace = matchingRace; }
+
+    const now = new Date();
+
+    const nextRace =
+        schedule.find(race => {
+
+            if (!race?.date) {
+                return false;
             }
-        
-        
-            /*
-             * =====================================================
-             * RESULTADO
-             * =====================================================
-             */
-        
-            return {
-                state,
-                category:
-                    state === "LIVE"
-                        ? "🔴 Formula 1 · En Vivo"
-                        : "🟢 Formula 1 · Próximo Gran Premio",
-                title:
-                    currentEvent?.name ??
-                    heroRace?.raceName ??
-                    "Formula 1",
-                subtitle:
-                    currentEvent?.location?.name ??
-                    heroRace?.circuit?.name ??
-                    "—",
-                race: heroRace,
-                event: currentEvent,
-                session: {
-                    current: currentSession,
-                    next: nextSession
-                },
-                leaders: {
-                    driver: standings[0],
-                    constructor: constructors[0]
+
+            const raceDate =
+                new Date(
+                    `${race.date}T${race.time || "00:00:00"}`
+                );
+
+            return raceDate > now;
+
+        }) ??
+        schedule[schedule.length - 1] ??
+        null;
+
+
+    /*
+     * =====================================================
+     * BLACKTOP EVENTS
+     * =====================================================
+     */
+
+    const events =
+        Array.isArray(blacktopEvents)
+            ? blacktopEvents
+            : blacktopEvents?.data ?? [];
+
+
+    /*
+     * Evento actualmente activo.
+     *
+     * Si existe uno LIVE, ese tiene prioridad.
+     */
+
+    const liveEvent =
+        events.find(
+            event =>
+                event.status === "ongoing"
+        ) ?? null;
+
+
+    /*
+     * =====================================================
+     * CARRERA DEL HERO
+     * =====================================================
+     *
+     * Si hay una sesión/evento LIVE intentamos encontrar
+     * su carrera correspondiente en nuestro calendario.
+     *
+     * Si no hay LIVE, la carrera del Hero es SIEMPRE
+     * nextRace obtenida del calendario F1.
+     */
+
+    let heroRace =
+        nextRace;
+
+
+    /*
+     * =====================================================
+     * EVENTO BLACKTOP CORRESPONDIENTE
+     * =====================================================
+     */
+
+    let currentEvent =
+        null;
+
+
+    if (liveEvent) {
+
+        /*
+         * Estamos en un GP en vivo.
+         */
+
+        const liveName =
+            liveEvent.name
+                ?.replace(
+                    / Grand Prix$/i,
+                    ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+        const matchingLiveRace =
+            schedule.find(
+                race => {
+
+                    const raceName =
+                        race.raceName
+                            ?.replace(
+                                / Grand Prix$/i,
+                                ""
+                            )
+                            .trim()
+                            .toLowerCase();
+
+                    return (
+                        raceName &&
+                        liveName &&
+                        (
+                            raceName.includes(liveName) ||
+                            liveName.includes(raceName)
+                        )
+                    );
+
                 }
-        
-            };
-        
+            );
+
+
+        if (matchingLiveRace) {
+
+            heroRace =
+                matchingLiveRace;
+
+            currentEvent =
+                liveEvent;
+
         }
 
+    }
+
+
+    /*
+     * =====================================================
+     * SI NO ESTÁ EN VIVO
+     * =====================================================
+     *
+     * Buscamos el evento Blacktop correspondiente a la
+     * carrera que realmente indica nuestro calendario.
+     *
+     * Esto evita que Blacktop nos entregue, por ejemplo,
+     * Abu Dhabi cuando el calendario dice Italia.
+     */
+
+    if (!currentEvent && nextRace) {
+
+        const raceName =
+            nextRace.raceName
+                ?.replace(
+                    / Grand Prix$/i,
+                    ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+        currentEvent =
+            events.find(
+                event => {
+
+                    const eventName =
+                        event.name
+                            ?.replace(
+                                / Grand Prix$/i,
+                                ""
+                            )
+                            .trim()
+                            .toLowerCase();
+
+                    return (
+                        eventName &&
+                        raceName &&
+                        (
+                            eventName.includes(raceName) ||
+                            raceName.includes(eventName)
+                        )
+                    );
+
+                }
+            ) ?? null;
+
+    }
+
+
+    /*
+     * =====================================================
+     * ESTADO
+     * =====================================================
+     */
+
+    const state =
+        liveEvent
+            ? "LIVE"
+            : "NEXT";
+
+
+    /*
+     * =====================================================
+     * SESIONES
+     * =====================================================
+     */
+
+    const sessions =
+        Array.isArray(
+            currentEvent?.schedule
+        )
+            ? currentEvent.schedule
+            : [];
+
+
+    /*
+     * Sesión actualmente en curso
+     */
+
+    const currentSession =
+        sessions.find(
+            session =>
+                session.status === "ongoing"
+        ) ?? null;
+
+
+    /*
+     * Próxima sesión
+     */
+
+    const nextSession =
+        sessions.find(
+            session =>
+                session.status === "scheduled"
+        ) ?? null;
+
+
+    /*
+     * =====================================================
+     * RESULTADO
+     * =====================================================
+     */
+
+    return {
+
+        state,
+
+        category:
+            state === "LIVE"
+                ? "🔴 Formula 1 · En Vivo"
+                : "🟢 Formula 1 · Próximo Gran Premio",
+
+        title:
+            heroRace?.raceName ??
+            "Formula 1",
+
+        subtitle:
+            heroRace?.circuit?.name ??
+            "—",
+
+        race:
+            heroRace,
+
+        event:
+            currentEvent,
+
+        session: {
+
+            current:
+                currentSession,
+
+            next:
+                nextSession
+
+        },
+
+        leaders: {
+
+            driver:
+                standings[0],
+
+            constructor:
+                constructors[0]
+
+        }
+
+    };
+
+}
+    
 
     static async getLastRace(
         season = "current"
