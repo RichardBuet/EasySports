@@ -1886,3 +1886,118 @@
             none;
     }
 }
+
+
+/* =========================================================
+   AJUSTE FINAL — FP / SPRINT / RACE
+   Alineación de resultados a la derecha
+   ========================================================= */
+
+/*
+   En sesiones que NO son Qualy, .f1-result-extra contiene
+   tiempo/gap + puntos y ocupa toda la zona derecha.
+*/
+
+.f1-session-results
+.f1-modal-row
+.f1-result-extra:not(:has(.f1-qualy-cell)) {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    white-space: nowrap;
+
+    font-variant-numeric:
+        tabular-nums;
+}
+
+
+/* Tiempo / GAP */
+
+.f1-session-results
+.f1-modal-row
+.f1-result-extra:not(:has(.f1-qualy-cell)) > span {
+    white-space: nowrap;
+}
+
+
+/* Puntos */
+
+.f1-session-results
+.f1-modal-row
+.f1-result-extra:not(:has(.f1-qualy-cell)) > strong {
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   DESKTOP / TV
+   ========================================================= */
+
+@media (min-width: 701px) {
+
+    .f1-session-results
+    .f1-modal-row:has(
+        .f1-result-extra:not(:has(.f1-qualy-cell))
+    ) {
+        grid-template-columns:
+            54px
+            minmax(0, 1fr)
+            330px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 481px) and (max-width: 700px) {
+
+    .f1-session-results
+    .f1-modal-row:has(
+        .f1-result-extra:not(:has(.f1-qualy-cell))
+    ) {
+        grid-template-columns:
+            52px
+            minmax(0, 1fr)
+            260px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .f1-session-results
+    .f1-modal-row:has(
+        .f1-result-extra:not(:has(.f1-qualy-cell))
+    ) {
+        grid-template-columns:
+            46px
+            minmax(0, 1fr)
+            minmax(120px, 1fr);
+
+        column-gap:
+            9px;
+    }
+
+    .f1-session-results
+    .f1-modal-row
+    .f1-result-extra:not(:has(.f1-qualy-cell)) {
+        gap:
+            7px;
+    }
+
+}
