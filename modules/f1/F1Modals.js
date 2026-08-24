@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  v2 23:04 23/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 23:50 23/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 
@@ -817,6 +817,8 @@ function renderSessionResults(data, session) {
                 const sessionTime =
                     result.time ??
                     result.Time?.time ??
+                    result.time?.time ??
+                    result.Time?.Time?.time ??
                     null;
 
 
