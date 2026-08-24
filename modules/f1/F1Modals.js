@@ -1,4 +1,4 @@
-/* MODALS F1 ALL INCLUSIVE  v2 00:50 24/08/26  */
+/* MODALS F1 ALL INCLUSIVE  v2 01:30 24/08/26  */
 
 import { F1 } from "../../services/siteF1.js";
 let modalStack = [];
@@ -677,14 +677,14 @@ function renderSessionResults(data, session) {
 
     return `
         <div class="f1-session-results">
-            ${session === "qualifying" ? `
+            ${session === "qualifying" || session === "sq" ? `
                 <div class="f1-qualy-header">
                     <div>Pos.</div>
                     <div>Piloto</div>
                     <div class="f1-qualy-header-sessions">
-                        <span>Q1</span>
-                        <span>Q2</span>
-                        <span>Q3</span>
+                        <span>${session === "qualifying" ? "Q1" : "SQ1"}</span>
+                        <span>${session === "qualifying" ? "Q2" : "SQ2"}</span>
+                        <span>${session === "qualifying" ? "Q3" : "SQ3"}</span>
                     </div>
                 </div>
             ` : ""}
@@ -770,19 +770,19 @@ function renderSessionResults(data, session) {
                 const points =  result.points;
                 /** Lo que mostramos depende de la sesión.*/
                 let extra = "";
-                /* QUALY */
-
-                if (session === "qualifying") {
-                    const cell = q => q
-                        ? `<strong>${q.position}º</strong><small>${q.time ?? "—"}</small>`
-                        : `<strong>—</strong><small>—</small>`;
-                
+                /* QUALY / S.QUALY */
+                if (session === "qualifying" || session === "sq") {
+                    const prefix = session === "qualifying" ? "Q" : "SQ";
+                    const q1 = components[`${prefix}1`] ?? null;
+                    const q2 = components[`${prefix}2`] ?? null;
+                    const q3 = components[`${prefix}3`] ?? null;
+                    const cell = q => q ? `<strong>${q.position}º</strong><small>${q.time ?? "—"}</small>` : `<strong>—</strong><small>—</small>`;
                     extra = `
-                    <div class="f1-qualy-sessions">
-                        <div class="f1-qualy-cell">${cell(q1)}</div>
-                        <div class="f1-qualy-cell">${cell(q2)}</div>
-                        <div class="f1-qualy-cell">${cell(q3)}</div>
-                    </div>
+                        <div class="f1-qualy-sessions">
+                            <div class="f1-qualy-cell">${cell(q1)}</div>
+                            <div class="f1-qualy-cell">${cell(q2)}</div>
+                            <div class="f1-qualy-cell">${cell(q3)}</div>
+                        </div>
                     `;
                 }
 
