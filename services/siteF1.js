@@ -22,6 +22,7 @@ import {
     adaptConstructorStandings,
     adaptSchedule,
     adaptResults,
+    adaptSeasonResults,
     adaptQualifying,
     adaptSprint,
     adaptDrivers,
@@ -417,7 +418,7 @@ static async getHeroState(season = "current") {
 
     static async getResults(
         season = "current",
-        round = "last"
+        round = null
     ) {
 
         const data =
@@ -426,7 +427,9 @@ static async getHeroState(season = "current") {
                 round
             );
 
-        return adaptResults(data);
+        return round
+            ? adaptResults(data)
+            : adaptSeasonResults(data);
 
     }
 
