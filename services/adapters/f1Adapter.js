@@ -224,3 +224,40 @@ export function adaptSeasons(data) {
 export function adaptRounds(data) {
     return adaptSchedule(data);
 }
+
+export function adaptSeasonResults(data){
+    const races=
+        data?.MRData?.RaceTable?.Races??[];
+
+    return races.map(race=>({
+        season:Number(race.season),
+        round:Number(race.round),
+        raceName:race.raceName,
+        circuit:{
+            id:race.Circuit?.circuitId,
+            name:race.Circuit?.circuitName,
+            country:race.Circuit?.Location?.country,
+            locality:race.Circuit?.Location?.locality
+        },
+        date:race.date,
+        results:(race.Results??[]).map(result=>({
+            position:Number(result.position),
+            driver:{
+                id:result.Driver?.driverId,
+                fullName:`${result.Driver?.givenName??""} ${result.Driver?.familyName??""}`.trim(),
+                code:result.Driver?.code
+            },
+            constructor:{
+                id:result.Constructor?.constructorId,
+                name:result.Constructor?.name
+            },
+            grid:Number(result.grid),
+            laps:Number(result.laps),
+            status:result.status,
+            points:Number(result.points),
+            time:result.Time?.time
+        }))
+    }));
+}
+
+
