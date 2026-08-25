@@ -274,3 +274,46 @@
         min-width: 3.5em;
     }
 }
+
+/* ==========================================================
+   RACE CENTER — LOADING
+========================================================== */
+
+.race-center-content {
+    position: relative;
+    min-height: 300px;
+}
+
+.race-center-loading {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text);
+}
+
+.race-center-loading strong {
+    font-size: 1rem;
+}
+
+.race-center-loading span {
+    color: var(--text-secondary);
+    font-size: .8rem;
+}
+
+.race-center-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(255,255,255,.15);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: raceCenterSpin .8s linear infinite;
+}
+
+@keyframes raceCenterSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
