@@ -1,212 +1,200 @@
 import { F1 } from "../../services/siteF1.js";
-
-let currentSeason = 2026;
-
-async function getSeasonData(season) {
-    const [schedule, standings] = await Promise.all([
-        F1.getSchedule(season),
-        F1.getStandings(season)
-    ]);
-
-    const races = schedule ?? [];
-    const drivers = standings ?? [];
-
-    const raceResults = await Promise.all(
-        races.map(async race => {
+export async function createRaceCenter() {
+    const id = "f1-race-center";
+    const html = `
+        <section class="raceCenter" id="${id}">
+            <div class="raceCenter-loading">Cargando Race Center...</div>
+        </section>
+    `;
+    setTimeout(() => initRaceCenter(id), 0);
+    return html;
+}
+async function initRaceCenter(id) {
+    const container = document.getElementById(id);
+    if (!container) return;
+    const years = [2024, 2025, 2026];
+    container.innerHTML = `
+        <h2>🏁 Race Center</h2>
+        <div class="raceCenter-years">
+            ${years.map(year => `
+                <button
+                    type="button"
+                    data-season="${year}"
+                    class="${year === 2026 ? "active" : ""}"
+                >
+                    ${year}
+                </button>
+            `).join("")}
+        </div>
+        <div class="raceCenter-table-wrap">
+            <div class="raceCenter-table-container">
+                Cargando 2026...
+            </div>
+        </div>
+    `;
+    const buttons =
+        container.querySelectorAll("[data-season]");
+    buttons.forEach(button => {
+        button.addEventListener("click", async () => {
+            const season =
+                Number(button.dataset.season);
+            buttons.forEach(btn =>
+                btn.classList.remove("active")
+            );
+            button.classList.add("active");
+            const tableContainer =
+                container.querySelector(
+                    ".raceCenter-table-container"
+                );
+            tableContainer.innerHTML =
+                `Cargando ${season}...`;
             try {
-                const results = await F1.getResults(
+                await renderSeason(
+                    season,
+                    tableContainer
+                );
+            } catch (error) {
+                console.error(
+                    `Error cargando temporada ${season}:`,
+                    error
+                );
+                tableContainer.innerHTML =
+                    `Error cargando ${season}`;
+            }
+        });
+    });
+    await renderSeason(
+        2026,
+        container.querySelector(
+            ".raceCenter-table-container"
+        )
+    );
+}
+async function renderSeason(
+    season,
+    container
+) {
+    const schedule =
+        await F1.getSchedule(season);
+    const races =
+        schedule.filter(race => race.round);
+    const completedRaces = [];
+    for (const race of races) {
+        try {
+            const results =
+                await F1.getResults(
                     season,
                     race.round
                 );
-
-                return {
+            if (
+                Array.isArray(results) &&
+                results.length
+            ) {
+                completedRaces.push({
                     race,
-                    results: results ?? []
-                };
-            } catch (error) {
-                console.error(
-                    `Error resultados R${race.round}:`,
-                    error
-                );
-
-                return {
-                    race,
-                    results: []
-                };
+                    results
+                });
             }
-        })
-    );
-
-    return {
-        races,
-        drivers,
-        raceResults
-    };
-}
-
-function getRacePosition(driverId, results) {
-    const result = results.find(
-        item => item.driver?.id === driverId
-    );
-
-    if (!result) {
-        return "—";
+        } catch (error) {
+            console.warn(
+                `Sin resultados ${season} R${race.round}`,
+                error
+            );
+        }
     }
-
-    if (
-        result.status &&
-        result.status !== "Finished" &&
-        !result.status.includes("Lap")
-    ) {
-        return "DNF";
+    const drivers = new Map();
+    for (const item of completedRaces) {
+        const race =
+            item.race;
+        item.results.forEach(result => {
+            const id =
+                result.driver.id;
+            if (!drivers.has(id)) {
+                drivers.set(id, {
+                    id,
+                    code:
+                        result.driver.code ??
+                        result.driver.fullName
+                            .split(" ")
+                            .map(word => word[0])
+                            .join("")
+                            .toUpperCase(),
+                    name:
+                        result.driver.fullName,
+                    points: 0,
+                    races: {}
+                });
+            }
+            const driver =
+                drivers.get(id);
+            driver.races[race.round] =
+                result.position;
+            driver.points +=
+                Number(result.points) || 0;
+        });
     }
-
-    return result.position ?? "—";
-}
-
-function renderTable(races, drivers, raceResults) {
-    if (!drivers.length) {
-        return `
-            <div class="race-center-empty">
-                No hay datos disponibles.
-            </div>
-        `;
-    }
-
-    return `
-        <div class="race-center-table-wrap">
-            <table class="race-center-table">
-                <thead>
-                    <tr>
-                        <th class="race-center-driver-header">
-                            PILOTO
+    const driverList =
+        [...drivers.values()]
+            .sort((a, b) =>
+                b.points - a.points
+            );
+    container.innerHTML = `
+        <table class="raceCenter-table">
+            <thead>
+                <tr>
+                    <th class="sticky-driver">
+                        PILOTO
+                    </th>
+                    ${races.map(race => `
+                        <th>
+                            <strong>
+                                R${race.round}
+                            </strong>
+                            <small>
+                                ${race.raceName
+                                    .replace(
+                                        " Grand Prix",
+                                        ""
+                                    )}
+                            </small>
                         </th>
-
-                        ${races.map(race => `
-                            <th>
-                                <span>R${race.round}</span>
-                                <small>
-                                    ${race.circuit?.location?.country ?? ""}
-                                </small>
-                            </th>
-                        `).join("")}
-
-                        <th class="race-center-points-header">
-                            PTS
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    ${drivers.map(driver => `
-                        <tr>
-                            <th class="race-center-driver">
-                                <span>
-                                    ${driver.driver?.code ?? "—"}
-                                </span>
-                                <small>
-                                    ${driver.driver?.fullName ?? "—"}
-                                </small>
-                            </th>
-
-                            ${races.map(race => {
-                                const raceData =
-                                    raceResults.find(
-                                        item =>
-                                            Number(item.race.round) ===
-                                            Number(race.round)
-                                    );
-
-                                const position =
-                                    getRacePosition(
-                                        driver.driver?.id,
-                                        raceData?.results ?? []
-                                    );
-
-                                return `
-                                    <td class="${
-                                        position === "DNF"
-                                            ? "dnf"
-                                            : ""
-                                    }">
-                                        ${position}
-                                    </td>
-                                `;
-                            }).join("")}
-
-                            <td class="race-center-points">
-                                ${driver.points ?? 0}
-                            </td>
-                        </tr>
                     `).join("")}
-                </tbody>
-            </table>
-        </div>
+                    <th class="sticky-points">
+                        PTS
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                ${driverList.map(driver => `
+                    <tr>
+                        <td class="sticky-driver">
+                            <strong>
+                                ${driver.code}
+                            </strong>
+                            <small>
+                                ${driver.name}
+                            </small>
+                        </td>
+                        ${races.map(race => {
+                            const position =
+                                driver.races[
+                                    race.round
+                                ];
+                            return `
+                                <td>
+                                    ${
+                                        position ??
+                                        "—"
+                                    }
+                                </td>
+                            `;
+                        }).join("")}
+                        <td class="sticky-points">
+                            ${driver.points}
+                        </td>
+                    </tr>
+                `).join("")}
+            </tbody>
+        </table>
     `;
-}
-
-export async function createRaceCenter() {
-    try {
-        console.log("🏁 Race Center: iniciando");
-
-        const data = await getSeasonData(currentSeason);
-
-        console.log("🏁 Race Center: datos OK");
-
-        return `
-            <section class="raceCenter">
-
-                <div class="race-center-toolbar">
-
-                    <div class="race-center-title">
-                        <span>🏁</span>
-                        <h2>Race Center</h2>
-                    </div>
-
-                    <div class="race-center-seasons">
-                        ${[2024, 2025, 2026].map(year => `
-                            <button
-                                type="button"
-                                class="${
-                                    Number(year) ===
-                                    Number(currentSeason)
-                                        ? "active"
-                                        : ""
-                                }"
-                                data-race-season="${year}"
-                            >
-                                ${year}
-                            </button>
-                        `).join("")}
-                    </div>
-
-                </div>
-
-                <div class="race-center-content">
-                    ${renderTable(
-                        data.races,
-                        data.drivers,
-                        data.raceResults
-                    )}
-                </div>
-
-            </section>
-        `;
-
-    } catch (error) {
-        console.error(
-            "❌ Race Center error:",
-            error
-        );
-
-        return `
-            <section class="raceCenter">
-
-                <div class="race-center-empty">
-                    No se pudieron cargar los datos.
-                </div>
-
-            </section>
-        `;
-    }
 }
