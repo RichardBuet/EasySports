@@ -1,0 +1,276 @@
+/* ==========================================================
+   F1 — RACE CENTER
+========================================================== */
+
+.raceCenter {
+    width: 100%;
+    margin: 35px 0 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.race-center-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 0 0 12px;
+    padding: 0 8px;
+}
+
+.race-center-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.race-center-title span {
+    font-size: 1.2rem;
+}
+
+.race-center-title h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.race-center-seasons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.race-center-seasons button {
+    appearance: none;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 5px 12px;
+    background: #181818;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .18s ease;
+}
+
+.race-center-seasons button:hover {
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.race-center-seasons button.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+
+/* ==========================================================
+   TABLA
+========================================================== */
+
+.race-center-content {
+    width: 100%;
+}
+
+.race-center-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.race-center-table {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--text);
+    font-size: .82rem;
+}
+
+.race-center-table th,
+.race-center-table td {
+    height: 34px;
+    padding: 4px 8px;
+    text-align: center;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+
+/* ==========================================================
+   CABECERA
+========================================================== */
+
+.race-center-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #111;
+    color: var(--text);
+    font-weight: 800;
+}
+
+.race-center-table thead th span {
+    display: block;
+    font-size: .85rem;
+}
+
+.race-center-table thead th small {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-secondary);
+    font-size: .65rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   COLUMNA PILOTO — FIJA
+========================================================== */
+
+.race-center-driver-header,
+.race-center-driver {
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    width: 3.5em;
+    min-width: 3.5em;
+    max-width: 3.5em;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    background: #111;
+    text-align: left !important;
+    box-shadow: 5px 0 8px rgba(0,0,0,.35);
+}
+
+.race-center-driver-header {
+    z-index: 6 !important;
+}
+
+.race-center-driver {
+    background: #111;
+}
+
+.race-center-driver span {
+    display: block;
+    font-size: .85rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.race-center-driver small {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-secondary);
+    font-size: .65rem;
+    line-height: 1.1;
+}
+
+
+/* ==========================================================
+   PUNTOS — FIJO A LA DERECHA
+========================================================== */
+
+.race-center-points-header,
+.race-center-points {
+    position: sticky;
+    right: 0;
+    z-index: 4;
+    min-width: 3.5em;
+    background: #111;
+    font-weight: 800;
+    box-shadow: -5px 0 8px rgba(0,0,0,.35);
+}
+
+.race-center-points-header {
+    z-index: 6 !important;
+}
+
+
+/* ==========================================================
+   RESULTADOS
+========================================================== */
+
+.race-center-table tbody td {
+    color: var(--text);
+}
+
+.race-center-table tbody tr:hover td,
+.race-center-table tbody tr:hover .race-center-driver,
+.race-center-table tbody tr:hover .race-center-points {
+    background: #191919;
+}
+
+.race-center-table td.dnf {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.race-center-table td {
+    min-width: 38px;
+}
+
+
+/* ==========================================================
+   SIN DATOS / CARGA
+========================================================== */
+
+.race-center-empty {
+    padding: 30px 15px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+
+/* ==========================================================
+   MÓVIL
+========================================================== */
+
+@media (max-width: 700px) {
+
+    .raceCenter {
+        margin-top: 28px;
+    }
+
+    .race-center-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 5px;
+    }
+
+    .race-center-seasons {
+        width: 100%;
+    }
+
+    .race-center-seasons button {
+        padding: 5px 13px;
+        font-size: .78rem;
+    }
+
+    .race-center-table {
+        font-size: .78rem;
+    }
+
+    .race-center-table th,
+    .race-center-table td {
+        padding: 4px 7px;
+    }
+
+    .race-center-driver-header,
+    .race-center-driver {
+        width: 4em;
+        min-width: 4em;
+        max-width: 4em;
+    }
+
+    .race-center-points-header,
+    .race-center-points {
+        min-width: 3.5em;
+    }
+}
