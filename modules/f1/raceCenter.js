@@ -253,3 +253,54 @@ export async function createRaceCenter() {
         `;
     }
 }
+
+document.addEventListener("click",async event=>{
+    const button=event.target.closest("[data-race-season]");
+    if(!button)return;
+
+    const season=Number(button.dataset.raceSeason);
+    const raceCenter=button.closest(".raceCenter");
+    if(!raceCenter)return;
+
+    const content=raceCenter.querySelector(".race-center-content");
+    const buttons=raceCenter.querySelectorAll("[data-race-season]");
+
+    currentSeason=season;
+
+    buttons.forEach(btn=>{
+        btn.classList.toggle(
+            "active",
+            Number(btn.dataset.raceSeason)===season
+        );
+    });
+
+    content.innerHTML=`
+        <div class="race-center-loading">
+            <div class="race-center-spinner"></div>
+            <strong>Cargando ${season}</strong>
+            <span>Obteniendo resultados...</span>
+        </div>
+    `;
+
+    try{
+        const data=await getSeasonData(season);
+
+        content.innerHTML=renderTable(
+            data.races,
+            data.drivers,
+            data.raceResults
+        );
+
+    }catch(error){
+        console.error(
+            `❌ Error cargando temporada ${season}:`,
+            error
+        );
+
+        content.innerHTML=`
+            <div class="race-center-empty">
+                No se pudieron cargar los datos de ${season}.
+            </div>
+        `;
+    }
+});
