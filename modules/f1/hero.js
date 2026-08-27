@@ -358,10 +358,11 @@ export async function createHero() {
         </section>
     `;
 
-    setTimeout(
-        startNextSessionCountdown,
-        0
-    );
+    requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+        startNextSessionCountdown();
+    });
+});
 
     return html;
 }
