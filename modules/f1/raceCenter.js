@@ -112,8 +112,10 @@ function renderTable(races, drivers, raceResults) {
     return `
         <div class="race-center-table-wrap">
             <table class="race-center-table">
+
                 <thead>
                     <tr>
+
                         <th class="race-center-driver-header">
                             PILOTO
                         </th>
@@ -130,12 +132,15 @@ function renderTable(races, drivers, raceResults) {
                         <th class="race-center-points-header">
                             PTS
                         </th>
+
                     </tr>
                 </thead>
 
                 <tbody>
+
                     ${drivers.map(driver => `
                         <tr>
+
                             <th class="race-center-driver">
                                 <span>
                                     ${driver.driver?.code ?? "—"}
@@ -143,6 +148,7 @@ function renderTable(races, drivers, raceResults) {
                             </th>
 
                             ${races.map(race => {
+
                                 const raceData =
                                     raceResults.find(
                                         item =>
@@ -165,14 +171,18 @@ function renderTable(races, drivers, raceResults) {
                                         ${position}
                                     </td>
                                 `;
+
                             }).join("")}
 
                             <td class="race-center-points">
                                 ${driver.points ?? 0}
                             </td>
+
                         </tr>
                     `).join("")}
+
                 </tbody>
+
             </table>
         </div>
     `;
@@ -181,126 +191,198 @@ function renderTable(races, drivers, raceResults) {
 function renderLoading(season) {
     return `
         <div class="race-center-loading">
+
             <div class="race-center-spinner"></div>
-            <strong>Cargando ${season}</strong>
-            <span>Obteniendo resultados...</span>
+
+            <strong>
+                Cargando ${season}
+            </strong>
+
+            <span>
+                Obteniendo resultados...
+            </span>
+
         </div>
     `;
 }
 
-export async function createRaceCenter() {
-    try {
-        console.log("🏁 Race Center: iniciando");
-
-        const data = await getSeasonData(currentSeason);
-
-        console.log("🏁 Race Center: datos OK");
-
-        return `
-            <section class="raceCenter">
-
-                <div class="race-center-toolbar">
-
-                    <div class="race-center-title">
-                        <span>🏁</span>
-                        <h2>Race Center</h2>
-                    </div>
-
-                    <div class="race-center-seasons">
-                        ${[2024, 2025, 2026].map(year => `
-                            <button
-                                type="button"
-                                class="${
-                                    Number(year) ===
-                                    Number(currentSeason)
-                                        ? "active"
-                                        : ""
-                                }"
-                                data-race-season="${year}"
-                            >
-                                ${year}
-                            </button>
-                        `).join("")}
-                    </div>
-
-                </div>
-
-                <div class="race-center-content">
-                    ${renderTable(
-                        data.races,
-                        data.drivers,
-                        data.raceResults
-                    )}
-                </div>
-
-            </section>
-        `;
-
-    } catch (error) {
-        console.error(
-            "❌ Race Center error:",
-            error
+function startRaceCenterLoad(
+    raceCenter,
+    season
+) {
+    const content =
+        raceCenter.querySelector(
+            ".race-center-content"
         );
 
-        return `
-            <section class="raceCenter">
+    if (!content) {
+        return;
+    }
 
+    content.innerHTML =
+        renderLoading(season);
+
+    getSeasonData(season)
+        .then(data => {
+
+            if (
+                currentSeason !== season
+            ) {
+                return;
+            }
+
+            content.innerHTML =
+                renderTable(
+                    data.races,
+                    data.drivers,
+                    data.raceResults
+                );
+
+        })
+        .catch(error => {
+
+            console.error(
+                `❌ Error cargando temporada ${season}:`,
+                error
+            );
+
+            content.innerHTML = `
                 <div class="race-center-empty">
-                    No se pudieron cargar los datos.
+                    No se pudieron cargar los datos de ${season}.
                 </div>
+            `;
 
-            </section>
-        `;
-    }
+        });
 }
 
-document.addEventListener("click",async event=>{
-    const button=event.target.closest("[data-race-season]");
-    if(!button)return;
+export function createRaceCenter() {
 
-    const season=Number(button.dataset.raceSeason);
-    const raceCenter=button.closest(".raceCenter");
-    if(!raceCenter)return;
+    const seasons =
+        [2024, 2025, 2026];
 
-    const content=raceCenter.querySelector(".race-center-content");
-    const buttons=raceCenter.querySelectorAll("[data-race-season]");
+    const html = `
+        <section class="raceCenter">
 
-    currentSeason=season;
+            <div class="race-center-toolbar">
 
-    buttons.forEach(btn=>{
-        btn.classList.toggle(
-            "active",
-            Number(btn.dataset.raceSeason)===season
-        );
-    });
+                <div class="race-center-title">
+                    <span>🏁</span>
+                    <h2>Race Center</h2>
+                </div>
 
-    content.innerHTML=`
-        <div class="race-center-loading">
-            <div class="race-center-spinner"></div>
-            <strong>Cargando ${season}</strong>
-            <span>Obteniendo resultados...</span>
-        </div>
+                <div class="race-center-seasons">
+
+                    ${seasons.map(year => `
+                        <button
+                            type="button"
+                            class="${
+                                year === currentSeason
+                                    ? "active"
+                                    : ""
+                            }"
+                            data-race-season="${year}"
+                        >
+                            ${year}
+                        </button>
+                    `).join("")}
+
+                </div>
+
+            </div>
+
+            <div class="race-center-content">
+                ${renderLoading(currentSeason)}
+            </div>
+
+        </section>
     `;
 
-    try{
-        const data=await getSeasonData(season);
+    /*
+     * IMPORTANTE:
+     *
+     * createRaceCenter() YA NO espera
+     * a getSeasonData().
+     *
+     * Devuelve inmediatamente el HTML.
+     *
+     * La carga pesada comienza después.
+     */
+    setTimeout(() => {
 
-        content.innerHTML=renderTable(
-            data.races,
-            data.drivers,
-            data.raceResults
+        const raceCenter =
+            document.querySelector(
+                ".raceCenter"
+            );
+
+        if (!raceCenter) {
+            return;
+        }
+
+        startRaceCenterLoad(
+            raceCenter,
+            currentSeason
         );
 
-    }catch(error){
-        console.error(
-            `❌ Error cargando temporada ${season}:`,
-            error
+    }, 0);
+
+    return html;
+}
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                "[data-race-season]"
+            );
+
+        if (!button) {
+            return;
+        }
+
+        const raceCenter =
+            button.closest(
+                ".raceCenter"
+            );
+
+        if (!raceCenter) {
+            return;
+        }
+
+        const season =
+            Number(
+                button.dataset.raceSeason
+            );
+
+        currentSeason =
+            season;
+
+        const buttons =
+            raceCenter.querySelectorAll(
+                "[data-race-season]"
+            );
+
+        buttons.forEach(btn => {
+
+            btn.classList.toggle(
+                "active",
+                Number(
+                    btn.dataset.raceSeason
+                ) === season
+            );
+
+        });
+
+        /*
+         * Cambiar temporada tampoco
+         * bloquea la página.
+         */
+
+        startRaceCenterLoad(
+            raceCenter,
+            season
         );
 
-        content.innerHTML=`
-            <div class="race-center-empty">
-                No se pudieron cargar los datos de ${season}.
-            </div>
-        `;
     }
-});
+);
