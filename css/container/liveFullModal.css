@@ -372,49 +372,29 @@
 .nascar-live-full-driver-row span:nth-child(3) { text-align: left; }
 
 /* Flag */
-.nascar-live-full-item:nth-child(5) strong { color: #61a8ff; }
-
+.nascar-live-full-item:nth-child(5) strong { color: inherit; }
+.flag-green { color: #22c55e;}
+.flag-yellow { color: #ffd000;}
+.flag-red { color: #ef4444;}
+.flag-last-lap { color: #d1d5db;}
+.flag-finished { color: #ffffff;}
+.flag-track-open { color: #f97316;}
+.flag-activity-finished { color: #3b82f6;}
 
 /* Restan */
-.nascar-live-full-item:nth-child(7) strong {
-    color: #ffd84d;
-}
-
-
+.nascar-live-full-item:nth-child(7) strong { color: #ffd84d;}
 /* Stage */
-.nascar-live-full-item:nth-child(8) strong {
-    color: #ffd84d;
-}
-
-
+.nascar-live-full-item:nth-child(8) strong { color: #ffd84d;}
 /* Restan Stage */
-.nascar-live-full-item:nth-child(10) strong {
-    color: #ffd84d;
-}
-
-
+.nascar-live-full-item:nth-child(10) strong { color: #ffd84d;}
 /* Líderes */
-.nascar-live-full-item:nth-child(11) strong {
-    color: #ffd84d;
-}
-
-
+.nascar-live-full-item:nth-child(11) strong { color: #ffd84d;}
 /* Lead Changes */
-.nascar-live-full-item:nth-child(12) strong {
-    color: #ffd84d;
-}
-
-
+.nascar-live-full-item:nth-child(12) strong { color: #ffd84d;}
 /* Cautions */
-.nascar-live-full-item:nth-child(13) strong {
-    color: #ffcf4d;
-}
-
-
+.nascar-live-full-item:nth-child(13) strong { color: #ffcf4d;}
 /* Caution Laps */
-.nascar-live-full-item:nth-child(14) strong {
-    color: #ffcf4d;
-}
+.nascar-live-full-item:nth-child(14) strong { color: #ffcf4d;}
 
 
 /* =========================================================
@@ -674,8 +654,7 @@
 /* =========================================================
    POSITION
    ========================================================= */
-.nascar-live-full-driver-row span:first-child {
-    color:
+.nascar-live-full-driver-row span:first-child { color:
         #ffffff;
     /* font-size: 11px; */
    font-size: 0.67em;
@@ -689,8 +668,7 @@
 /* =========================================================
    CAR NUMBER
    ========================================================= */
-.nascar-live-full-driver-row span:nth-child(2) {
-    color:
+.nascar-live-full-driver-row span:nth-child(2) { color:
         #ffd52f;
     /* font-size: 12px; */
    font-size: 0.84em;
@@ -740,8 +718,7 @@
    NUMERIC DATA
    ========================================================= */
 .nascar-live-full-driver-row
-span:nth-child(n+4):nth-child(-n+12) {
-    color: #e0e2e5;
+span:nth-child(n+4):nth-child(-n+12) { color: #e0e2e5;
     text-align: center;
     font-variant-numeric: tabular-nums;
     font-size: 0.7em;
@@ -751,32 +728,27 @@ span:nth-child(n+4):nth-child(-n+12) {
 /* =========================================================
    SEMANTIC COLORS
    ========================================================= */
-.nascar-live-full-pur {
-    color: #c084fc !important;
+.nascar-live-full-pur { color: #c084fc !important;
     font-weight: 800;
 }
 
 
-.nascar-live-full-gap {
-    color: #ffffff !important;
+.nascar-live-full-gap { color: #ffffff !important;
     font-weight: 700;
 }
 
 
-.nascar-live-full-best {
-    color: #c084fc !important;
+.nascar-live-full-best { color: #c084fc !important;
     font-weight: 800;
 }
 
 
-.nascar-live-full-fast {
-    color: #c084fc !important;
+.nascar-live-full-fast { color: #c084fc !important;
     font-weight: 800;
 }
 
 
-.nascar-live-full-gain {
-    color: #65d6a0 !important;
+.nascar-live-full-gain { color: #65d6a0 !important;
     font-weight: 800;
 }
 
@@ -784,8 +756,7 @@ span:nth-child(n+4):nth-child(-n+12) {
 /* =========================================================
    STATUS
    ========================================================= */
-.nascar-live-full-status-live {
-    color: #59e36d;
+.nascar-live-full-status-live { color: #59e36d;
     filter:
         drop-shadow(
             0 0 4px
@@ -794,8 +765,7 @@ span:nth-child(n+4):nth-child(-n+12) {
 }
 
 
-.nascar-live-full-status-off {
-    color: #ff5555;
+.nascar-live-full-status-off { color: #ff5555;
     filter:
         drop-shadow(
             0 0 4px
@@ -817,8 +787,7 @@ span:nth-child(n+4):nth-child(-n+12) {
    PITS
    ========================================================= */
 .nascar-live-full-driver-row
-span:nth-child(12) {
-    color:
+span:nth-child(12) { color:
         #d9dce0;
     text-align:
         center;
