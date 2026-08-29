@@ -1,18 +1,15 @@
 /* ===================================
    CONTENIDO
 =================================== */
-@import "../container/liveFullModal.css";
-@import "../container/nascarDriverModal.css";
-@import "../container/raceInfoModal.css";
-@import "../container/raceResultModal.css";
-/* @import "../container/raceTimeline.css"; */
+@import "../container/NSCliveFullModal.css";
+@import "../container/NSCdriverModal.css";
+@import "../container/NSCraceInfoModal.css";
+@import "../container/NSCraceResultModal.css";
 
 /* ===================================
    MAIN
 =================================== */
-body.nascar{
-    --sport-primary:#ffd100;
-}
+body.nascar{ --sport-primary:#ffd100; }
 
 .nascar-driver-number {
     display: flex;
@@ -25,7 +22,6 @@ body.nascar{
     height: 30px;
     object-fit: contain;
 }
-
 
 /* ========================================
    NASCAR Hero
@@ -44,7 +40,6 @@ body.nascar{
     position: absolute;
     inset: 0;
     background: linear-gradient(rgb(14 14 14 / 42%), rgb(0 0 0 / 40%)), url(../../assets/images/NASCAR_FullColor_onBlack_CMYK-6.svg);
-    /* background: url(../../assets/images/NASCAR_FullColor_onBlack_CMYK-6.svg); */
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
@@ -114,13 +109,10 @@ body.nascar{
     max-width: 156px;
 }
 
-.heroItem span{
-   font-size: clamp(0.60rem, 1.2vw, 1.6rem)
-}
+.heroItem span{font-size: clamp(0.60rem, 1.2vw, 1.6rem)}
 
 .heroItem strong{
    font-size: clamp(0.58rem, 1.1vw, 1.5rem);
-   /* clamp(0.58rem, 1.4vw, 2.5rem); */
    font-weight:600;
    color:var(--text);
 }
@@ -131,18 +123,16 @@ body.nascar{
 }
 
 .heroItem .heroLive span, .heroItem .heroLive strong {
-    /* animation: heroLivePulse 1.5s infinite; */
     animation: heroLivePulse 1.5s ease-in-out infinite;
     cursor: pointer;
 }
+
 @keyframes heroLivePulse {
     0%, 100% {transform: scale(1);}
     50% {transform: scale(0.9);}
 }
 
-.container{
-   padding:20px 20px 5px 20px;
-}
+.container{ padding:20px 20px 5px 20px; }
 
 button {
    cursor: pointer;
@@ -160,9 +150,7 @@ button {
     gap: 16px;
 }
 
-.nascar-selector button{
-    min-height: clamp(50px, 8vw, 0px);
-}
+.nascar-selector button{ min-height: clamp(50px, 8vw, 0px); }
 
 .nascar-selector button img{
     display: block;
@@ -243,24 +231,18 @@ button {
 .calendar-list {
     max-height: 400px;
     font-size: 0.8em;
-
     overflow-y: auto;
     overflow-x: hidden;
-
     /* Scroll táctil en iPhone/iPad */
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
-
     /* Evita que el scroll interno se bloquee */
     overscroll-behavior-y: contain;
     scrollbar-width: thin;
     scrollbar-color: #50535a transparent;
 }
 
-.calendar-row {
-    flex-shrink: 0;
-}
-
+.calendar-row { flex-shrink: 0;}
 
 .calendar-status {
     display: block;
