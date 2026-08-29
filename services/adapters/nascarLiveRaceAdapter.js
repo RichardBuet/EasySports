@@ -1,14 +1,14 @@
 const FLAGS = {
-    0: { icon: "⚪", name: "Sin bandera" },
-    1: { icon: "🟢", name: "Bandera verde" },
-    2: { icon: "🟡", name: "Bandera amarilla" },
-    3: { icon: "🔴", name: "Bandera roja" },
-    4: { icon: "⚪", name: "Última vuelta" },
-    5: { icon: "🏁", name: "Finalizada" },
-    6: { icon: "⚪", name: "Estado 6" },
-    7: { icon: "⚪", name: "Estado 7" },
-    8: { icon: "🟠", name: "Pista habilitada" },
-    9: { icon: "🔵", name: "Actividad finalizada" }
+  0:{icon:"⚪",name:"Sin bandera",class:"flag-none"},
+  1:{icon:"🟢",name:"Bandera verde",class:"flag-green"},
+  2:{icon:"🟡",name:"Bandera amarilla",class:"flag-yellow"},
+  3:{icon:"🔴",name:"Bandera roja",class:"flag-red"},
+  4:{icon:"⚪",name:"Última vuelta",class:"flag-last-lap"},
+  5:{icon:"🏁",name:"Finalizada",class:"flag-finished"},
+  6:{icon:"⚪",name:"Estado 6",class:"flag-6"},
+  7:{icon:"⚪",name:"Estado 7",class:"flag-7"},
+  8:{icon:"🟠",name:"Pista habilitada",class:"flag-track-open"},
+  9:{icon:"🔵",name:"Actividad finalizada",class:"flag-activity-finished"}
 };
 
 const SERIES = {
