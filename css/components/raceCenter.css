@@ -26,6 +26,7 @@
 .winnerHeader{ 
     padding: 4px 0px;
     display: flex;
+    align-items: center;
     gap: inherit;
 }
 
