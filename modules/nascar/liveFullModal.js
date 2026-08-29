@@ -156,7 +156,9 @@ async function createLiveContent(live) {
                         ${live.summary.flag.icon}
                     </span>
 
-                    <strong data-live="flag">
+                    <strong
+                        data-live="flag"
+                        class="${live.summary.flag.class}">
                         ${live.summary.flag.name}
                     </strong>
 
