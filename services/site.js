@@ -106,10 +106,7 @@ export class NASCAR {
                 );
 
 
-            if (
-                event &&
-                event.series === state.nascarSeries
-            ) {
+            if (event) {
 
                 const seriesName = {
 
