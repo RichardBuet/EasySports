@@ -611,13 +611,11 @@ async function refreshLiveFullModal() {
                 );
 
 
-            summary
-                .querySelector('[data-live="flag"]')
-                ?.replaceChildren(
-                    document.createTextNode(
-                        live.summary.flag?.name ?? "-"
-                    )
-                );
+            const flag = summary.querySelector('[data-live="flag"]');
+                if (flag) {
+                    flag.className = live.summary.flag?.class ?? "flag-none";
+                    flag.textContent = live.summary.flag?.name ?? "-";
+                }
 
 
             summary
