@@ -3,6 +3,7 @@ import { F1 } from "../../services/siteF1.js";
 let currentSeason = 2026;
 
 async function getSeasonData(season) {
+
     const [schedule, standings] = await Promise.all([
         F1.getSchedule(season),
         F1.getStandings(season)
@@ -12,29 +13,67 @@ async function getSeasonData(season) {
     const drivers = standings ?? [];
     const raceResults = [];
 
-    for (const race of races) {
-        try {
-            const results = await F1.getResults(
-                season,
-                race.round
+    /*
+     * =====================================================
+     * RESULTADOS DE CARRERAS
+     *
+     * Cargamos varias carreras simultáneamente,
+     * pero limitamos la cantidad de requests concurrentes
+     * para evitar saturar la API.
+     * =====================================================
+     */
+
+    const BATCH_SIZE = 4;
+
+    for (
+        let i = 0;
+        i < races.length;
+        i += BATCH_SIZE
+    ) {
+
+        const batch =
+            races.slice(
+                i,
+                i + BATCH_SIZE
             );
 
-            raceResults.push({
-                race,
-                results: results ?? []
-            });
+        const batchResults =
+            await Promise.all(
+                batch.map(async race => {
 
-        } catch (error) {
-            console.error(
-                `Error resultados R${race.round}:`,
-                error
+                    try {
+
+                        const results =
+                            await F1.getResults(
+                                season,
+                                race.round
+                            );
+
+                        return {
+                            race,
+                            results: results ?? []
+                        };
+
+                    } catch (error) {
+
+                        console.error(
+                            `Error resultados R${race.round}:`,
+                            error
+                        );
+
+                        return {
+                            race,
+                            results: []
+                        };
+
+                    }
+
+                })
             );
 
-            raceResults.push({
-                race,
-                results: []
-            });
-        }
+        raceResults.push(
+            ...batchResults
+        );
     }
 
     return {
