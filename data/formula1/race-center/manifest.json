@@ -1,0 +1,458 @@
+[
+  {
+    "season": 1950,
+    "races": 7,
+    "results": 160,
+    "file": "1950.json"
+  },
+  {
+    "season": 1951,
+    "races": 8,
+    "results": 179,
+    "file": "1951.json"
+  },
+  {
+    "season": 1952,
+    "races": 8,
+    "results": 215,
+    "file": "1952.json"
+  },
+  {
+    "season": 1953,
+    "races": 9,
+    "results": 246,
+    "file": "1953.json"
+  },
+  {
+    "season": 1954,
+    "races": 9,
+    "results": 230,
+    "file": "1954.json"
+  },
+  {
+    "season": 1955,
+    "races": 7,
+    "results": 180,
+    "file": "1955.json"
+  },
+  {
+    "season": 1956,
+    "races": 8,
+    "results": 190,
+    "file": "1956.json"
+  },
+  {
+    "season": 1957,
+    "races": 8,
+    "results": 171,
+    "file": "1957.json"
+  },
+  {
+    "season": 1958,
+    "races": 11,
+    "results": 241,
+    "file": "1958.json"
+  },
+  {
+    "season": 1959,
+    "races": 9,
+    "results": 195,
+    "file": "1959.json"
+  },
+  {
+    "season": 1960,
+    "races": 10,
+    "results": 223,
+    "file": "1960.json"
+  },
+  {
+    "season": 1961,
+    "races": 8,
+    "results": 220,
+    "file": "1961.json"
+  },
+  {
+    "season": 1962,
+    "races": 9,
+    "results": 223,
+    "file": "1962.json"
+  },
+  {
+    "season": 1963,
+    "races": 10,
+    "results": 254,
+    "file": "1963.json"
+  },
+  {
+    "season": 1964,
+    "races": 10,
+    "results": 207,
+    "file": "1964.json"
+  },
+  {
+    "season": 1965,
+    "races": 10,
+    "results": 205,
+    "file": "1965.json"
+  },
+  {
+    "season": 1966,
+    "races": 9,
+    "results": 166,
+    "file": "1966.json"
+  },
+  {
+    "season": 1967,
+    "races": 11,
+    "results": 205,
+    "file": "1967.json"
+  },
+  {
+    "season": 1968,
+    "races": 12,
+    "results": 233,
+    "file": "1968.json"
+  },
+  {
+    "season": 1969,
+    "races": 11,
+    "results": 177,
+    "file": "1969.json"
+  },
+  {
+    "season": 1970,
+    "races": 13,
+    "results": 294,
+    "file": "1970.json"
+  },
+  {
+    "season": 1971,
+    "races": 11,
+    "results": 263,
+    "file": "1971.json"
+  },
+  {
+    "season": 1972,
+    "races": 12,
+    "results": 309,
+    "file": "1972.json"
+  },
+  {
+    "season": 1973,
+    "races": 15,
+    "results": 357,
+    "file": "1973.json"
+  },
+  {
+    "season": 1974,
+    "races": 15,
+    "results": 436,
+    "file": "1974.json"
+  },
+  {
+    "season": 1975,
+    "races": 14,
+    "results": 363,
+    "file": "1975.json"
+  },
+  {
+    "season": 1976,
+    "races": 16,
+    "results": 434,
+    "file": "1976.json"
+  },
+  {
+    "season": 1977,
+    "races": 17,
+    "results": 477,
+    "file": "1977.json"
+  },
+  {
+    "season": 1978,
+    "races": 16,
+    "results": 471,
+    "file": "1978.json"
+  },
+  {
+    "season": 1979,
+    "races": 15,
+    "results": 403,
+    "file": "1979.json"
+  },
+  {
+    "season": 1980,
+    "races": 14,
+    "results": 383,
+    "file": "1980.json"
+  },
+  {
+    "season": 1981,
+    "races": 15,
+    "results": 449,
+    "file": "1981.json"
+  },
+  {
+    "season": 1982,
+    "races": 16,
+    "results": 465,
+    "file": "1982.json"
+  },
+  {
+    "season": 1983,
+    "races": 15,
+    "results": 424,
+    "file": "1983.json"
+  },
+  {
+    "season": 1984,
+    "races": 16,
+    "results": 430,
+    "file": "1984.json"
+  },
+  {
+    "season": 1985,
+    "races": 16,
+    "results": 406,
+    "file": "1985.json"
+  },
+  {
+    "season": 1986,
+    "races": 16,
+    "results": 412,
+    "file": "1986.json"
+  },
+  {
+    "season": 1987,
+    "races": 16,
+    "results": 419,
+    "file": "1987.json"
+  },
+  {
+    "season": 1988,
+    "races": 16,
+    "results": 495,
+    "file": "1988.json"
+  },
+  {
+    "season": 1989,
+    "races": 16,
+    "results": 620,
+    "file": "1989.json"
+  },
+  {
+    "season": 1990,
+    "races": 16,
+    "results": 542,
+    "file": "1990.json"
+  },
+  {
+    "season": 1991,
+    "races": 16,
+    "results": 539,
+    "file": "1991.json"
+  },
+  {
+    "season": 1992,
+    "races": 16,
+    "results": 478,
+    "file": "1992.json"
+  },
+  {
+    "season": 1993,
+    "races": 16,
+    "results": 412,
+    "file": "1993.json"
+  },
+  {
+    "season": 1994,
+    "races": 16,
+    "results": 444,
+    "file": "1994.json"
+  },
+  {
+    "season": 1995,
+    "races": 17,
+    "results": 418,
+    "file": "1995.json"
+  },
+  {
+    "season": 1996,
+    "races": 16,
+    "results": 340,
+    "file": "1996.json"
+  },
+  {
+    "season": 1997,
+    "races": 17,
+    "results": 376,
+    "file": "1997.json"
+  },
+  {
+    "season": 1998,
+    "races": 16,
+    "results": 349,
+    "file": "1998.json"
+  },
+  {
+    "season": 1999,
+    "races": 16,
+    "results": 352,
+    "file": "1999.json"
+  },
+  {
+    "season": 2000,
+    "races": 17,
+    "results": 373,
+    "file": "2000.json"
+  },
+  {
+    "season": 2001,
+    "races": 17,
+    "results": 374,
+    "file": "2001.json"
+  },
+  {
+    "season": 2002,
+    "races": 17,
+    "results": 362,
+    "file": "2002.json"
+  },
+  {
+    "season": 2003,
+    "races": 16,
+    "results": 320,
+    "file": "2003.json"
+  },
+  {
+    "season": 2004,
+    "races": 18,
+    "results": 360,
+    "file": "2004.json"
+  },
+  {
+    "season": 2005,
+    "races": 19,
+    "results": 376,
+    "file": "2005.json"
+  },
+  {
+    "season": 2006,
+    "races": 18,
+    "results": 396,
+    "file": "2006.json"
+  },
+  {
+    "season": 2007,
+    "races": 17,
+    "results": 374,
+    "file": "2007.json"
+  },
+  {
+    "season": 2008,
+    "races": 18,
+    "results": 368,
+    "file": "2008.json"
+  },
+  {
+    "season": 2009,
+    "races": 17,
+    "results": 340,
+    "file": "2009.json"
+  },
+  {
+    "season": 2010,
+    "races": 19,
+    "results": 456,
+    "file": "2010.json"
+  },
+  {
+    "season": 2011,
+    "races": 19,
+    "results": 456,
+    "file": "2011.json"
+  },
+  {
+    "season": 2012,
+    "races": 20,
+    "results": 480,
+    "file": "2012.json"
+  },
+  {
+    "season": 2013,
+    "races": 19,
+    "results": 418,
+    "file": "2013.json"
+  },
+  {
+    "season": 2014,
+    "races": 19,
+    "results": 407,
+    "file": "2014.json"
+  },
+  {
+    "season": 2015,
+    "races": 19,
+    "results": 378,
+    "file": "2015.json"
+  },
+  {
+    "season": 2016,
+    "races": 21,
+    "results": 462,
+    "file": "2016.json"
+  },
+  {
+    "season": 2017,
+    "races": 20,
+    "results": 400,
+    "file": "2017.json"
+  },
+  {
+    "season": 2018,
+    "races": 21,
+    "results": 420,
+    "file": "2018.json"
+  },
+  {
+    "season": 2019,
+    "races": 21,
+    "results": 420,
+    "file": "2019.json"
+  },
+  {
+    "season": 2020,
+    "races": 17,
+    "results": 340,
+    "file": "2020.json"
+  },
+  {
+    "season": 2021,
+    "races": 22,
+    "results": 440,
+    "file": "2021.json"
+  },
+  {
+    "season": 2022,
+    "races": 22,
+    "results": 440,
+    "file": "2022.json"
+  },
+  {
+    "season": 2023,
+    "races": 22,
+    "results": 440,
+    "file": "2023.json"
+  },
+  {
+    "season": 2024,
+    "races": 24,
+    "results": 479,
+    "file": "2024.json"
+  },
+  {
+    "season": 2025,
+    "races": 24,
+    "results": 479,
+    "file": "2025.json"
+  }
+]
