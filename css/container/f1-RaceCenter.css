@@ -9,6 +9,11 @@
     overflow: hidden;
 }
 
+
+/* ==========================================================
+   TOOLBAR
+========================================================== */
+
 .race-center-toolbar {
     display: flex;
     align-items: center;
@@ -35,23 +40,58 @@
     font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
+
+/* ==========================================================
+   CARRUSEL DE TEMPORADAS
+========================================================== */
+
+.race-center-season-carousel {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
 .race-center-seasons {
     display: flex;
     align-items: center;
     gap: 5px;
+
+    min-width: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.race-center-seasons::-webkit-scrollbar {
+    display: none;
 }
 
 .race-center-seasons button {
+    flex: 0 0 auto;
+
     appearance: none;
     border: 1px solid var(--border-color);
     border-radius: 999px;
+
     padding: 5px 12px;
+
     background: #181818;
     color: var(--text-secondary);
+
     font-family: inherit;
     font-size: .8rem;
     font-weight: 700;
+
+    white-space: nowrap;
+
     cursor: pointer;
+
     transition: .18s ease;
 }
 
@@ -66,77 +106,68 @@
     color: #fff;
 }
 
-
-/* ==========================================================
-   CARRUSEL
-========================================================== */
-/* 
-.race-center-season-carousel {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    min-width: 0;
-}
-
-.race-center-seasons {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    min-width: 0;
-}
-
-.race-center-seasons::-webkit-scrollbar {
-    display: none;
-}
-
-.race-center-seasons button {
-    flex: 0 0 auto;
-    white-space: nowrap;
-}
-
 .race-center-season-arrow {
-    flex: 0 0 auto;
+    flex: 0 0 30px;
+
     width: 30px;
     height: 30px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border-color);
     border-radius: 50%;
+
+    background: #181818;
+    color: var(--text);
+
+    font-size: 1.2rem;
+    line-height: 1;
+
     cursor: pointer;
+
+    transition: .18s ease;
 }
 
-.race-center-table th em {
-    display: block;
-    font-size: 8px;
-    font-style: normal;
-    font-weight: 400;
-    opacity: 0.6;
-    white-space: nowrap;
-    margin-top: 2px;
-} 
+.race-center-season-arrow:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
 
-*/
 
 /* ==========================================================
    TABLA
 ========================================================== */
 
 .race-center-content {
+    position: relative;
     width: 100%;
+    min-height: 300px;
 }
 
 .race-center-table-wrap {
     width: 100%;
+    max-width: 100%;
+
     overflow-x: auto;
     overflow-y: hidden;
+
     scrollbar-width: thin;
+
     -webkit-overflow-scrolling: touch;
 }
 
 .race-center-table {
     width: max-content;
     min-width: 100%;
+
     border-collapse: separate;
     border-spacing: 0;
+
     color: var(--text);
     font-size: .82rem;
 }
@@ -144,9 +175,12 @@
 .race-center-table th,
 .race-center-table td {
     height: 34px;
+
     padding: 4px 8px;
+
     text-align: center;
     white-space: nowrap;
+
     border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
@@ -158,9 +192,12 @@
 .race-center-table thead th {
     position: sticky;
     top: 0;
+
     z-index: 3;
+
     background: #111;
     color: var(--text);
+
     font-weight: 800;
 }
 
@@ -171,21 +208,29 @@
 
 .race-center-table thead th small {
     display: block;
+
     margin-top: 2px;
+
     color: var(--text-secondary);
+
     font-size: .65rem;
     font-weight: 600;
 }
 
-.race-center-table th em {
+.race-center-table thead th em {
     display: block;
+
+    margin-top: 2px;
+
     font-size: 8px;
     font-style: normal;
     font-weight: 400;
-    opacity: 0.6;
+
+    opacity: .6;
+
     white-space: nowrap;
-    margin-top: 2px;
 }
+
 
 /* ==========================================================
    COLUMNA PILOTO — FIJA
@@ -195,14 +240,20 @@
 .race-center-driver {
     position: sticky;
     left: 0;
+
     z-index: 4;
+
     width: 3.5em;
     min-width: 3.5em;
     max-width: 3.5em;
+
     padding-left: 6px !important;
     padding-right: 6px !important;
+
     background: #111;
+
     text-align: left !important;
+
     box-shadow: 5px 0 8px rgba(0,0,0,.35);
 }
 
@@ -210,21 +261,22 @@
     z-index: 6 !important;
 }
 
-.race-center-driver {
-    background: #111;
-}
-
 .race-center-driver span {
     display: block;
+
+    color: var(--text);
+
     font-size: .85rem;
     font-weight: 800;
-    color: var(--text);
 }
 
 .race-center-driver small {
     display: block;
+
     margin-top: 2px;
+
     color: var(--text-secondary);
+
     font-size: .65rem;
     line-height: 1.1;
 }
@@ -238,10 +290,15 @@
 .race-center-points {
     position: sticky;
     right: 0;
+
     z-index: 4;
+
     min-width: 3.5em;
+
     background: #111;
+
     font-weight: 800;
+
     box-shadow: -5px 0 8px rgba(0,0,0,.35);
 }
 
@@ -256,6 +313,8 @@
 
 .race-center-table tbody td {
     color: var(--text);
+
+    min-width: 38px;
 }
 
 .race-center-table tbody tr:hover td,
@@ -269,86 +328,35 @@
     font-weight: 700;
 }
 
-.race-center-table td {
-    min-width: 38px;
-}
-
 
 /* ==========================================================
-   SIN DATOS / CARGA
+   SIN DATOS
 ========================================================== */
 
 .race-center-empty {
     padding: 30px 15px;
+
     text-align: center;
+
     color: var(--text-secondary);
 }
 
 
 /* ==========================================================
-   MÓVIL
+   LOADING
 ========================================================== */
-
-@media (max-width: 700px) {
-
-    .raceCenter {
-        margin-top: 28px;
-    }
-
-    .race-center-toolbar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 10px;
-        padding: 0 5px;
-    }
-
-    .race-center-seasons {
-        width: 100%;
-    }
-
-    .race-center-seasons button {
-        padding: 5px 13px;
-        font-size: .78rem;
-    }
-
-    .race-center-table {
-        font-size: .78rem;
-    }
-
-    .race-center-table th,
-    .race-center-table td {
-        padding: 4px 7px;
-    }
-
-    .race-center-driver-header,
-    .race-center-driver {
-        width: 4em;
-        min-width: 4em;
-        max-width: 4em;
-    }
-
-    .race-center-points-header,
-    .race-center-points {
-        min-width: 3.5em;
-    }
-}
-
-/* ==========================================================
-   RACE CENTER — LOADING
-========================================================== */
-
-.race-center-content {
-    position: relative;
-    min-height: 300px;
-}
 
 .race-center-loading {
     min-height: 300px;
+
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
+
     gap: 8px;
+
     color: var(--text);
 }
 
@@ -364,35 +372,49 @@
 .race-center-spinner {
     width: 32px;
     height: 32px;
+
     border: 3px solid rgba(255,255,255,.15);
     border-top-color: var(--primary);
+
     border-radius: 50%;
+
     animation: raceCenterSpin .8s linear infinite;
 }
 
 @keyframes raceCenterSpin {
+
     to {
         transform: rotate(360deg);
     }
+
 }
 
-/* ============================================================
-   RACE CENTER — RESPONSIVE
-   ============================================================ */
+
+/* ==========================================================
+   RESPONSIVE — TABLET / MOBILE
+========================================================== */
 
 @media (max-width: 700px) {
 
+    .raceCenter {
+        margin-top: 28px;
+    }
+
+
     /* --------------------------------------------------------
        Toolbar
-       -------------------------------------------------------- */
+    -------------------------------------------------------- */
 
     .race-center-toolbar {
         display: flex;
         flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
 
+        align-items: stretch;
+
+        gap: 10px;
+
+        padding: 0 5px;
+    }
 
     .race-center-title {
         width: 100%;
@@ -400,51 +422,34 @@
 
 
     /* --------------------------------------------------------
-       Carrusel de temporadas
-       -------------------------------------------------------- */
+       Carrusel
+    -------------------------------------------------------- */
 
     .race-center-season-carousel {
         width: 100%;
+
         display: flex;
         align-items: center;
+
         gap: 4px;
     }
 
-
     .race-center-seasons {
         flex: 1;
+
         min-width: 0;
 
-        display: flex;
         gap: 6px;
 
-        overflow-x: auto;
-        overflow-y: hidden;
-
         padding: 2px 0;
-
-        scroll-behavior: smooth;
-        scrollbar-width: none;
-
-        -webkit-overflow-scrolling: touch;
     }
-
-
-    .race-center-seasons::-webkit-scrollbar {
-        display: none;
-    }
-
 
     .race-center-seasons button {
-        flex: 0 0 auto;
         min-width: 52px;
         height: 30px;
 
         padding: 0 10px;
-
-        white-space: nowrap;
     }
-
 
     .race-center-season-arrow {
         flex: 0 0 30px;
@@ -461,8 +466,8 @@
 
 
     /* --------------------------------------------------------
-       Contenedor de tabla
-       -------------------------------------------------------- */
+       Tabla
+    -------------------------------------------------------- */
 
     .race-center-table-wrap {
         width: 100%;
@@ -476,14 +481,11 @@
         scrollbar-width: thin;
     }
 
-
-    /* --------------------------------------------------------
-       Tabla
-       -------------------------------------------------------- */
-
     .race-center-table {
         width: max-content;
         min-width: 100%;
+
+        font-size: .78rem;
 
         table-layout: fixed;
     }
@@ -491,7 +493,7 @@
 
     /* --------------------------------------------------------
        Columnas de carreras
-       -------------------------------------------------------- */
+    -------------------------------------------------------- */
 
     .race-center-table th:not(
         .race-center-driver-header
@@ -499,6 +501,7 @@
         .race-center-points-header
     ),
     .race-center-table td {
+
         min-width: 58px;
         width: 58px;
 
@@ -509,12 +512,14 @@
 
     /* --------------------------------------------------------
        Piloto fijo
-       -------------------------------------------------------- */
+    -------------------------------------------------------- */
 
     .race-center-driver-header,
     .race-center-driver {
+
         position: sticky;
         left: 0;
+
         z-index: 5;
 
         width: 54px;
@@ -522,26 +527,30 @@
         max-width: 54px;
     }
 
-
     .race-center-driver-header {
         z-index: 8;
     }
 
+    .race-center-driver span {
+        font-size: 12px;
+    }
+
 
     /* --------------------------------------------------------
-       Puntos
-       -------------------------------------------------------- */
+       Puntos fijo
+    -------------------------------------------------------- */
 
     .race-center-points-header,
     .race-center-points {
+
         position: sticky;
         right: 0;
+
         z-index: 5;
 
         min-width: 55px;
         width: 55px;
     }
-
 
     .race-center-points-header {
         z-index: 8;
@@ -550,42 +559,42 @@
 
     /* --------------------------------------------------------
        Encabezado
-       -------------------------------------------------------- */
+    -------------------------------------------------------- */
 
     .race-center-table thead th {
+
         height: 58px;
 
         padding-top: 5px;
         padding-bottom: 5px;
     }
 
-
     .race-center-table thead th span {
         font-size: 12px;
     }
 
-
     .race-center-table thead th small {
+
         display: block;
+
+        margin-top: 2px;
 
         font-size: 8px;
         line-height: 1.1;
-
-        margin-top: 2px;
     }
 
-
     .race-center-table thead th em {
+
         display: block;
 
         max-width: 52px;
 
         overflow: hidden;
 
+        margin-top: 2px;
+
         font-size: 7px;
         line-height: 1.1;
-
-        margin-top: 2px;
 
         text-overflow: ellipsis;
     }
@@ -593,39 +602,34 @@
 
     /* --------------------------------------------------------
        Celdas
-       -------------------------------------------------------- */
+    -------------------------------------------------------- */
 
     .race-center-table tbody td {
+
         height: 38px;
 
         font-size: 12px;
     }
 
-
-    /* --------------------------------------------------------
-       Código piloto
-       -------------------------------------------------------- */
-
-    .race-center-driver span {
-        font-size: 12px;
-        font-weight: 700;
-    }
-
 }
 
 
+/* ==========================================================
+   RESPONSIVE — TELÉFONOS PEQUEÑOS
+========================================================== */
 
 @media (max-width: 480px) {
 
     .race-center-season-arrow {
+
         flex-basis: 28px;
 
         width: 28px;
         height: 28px;
     }
 
-
     .race-center-seasons button {
+
         min-width: 48px;
         height: 28px;
 
@@ -641,6 +645,7 @@
         .race-center-points-header
     ),
     .race-center-table td {
+
         min-width: 54px;
         width: 54px;
     }
@@ -648,6 +653,7 @@
 
     .race-center-driver-header,
     .race-center-driver {
+
         width: 50px;
         min-width: 50px;
         max-width: 50px;
@@ -656,9 +662,9 @@
 
     .race-center-points-header,
     .race-center-points {
+
         min-width: 50px;
         width: 50px;
     }
 
 }
-
