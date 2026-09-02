@@ -3,43 +3,42 @@ import { F1 } from "../../services/siteF1.js";
 let currentSeason=2026;
 const seasonCache=new Map();
 
-async function getSeasonData(season){
-
-    if(seasonCache.has(season)){
-        return seasonCache.get(season);
-    }
-
-    const [schedule,standings,seasonResults]=await Promise.all([
+async function getSeasonData(season) {
+    const [schedule, standings] = await Promise.all([
         F1.getSchedule(season),
-        F1.getStandings(season),
-        F1.getResults(season)
+        F1.getStandings(season)
     ]);
-
-    const races=schedule??[];
-    const drivers=standings??[];
-    const results=seasonResults??[];
-
-    const raceResults=results.map(race=>({
-        race:{
-            round:Number(race.round),
-            raceName:race.raceName,
-            circuit:{
-                location:{
-                    country:race.circuit?.country
+    const url = new URL(
+        `../../data/formula1/race-center/${season}.json`,
+        import.meta.url
+    );
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(
+            `No se pudo cargar Race Center ${season}: ${response.status}`
+        );
+    }
+    const localData = await response.json();
+    const races = schedule ?? [];
+    const drivers = standings ?? [];
+    const raceResults = (localData.races ?? []).map(race => ({
+        race: {
+            round: Number(race.round),
+            raceName: race.raceName,
+            circuit: {
+                location: {
+                    country: race.circuit?.country
                 }
             }
         },
-        results:race.results??[]
+        results: race.results ?? []
     }));
-
-    const data={
+    const data = {
         races,
         drivers,
         raceResults
     };
-
-    seasonCache.set(season,data);
-
+    seasonCache.set(season, data);
     return data;
 }
 
