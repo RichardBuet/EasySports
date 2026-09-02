@@ -128,6 +128,15 @@
     font-weight: 600;
 }
 
+.race-center-table th em {
+    display: block;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    opacity: 0.6;
+    white-space: nowrap;
+    margin-top: 2px;
+}
 
 /* ==========================================================
    COLUMNA PILOTO — FIJA
