@@ -1,36 +1,109 @@
-import { F1 } from "../../services/siteF1.js";
+let currentSeason = 2025;
 
-let currentSeason = 2026;
 const seasonCache = new Map();
 
 
+// ============================================================
+// CARGAR TEMPORADA DESDE JSON LOCAL
+// ============================================================
+
 async function getSeasonData(season) {
 
-    const [standings, localData] = await Promise.all([
+    if (seasonCache.has(season)) {
+        return seasonCache.get(season);
+    }
 
-        F1.getStandings(season),
+    const url = new URL(
+        `../../data/formula1/race-center/${season}.json`,
+        import.meta.url
+    );
 
-        fetch(
-            new URL(
-                `../../data/formula1/race-center/${season}.json`,
-                import.meta.url
-            )
-        ).then(response => {
+    const response = await fetch(url);
 
-            if (!response.ok) {
-                throw new Error(
-                    `No se pudo cargar Race Center ${season}: ${response.status}`
-                );
-            }
+    if (!response.ok) {
+        throw new Error(
+            `No se pudo cargar Race Center ${season}: ${response.status}`
+        );
+    }
 
-            return response.json();
-        })
-
-    ]);
+    const localData = await response.json();
 
     const races = localData.races ?? [];
 
-    const drivers = standings ?? [];
+    // --------------------------------------------------------
+    // Construir pilotos directamente desde los resultados
+    // --------------------------------------------------------
+
+    const driverMap = new Map();
+
+    races.forEach(race => {
+
+        (race.results ?? []).forEach(result => {
+
+            const driverId = result.driverId;
+
+            if (driverId == null) {
+                return;
+            }
+
+            if (!driverMap.has(driverId)) {
+
+                driverMap.set(driverId, {
+                    driverId,
+                    name: result.name ?? "Unknown",
+                    code: normalizeDriverCode(
+                        result.driver,
+                        result.name
+                    ),
+                    points: 0
+                });
+
+            }
+
+            const driver = driverMap.get(driverId);
+
+            driver.points += Number(
+                result.points ?? 0
+            );
+
+            // Si en alguna carrera encontramos un código válido,
+            // conservarlo.
+            if (
+                (!driver.code || driver.code === "—") &&
+                result.driver &&
+                result.driver !== "\\N"
+            ) {
+                driver.code = result.driver;
+            }
+
+        });
+
+    });
+
+
+    // --------------------------------------------------------
+    // Ordenar por puntos
+    // --------------------------------------------------------
+
+    const drivers =
+        Array.from(driverMap.values())
+            .sort((a, b) => {
+
+                if (b.points !== a.points) {
+                    return b.points - a.points;
+                }
+
+                return a.name.localeCompare(
+                    b.name,
+                    "es"
+                );
+
+            });
+
+
+    // --------------------------------------------------------
+    // Resultados
+    // --------------------------------------------------------
 
     const raceResults = races.map(race => ({
         race: {
@@ -42,8 +115,11 @@ async function getSeasonData(season) {
                 }
             }
         },
+
         results: race.results ?? []
+
     }));
+
 
     const data = {
         races,
@@ -51,38 +127,148 @@ async function getSeasonData(season) {
         raceResults
     };
 
-    seasonCache.set(season, data);
+
+    seasonCache.set(
+        season,
+        data
+    );
 
     return data;
 }
 
 
+// ============================================================
+// CÓDIGO DEL PILOTO
+// ============================================================
+
+function normalizeDriverCode(code, name) {
+
+    if (
+        code &&
+        code !== "\\N" &&
+        code !== "N" &&
+        code.length >= 2
+    ) {
+        return code.toUpperCase();
+    }
+
+    if (!name) {
+        return "—";
+    }
+
+    const cleanName =
+        name
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^A-Za-z\s-]/g, "")
+            .trim();
+
+    const parts =
+        cleanName
+            .split(/\s+/)
+            .filter(Boolean);
+
+
+    // Ejemplo:
+    // Michael Schumacher → MSC
+    // Mika Hakkinen → HAK
+    // David Coulthard → COU
+
+    if (parts.length >= 2) {
+
+        const first =
+            parts[0];
+
+        const last =
+            parts[parts.length - 1];
+
+        return (
+            first.charAt(0) +
+            last.slice(0, 2)
+        ).toUpperCase();
+
+    }
+
+
+    return cleanName
+        .replace(/\s/g, "")
+        .slice(0, 3)
+        .toUpperCase();
+}
+
+
+// ============================================================
+// POSICIÓN EN CARRERA
+// ============================================================
+
 function getRacePosition(driver, results) {
 
-    const result = results.find(item =>
-        item.driver === driver?.driver?.code ||
-        item.driverId === driver?.driver?.id
-    );
+    const result =
+        results.find(
+            item =>
+                Number(item.driverId) ===
+                Number(driver.driverId)
+        );
+
 
     if (!result) {
         return "—";
     }
 
+
+    const positionText =
+        String(
+            result.positionText ?? ""
+        );
+
+
+    // Retiro / descalificación
     if (
-        result.positionText === "R" ||
-        result.positionText === "D"
+        positionText === "R" ||
+        positionText === "D" ||
+        positionText === "W"
     ) {
         return "DNF";
     }
 
-    return result.position ?? "—";
+
+    // Posición numérica
+    if (
+        result.position &&
+        result.position !== "\\N"
+    ) {
+        return result.position;
+    }
+
+
+    return "—";
 }
 
 
+// ============================================================
+// CÓDIGO DEL CIRCUITO
+// ============================================================
+
 function getCircuitCode(race) {
 
+    // Primero usamos el código que ya viene
+    // en nuestro JSON.
+
+    if (
+        race.circuit?.code &&
+        race.circuit.code !== "\\N"
+    ) {
+        return race.circuit.code
+            .slice(0, 3)
+            .toUpperCase();
+    }
+
+
     const codes = {
+
         Australia: "AUS",
+        Argentina: "ARG",
+        Brazil: "BRA",
         China: "CHN",
         Japan: "JPN",
         Bahrain: "BHR",
@@ -100,32 +286,53 @@ function getCircuitCode(race) {
         Azerbaijan: "AZE",
         Singapore: "SGP",
         Mexico: "MEX",
-        Brazil: "BRA",
         Qatar: "QAT",
         UAE: "UAE",
-        "Las Vegas": "LVG"
+        Germany: "GER",
+        France: "FRA",
+        Portugal: "POR",
+        Turkey: "TUR",
+        South Africa: "RSA",
+        Switzerland: "SUI",
+        Sweden: "SWE",
+        Morocco: "MAR"
     };
+
 
     const country =
         race.circuit?.location?.country ?? "";
 
-    return codes[country] ??
+
+    return (
+        codes[country] ??
         country
             .replace(/[^A-Za-z]/g, "")
             .slice(0, 3)
-            .toUpperCase();
+            .toUpperCase()
+    );
 }
 
 
-function renderTable(races, drivers, raceResults) {
+// ============================================================
+// TABLA
+// ============================================================
+
+function renderTable(
+    races,
+    drivers,
+    raceResults
+) {
 
     if (!drivers.length) {
+
         return `
             <div class="race-center-empty">
                 No hay datos disponibles.
             </div>
         `;
+
     }
+
 
     return `
         <div class="race-center-table-wrap">
@@ -141,20 +348,29 @@ function renderTable(races, drivers, raceResults) {
                         </th>
 
                         ${races.map(race => `
+
                             <th>
-                                <span>R${race.round}</span>
+
+                                <span>
+                                    R${race.round}
+                                </span>
 
                                 <small>
                                     ${getCircuitCode(race)}
                                 </small>
 
                                 <em>
-                                    ${race.raceName?.replace(
-                                        /\s+Grand Prix$/i,
-                                        ""
-                                    ) ?? ""}
+                                    ${
+                                        race.raceName
+                                            ?.replace(
+                                                /\s+Grand Prix$/i,
+                                                ""
+                                            ) ?? ""
+                                    }
                                 </em>
+
                             </th>
+
                         `).join("")}
 
                         <th class="race-center-points-header">
@@ -165,6 +381,7 @@ function renderTable(races, drivers, raceResults) {
 
                 </thead>
 
+
                 <tbody>
 
                     ${drivers.map(driver => `
@@ -174,10 +391,11 @@ function renderTable(races, drivers, raceResults) {
                             <th class="race-center-driver">
 
                                 <span>
-                                    ${driver.driver?.code ?? "—"}
+                                    ${driver.code}
                                 </span>
 
                             </th>
+
 
                             ${races.map(race => {
 
@@ -186,16 +404,19 @@ function renderTable(races, drivers, raceResults) {
                                         item =>
                                             Number(
                                                 item.race.round
-                                            ) === Number(
+                                            ) ===
+                                            Number(
                                                 race.round
                                             )
                                     );
+
 
                                 const position =
                                     getRacePosition(
                                         driver,
                                         raceData?.results ?? []
                                     );
+
 
                                 return `
                                     <td class="${
@@ -209,8 +430,9 @@ function renderTable(races, drivers, raceResults) {
 
                             }).join("")}
 
+
                             <td class="race-center-points">
-                                ${driver.points ?? 0}
+                                ${driver.points}
                             </td>
 
                         </tr>
@@ -225,6 +447,10 @@ function renderTable(races, drivers, raceResults) {
     `;
 }
 
+
+// ============================================================
+// LOADING
+// ============================================================
 
 function renderLoading(season) {
 
@@ -246,21 +472,27 @@ function renderLoading(season) {
 }
 
 
-function startRaceCenterLoad(raceCenter, season) {
+// ============================================================
+// CARGA EN SEGUNDO PLANO
+// ============================================================
+
+function startRaceCenterLoad(
+    raceCenter,
+    season
+) {
 
     const content =
         raceCenter.querySelector(
             ".race-center-content"
         );
 
+
     if (!content) {
         return;
     }
 
-    /*
-     * Si ya tenemos la temporada en cache,
-     * la mostramos inmediatamente.
-     */
+
+    // Cache
     if (seasonCache.has(season)) {
 
         const data =
@@ -276,15 +508,20 @@ function startRaceCenterLoad(raceCenter, season) {
         return;
     }
 
+
     content.innerHTML =
         renderLoading(season);
+
 
     getSeasonData(season)
         .then(data => {
 
-            if (currentSeason !== season) {
+            if (
+                currentSeason !== season
+            ) {
                 return;
             }
+
 
             content.innerHTML =
                 renderTable(
@@ -301,6 +538,7 @@ function startRaceCenterLoad(raceCenter, season) {
                 error
             );
 
+
             content.innerHTML = `
                 <div class="race-center-empty">
                     No se pudieron cargar los datos de ${season}.
@@ -308,29 +546,47 @@ function startRaceCenterLoad(raceCenter, season) {
             `;
 
         });
+
 }
 
 
+// ============================================================
+// CREAR RACE CENTER
+// ============================================================
+
 export function createRaceCenter() {
 
-    const seasons = Array.from(
-        {
-            length: 2026 - 1950 + 1
-        },
-        (_, i) => 1950 + i
-    );
+    // 1950 → 2025
+    const seasons =
+        Array.from(
+            {
+                length: 2025 - 1950 + 1
+            },
+            (_, i) => 1950 + i
+        );
+
 
     const html = `
+
         <section class="raceCenter">
+
 
             <div class="race-center-toolbar">
 
+
                 <div class="race-center-title">
+
                     <span>🏁</span>
-                    <h2>Race Center</h2>
+
+                    <h2>
+                        Race Center
+                    </h2>
+
                 </div>
 
+
                 <div class="race-center-season-carousel">
+
 
                     <button
                         type="button"
@@ -341,9 +597,11 @@ export function createRaceCenter() {
                         ‹
                     </button>
 
+
                     <div class="race-center-seasons">
 
                         ${seasons.map(year => `
+
                             <button
                                 type="button"
                                 class="${
@@ -355,9 +613,11 @@ export function createRaceCenter() {
                             >
                                 ${year}
                             </button>
+
                         `).join("")}
 
                     </div>
+
 
                     <button
                         type="button"
@@ -368,17 +628,26 @@ export function createRaceCenter() {
                         ›
                     </button>
 
+
                 </div>
 
+
             </div>
+
 
             <div class="race-center-content">
+
                 ${renderLoading(currentSeason)}
+
             </div>
 
+
         </section>
+
     `;
 
+
+    // Ejecutar después de insertar el HTML
     setTimeout(() => {
 
         const raceCenter =
@@ -386,18 +655,17 @@ export function createRaceCenter() {
                 ".raceCenter"
             );
 
+
         if (!raceCenter) {
             return;
         }
 
-        /*
-         * Llevar automáticamente 2026 al centro
-         * del carrusel al iniciar.
-         */
+
         const activeButton =
             raceCenter.querySelector(
                 `[data-race-season="${currentSeason}"]`
             );
+
 
         if (activeButton) {
 
@@ -409,28 +677,38 @@ export function createRaceCenter() {
 
         }
 
+
         startRaceCenterLoad(
             raceCenter,
             currentSeason
         );
 
+
     }, 0);
+
 
     return html;
 }
 
 
+// ============================================================
+// CLICK
+// ============================================================
+
 document.addEventListener(
     "click",
     event => {
 
-        /*
-         * Flechas del carrusel
-         */
+
+        // ------------------------------------------------------
+        // FLECHAS
+        // ------------------------------------------------------
+
         const scrollButton =
             event.target.closest(
                 "[data-season-scroll]"
             );
+
 
         if (scrollButton) {
 
@@ -443,58 +721,71 @@ document.addEventListener(
                         ".race-center-seasons"
                     );
 
+
             if (!carousel) {
                 return;
             }
 
+
             carousel.scrollBy({
+
                 left:
                     scrollButton.dataset.seasonScroll === "left"
                         ? -300
                         : 300,
+
                 behavior: "smooth"
+
             });
+
 
             return;
         }
 
 
-        /*
-         * Selección de temporada
-         */
+        // ------------------------------------------------------
+        // SELECCIÓN DE AÑO
+        // ------------------------------------------------------
+
         const button =
             event.target.closest(
                 "[data-race-season]"
             );
 
+
         if (!button) {
             return;
         }
+
 
         const raceCenter =
             button.closest(
                 ".raceCenter"
             );
 
+
         if (!raceCenter) {
             return;
         }
+
 
         const season =
             Number(
                 button.dataset.raceSeason
             );
 
-        currentSeason = season;
+
+        currentSeason =
+            season;
 
 
-        /*
-         * Actualizar estado visual
-         */
+        // Estado visual
+
         const buttons =
             raceCenter.querySelectorAll(
                 "[data-race-season]"
             );
+
 
         buttons.forEach(btn => {
 
@@ -508,15 +799,18 @@ document.addEventListener(
         });
 
 
-        /*
-         * Centrar año seleccionado
-         */
+        // Centrar año
+
         button.scrollIntoView({
+
             behavior: "smooth",
             inline: "center",
             block: "nearest"
+
         });
 
+
+        // Cargar
 
         startRaceCenterLoad(
             raceCenter,
