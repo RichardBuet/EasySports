@@ -3,7 +3,6 @@
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:8px;
-    /*margin-bottom:10px;*/
     margin:8px;
 }
 
@@ -12,7 +11,6 @@
     border-radius:8px;
     padding:5px;
     text-align:center;
-    
 }
 
 .live-item-compact span{
@@ -30,9 +28,7 @@
 .driver-header-compact,
 .driver-row-compact{
     display:grid;
-    grid-template-columns:
- 30px 25px minmax(110px,1fr) 45px 55px 30px;
-
+    grid-template-columns: 30px 25px minmax(110px,1fr) 45px 55px 30px;
     align-items:center;
     gap:8px;
 }
@@ -122,29 +118,19 @@
    ========================================================= */
 
 .modal-overlay {
-
     position: fixed;
-
     inset: 0;
-
     z-index: 9999;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    background:
-        radial-gradient(
+    background: radial-gradient(
             circle at 50% 20%,
             rgba(255, 40, 40, .10),
             transparent 45%
         ),
         rgba(0, 0, 0, .82);
-
     backdrop-filter: blur(10px);
-
 }
 
 
@@ -153,37 +139,23 @@
    ========================================================= */
 
 .modal {
-
     width: min(96vw, 900px);
-
     max-width: 900px;
-
     max-height: 88vh;
-
     display: flex;
-
     flex-direction: column;
-
-    background:
-        linear-gradient(
+    background: linear-gradient(
             145deg,
             #181a1f 0%,
             #101216 55%,
             #0b0d10 100%
         );
-
     color: #f5f5f5;
-
     border: 1px solid rgba(255,255,255,.10);
-
     border-radius: 20px;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.75),
+    box-shadow: 0 25px 80px rgba(0,0,0,.75),
         0 0 35px rgba(255,40,40,.08);
-
     overflow: hidden;
-
 }
 
 
@@ -192,60 +164,38 @@
    ========================================================= */
 
 .modal-header {
-
     min-height: 68px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 0 22px;
-
     position: relative;
-
-    background:
-        linear-gradient(
+    background: linear-gradient(
             135deg,
             #1b1d23,
             #111318
         );
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        0 4px 18px rgba(0,0,0,.35);
-
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 4px 18px rgba(0,0,0,.35);
 }
 
 
 /* Línea roja inferior */
 
 .modal-header::after {
-
     content: "";
-
     position: absolute;
-
     left: 0;
-
     right: 0;
-
     bottom: 0;
-
     height: 2px;
-
-    background:
-        linear-gradient(
+    background: linear-gradient(
             90deg,
             #ff2020,
             #ff4d4d 35%,
             rgba(255,60,60,.15) 75%,
             transparent
         );
-
 }
 
 
@@ -254,21 +204,12 @@
    ========================================================= */
 
 .modal-header h2 {
-
     margin: 0;
-
     color: #ffffff;
-
-    font-size:
-        clamp(19px, 3vw, 25px);
-
+    font-size: clamp(19px, 3vw, 25px);
     font-weight: 800;
-
     letter-spacing: -.3px;
-
-    text-shadow:
-        0 0 18px rgba(255,255,255,.08);
-
+    text-shadow: 0 0 18px rgba(255,255,255,.08);
 }
 
 
@@ -277,54 +218,27 @@
    ========================================================= */
 
 .modal-close {
-
     width: 40px;
-
     height: 40px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     flex-shrink: 0;
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.09);
     border-radius: 50%;
-
     color: #ffffff;
-
     font-size: 25px;
-
     line-height: 1;
-
     cursor: pointer;
-
-    transition:
-        background .2s ease,
+    transition: background .2s ease,
         border-color .2s ease,
         transform .2s ease;
-
 }
-
-
 .modal-close:hover {
-
-    background:
-        rgba(255,55,55,.16);
-
-    border-color:
-        rgba(255,70,70,.40);
-
-    transform:
-        rotate(90deg);
-
+    background: rgba(255,55,55,.16);
+    border-color: rgba(255,70,70,.40);
+    transform: rotate(90deg);
 }
 
 
@@ -333,30 +247,19 @@
    ========================================================= */
 
 .modal-body {
-
     flex: 1;
-
     min-height: 0;
-
     overflow-y: auto;
-
     overflow-x: hidden;
-
     padding: 0;
-
-    background:
-        radial-gradient(
+    background: radial-gradient(
             circle at 50% 0%,
             rgba(255,255,255,.025),
             transparent 45%
         );
-
     scrollbar-width: thin;
-
-    scrollbar-color:
-        #50535a
+    scrollbar-color: #50535a
         #111318;
-
 }
 
 
@@ -365,32 +268,17 @@
    ========================================================= */
 
 .modal-body::-webkit-scrollbar {
-
     width: 7px;
-
 }
-
-
 .modal-body::-webkit-scrollbar-track {
-
     background: #101216;
-
 }
-
-
 .modal-body::-webkit-scrollbar-thumb {
-
     background: #454850;
-
     border-radius: 10px;
-
 }
-
-
 .modal-body::-webkit-scrollbar-thumb:hover {
-
     background: #666a73;
-
 }
 
 .live-summary{
@@ -413,8 +301,7 @@
 .driver-row{
     padding: 0 20px 8px 20px;
     border-bottom: 1px solid #333;
-   /* height: 30px;*/
-}
+   /* height: 30px;*/}
 
 .driver-row .driver-gap {
     text-align-last: right;
@@ -424,8 +311,6 @@
 .calendar-row, .driver-row:hover{
     background:#2b2b2b;
 }
-
-
 .driver-row span:first-child{
     color:#f4c542;
     font-weight:700;
@@ -449,7 +334,6 @@
 }
 .calendar-header, .driver-header{
     display:grid;
-    /* grid-template-columns:50px 50px 1fr 70px; */
     gap:12px;
     padding:12px 20px;
     background:#181818;
@@ -458,7 +342,6 @@
     font-weight: 800;
     color:#9a9a9a;
     text-transform:uppercase;
-    /* position:sticky; */
     top:0;
     z-index:1;
 }
@@ -481,7 +364,7 @@
 
 .calendar-header {
     display: grid;
-    grid-template-columns: 30px 1fr 1.2fr 46px;
+    grid-template-columns: 5px 1.4fr 1fr 46px;
     align-items: center;
     gap: 8px;
 }
@@ -524,8 +407,6 @@
     -webkit-box-orient:vertical;
     overflow:hidden;
 }
-
-
 .manufacturer-cell{
     display:flex;
     justify-content:center;
@@ -539,144 +420,3 @@
     background: azure;
 }
 
-
-/* =========================================================
-   NASCAR LIVE FULL MODAL
-   ========================================================= */
-/*
-.live-summary-full {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin: 8px;
-}
-
-.live-item-full {
-    background: #2d2d2d;
-    border-radius: 8px;
-    padding: 5px;
-    text-align: center;
-}
-
-.live-item-full span {
-    display: block;
-    font-size: .75rem;
-    color: #bdbdbd;
-    margin-bottom: 4px;
-}
-
-.live-item-full strong {
-    font-size: 1rem;
-    color: #fff;
-}
-
-
-/* Encabezado de la tabla * /
-
-.driver-header-full,
-.driver-row-full {
-    display: grid;
-    grid-template-columns:
-        40px
-        35px
-        minmax(160px, 1fr)
-        70px
-        60px
-        60px
-        60px
-        45px
-        45px
-        45px
-        55px
-        55px
-        60px;
-
-    align-items: center;
-    gap: 8px;
-}
-
-.driver-header-full {
-    padding: 10px 8px;
-    background: #2c2c2c;
-    font-weight: 700;
-    font-size: .75rem;
-    color: #ddd;
-    border-bottom: 2px solid #444;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-
-/* Lista con scroll * /
-
-.driver-table-full {
-    max-height: 62vh;
-    overflow: auto;
-}
-
-.driver-header-full,
-.driver-row-full {
-    min-width: min-content;
-}
-
-
-.driver-table-full {
-    max-height: 62vh;
-    overflow: auto;
-    background: #181818;
-}
-
-.driver-header-full {
-    
-    background: #2c2c2c;
-    padding: 10px 8px;
-    border-bottom: 2px solid #444;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-
-/* Filas * /
-
-.driver-row-full {
-    padding: 8px;
-    border-bottom: 1px solid #333;
-    font-size: .85rem;
-}
-
-.driver-row-full:hover {
-    background: #2d2d2d;
-}
-
-.driver-row-full strong {
-    display: block;
-    color: #fff;
-}
-
-.driver-row-full small {
-    display: block;
-    color: #999;
-    font-size: .72rem;
-    margin-top: 2px;
-}
-
-.driver-row-full span {
-    white-space: nowrap;
-}
-
-.driver-row-full span:first-child {
-    font-weight: 700;
-}
-
-.driver-row-full span:nth-child(2) {
-    font-weight: 700;
-    color: #ffd54f;
-}
-
-.driver-row-full span:last-child {
-    display: flex;
-    justify-content: center;
-}
-*/
