@@ -648,43 +648,43 @@ export function createRaceCenter() {
 
 
     // Ejecutar después de insertar el HTML
-    setTimeout(() => {
-
+    function initRaceCenterWhenReady() {
+    
         const raceCenter =
-            document.querySelector(
-                ".raceCenter"
-            );
-
-
+            document.querySelector(".raceCenter");
+    
         if (!raceCenter) {
+    
+            setTimeout(
+                initRaceCenterWhenReady,
+                50
+            );
+    
             return;
         }
-
-
+    
         const activeButton =
             raceCenter.querySelector(
                 `[data-race-season="${currentSeason}"]`
             );
-
-
+    
         if (activeButton) {
-
+    
             activeButton.scrollIntoView({
-                behavior: "instant",
+                behavior: "auto",
                 inline: "center",
                 block: "nearest"
             });
-
+    
         }
-
-
+    
         startRaceCenterLoad(
             raceCenter,
             currentSeason
         );
-
-
-    }, 0);
+    }
+    
+    initRaceCenterWhenReady();
 
 
     return html;
