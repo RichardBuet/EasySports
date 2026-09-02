@@ -68,6 +68,53 @@
 
 
 /* ==========================================================
+   CARRUSEL
+========================================================== */
+
+.race-center-season-carousel {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.race-center-seasons {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    min-width: 0;
+}
+
+.race-center-seasons::-webkit-scrollbar {
+    display: none;
+}
+
+.race-center-seasons button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.race-center-season-arrow {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.race-center-table th em {
+    display: block;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    opacity: 0.6;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+/* ==========================================================
    TABLA
 ========================================================== */
 
