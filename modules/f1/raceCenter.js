@@ -145,6 +145,9 @@ function renderTable(races, drivers, raceResults) {
                                 <small>
                                     ${getCircuitCode(race)}
                                 </small>
+                                <em>
+                                    ${race.raceName?.replace(/\s+Grand Prix$/i, "") ?? ""}
+                                </em>
                             </th>
                         `).join("")}
 
