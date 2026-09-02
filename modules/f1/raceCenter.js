@@ -3,6 +3,7 @@ import { F1 } from "../../services/siteF1.js";
 let currentSeason = 2026;
 const seasonCache = new Map();
 
+
 async function getSeasonData(season) {
 
     const [standings, localData] = await Promise.all([
@@ -142,11 +143,16 @@ function renderTable(races, drivers, raceResults) {
                         ${races.map(race => `
                             <th>
                                 <span>R${race.round}</span>
+
                                 <small>
                                     ${getCircuitCode(race)}
                                 </small>
+
                                 <em>
-                                    ${race.raceName?.replace(/\s+Grand Prix$/i, "") ?? ""}
+                                    ${race.raceName?.replace(
+                                        /\s+Grand Prix$/i,
+                                        ""
+                                    ) ?? ""}
                                 </em>
                             </th>
                         `).join("")}
@@ -178,8 +184,11 @@ function renderTable(races, drivers, raceResults) {
                                 const raceData =
                                     raceResults.find(
                                         item =>
-                                            Number(item.race.round) ===
-                                            Number(race.round)
+                                            Number(
+                                                item.race.round
+                                            ) === Number(
+                                                race.round
+                                            )
                                     );
 
                                 const position =
@@ -248,6 +257,25 @@ function startRaceCenterLoad(raceCenter, season) {
         return;
     }
 
+    /*
+     * Si ya tenemos la temporada en cache,
+     * la mostramos inmediatamente.
+     */
+    if (seasonCache.has(season)) {
+
+        const data =
+            seasonCache.get(season);
+
+        content.innerHTML =
+            renderTable(
+                data.races,
+                data.drivers,
+                data.raceResults
+            );
+
+        return;
+    }
+
     content.innerHTML =
         renderLoading(season);
 
@@ -285,11 +313,12 @@ function startRaceCenterLoad(raceCenter, season) {
 
 export function createRaceCenter() {
 
-    const seasons = [
-        2024,
-        2025,
-        2026
-    ];
+    const seasons = Array.from(
+        {
+            length: 2026 - 1950 + 1
+        },
+        (_, i) => 1950 + i
+    );
 
     const html = `
         <section class="raceCenter">
@@ -301,21 +330,43 @@ export function createRaceCenter() {
                     <h2>Race Center</h2>
                 </div>
 
-                <div class="race-center-seasons">
+                <div class="race-center-season-carousel">
 
-                    ${seasons.map(year => `
-                        <button
-                            type="button"
-                            class="${
-                                year === currentSeason
-                                    ? "active"
-                                    : ""
-                            }"
-                            data-race-season="${year}"
-                        >
-                            ${year}
-                        </button>
-                    `).join("")}
+                    <button
+                        type="button"
+                        class="race-center-season-arrow"
+                        data-season-scroll="left"
+                        aria-label="Años anteriores"
+                    >
+                        ‹
+                    </button>
+
+                    <div class="race-center-seasons">
+
+                        ${seasons.map(year => `
+                            <button
+                                type="button"
+                                class="${
+                                    year === currentSeason
+                                        ? "active"
+                                        : ""
+                                }"
+                                data-race-season="${year}"
+                            >
+                                ${year}
+                            </button>
+                        `).join("")}
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="race-center-season-arrow"
+                        data-season-scroll="right"
+                        aria-label="Años siguientes"
+                    >
+                        ›
+                    </button>
 
                 </div>
 
@@ -339,6 +390,25 @@ export function createRaceCenter() {
             return;
         }
 
+        /*
+         * Llevar automáticamente 2026 al centro
+         * del carrusel al iniciar.
+         */
+        const activeButton =
+            raceCenter.querySelector(
+                `[data-race-season="${currentSeason}"]`
+            );
+
+        if (activeButton) {
+
+            activeButton.scrollIntoView({
+                behavior: "instant",
+                inline: "center",
+                block: "nearest"
+            });
+
+        }
+
         startRaceCenterLoad(
             raceCenter,
             currentSeason
@@ -354,6 +424,44 @@ document.addEventListener(
     "click",
     event => {
 
+        /*
+         * Flechas del carrusel
+         */
+        const scrollButton =
+            event.target.closest(
+                "[data-season-scroll]"
+            );
+
+        if (scrollButton) {
+
+            const carousel =
+                scrollButton
+                    .closest(
+                        ".race-center-season-carousel"
+                    )
+                    ?.querySelector(
+                        ".race-center-seasons"
+                    );
+
+            if (!carousel) {
+                return;
+            }
+
+            carousel.scrollBy({
+                left:
+                    scrollButton.dataset.seasonScroll === "left"
+                        ? -300
+                        : 300,
+                behavior: "smooth"
+            });
+
+            return;
+        }
+
+
+        /*
+         * Selección de temporada
+         */
         const button =
             event.target.closest(
                 "[data-race-season]"
@@ -379,6 +487,10 @@ document.addEventListener(
 
         currentSeason = season;
 
+
+        /*
+         * Actualizar estado visual
+         */
         const buttons =
             raceCenter.querySelectorAll(
                 "[data-race-season]"
@@ -394,6 +506,17 @@ document.addEventListener(
             );
 
         });
+
+
+        /*
+         * Centrar año seleccionado
+         */
+        button.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest"
+        });
+
 
         startRaceCenterLoad(
             raceCenter,
