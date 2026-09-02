@@ -4,24 +4,26 @@ let currentSeason=2026;
 const seasonCache=new Map();
 
 async function getSeasonData(season) {
-    const [schedule, standings] = await Promise.all([
-        F1.getSchedule(season),
-        F1.getStandings(season)
-    ]);
-    const url = new URL(
-        `../../data/formula1/race-center/${season}.json`,
-        import.meta.url
+
+    const response = await fetch(
+        new URL(
+            `../../data/formula1/race-center/${season}.json`,
+            import.meta.url
+        )
     );
-    const response = await fetch(url);
+
     if (!response.ok) {
         throw new Error(
             `No se pudo cargar Race Center ${season}: ${response.status}`
         );
     }
+
     const localData = await response.json();
-    const races = schedule ?? [];
-    const drivers = standings ?? [];
-    const raceResults = (localData.races ?? []).map(race => ({
+
+    const races = localData.races ?? [];
+    const drivers = localData.standings ?? [];
+
+    const raceResults = races.map(race => ({
         race: {
             round: Number(race.round),
             raceName: race.raceName,
@@ -33,12 +35,15 @@ async function getSeasonData(season) {
         },
         results: race.results ?? []
     }));
+
     const data = {
         races,
         drivers,
         raceResults
     };
+
     seasonCache.set(season, data);
+
     return data;
 }
 
