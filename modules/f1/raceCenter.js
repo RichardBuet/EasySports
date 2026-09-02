@@ -292,7 +292,7 @@ function getCircuitCode(race) {
         France: "FRA",
         Portugal: "POR",
         Turkey: "TUR",
-        South Africa: "RSA",
+        "South Africa": "RSA",
         Switzerland: "SUI",
         Sweden: "SWE",
         Morocco: "MAR"
