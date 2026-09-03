@@ -56,15 +56,11 @@
     display: flex;
     align-items: center;
     gap: 5px;
-
     min-width: 0;
-
     overflow-x: auto;
     overflow-y: hidden;
-
     scroll-behavior: smooth;
     scrollbar-width: none;
-
     -webkit-overflow-scrolling: touch;
 }
 
@@ -74,24 +70,17 @@
 
 .race-center-seasons button {
     flex: 0 0 auto;
-
     appearance: none;
     border: 1px solid var(--border-color);
     border-radius: 999px;
-
     padding: 5px 12px;
-
     background: #181818;
     color: var(--text-secondary);
-
     font-family: inherit;
     font-size: .8rem;
     font-weight: 700;
-
     white-space: nowrap;
-
     cursor: pointer;
-
     transition: .18s ease;
 }
 
@@ -108,27 +97,19 @@
 
 .race-center-season-arrow {
     flex: 0 0 30px;
-
     width: 30px;
     height: 30px;
-
     padding: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border: 1px solid var(--border-color);
     border-radius: 50%;
-
     background: #181818;
     color: var(--text);
-
     font-size: 1.2rem;
     line-height: 1;
-
     cursor: pointer;
-
     transition: .18s ease;
 }
 
@@ -138,6 +119,78 @@
     color: #fff;
 }
 
+/* ==========================================================
+   RESULTADOS — DESPLEGABLE
+========================================================== */
+.race-center-results-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 14px;
+}
+.race-center-results-toggle button {
+    appearance: none;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 8px 18px;
+    background: #181818;
+    color: var(--text);
+    font-family: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .18s ease;
+}
+.race-center-results-toggle button:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+/* ==========================================================
+   TABLA — SCROLL INTERNO
+========================================================== */
+.race-center-content {
+    width: 100%;
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 8px;
+    scrollbar-width: thin;
+}
+.race-center-content .race-center-table-wrap {
+    overflow-x: auto;
+    overflow-y: visible;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+/* Mantener encabezado visible mientras se desplaza verticalmente */
+.race-center-content .race-center-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+}
+/* Las columnas fijas siguen funcionando dentro del scroll */
+.race-center-content .race-center-driver-header,
+.race-center-content .race-center-driver {
+    position: sticky;
+    left: 0;
+}
+.race-center-content .race-center-points-header,
+.race-center-content .race-center-points {
+    position: sticky;
+    right: 0;
+}
+@media (max-width: 700px) {
+    .race-center-content {
+        max-height: 55vh;
+    }
+    .race-center-results-toggle {
+        margin: 8px 0 12px;
+    }
+    .race-center-results-toggle button {
+        padding: 8px 16px;
+        font-size: .78rem;
+    }
+}
 
 /* ==========================================================
    TABLA
@@ -152,22 +205,17 @@
 .race-center-table-wrap {
     width: 100%;
     max-width: 100%;
-
     overflow-x: auto;
     overflow-y: hidden;
-
     scrollbar-width: thin;
-
     -webkit-overflow-scrolling: touch;
 }
 
 .race-center-table {
     width: max-content;
     min-width: 100%;
-
     border-collapse: separate;
     border-spacing: 0;
-
     color: var(--text);
     font-size: .82rem;
 }
@@ -175,12 +223,9 @@
 .race-center-table th,
 .race-center-table td {
     height: 34px;
-
     padding: 4px 8px;
-
     text-align: center;
     white-space: nowrap;
-
     border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
@@ -192,12 +237,9 @@
 .race-center-table thead th {
     position: sticky;
     top: 0;
-
     z-index: 3;
-
     background: #111;
     color: var(--text);
-
     font-weight: 800;
 }
 
@@ -208,26 +250,19 @@
 
 .race-center-table thead th small {
     display: block;
-
     margin-top: 2px;
-
     color: var(--text-secondary);
-
     font-size: .65rem;
     font-weight: 600;
 }
 
 .race-center-table thead th em {
     display: block;
-
     margin-top: 2px;
-
     font-size: 8px;
     font-style: normal;
     font-weight: 400;
-
     opacity: .6;
-
     white-space: nowrap;
 }
 
@@ -240,20 +275,14 @@
 .race-center-driver {
     position: sticky;
     left: 0;
-
     z-index: 4;
-
     width: 3.5em;
     min-width: 3.5em;
     max-width: 3.5em;
-
     padding-left: 6px !important;
     padding-right: 6px !important;
-
     background: #111;
-
     text-align: left !important;
-
     box-shadow: 5px 0 8px rgba(0,0,0,.35);
 }
 
@@ -263,20 +292,15 @@
 
 .race-center-driver span {
     display: block;
-
     color: var(--text);
-
     font-size: .85rem;
     font-weight: 800;
 }
 
 .race-center-driver small {
     display: block;
-
     margin-top: 2px;
-
     color: var(--text-secondary);
-
     font-size: .65rem;
     line-height: 1.1;
 }
@@ -290,15 +314,10 @@
 .race-center-points {
     position: sticky;
     right: 0;
-
     z-index: 4;
-
     min-width: 3.5em;
-
     background: #111;
-
     font-weight: 800;
-
     box-shadow: -5px 0 8px rgba(0,0,0,.35);
 }
 
@@ -313,7 +332,6 @@
 
 .race-center-table tbody td {
     color: var(--text);
-
     min-width: 38px;
 }
 
@@ -335,9 +353,7 @@
 
 .race-center-empty {
     padding: 30px 15px;
-
     text-align: center;
-
     color: var(--text-secondary);
 }
 
@@ -348,15 +364,11 @@
 
 .race-center-loading {
     min-height: 300px;
-
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
-
     gap: 8px;
-
     color: var(--text);
 }
 
@@ -372,12 +384,9 @@
 .race-center-spinner {
     width: 32px;
     height: 32px;
-
     border: 3px solid rgba(255,255,255,.15);
     border-top-color: var(--primary);
-
     border-radius: 50%;
-
     animation: raceCenterSpin .8s linear infinite;
 }
 
@@ -408,11 +417,8 @@
     .race-center-toolbar {
         display: flex;
         flex-direction: column;
-
         align-items: stretch;
-
         gap: 10px;
-
         padding: 0 5px;
     }
 
@@ -427,38 +433,29 @@
 
     .race-center-season-carousel {
         width: 100%;
-
         display: flex;
         align-items: center;
-
         gap: 4px;
     }
 
     .race-center-seasons {
         flex: 1;
-
         min-width: 0;
-
         gap: 6px;
-
         padding: 2px 0;
     }
 
     .race-center-seasons button {
         min-width: 52px;
         height: 30px;
-
         padding: 0 10px;
     }
 
     .race-center-season-arrow {
         flex: 0 0 30px;
-
         width: 30px;
         height: 30px;
-
         padding: 0;
-
         display: flex;
         align-items: center;
         justify-content: center;
@@ -472,21 +469,16 @@
     .race-center-table-wrap {
         width: 100%;
         max-width: 100%;
-
         overflow-x: auto;
         overflow-y: hidden;
-
         -webkit-overflow-scrolling: touch;
-
         scrollbar-width: thin;
     }
 
     .race-center-table {
         width: max-content;
         min-width: 100%;
-
         font-size: .78rem;
-
         table-layout: fixed;
     }
 
@@ -501,10 +493,8 @@
         .race-center-points-header
     ),
     .race-center-table td {
-
         min-width: 58px;
         width: 58px;
-
         padding-left: 5px;
         padding-right: 5px;
     }
@@ -516,12 +506,9 @@
 
     .race-center-driver-header,
     .race-center-driver {
-
         position: sticky;
         left: 0;
-
         z-index: 5;
-
         width: 54px;
         min-width: 54px;
         max-width: 54px;
@@ -542,12 +529,9 @@
 
     .race-center-points-header,
     .race-center-points {
-
         position: sticky;
         right: 0;
-
         z-index: 5;
-
         min-width: 55px;
         width: 55px;
     }
@@ -562,9 +546,7 @@
     -------------------------------------------------------- */
 
     .race-center-table thead th {
-
         height: 58px;
-
         padding-top: 5px;
         padding-bottom: 5px;
     }
@@ -574,28 +556,19 @@
     }
 
     .race-center-table thead th small {
-
         display: block;
-
         margin-top: 2px;
-
         font-size: 8px;
         line-height: 1.1;
     }
 
     .race-center-table thead th em {
-
         display: block;
-
         max-width: 52px;
-
         overflow: hidden;
-
         margin-top: 2px;
-
         font-size: 7px;
         line-height: 1.1;
-
         text-overflow: ellipsis;
     }
 
@@ -605,9 +578,7 @@
     -------------------------------------------------------- */
 
     .race-center-table tbody td {
-
         height: 38px;
-
         font-size: 12px;
     }
 
@@ -621,20 +592,15 @@
 @media (max-width: 480px) {
 
     .race-center-season-arrow {
-
         flex-basis: 28px;
-
         width: 28px;
         height: 28px;
     }
 
     .race-center-seasons button {
-
         min-width: 48px;
         height: 28px;
-
         padding: 0 8px;
-
         font-size: 11px;
     }
 
@@ -645,7 +611,6 @@
         .race-center-points-header
     ),
     .race-center-table td {
-
         min-width: 54px;
         width: 54px;
     }
@@ -653,7 +618,6 @@
 
     .race-center-driver-header,
     .race-center-driver {
-
         width: 50px;
         min-width: 50px;
         max-width: 50px;
@@ -662,7 +626,6 @@
 
     .race-center-points-header,
     .race-center-points {
-
         min-width: 50px;
         width: 50px;
     }
