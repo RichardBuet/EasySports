@@ -219,9 +219,9 @@ export async function createHero() {
 
     const meta = [
         {
-            icon: "📍",
+            icon: "",
             value:
-                `Round ${race?.round ?? "—"}`
+                `Ronda ${race?.round ?? "—"}`
         },
         {
             icon: "📅",
