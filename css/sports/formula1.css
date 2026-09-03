@@ -123,7 +123,8 @@
 }
 
 .hero__countdown{
-   font-size: 1.00em
+    font-size: 0.9em;
+    color: var(--f1-purple)
 }
 
 /* ==========================================================
@@ -147,6 +148,7 @@
 .hero--f1 .hero__session > span {
     flex: 0 0 auto;
     font-size: 1.05em;
+    display: none;
 }
 
 .hero--f1 .hero__session > div {
@@ -198,7 +200,8 @@
 .hero--f1 .hero__action:hover {
     background: linear-gradient(270deg, rgb(28 133 141 / 27%), rgb(186 219 51 / 11%));
     color: var(--accent);
-    transform: translateY(-1px);
+    /* transform: translateY(-1px); */
+    transform: scale(.98);
     box-shadow:
         0 6px 16px rgba(0,0,0,.35),
         0 0 12px rgba(255,255,255,.12);
@@ -336,6 +339,7 @@
     display: block;
     font-size: 28px;
     margin-bottom: 12px;
+    display: none;
 }
 
 .f1-dashboard-card__title {
@@ -344,7 +348,9 @@
     color: #9ca3af;
     text-transform: uppercase;
     letter-spacing: .08em;
+    color: var(--f1-red-dark);
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .f1-dashboard-card__value {
