@@ -578,9 +578,7 @@ export function createRaceCenter() {
 
                     <span>🏁</span>
 
-                    <h2>
-                        Race Center
-                    </h2>
+                    <h2>Historico - Temporadas de F1</h2>
 
                 </div>
 
@@ -669,24 +667,24 @@ export function createRaceCenter() {
             );
     
         if (activeButton) {
-    
-            activeButton.scrollIntoView({
-                behavior: "auto",
-                inline: "center",
-                block: "nearest"
-            });
-    
+            const seasonsContainer =
+                raceCenter.querySelector(
+                    ".race-center-seasons"
+                );
+        
+            if (seasonsContainer) {
+                seasonsContainer.scrollLeft =
+                    activeButton.offsetLeft -
+                    (seasonsContainer.clientWidth / 2) +
+                    (activeButton.offsetWidth / 2);
+            }
         }
-    
         startRaceCenterLoad(
             raceCenter,
             currentSeason
         );
     }
-    
     initRaceCenterWhenReady();
-
-
     return html;
 }
 
@@ -695,15 +693,11 @@ export function createRaceCenter() {
 // CLICK
 // ============================================================
 
-document.addEventListener(
-    "click",
-    event => {
-
+document.addEventListener( "click", event => {
 
         // ------------------------------------------------------
         // FLECHAS
         // ------------------------------------------------------
-
         const scrollButton =
             event.target.closest(
                 "[data-season-scroll]"
@@ -711,7 +705,6 @@ document.addEventListener(
 
 
         if (scrollButton) {
-
             const carousel =
                 scrollButton
                     .closest(
@@ -720,24 +713,18 @@ document.addEventListener(
                     ?.querySelector(
                         ".race-center-seasons"
                     );
-
-
             if (!carousel) {
                 return;
             }
 
 
             carousel.scrollBy({
-
                 left:
                     scrollButton.dataset.seasonScroll === "left"
                         ? -300
                         : 300,
-
                 behavior: "smooth"
-
             });
-
 
             return;
         }
@@ -773,14 +760,9 @@ document.addEventListener(
             Number(
                 button.dataset.raceSeason
             );
-
-
-        currentSeason =
-            season;
-
-
+        currentSeason = season;
+        
         // Estado visual
-
         const buttons =
             raceCenter.querySelectorAll(
                 "[data-race-season]"
@@ -788,30 +770,34 @@ document.addEventListener(
 
 
         buttons.forEach(btn => {
-
             btn.classList.toggle(
                 "active",
                 Number(
                     btn.dataset.raceSeason
                 ) === season
             );
-
         });
 
 
         // Centrar año
-
-        button.scrollIntoView({
-
-            behavior: "smooth",
-            inline: "center",
-            block: "nearest"
-
-        });
+        const seasonsContainer =
+            raceCenter.querySelector(
+                ".race-center-seasons"
+            );
+        
+        if (seasonsContainer) {
+            seasonsContainer.scrollTo({
+                left:
+                    button.offsetLeft -
+                    (seasonsContainer.clientWidth / 2) +
+                    (button.offsetWidth / 2),
+                behavior: "smooth"
+            });
+        
+        }
 
 
         // Cargar
-
         startRaceCenterLoad(
             raceCenter,
             season
