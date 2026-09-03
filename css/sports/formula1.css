@@ -11,39 +11,25 @@
     inset: 0;
     width: 100vw;
     height: 100dvh;
-
     background: #000;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
-
     z-index: 99999;
 }
 
 .sport-loading__video {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: block;
 }
-
-
-
-
-
-
-
 
 
 /* ==========================================================
    HERO - FORMULA 1 v2.0
 ========================================================== */
-
 .hero--f1 {
     position: relative;
     display: flex;
@@ -64,22 +50,21 @@
     background-size: contain;
     opacity: 0.48;
     pointer-events: none;
-    /* width: inherit; */
-    /* padding-left: 5em; */
-    margin-left: 2em;
-    z-index: 2;
+    margin-left: 3em;
+    margin-bottom: 3em;
+    z-index: 0;
     background-blend-mode: screen;
    
 }
 
 .hero__content {
     z-index: 2;
-    padding: 15px 5px 10px 20px;
+    padding: 15px 20px 10px 20px;
     width: inherit;
 }
 
 .hero--f1 .hero__category {
-    color: var(--primary);
+    color: var(--f1-red);
     font-weight: 600;
 }
 
@@ -99,19 +84,14 @@
 /* ==========================================================
    HERO — INFORMACIÓN INFERIOR
 ========================================================== */
-
 .hero__info {
     display: grid;
-    grid-template-columns:
-        auto
-        minmax(0, 1fr)
-        auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: end;
     gap: 20px;
     width: 100%;
     box-sizing: border-box;
-    font-size:
-        clamp(.8rem, 2.6dvw, 1.4rem);
+    font-size: clamp(.8rem, 2.6dvw, 1.4rem);
 }
 
 
@@ -123,33 +103,28 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color:
-        var(--text);
-    white-space:
-        nowrap;
+    color: var(--text);
+    white-space: nowrap;
 }
 
 .hero--f1 .hero__meta-item {
     display: flex;
-
     align-items: center;
-
     gap: 7px;
 }
 
 .hero--f1 .hero__meta-item span {
-    flex:
-        0 0 auto;
+    flex: 0 0 auto;
 }
 
 .hero--f1 .hero__meta-item strong {
-    font-weight:
-        700;
-
-    white-space:
-        nowrap;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
+.hero__countdown{
+   font-size: 1.00em
+}
 
 /* ==========================================================
    PRÓXIMA SESIÓN
@@ -157,68 +132,42 @@
 
 .hero--f1 .hero__sessions {
     display: flex;
-
     justify-content: center;
-
     align-items: flex-end;
-
     min-width: 0;
 }
 
 .hero--f1 .hero__session {
     display: flex;
-
     align-items: flex-end;
-
     gap: 8px;
-
     min-width: 0;
 }
 
 .hero--f1 .hero__session > span {
-    flex:
-        0 0 auto;
-
-    font-size:
-        1.05em;
+    flex: 0 0 auto;
+    font-size: 1.05em;
 }
 
 .hero--f1 .hero__session > div {
     display: flex;
-
     flex-direction: column;
-
     gap: 2px;
-
     min-width: 0;
 }
 
 .hero--f1 .hero__session small {
-    color:
-        var(--text-secondary);
-
-    font-size:
-        .72em;
-
-    line-height:
-        1.1;
-
-    white-space:
-        nowrap;
+    color: var(--text-secondary);
+    font-size: .72em;
+    line-height: 1.1;
+    white-space: nowrap;
 }
 
 .hero--f1 .hero__session strong {
-    color:
-        var(--text);
-
-    font-size:
-        .9em;
-
-    line-height:
-        1.15;
-
-    white-space:
-        nowrap;
+    color:  var(--text);
+    font-size: .9em;
+    line-height: 1.15;
+    white-space: nowrap;
 }
 
 
@@ -228,70 +177,28 @@
 
 .hero--f1 .hero__action {
     appearance: none;
-
-    align-self:
-        end;
-
-    justify-self:
-        end;
-
-    padding:
-        8px 16px;
-
-    border:
-        1px solid rgba(255,255,255,.35);
-
-    border-radius:
-        999px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.95),
-            rgba(225,228,233,.92)
-        );
-
-    color:
-        #17191e;
-
-    font-family:
-        inherit;
-
-    font-size:
-        .72em;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        .15px;
-
-    line-height:
-        1;
-
-    white-space:
-        nowrap;
-
-    cursor:
-        pointer;
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.28),
-        inset 0 1px 0 rgba(255,255,255,.9);
-
-    transition:
-        transform .18s ease,
-        box-shadow .18s ease,
-        background .18s ease;
+    align-self: self-end;
+    justify-self: end;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 9px;
+    background: linear-gradient(90deg, rgb(28 133 141 / 27%), rgb(186 219 51 / 11%));
+    color: var(--f1-yellow);
+    font-family: inherit;
+    font-size: 0.62em;
+    font-weight: 800;
+    letter-spacing: .15px;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .9);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
 .hero--f1 .hero__action:hover {
-    background:
-        #ffffff;
-
-    transform:
-        translateY(-1px);
-
+    background: linear-gradient(270deg, rgb(28 133 141 / 27%), rgb(186 219 51 / 11%));
+    color: var(--accent);
+    transform: translateY(-1px);
     box-shadow:
         0 6px 16px rgba(0,0,0,.35),
         0 0 12px rgba(255,255,255,.12);
@@ -311,47 +218,30 @@
 @media (max-width: 700px) {
 
     .hero__info {
-        grid-template-columns:
-            minmax(0, auto)
+        grid-template-columns: minmax(0, auto)
             minmax(0, 1fr);
-
-        align-items:
-            end;
-
-        column-gap:
-            12px;
-
-        row-gap:
-            9px;
+        align-items: end;
+        column-gap: 12px;
+        row-gap: 9px;
     }
 
     .hero--f1 .hero__meta {
-        justify-self:
-            start;
+        justify-self: start;
     }
 
     .hero--f1 .hero__sessions {
-        justify-self:
-            end;
-
-        justify-content:
-            flex-end;
+        justify-self: end;
+        justify-content: flex-end;
     }
 
     .hero--f1 .hero__session {
-        justify-content:
-            flex-end;
+        justify-content: flex-end;
     }
 
     .hero--f1 .hero__action {
-        grid-column:
-            1 / -1;
-
-        justify-self:
-            start;
-
-        align-self:
-            start;
+        grid-column: 1 / -1;
+        justify-self: start;
+        align-self: start;
     }
 }
 
@@ -363,37 +253,26 @@
 @media (max-width: 480px) {
 
     .hero__info {
-        column-gap:
-            8px;
-
-        row-gap:
-            8px;
-
-        font-size:
-            clamp(.78rem, 3.4vw, 1rem);
+        column-gap: 8px;
+        row-gap: 8px;
+        font-size: clamp(.78rem, 3.4vw, 1rem);
     }
 
     .hero--f1 .hero__session {
-        gap:
-            5px;
+        gap: 5px;
     }
 
     .hero--f1 .hero__session small {
-        font-size:
-            .68em;
+        font-size: .68em;
     }
 
     .hero--f1 .hero__session strong {
-        font-size:
-            .82em;
+        font-size: .82em;
     }
 
     .hero--f1 .hero__action {
-        padding:
-            7px 14px;
-
-        font-size:
-            .72em;
+        padding: 7px 14px;
+        font-size: .72em;
     }
 }
 
@@ -405,20 +284,17 @@
 @media (max-width: 360px) {
 
     .hero__info {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .hero--f1 .hero__meta,
     .hero--f1 .hero__sessions,
     .hero--f1 .hero__action {
-        justify-self:
-            start;
+        justify-self: start;
     }
 
     .hero--f1 .hero__session {
-        justify-content:
-            flex-start;
+        justify-content: flex-start;
     }
 
 }
