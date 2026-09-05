@@ -1,20 +1,22 @@
 .navbar{
     display:flex;
-    justify-content: space-around;
-    gap: 4px;
-    padding: 10px;
-    background: #181818;
-    text-align: center;
+    justify-content:space-around;
+    align-items:center;
+    gap:4px;
+    padding:10px;
+    background:#181818;
+    text-align:center;
+    position:relative;
+    z-index:1000;
 }
-
 .navbar a{
     color:var(--text-color);
     text-decoration:none;
     font-weight:bold;
     transition:.25s;
-    font-size: inherit;
+    font-size:inherit;
+    white-space:nowrap;
 }
-
 .navbar a:hover{
     color:var(--primary-color);
 }
@@ -23,14 +25,99 @@
     border-bottom:2px solid var(--primary-color);
     padding-bottom:4px;
 }
-
+.navbar-desktop{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    width:100%;
+}
+.navbar-mobile{
+    display:none;
+}
+.navbar-extra{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
 .navbar-item{
     position:relative;
     display:flex;
     justify-content:center;
 }
-
 #sportsMenu{
     position:relative;
-    cursor: pointer;
+    cursor:pointer;
+}
+.sports-menu{
+    display:none;
+}
+@media(max-width:700px){
+    body{
+        padding-bottom:72px;
+    }
+    .navbar{
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:0;
+        top:auto;
+        height:64px;
+        padding:4px 6px;
+        background:#181818;
+        border-top:1px solid rgba(255,255,255,.08);
+        box-shadow:0 -4px 18px rgba(0,0,0,.35);
+        z-index:9999;
+    }
+    .navbar-desktop,
+    .navbar-extra,
+    .sports-menu{
+        display:none;
+    }
+    .navbar-mobile{
+        display:flex;
+        align-items:stretch;
+        justify-content:space-around;
+        width:100%;
+        height:100%;
+        gap:2px;
+    }
+    .navbar-mobile a{
+        display:flex;
+        flex:1;
+        min-width:0;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:3px;
+        border-bottom:none;
+        padding:4px 2px;
+        font-size:10px;
+        font-weight:700;
+        overflow:hidden;
+    }
+    .navbar-mobile a:first-child{
+        font-size:11px;
+    }
+    .navbar-mobile a span{
+        max-width:100%;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+    .navbar-mobile a.active{
+        border-bottom:none;
+        padding-bottom:4px;
+        color:var(--primary-color);
+    }
+}
+@media(max-width:480px){
+    .navbar{
+        height:62px;
+    }
+    .navbar-mobile a{
+        font-size:9px;
+    }
+    .navbar-mobile a:first-child{
+        font-size:10px;
+    }
 }
