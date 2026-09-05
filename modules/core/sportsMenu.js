@@ -1,47 +1,63 @@
-export function createSportsMenu(){
+const sports = [
+    {
+        label: "Fórmula 1",
+        icon: "🏎",
+        href: "https://richardbuet.github.io/EasySports/pages/formula1.html"
+    },
+    {
+        label: "NASCAR",
+        icon: "🏁",
+        href: "https://richardbuet.github.io/EasySports/pages/nascar.html"
+    },
+    {
+        label: "IndyCar",
+        icon: "🚗",
+        href: "#"
+    },
+    {
+        label: "Fórmula E",
+        icon: "⚡",
+        href: "#"
+    },
+    {
+        label: "WEC",
+        icon: "🏆",
+        href: "#"
+    },
+    {
+        label: "MotoGP",
+        icon: "🏍",
+        href: "#"
+    },
+    {
+        label: "Copa del Mundo",
+        icon: "⚽",
+        href: "https://richardbuet.github.io/whatscup/"
+    },
+    {
+        label: "NBA",
+        icon: "🏀",
+        href: "#"
+    },
+    {
+        label: "Tenis",
+        icon: "🎾",
+        href: "#"
+    }
+];
 
+export function getSports() {
+    return sports;
+}
+
+export function createSportsMenu() {
     return `
-
         <div id="sportsMenuPanel" class="sports-menu">
-
-            <a href="https://richardbuet.github.io/EasySports/pages/formula1.html">
-                🏎 Fórmula 1
-            </a>
-
-            <a href="https://richardbuet.github.io/EasySports/pages/nascar.html">
-                🏁 NASCAR
-            </a>
-
-            <a href="#">
-                🚗 IndyCar
-            </a>
-
-            <a href="#">
-                ⚡ Fórmula E
-            </a>
-
-            <a href="#">
-                🏆 WEC
-            </a>
-
-            <a href="#">
-                🏍 MotoGP
-            </a>
-
-            <a href="https://richardbuet.github.io/whatscup/">
-                ⚽ Copa del Mundo
-            </a>
-            
-            <a href="#">
-                🏀 NBA
-            </a>
-
-            <a href="#">
-                🎾 Tenis
-            </a>
-
+            ${sports.map(sport => `
+                <a href="${sport.href}">
+                    ${sport.icon} ${sport.label}
+                </a>
+            `).join("")}
         </div>
-
     `;
-
 }
