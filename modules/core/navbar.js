@@ -11,12 +11,13 @@ export function createNavbar(){
         }
     };
     const isActive = href => {
-        const page = getPageName(href);
-        if (page === "index.html") {
-            return current === "index.html" || current === "";
-        }
-        return current === page;
-    };
+    if (!href || href === "#") return false;
+    const page = getPageName(href);
+    if (page === "index.html") {
+        return current === "index.html" || current === "";
+    }
+    return current === page;
+};
     const activeClass = href => isActive(href) ? "active" : "";
     return `
         <nav class="navbar">
