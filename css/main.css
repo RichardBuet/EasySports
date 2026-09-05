@@ -8,6 +8,7 @@
    COMPONENTES GENERALES
 =================================== */
 @import "components/header.css";
+@import "components/navbar.css";
 @import "components/footer.css";
 @import "components/buttons.css";
 @import "components/cards.css";
@@ -53,6 +54,6 @@
 
 /* @import "components/loader.css"; */
 /* @import "components/sportsMenu.css"; */
-/* @import "components/navbar.css"; */
+/*  */
 /* @import "components/sidebar.css"; */
 /* @import "components/nascar.css"; */
