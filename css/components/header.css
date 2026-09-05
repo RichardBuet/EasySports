@@ -22,7 +22,6 @@
 }
 
 .logo{
-    /* font-family: "Montserrat", sans-serif; */
     font-style: italic;
     font-weight: 800;
     letter-spacing: -1px;
@@ -58,87 +57,7 @@
     color:white;
 }
 
-
-/* ---- MENU ---- */
-.navbar{
-display: flex;
-    padding: 8px 10px;
-    text-align: center;
-    font-size: clamp(1rem, 1.4vw, 1.2rem);
-    align-items: center;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-.navbar a{
-    color:var(--text-color);
-    text-decoration:none;
-    font-weight:bold;
-    transition:.25s;
-    /* font-size: inherit; */
-}
-
-.navbar a:hover{
-    color:var(--primary-color);
-}
-.navbar a.active{
-    color:var(--primary-color);
-    border-bottom:2px solid var(--primary-color);
-    padding-bottom:4px;
-}
-
-.navbar-item{
-    position:relative;
-    display:flex;
-    justify-content:center;
-}
-
-
-/* ---- COMPETENCIAS ---- */
-#sportsMenu{
-    position:relative;
-    cursor: pointer;
-}
-
-.sports-menu{
-    position:absolute;
-    top:calc(100% + 10px);
-    left:50%;
-    transform:translateX(-50%);
-    min-width:220px;
-    display:none;
-    flex-direction:column;
-    background:#1f1f1f;
-    border:1px solid #333;
-    border-radius:12px;
-    padding:8px 0;
-    box-shadow:0 12px 30px rgba(0,0,0,.5);
-    z-index:9999;
-}
-
-.sports-menu.show{
-    display:flex;
-}
-
-.sports-menu a{
-    padding:14px 16px;
-    color:var(--text-color);
-    text-decoration:none;
-    font-size:15px;
-    transition:.2s;
-}
-
-.sports-menu a:hover{
-    background:rgba(255,255,255,.05);
-    color:var(--primary-color);
-}
-
 .hidden{
     display:none!important;
-}
-
-.sports-menu.show{
-    display:flex!important;
 }
 
