@@ -605,7 +605,7 @@
       "name": "Italian Grand Prix",
       "dateStart": "2026-09-04",
       "dateEnd": "2026-09-06",
-      "status": "ongoing",
+      "status": "completed",
       "location": {
         "id": "6c6c3380-e4f0-4b5d-b84d-47bf8e50c324",
         "name": "Autodromo Nazionale Monza",
@@ -656,7 +656,7 @@
           "type": "race",
           "startTime": "2026-09-06T13:00:00.000Z",
           "endTime": "2026-09-06T15:00:00.000Z",
-          "status": "ongoing"
+          "status": "completed"
         }
       ]
     },
