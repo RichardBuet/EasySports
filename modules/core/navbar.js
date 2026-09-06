@@ -12,11 +12,19 @@ export function createNavbar(){
     };
     const isActive = href => {
     if (!href || href === "#") return false;
-    const page = getPageName(href);
-    if (page === "index.html") {
-        return current === "index.html" || current === "";
+    try {
+        const url = new URL(href, window.location.origin);
+        const appBase = new URL(ROUTES.HOME, window.location.origin).pathname.replace(/\/$/, "");
+        if (url.origin !== window.location.origin) return false;
+        if (url.pathname !== appBase && !url.pathname.startsWith(`${appBase}/`)) return false;
+        const page = url.pathname.split("/").pop() || "index.html";
+        if (page === "index.html") {
+            return current === "index.html" || current === "";
+        }
+        return current === page;
+    } catch {
+        return false;
     }
-    return current === page;
 };
     const activeClass = href => isActive(href) ? "active" : "";
     return `
