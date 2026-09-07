@@ -32,6 +32,7 @@ export function adaptNascarLive(data) {
     return {
 
         raceId: data.race_id,
+        seriesId: data.series_id,
 
         session: data.run_name,
         sessionType: data.run_type,
