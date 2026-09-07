@@ -94,21 +94,29 @@ export class NASCAR {
 
     static async getHeroData() {
 
-        const live =
-            await this.getLiveRace();
+const live =
 
+    await this.getLiveRace();
 
-        if (live.isLive) {
+if (
 
-            const event =
-                await this.getRaceById(
-                    live.raceId
-                );
+    live.isLive &&
 
+    Number(live.seriesId) === Number(state.nascarSeries)
 
-            if (event) {
+) {
 
-                const seriesName = {
+    const event =
+
+        await this.getRaceById(
+
+            live.raceId
+
+        );
+
+    if (event) {
+
+        const seriesName = {
 
                     1: "Cup Series",
                     2: "O'Reilly Series",
