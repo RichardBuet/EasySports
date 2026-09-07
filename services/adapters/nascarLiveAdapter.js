@@ -65,6 +65,8 @@ export function adaptNascarLive(data) {
 
         driver: car.driver.full_name,
 
+        driverType: /\(C\)$/.test(car.driver.full_name) ? "chase" : null,
+
         manufacturer: manufacturers[car.vehicle_manufacturer] ?? car.vehicle_manufacturer,
 
         sponsor: car.sponsor_name,
