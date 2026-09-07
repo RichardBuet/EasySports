@@ -152,7 +152,7 @@ async function createLiveContent(live) {
                 </div>
                 <div class="nascar-live-full-item">
 
-                    <span>
+                    <span data-live="flag-icon">
                         ${live.summary.flag.icon}
                     </span>
 
@@ -351,6 +351,10 @@ async function createDriverRows(leaderboard = []) {
             driver.onTrack
                 ? "nascar-live-full-status-live"
                 : "nascar-live-full-status-off";
+       const driverClass =
+            driver.driverType
+                ? `nascar-driver-${driver.driverType}`
+                : "";
 
 
         const positionGain =
@@ -392,7 +396,7 @@ async function createDriverRows(leaderboard = []) {
 
                 <span>
 
-                    <strong>
+                    <strong class="${driverClass}">
                         ${driver.driver}
                     </strong>
 
@@ -611,11 +615,17 @@ async function refreshLiveFullModal() {
                 );
 
 
-            const flag = summary.querySelector('[data-live="flag"]');
-                if (flag) {
-                    flag.className = live.summary.flag?.class ?? "flag-none";
-                    flag.textContent = live.summary.flag?.name ?? "-";
-                }
+const flag = summary.querySelector('[data-live="flag"]');
+const flagIcon = summary.querySelector('[data-live="flag-icon"]');
+
+if (flag) {
+    flag.className = live.summary.flag?.class ?? "flag-none";
+    flag.textContent = live.summary.flag?.name ?? "-";
+}
+
+if (flagIcon) {
+    flagIcon.textContent = live.summary.flag?.icon ?? "⚪";
+}
 
 
             summary
