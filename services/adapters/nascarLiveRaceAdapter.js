@@ -40,44 +40,34 @@ export function adaptNascarLiveRace(
 
         summary: {
 
-            series:
-                SERIES[liveFeed.series_id] ?? "NASCAR",
-
-            session:
+          raceId: liveFeed.race_id,
+          seriesId: liveFeed.series_id,
+          series: SERIES[liveFeed.series_id] ?? "NASCAR", 
+          session:
                 SESSIONS[liveFeed.run_type] ?? {
                     icon: "🏁",
                     name: "NASCAR"
                 },
-
             track:
                 liveFeed.track_name,
-
             trackLength:
                 liveFeed.track_length,
-
             lap:
                 liveFeed.run_type === 3
                     ? `${liveFeed.lap_number} / ${liveFeed.laps_in_race}`
                     : `${liveFeed.lap_number}`,
-
             lapsToGo:
                 liveFeed.laps_to_go,
-
             flag:
                 FLAGS[liveFeed.flag_state],
-
             leaders:
                 liveFeed.number_of_leaders,
-
             leadChanges:
                 liveFeed.number_of_lead_changes,
-
             cautions:
                 liveFeed.number_of_caution_segments,
-
             cautionLaps:
                 liveFeed.number_of_caution_laps,
-
             stage:
                 liveFeed.stage
                     ? {
