@@ -564,7 +564,7 @@
           "type": "practice",
           "startTime": "2026-09-11T11:30:00.000Z",
           "endTime": "2026-09-11T12:30:00.000Z",
-          "status": "ongoing"
+          "status": "completed"
         },
         {
           "id": "7ef0bdab-3d19-4492-8021-0946a5e3ee13",
@@ -572,7 +572,7 @@
           "type": "practice",
           "startTime": "2026-09-11T15:00:00.000Z",
           "endTime": "2026-09-11T16:00:00.000Z",
-          "status": "scheduled"
+          "status": "completed"
         },
         {
           "id": "26dad685-93e4-4895-903e-e959ee14549a",
