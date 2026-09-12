@@ -580,7 +580,7 @@
           "type": "practice",
           "startTime": "2026-09-12T10:30:00.000Z",
           "endTime": "2026-09-12T11:30:00.000Z",
-          "status": "scheduled"
+          "status": "completed"
         },
         {
           "id": "dbec8296-cfe2-4516-b11f-746c2d4725e2",
