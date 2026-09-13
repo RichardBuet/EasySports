@@ -545,7 +545,7 @@
       "name": "Spanish Grand Prix",
       "dateStart": "2026-09-11",
       "dateEnd": "2026-09-13",
-      "status": "ongoing",
+      "status": "completed",
       "location": {
         "id": "261acf15-a4a0-4047-a4ce-626c01c5c403",
         "name": "Madring",
@@ -596,7 +596,7 @@
           "type": "race",
           "startTime": "2026-09-13T13:00:00.000Z",
           "endTime": "2026-09-13T15:00:00.000Z",
-          "status": "scheduled"
+          "status": "completed"
         }
       ]
     },
