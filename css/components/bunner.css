@@ -7,37 +7,37 @@
 /* 1. Contenedor principal de tu imagen */
 .bunner {
   position: relative;
-  display: inline-block; /* Hace que el cuadro mida lo mismo que la imagen */
-  margin: 0 20px;
-  padding: 0px;          /* Este es el grosor exacto del borde brillante */
-  border-radius: 3px;   /* Esquinas redondeadas para el contorno */
+  display: inline-block;     /* Hace que el cuadro mida lo mismo que la imagen */
+  margin: 0;                 /*20px; */
+  padding: 0px;              /* Este es el grosor exacto del borde brillante */
+  border-radius: 3px;       /* Esquinas redondeadas para el contorno */
   background: transparent;
   transition: box-shadow 0.4s ease;
 }
 
 /* 2. El pseudo-elemento que creará el borde mágico al hacer hover */
 .bunner::before {
-  content: '';
-  position: absolute;
-  top: -1px; left: 0; right: 0; bottom: 0;
-  border-radius: 6px;
-  padding: 3px; 
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    border-radius: 6px;
+    padding: 2px;
   
   /* El degradado de Gemini escondido por defecto (opacidad 0) */
-  background: conic-gradient(
-    from var(--angulo), 
-    #4285f4, #9b51e0, #e91e63, #fbbc05, #4285f4
-  );
+    background: conic-gradient( from var(--angulo), 
+    #4285f4, #9b51e0, #e91e63, #fbbc05, #4285f4  );
   
   /* Máscara webkit: oculta el centro del fondo para dejar SOLO el borde visible */
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          
-  opacity: 0;
-  transition: opacity 0.4s ease;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;      
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 /* 3. Tu clase de la imagen */
