@@ -12,6 +12,21 @@
     transition:.2s ease;
     white-space:nowrap;
 }
+
+.navbar a img{
+    width:28px;
+    height:24px;
+    object-fit:contain;
+    display:block;
+}
+
+.navbar-mobile a img{
+    width:34px;
+    height:25px;
+    object-fit:contain;
+    display:block;
+}
+
 .navbar a:hover{
     color:var(--primary-color);
 }
@@ -146,6 +161,12 @@
     }
     .navbar-mobile a.active .navbar-icon{
         filter:drop-shadow(0 0 5px rgba(255,255,255,.25));
+    }
+    .navbar-mobile a img{
+    width:34px!important;
+    height:25px!important;
+    object-fit:contain!important;
+    display:block!important;
     }
 }
 @media(max-width:480px){
