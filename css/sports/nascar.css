@@ -33,7 +33,9 @@ body.nascar{ --sport-primary:#ffd100; }
     align-items: flex-end;
     padding: 15px 5px 15px 20px;
     color: var(--text);
-    background: linear-gradient(rgb(15 15 15 / 55%), rgba(0, 0, 0, .80));
+    background: linear-gradient(
+    rgba(0, 0, 0, .80),
+    rgb(15 15 15 / 55%));
 }
 
 .nascarHeroOverlay{
