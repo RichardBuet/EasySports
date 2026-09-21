@@ -78,6 +78,7 @@ body.nascar{ --sport-primary:#ffd100; }
     margin: 0 0 12px;
     font-size: clamp(1.5rem, 4.6vw, 2.6rem);
     line-height: 1.1;
+    min-height: calc(2 * 1.1em);
 }
 
 .nascarHero p{
