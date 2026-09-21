@@ -280,7 +280,10 @@ function createScheduleItem(icon, title, date) {
 
     if (!date) return "";
 
-    const d = new Date(date);
+    const d = new Date(date.endsWith("Z")
+        ? date
+        : date + "Z"
+    );
 
     return `
 
