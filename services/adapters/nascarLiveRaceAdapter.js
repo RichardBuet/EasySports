@@ -104,7 +104,7 @@ export function adaptNascarLiveRace(
                     vehicle.driver.full_name,
 
                 driverType:
-                    /\(C\)\s*$/.test(car.driver.full_name)
+                    /\(C\)\s*$/.test(vehicle.driver.full_name)
                         ? "chase"
                         : null,
               
