@@ -42,7 +42,7 @@ switch (heroState.state) {
     <span
         class="heroRaceCenter"
         onclick="window.openLiveFullModal()">
-        📊 Race Center
+        📂
     </span>
 </span>
 
