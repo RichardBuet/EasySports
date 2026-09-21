@@ -1134,9 +1134,7 @@ if (
                 );
 
 
-            data.summary.series =
-                this.getSeriesName();
-
+            
 
             console.log(
                 data
