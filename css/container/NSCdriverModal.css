@@ -10,7 +10,7 @@
     padding:24px;
 }
 
-.driver-info{
+.driver-info, .driver-info-titulo {
     flex:1;
 }
 
