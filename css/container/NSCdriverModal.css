@@ -75,28 +75,6 @@
     justify-self:end;
 }
 
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-
-@media (max-width:700px){
-    .driver-modal-header{
-        flex-direction:column-reverse;
-        text-align:center;
-    }
-
-    .driver-photo{
-        max-width:220px;
-        width:100%;
-    }
-
-    .driver-info{
-        width:100%;
-    }
-
-}
-
 .driver-link{
     cursor:pointer;
     transition:.2s;
@@ -106,6 +84,31 @@
     color:#FFD54A;
     text-decoration:underline;
 }
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:700px){
+
+
+    .driver-photo{
+        max-width:220px;
+        width:100%;
+    }
+/*
+    .driver-modal-header{
+        flex-direction:column-reverse;
+        text-align:center;
+    }
+   
+    .driver-info{
+        width:100%;
+    }
+
+}
+
+
 
 .driver-number{
     display:inline-block;
@@ -117,3 +120,4 @@
     font-weight:700;
     font-size:.9rem;
 }
+*/
