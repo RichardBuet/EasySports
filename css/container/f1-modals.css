@@ -83,7 +83,7 @@
     height:
         min(
             760px,
-            calc(100dvh - 110px)
+            calc(100dvh - 160px)
         );
 
     min-height: 360px;
