@@ -171,34 +171,54 @@ async function createChampionship(type) {
 
 
 /* =========================================================
-   FORMATO
+   FORMATO Y ZONA HORARIA
 ========================================================= */
 
-function formatTime(time) {
+const ARGENTINA_TIMEZONE = "America/Argentina/Buenos_Aires";
 
-    if (!time) return "—";
+function getSessionDateTime(date, time) {
 
-    return time.substring(0, 5);
+    if (!date) return new Date(NaN);
+
+    const sessionTime = String(time || "00:00:00");
+
+    const hasTimezone =
+        /(?:Z|[+-]\d{2}:?\d{2})$/i.test(sessionTime);
+
+    const isoDateTime =
+        `${date}T${sessionTime}${hasTimezone ? "" : "Z"}`;
+
+    return new Date(isoDateTime);
 }
 
 
-function formatDay(date) {
+function formatTime(date, time) {
 
-    if (!date) return "";
+    const sessionDate = getSessionDateTime(date, time);
 
-    const days = [
-        "Domingo",
-        "Lunes",
-        "Martes",
-        "Miércoles",
-        "Jueves",
-        "Viernes",
-        "Sábado"
-    ];
+    if (isNaN(sessionDate.getTime())) return "—";
 
-    return days[
-        new Date(`${date}T12:00:00`).getDay()
-    ];
+    return new Intl.DateTimeFormat("es-AR", {
+        timeZone: ARGENTINA_TIMEZONE,
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23"
+    }).format(sessionDate);
+}
+
+
+function formatDay(date, time) {
+
+    const sessionDate = getSessionDateTime(date, time);
+
+    if (isNaN(sessionDate.getTime())) return "";
+
+    const day = new Intl.DateTimeFormat("es-AR", {
+        timeZone: ARGENTINA_TIMEZONE,
+        weekday: "long"
+    }).format(sessionDate);
+
+    return day.charAt(0).toUpperCase() + day.slice(1);
 }
 
 
@@ -335,19 +355,12 @@ function createNextRace(race) {
 
     sessions.sort((a, b) => {
 
-        const dateA =
-            new Date(
-                `${a.date}T${a.time || "00:00:00"}`
-            );
+    const dateA = getSessionDateTime(a.date, a.time);
+    const dateB = getSessionDateTime(b.date, b.time);
 
-        const dateB =
-            new Date(
-                `${b.date}T${b.time || "00:00:00"}`
-            );
+    return dateA - dateB;
 
-        return dateA - dateB;
-
-    });
+});
 
 
     return `
@@ -366,14 +379,14 @@ function createNextRace(race) {
 
                     <div>
 
-                        <strong> ${formatDay(session.date)} </strong>
+                        <strong> ${formatDay(session.date, session.time)} </strong>
 
                         <span> ${session.label} </span>
 
                     </div>
 
                     <time>
-                        ${formatTime(session.time)}
+                        ${formatTime(session.date, session.time)}
                     </time>
 
                 </div>
@@ -557,43 +570,29 @@ function getLastFinishedSession(sessions) {
 
     const now = new Date();
 
+    const finished = sessions.filter(session => {
 
-    const finished =
-        sessions.filter(session => {
+        const date = getSessionDateTime(
+            session.date,
+            session.time
+        );
 
-            const date =
-                new Date(
-                    `${session.date}T${session.time || "00:00:00"}`
-                );
+        return date <= now;
 
-            return date <= now;
-
-        });
-
+    });
 
     if (!finished.length) {
-
         return sessions[0];
-
     }
-
 
     finished.sort((a, b) => {
 
-        const dateA =
-            new Date(
-                `${a.date}T${a.time || "00:00:00"}`
-            );
-
-        const dateB =
-            new Date(
-                `${b.date}T${b.time || "00:00:00"}`
-            );
+        const dateA = getSessionDateTime(a.date, a.time);
+        const dateB = getSessionDateTime(b.date, b.time);
 
         return dateB - dateA;
 
     });
-
 
     return finished[0];
 }
